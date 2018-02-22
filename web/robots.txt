@@ -1,0 +1,11 @@
+User-agent: *
+
+Disallow: /login
+Disallow: /logout
+Disallow: /*sort=
+Disallow: /post/index
+Disallow: /contact
+Disallow: /signup
+Disallow: /about
+
+Host: phpland.org

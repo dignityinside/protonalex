@@ -1,0 +1,87 @@
+<?php
+
+$config = [
+    'id'           => 'app',
+    'name'         => 'phpland',
+    'basePath'     => dirname(__DIR__),
+    'aliases'      => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
+    'defaultRoute' => 'post/index',
+    'language'     => 'ru-RU',
+    'bootstrap'    => ['log'],
+    'components'   => [
+        'authManager'          => [
+            'class' => 'yii\rbac\PhpManager',
+        ],
+        'authClientCollection' => [
+            'class'   => 'yii\authclient\Collection',
+            'clients' => require __DIR__ . '/authclients.php',
+        ],
+        'request'              => [
+            'cookieValidationKey' => '',
+        ],
+        'cache'                => [
+            'class' => 'yii\caching\FileCache',
+        ],
+        'user'                 => [
+            'identityClass'   => 'app\models\User',
+            'enableAutoLogin' => true,
+        ],
+        'errorHandler'         => [
+            'errorAction' => 'site/error',
+        ],
+        'mailer'               => [
+            'class'            => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => false,
+        ],
+        'log'                  => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets'    => [
+                [
+                    'class'  => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
+        ],
+        'db'                   => require(__DIR__ . '/db.php'),
+        'urlManager'           => [
+            'enablePrettyUrl' => true,
+            'showScriptName'  => false,
+            'rules'           => [
+                '<_a:(login|logout|signup|auth|request-password-reset|reset-password|about|contact)>' => 'site/<_a>',
+                '<_c:[\w\-]+>/<id:\d+>'                                                               => '<_c>/view',
+                '<_c:[\w\-]+>/update/<id:\d+>'                                                        => '<_c>/update',
+                '<_c:[\w\-]+>/delete/<id:\d+>'                                                        => '<_c>/delete',
+                '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>'                                                  => '<_c>/<_a>'
+            ],
+        ],
+        'comment'              => require(__DIR__ . '/comments.php'),
+    ],
+    'modules'      => [
+        'comment-admin' => [
+            'class' => 'demi\comments\backend\CommentModule',
+        ],
+        'comment'       => [
+            'class' => 'demi\comments\frontend\CommentModule',
+        ],
+    ],
+    'params'       => require(__DIR__ . '/params.php'),
+];
+
+if (YII_ENV_DEV) {
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class'      => 'yii\debug\Module',
+        'allowedIPs' => ['127.0.0.1', '::1'],
+    ];
+
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class'      => 'yii\gii\Module',
+        'allowedIPs' => ['127.0.0.1', '::1'],
+    ];
+}
+
+return $config;

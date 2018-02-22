@@ -1,0 +1,274 @@
+html,
+body {
+    height: 100%;
+    background: #EDEEF0;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    border-top: 1px solid #DDD;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.hljs {
+    background: none !important;
+}
+
+pre {
+    background: none;
+    border: none;
+    font-size: 14px;
+}
+
+/* Posts */
+
+.content_footer {
+    border-top: solid 1px #DDD;
+    padding-top: 5px;
+    font-size: 11px;
+    color: #7B848D;
+}
+
+.content_footer .fa {
+    margin: 0 5px 0 10px;
+}
+
+.content_header {
+    margin-bottom: 20px;
+    font-size: 11px;
+    color: #7B848D;
+}
+
+.content_header .fa {
+    margin: 0 5px 0 10px;
+}
+
+.content_share {
+    border: 1px dashed #444953;
+    font-size: 120%;
+    margin: 20px auto 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.post-view {
+    margin-top: 20px;
+    background: #FFF;
+    padding: 0 20px 10px 20px;
+    border-radius: 10px;
+    border: solid 1px #DCDCDC;
+}
+
+.post-view h3 {
+    color: #E13300;
+}
+
+.post-view h3 a {
+    color: #E13300;
+    text-decoration: underline;
+}
+
+.text-primary {
+    color: #4F5B93;
+}
+
+.not-set {
+    color: #C55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #A94442;
+    background: #FDF7F7;
+    border-left: 3px solid #EED3D7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+.navbar-inverse {
+    background: #4F5B93;
+    border-color: #8892BF;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFF;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #8892BF;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #8892BF;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: #8892BF;
+}
+
+/* Links */
+
+a {
+    color: #4F5B93;
+}
+
+a:hover {
+    color: #8892BF;
+}
+
+/* Buttons */
+
+.btn-primary {
+    background: #4F5B93;
+    border-color: #8892BF;
+}
+
+.btn-primary:hover {
+    background: #8892BF;
+    border-color: #4F5B93;
+}
+
+/* Pagination */
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background: #4F5B93;
+    border-color: #8892BF;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #8892BF;
+}
+
+.nav li > form > button.logout {
+    padding: 15px;
+    border: none;
+}
+
+@media (max-width: 767px) {
+    .nav li > form > button.logout {
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+}
+
+/* Comments */
+
+.comment-body {
+    background: #F5F5F5;
+    border-radius: 5px;
+    padding: 20px 20px 20px;
+}
+
+ul.comments li {
+    clear: both;
+    padding: 10px 0 0 115px;
+}
+
+.comment-user-photo {
+    float: left;
+    padding: 10px;
+    margin-left: -115px;
+}
+
+ul.comments .comment-arrow {
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #F4F4F4;
+    border-top: 15px solid transparent;
+    height: 0;
+    left: -15px;
+    position: absolute;
+    top: 28px;
+    width: 0;
+}
+
+.comment-permament-link {
+    float: right;
+}
+
+.dt-published {
+    color: #888;
+    font-size: 0.8em;
+}
+
+.comment-username {
+    border-bottom: 1px solid #DDD;
+    margin: 5px 0;
+    padding: 0 0 3px;
+}
+
+.comment-actions .fa {
+    padding-left: 10px;
+    padding-right: 4px;
+}
