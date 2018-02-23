@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use app\widgets\Bbcode;
+use app\helpers\Text;
+use yii\helpers\HtmlPurifier;
+use yii\helpers\Markdown;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Post */
@@ -13,7 +15,7 @@ use app\widgets\Bbcode;
 
     <?= $this->render('_post_header', ['model' => $model]) ?>
 
-    <?= Bbcode::widget(['text' => $model->preview]); ?>
+    <?= Text::cut(HtmlPurifier::process(Markdown::process($model->content, 'gfm'))); ?>
 
     <?php if ($model->content): ?>
         <p><?= Html::a('Подробнее →', ['post/view', 'id' => $model->id]); ?></p>

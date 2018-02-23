@@ -6,6 +6,9 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Post */
 /* @var $form yii\widgets\ActiveForm */
+
+\app\assets\MarkdownEditorAsset::register($this);
+
 ?>
 
 <div class="post-form">
@@ -14,9 +17,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'preview')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    <?= $form->field(
+        $model, 'content', [
+        'template' => "{label}\n{error}\n{input}\n{hint}"
+    ]
+    )->textarea(['class' => 'markdown-editor']) ?>
 
     <?= $form->field($model, 'status_id')->dropDownList(['0' => 'Черновик', '1' => 'Опубликовать']) ?>
 

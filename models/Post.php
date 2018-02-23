@@ -11,7 +11,6 @@ use \yii\db\ActiveRecord;
  *
  * @property integer $id
  * @property string  $title
- * @property string  $preview
  * @property string  $content
  * @property integer $status_id
  * @property integer $datecreate
@@ -56,8 +55,8 @@ class Post extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'preview', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop'], 'required'],
-            [['preview', 'content', 'allow_comments', 'tags'], 'string'],
+            [['title', 'content', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop'], 'required'],
+            [['content', 'allow_comments', 'tags'], 'string'],
             [['status_id', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop'], 'integer'],
             [['title'], 'string', 'max' => 69],
             [['meta_keywords'], 'string', 'max' => 256],
@@ -74,7 +73,6 @@ class Post extends ActiveRecord
 
         $scenarios[self::SCENARIO_CREATE] = [
             'title',
-            'preview',
             'content',
             'tags',
             'allow_comments',
@@ -83,7 +81,6 @@ class Post extends ActiveRecord
 
         $scenarios[self::SCENARIO_UPDATE] = [
             'title',
-            'preview',
             'content',
             'tags',
             'allow_comments',
@@ -92,7 +89,6 @@ class Post extends ActiveRecord
 
         $scenarios[self::SCENARIO_ADMIN] = [
             'title',
-            'preview',
             'content',
             'tags',
             'allow_comments',
@@ -113,7 +109,6 @@ class Post extends ActiveRecord
         return [
             'id'               => 'ID',
             'title'            => 'Заголовок',
-            'preview'          => 'Вступительный текст (max. 1000 символов)',
             'content'          => 'Текст',
             'status_id'        => 'Статус',
             'datecreate'       => 'Дата публикации',

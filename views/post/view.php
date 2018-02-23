@@ -1,8 +1,10 @@
 <?php
 
-use yii\helpers\Html;
-use app\widgets\Bbcode;
 use app\components\UserPermissions;
+use app\helpers\Text;
+use yii\helpers\Html;
+use yii\helpers\HtmlPurifier;
+use yii\helpers\Markdown;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Post */
@@ -35,16 +37,14 @@ $this->registerMetaTag(
             <?= Html::a('Изменить', ['post/update', 'id' => $model->id]); ?></p>
     <?php endif; ?>
 
-    <?= Bbcode::widget(['text' => $model->preview]); ?>
-
-    <?= Bbcode::widget(['text' => $model->content]); ?>
+    <?= Text::hidecut(HtmlPurifier::process(Markdown::process($model->content, 'gfm'))); ?>
 
     <?= $this->render('_share'); ?>
 
     <?= $this->render(
         '_post_footer', [
-        'model' => $model
-    ]
+            'model' => $model
+        ]
     ); ?>
 
     <?= $this->render('_comments', ['model' => $model]); ?>

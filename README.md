@@ -2,6 +2,37 @@
 
 Source code of the phpland community.
 
+## Technology
+
+- Nginx or Apache
+- HTML5 + CSS3 (Bootstrap), Javascript (jQuery)
+- PHP 5.4.0+, MySQL, Yii Framework 2
+- Composer (PHP), Bower and NPM (CSS, JavaScript)
+- Markdown + CodeMirror Editor
+
+## Key features
+
+- User registration, login via E-Mail or Social Media (Github), logout
+- Password reset
+- User profile for each user
+- Connect additional profiles (Github) to user profile
+- Delete user profile
+- Add, edit, delete user
+
+- Add, edit, delete blog post (own, other users)
+- Add, edit, delete blog comments (own, other users)
+- Allow/Disallow blog comments
+- Blog post views counter
+- Blog post tags (in development)
+- Blog post status: draft, publish
+- Users blogs
+- Show blog post from user blog on main page
+
+- Markdown Support + CodeMirror Editor
+- RBAC (admin, moderator, user)
+- SEO friendly (Meta Title, Meta Keywords, Meta Description)
+- Anti-spam protection (Registration, Comments, Contact form)
+
 ## Clone project via GIT
 
 ```
@@ -13,6 +44,12 @@ cd community
 
 ```
 composer install
+```
+
+## Apply post create project script
+
+```
+composer run-script post-create-project-cmd
 ```
 
 ## Apply migrations

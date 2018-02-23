@@ -16,8 +16,9 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yiisoft/yii2-authclient": "~2.0.6",
         "cebe/yii2-gravatar": "~1.1",
-        "dignityinside/bbcode": "^1.0",
-        "demi/comments": "~1.0"
+        "demi/comments": "~1.0",
+        "bower-asset/codemirror": "~5.9.0",
+        "bower-asset/codemirror-buttons": "~1.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -49,6 +50,10 @@
             "generateCookieValidationKey": [
                 "config/web.php"
             ]
+        },
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
         }
     }
 }

@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
  *
  * @package app\assets
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * @author  Alexander Schilling <dignityinside@gmail.com>
  */
 class AppAsset extends AssetBundle
 {
@@ -28,7 +28,11 @@ class AppAsset extends AssetBundle
         ];
 
     /** @var array */
-    public $js = [];
+    public $js
+        = [
+            'js/yiiscript.js',
+            'js/jquery.sticky.js'
+        ];
 
     /** @var array */
     public $depends

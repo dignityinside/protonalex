@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use demi\comments\common\models\Comment;
-use Dignity\BBCode;
 
 return [
     "userModelClass"     => 'app\models\User',
@@ -43,7 +42,8 @@ return [
     // Anonymous function to get comment text
     // By default: nl2br(Html::encode($comment->text))
     'getCommentText'     => function (Comment $comment) {
-        return nl2br(BBCode::parse($comment->text));
+        // @todo add markdown support
+        return nl2br($comment->text);
     },
     // Anonymous function to get comment create time
     // By default: Yii::$app->formatter->asDatetime($comment->created_at)

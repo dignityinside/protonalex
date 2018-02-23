@@ -272,3 +272,14 @@ ul.comments .comment-arrow {
     padding-left: 10px;
     padding-right: 4px;
 }
+
+.CodeMirror {
+    border: 1px solid #DDD;
+    padding: 20px;
+    color: #333;
+    font-family: "Noto Serif", serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.6471;
+    vertical-align: baseline;
+}
