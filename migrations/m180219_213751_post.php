@@ -21,6 +21,7 @@ class m180219_213751_post extends Migration
             '{{%post}}', [
             'id'               => $this->primaryKey(),
             'title'            => $this->string(255)->notNull(),
+            'slug'            => $this->string(255)->notNull(),
             'content'          => $this->text()->notNull(),
             'status_id'        => $this->tinyInteger(1)->unsigned()->notNull()->defaultValue(0),
             'datecreate'       => $this->integer()->unsigned()->notNull(),

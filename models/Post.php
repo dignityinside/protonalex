@@ -5,12 +5,14 @@ namespace app\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 use \yii\db\ActiveRecord;
+use Dignity\TranslitHelper;
 
 /**
  * This is the model class for table "post".
  *
  * @property integer $id
  * @property string  $title
+ * @property string  $slug
  * @property string  $content
  * @property integer $status_id
  * @property integer $datecreate
@@ -56,7 +58,7 @@ class Post extends ActiveRecord
     {
         return [
             [['title', 'content', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop'], 'required'],
-            [['content', 'allow_comments', 'tags'], 'string'],
+            [['content', 'allow_comments', 'tags', 'slug'], 'string'],
             [['status_id', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop'], 'integer'],
             [['title'], 'string', 'max' => 69],
             [['meta_keywords'], 'string', 'max' => 256],
@@ -77,6 +79,7 @@ class Post extends ActiveRecord
             'tags',
             'allow_comments',
             'status_id',
+            'slug',
         ];
 
         $scenarios[self::SCENARIO_UPDATE] = [
@@ -85,6 +88,7 @@ class Post extends ActiveRecord
             'tags',
             'allow_comments',
             'status_id',
+            'slug',
         ];
 
         $scenarios[self::SCENARIO_ADMIN] = [
@@ -96,6 +100,7 @@ class Post extends ActiveRecord
             'ontop',
             'meta_keywords',
             'meta_description',
+            'slug',
         ];
 
         return $scenarios;
@@ -120,6 +125,7 @@ class Post extends ActiveRecord
             'ontop'            => 'На главную',
             'meta_keywords'    => 'Ключевые слова (meta-keywords)',
             'meta_description' => 'Описание страницы (meta-description)',
+            'slug'             => 'Постоянная ссылка',
         ];
     }
 
@@ -177,9 +183,17 @@ class Post extends ActiveRecord
             $this->dateupdate = time();
             $this->hits = 0;
 
+            if (empty($this->slug)) {
+                $this->slug = TranslitHelper::translit($this->title);
+            }
+
         } else {
 
             $this->dateupdate = time();
+
+            if (empty($this->slug)) {
+                $this->slug = TranslitHelper::translit($this->title);
+            }
 
         }
 
