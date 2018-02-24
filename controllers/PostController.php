@@ -176,16 +176,16 @@ class PostController extends Controller
     /**
      * Display a single post model
      *
-     * @param integer $id Id
+     * @param $slug
      *
      * @return string
      *
      * @throws NotFoundHttpException
      */
-    public function actionView($id)
+    public function actionView($slug)
     {
 
-        $model = Post::find()->where(['id' => $id])->withCommentsCount()->one();
+        $model = Post::find()->where(['slug' => $slug])->withCommentsCount()->one();
 
         if (!$model) {
             throw new NotFoundHttpException('Запись не найдена.');

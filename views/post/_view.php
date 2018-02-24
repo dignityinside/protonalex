@@ -11,14 +11,14 @@ use yii\helpers\Markdown;
 ?>
 <div class="post-view">
 
-    <h3><?= Html::a($model->title, ['post/view', 'id' => $model->id]); ?></h3>
+    <h3><?= Html::a($model->title, ['post/view', 'slug' => $model->slug]); ?></h3>
 
     <?= $this->render('_post_header', ['model' => $model]) ?>
 
     <?= Text::cut(HtmlPurifier::process(Markdown::process($model->content, 'gfm'))); ?>
 
     <?php if ($model->content): ?>
-        <p><?= Html::a('Подробнее →', ['post/view', 'id' => $model->id]); ?></p>
+        <p><?= Html::a('Подробнее →', ['post/view', 'slug' => $model->slug]); ?></p>
     <?php endif; ?>
 
 </div>

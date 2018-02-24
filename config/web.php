@@ -54,7 +54,10 @@ $config = [
                 '<_c:[\w\-]+>/<id:\d+>'                                                               => '<_c>/view',
                 '<_c:[\w\-]+>/update/<id:\d+>'                                                        => '<_c>/update',
                 '<_c:[\w\-]+>/delete/<id:\d+>'                                                        => '<_c>/delete',
-                '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>'                                                  => '<_c>/<_a>'
+                '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>'                                                  => '<_c>/<_a>',
+                [
+                    'class' => 'app\components\PostUrlRule',
+                ]
             ],
         ],
         'comment'              => require(__DIR__ . '/comments.php'),
