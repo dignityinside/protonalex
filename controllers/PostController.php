@@ -220,7 +220,7 @@ class PostController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['post/view', 'slug' => $model->slug]);
         } else {
 
             return $this->render(
@@ -259,7 +259,7 @@ class PostController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['post/view', 'slug' => $model->slug]);
         } else {
             return $this->render(
                 'update', [

@@ -33,7 +33,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'allow_comments',
                 'ontop',
 
-                ['class' => 'yii\grid\ActionColumn'],
+                [
+                        'class' => 'yii\grid\ActionColumn',
+                        'template' => '{view} {update} {delete}',
+                        'buttons' => [
+                            'view' => function ($url, $model) {
+                                return Html::a(
+                                    '<span class="glyphicon glyphicon-eye-open"></span>',
+                                    ['post/view', 'slug' => $model->slug]);
+                            },
+                        ],
+                ],
+
             ],
         ]
     ); ?>
