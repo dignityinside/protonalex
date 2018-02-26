@@ -7,7 +7,7 @@ use yii\db\Migration;
  *
  * @author Alexander Schilling <dignityinside@gmail.com>
  */
-class m180219_202821_comments extends Migration
+class m180219_202821_create_comments_table extends Migration
 {
 
     public function up()

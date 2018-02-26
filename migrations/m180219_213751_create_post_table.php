@@ -7,7 +7,7 @@ use yii\db\Migration;
  *
  * @author Alexander Schilling <dignityinside@gmail.com>
  */
-class m180219_213751_post extends Migration
+class m180219_213751_create_post_table extends Migration
 {
     public function up()
     {
