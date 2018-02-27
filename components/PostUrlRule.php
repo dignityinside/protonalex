@@ -2,6 +2,8 @@
 
 namespace app\components;
 
+use app\helpers\Url;
+use yii\helpers\ArrayHelper;
 use yii\web\UrlRuleInterface;
 use yii\base\BaseObject;
 use app\models\Post;
@@ -11,7 +13,7 @@ use app\models\Post;
  *
  * @package app\components
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * @author Alexander Schilling
  */
 class PostUrlRule extends BaseObject implements UrlRuleInterface
 {
@@ -34,6 +36,14 @@ class PostUrlRule extends BaseObject implements UrlRuleInterface
                 return $params['slug'];
             }
 
+        } elseif ($route === 'post/tag') {
+
+            if (!($tagName = ArrayHelper::remove($params, 'tagName'))) {
+                return false;
+            }
+
+            return "/tag/$tagName" . Url::getQueryString($params);
+
         }
 
         return false; // this rule does not apply
@@ -52,6 +62,7 @@ class PostUrlRule extends BaseObject implements UrlRuleInterface
     {
 
         $pathInfo = $request->getPathInfo();
+        $parts = explode('/', $pathInfo);
 
         if (preg_match('/^[a-zA-Z0-9_-]+$/', $pathInfo)) {
 
@@ -59,6 +70,8 @@ class PostUrlRule extends BaseObject implements UrlRuleInterface
                 return ['post/view', ['slug' => $pathInfo]];
             }
 
+        } elseif (isset($parts[0]) && $parts[0] === 'tag' && !empty($parts[1])) {
+            return ['post/tag', ['tagName' => $parts[1]]];
         }
 
         return false; // this rule does not apply

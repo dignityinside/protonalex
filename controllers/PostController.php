@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Tag;
 use Yii;
 use app\models\Post;
 use app\models\PostSearch;
@@ -18,7 +19,7 @@ use yii\web\ForbiddenHttpException;
  *
  * @package app\controllers
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * @author Alexander Schilling
  */
 class PostController extends Controller
 {
@@ -35,7 +36,7 @@ class PostController extends Controller
                 'rules' => [
                     [
                         'allow'   => true,
-                        'actions' => ['create', 'update', 'my'],
+                        'actions' => ['create', 'update', 'my', 'tag'],
                         'roles'   => ['@'],
                     ],
                     [
@@ -283,6 +284,27 @@ class PostController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionTag($tagName) {
+
+        $tag = Tag::findOne(['name' => $tagName]);
+
+        if (!$tag) {
+            throw new NotFoundHttpException("Такой тэг не найден.");
+        }
+
+        $searchModel = new PostSearch([
+            'tagId' => $tag->id,
+        ]);
+
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
     }
 
     /**

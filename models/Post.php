@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 use yii\helpers\ArrayHelper;
 use \yii\db\ActiveRecord;
 use Dignity\TranslitHelper;
@@ -23,9 +24,11 @@ use Dignity\TranslitHelper;
  * @property integer $ontop
  * @property string  $meta_keywords
  * @property string  $meta_description
- * @property string  $tags
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * relations
+ * @property Tag[] $tags
+ *
+ * @author Alexander Schilling
  *
  */
 class Post extends ActiveRecord
@@ -43,6 +46,9 @@ class Post extends ActiveRecord
     /** @var string Count of all comments */
     public $commentsCount;
 
+    /** @var array */
+    public $form_tags;
+
     /**
      * @inheritdoc
      */
@@ -58,11 +64,12 @@ class Post extends ActiveRecord
     {
         return [
             [['title', 'content', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop'], 'required'],
-            [['content', 'allow_comments', 'tags', 'slug'], 'string'],
+            [['content', 'allow_comments', 'slug'], 'string'],
             [['status_id', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop'], 'integer'],
             [['title'], 'string', 'max' => 69],
             [['meta_keywords'], 'string', 'max' => 256],
             [['meta_description'], 'string', 'max' => 156],
+            [['form_tags'], 'safe'],
         ];
     }
 
@@ -71,39 +78,41 @@ class Post extends ActiveRecord
      */
     public function scenarios()
     {
+
         $scenarios = parent::scenarios();
 
         $scenarios[self::SCENARIO_CREATE] = [
             'title',
             'content',
-            'tags',
             'allow_comments',
             'status_id',
             'slug',
+            'form_tags',
         ];
 
         $scenarios[self::SCENARIO_UPDATE] = [
             'title',
             'content',
-            'tags',
             'allow_comments',
             'status_id',
             'slug',
+            'form_tags',
         ];
 
         $scenarios[self::SCENARIO_ADMIN] = [
             'title',
             'content',
-            'tags',
             'allow_comments',
             'status_id',
             'ontop',
             'meta_keywords',
             'meta_description',
             'slug',
+            'form_tags',
         ];
 
         return $scenarios;
+
     }
 
     /**
@@ -111,6 +120,7 @@ class Post extends ActiveRecord
      */
     public function attributeLabels()
     {
+
         return [
             'id'               => 'ID',
             'title'            => 'Заголовок',
@@ -118,7 +128,6 @@ class Post extends ActiveRecord
             'status_id'        => 'Статус',
             'datecreate'       => 'Дата публикации',
             'dateupdate'       => 'Дата обновления',
-            'tags'             => 'Тэги',
             'user_id'          => 'ID Автора',
             'hits'             => 'Просмотров',
             'allow_comments'   => 'Разрешить комментарии',
@@ -126,7 +135,9 @@ class Post extends ActiveRecord
             'meta_keywords'    => 'Ключевые слова (meta-keywords)',
             'meta_description' => 'Описание страницы (meta-description)',
             'slug'             => 'Постоянная ссылка',
+            'form_tags'        => 'Тэги',
         ];
+
     }
 
     /**
@@ -236,6 +247,71 @@ class Post extends ActiveRecord
     public static function find()
     {
         return new PostQuery(get_called_class());
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getTags()
+    {
+        return $this->hasMany(Tag::className(), ['id' => 'tag_id'])
+                    ->select(['id', 'name'])
+                    ->viaTable(PostTag::tableName(), ['post_id' => 'id']);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        // save tags
+        if (is_array($this->form_tags)) {
+
+            if (!$insert) {
+                // Remove current tags
+                PostTag::deleteAll(['post_id' => $this->id]);
+            }
+
+            if (count($this->form_tags)) {
+
+                // form tags array
+                $tag_ids = [];
+
+                foreach ($this->form_tags as $tagName) {
+                    $tag_ids[] = Tag::getIdByName($tagName);
+                }
+
+                $tag_ids = array_unique($tag_ids);
+
+                if (($i = array_search(null, $tag_ids)) !== false) {
+                    unset($tag_ids[$i]);
+                }
+
+                if (count($tag_ids)) {
+
+                    // Insert new relations data
+                    $data = [];
+
+                    foreach ($tag_ids as $tag_id) {
+                        $data[] = [$this->id, $tag_id];
+                    }
+
+                    Yii::$app->db->createCommand()->batchInsert(PostTag::tableName(),
+                        ['post_id', 'tag_id'], $data)->execute();
+                }
+            }
+        }
+
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+
+        return true;
     }
 
 }

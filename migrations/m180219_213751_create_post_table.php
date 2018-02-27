@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `post`.
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * @author Alexander Schilling
  */
 class m180219_213751_create_post_table extends Migration
 {
@@ -27,7 +27,6 @@ class m180219_213751_create_post_table extends Migration
             'datecreate'       => $this->integer()->unsigned()->notNull(),
             'dateupdate'       => $this->integer()->unsigned()->null(),
             'category_id'      => $this->integer()->unsigned()->notNull()->defaultValue(0),
-            'tags'             => $this->text()->null(),
             'user_id'          => $this->bigInteger()->unsigned()->notNull()->defaultValue(0),
             'hits'             => $this->bigInteger()->unsigned()->null()->defaultValue(0),
             'allow_comments'   => $this->tinyInteger(1)->unsigned()->notNull()->defaultValue(0),

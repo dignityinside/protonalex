@@ -2,10 +2,14 @@
 
 namespace app\helpers;
 
+use app\models\Post;
+use yii\helpers\Html;
+
 /**
  * Text helper
  *
  * @author Alexander Makarov
+ * @author Alexander Schilling
  */
 class Text
 {
@@ -36,4 +40,25 @@ class Text
     {
         return str_replace('[cut]', '', $text);
     }
+
+    /**
+     * Returns tags list
+     *
+     * @param Post $model
+     *
+     * @return string
+     */
+    public static function getTagsList(Post $model)
+    {
+
+        $buffer = [];
+
+        foreach ($model->tags as $tag) {
+            $buffer[] = Html::a($tag->fName, ['/post/tag', 'tagName' => $tag->name]);
+        }
+
+        return implode(', ', $buffer);
+
+    }
+
 }

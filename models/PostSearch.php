@@ -10,10 +10,12 @@ use app\models\Post;
 /**
  * PostSearch represents the model behind the search form about `app\models\Post`.
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * @author Alexander Schilling
  */
 class PostSearch extends Post
 {
+
+    public $tagId;
 
     /**
      * @inheritdoc
@@ -74,6 +76,15 @@ class PostSearch extends Post
         );
 
         $query->andFilterWhere(['like', 'title', $this->title]);
+
+        // Filter by tag id
+
+        if (!$this->tagId) {
+            $query->with(['tags']);
+        } else {
+            $query->joinWith(['tags']);
+            $query->andWhere(['post_tags.tag_id' => $this->tagId]);
+        }
 
         return $dataProvider;
     }

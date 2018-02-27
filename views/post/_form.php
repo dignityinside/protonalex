@@ -1,13 +1,24 @@
 <?php
 
+use app\components\UserPermissions;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use yii\web\JsExpression;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Post */
 /* @var $form yii\widgets\ActiveForm */
 
 \app\assets\MarkdownEditorAsset::register($this);
+
+if (!is_array($model->form_tags) && !$model->isNewRecord) {
+    $model->form_tags = ArrayHelper::map($model->tags, 'name', 'name');
+} else {
+    $model->form_tags = [];
+}
 
 ?>
 
@@ -21,17 +32,49 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field(
         $model, 'content', [
-        'template' => "{label}\n{error}\n{input}\n{hint}"
-    ]
+            'template' => "{label}\n{error}\n{input}\n{hint}"
+        ]
     )->textarea(['class' => 'markdown-editor']) ?>
 
     <?= $form->field($model, 'status_id')->dropDownList(['0' => 'Черновик', '1' => 'Опубликовать']) ?>
 
-    <?= $form->field($model, 'tags')->textInput() ?>
+    <?= $form->field($model, 'form_tags')->widget(
+        Select2::classname(), [
+        'options'       => [
+            'placeholder' => 'Найти тэг...',
+            'multiple'    => true,
+        ],
+        'data'          => $model->form_tags,
+        'pluginOptions' => [
+            'tags'               => true,
+            'tokenSeparators'    => [','],
+            'minimumInputLength' => 2,
+            'maximumInputLength' => 20,
+            'allowClear'         => true,
+            'initSelection'      => new JsExpression(
+                '
+            function (element, callback) {
+                var data = [];
+                $(element.val()).each(function () {
+                    data.push({id: this, text: this});
+                });
+                callback(data);
+            }
+        '
+            ),
+            'ajax'               => [
+                'url'      => Url::to(['tag/search']),
+                'dataType' => 'json',
+                'data'     => new JsExpression('function(params) { return {q:params.term}; }')
+            ],
+        ],
+    ]
+    );
+    ?>
 
     <?= $form->field($model, 'allow_comments')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
 
-    <?php if (\app\components\UserPermissions::canAdminPost()): ?>
+    <?php if (UserPermissions::canAdminPost()): ?>
         <?= $form->field($model, 'ontop')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
         <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
         <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>

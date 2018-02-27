@@ -55,6 +55,7 @@ $config = [
                 '<_c:[\w\-]+>/update/<id:\d+>'                                                        => '<_c>/update',
                 '<_c:[\w\-]+>/delete/<id:\d+>'                                                        => '<_c>/delete',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>'                                                  => '<_c>/<_a>',
+                'tag/search' => 'tag/search',
                 [
                     'class' => 'app\components\PostUrlRule',
                 ]

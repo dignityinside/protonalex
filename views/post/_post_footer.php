@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use app\helpers\Text;
 
 /* @var $model app\models\Post */
 
@@ -21,5 +22,9 @@ use yii\helpers\Html;
     <?php endif; ?>
 
     <i class="fa fa-comment"></i> <?= $model->commentsCount ?>
+
+    <?php if (!empty($model->tags)): ?>
+        <i class="fa fa-tags"></i> <?= Text::getTagsList($model); ?>
+    <?php endif; ?>
 
 </div>
