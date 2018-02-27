@@ -42,10 +42,10 @@ class m180222_190154_create_user_table extends Migration
     public function down()
     {
 
-        $this->dropTable('{{%user}}');
-
         $this->dropIndex('idx-user-username-unique', '{{%user}}');
         $this->dropIndex('idx-user-email-unique', '{{%user}}');
+
+        $this->dropTable('{{%user}}');
 
     }
 }

@@ -46,6 +46,11 @@ class m180219_202821_create_comments_table extends Migration
 
     public function down()
     {
+
+        $this->dropIndex('material', '{{%comments}}');
+        $this->dropIndex('sorting', '{{%comments}}');
+        $this->dropIndex('visible', '{{%comments}}');
+
         $this->dropTable('{{%comments}}');
     }
 }
