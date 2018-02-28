@@ -8,7 +8,8 @@
 
 use yii\helpers\Html;
 
-$this->title = $name;
+$this->title = Html::encode($name);
+
 ?>
 <div class="site-error">
 
@@ -18,8 +19,6 @@ $this->title = $name;
         <?= nl2br(Html::encode($message)) ?>
     </div>
 
-    <p>
-        Системе не удалось найти запрашиваемое действие.
-    </p>
+    <p>Системе не удалось найти запрашиваемое действие.</p>
 
 </div>

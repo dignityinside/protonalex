@@ -8,9 +8,9 @@ use yii\helpers\Html;
 
 <div class="content_header">
 
-    <i class="fa fa-clock-o"></i> <?= date('H:i → d.m.Y', $model->datecreate); ?>
+    <i class="fa fa-clock-o"></i> <?= date('H:i → d.m.Y', Html::encode($model->datecreate)); ?>
 
-    <i class="fa fa-eye"></i> <?= $model->hits; ?>
+    <i class="fa fa-eye"></i> <?= Html::encode($model->hits); ?>
 
     <i class="fa fa-user"></i>
 
@@ -20,6 +20,6 @@ use yii\helpers\Html;
         <?= 'Аноним'; ?>
     <?php endif; ?>
 
-    <i class="fa fa-comment"></i> <?= $model->commentsCount ?>
+    <i class="fa fa-comment"></i> <?= Html::encode($model->commentsCount); ?>
 
 </div>

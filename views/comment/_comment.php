@@ -1,6 +1,5 @@
 <?php
 
-use yii\helpers\Url;
 use yii\web\View;
 use yii\helpers\Html;
 use demi\comments\common\models\Comment;

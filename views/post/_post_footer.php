@@ -9,9 +9,9 @@ use app\helpers\Text;
 
 <div class="content_footer">
 
-    <i class="fa fa-clock-o"></i> <?= date('H:i → d.m.Y', $model->datecreate); ?>
+    <i class="fa fa-clock-o"></i> <?= date('H:i → d.m.Y', Html::encode($model->datecreate)); ?>
 
-    <i class="fa fa-eye"></i> <?= $model->hits; ?>
+    <i class="fa fa-eye"></i> <?= Html::encode($model->hits); ?>
 
     <i class="fa fa-user"></i>
 
@@ -21,7 +21,7 @@ use app\helpers\Text;
         <?= 'Аноним'; ?>
     <?php endif; ?>
 
-    <i class="fa fa-comment"></i> <?= $model->commentsCount ?>
+    <i class="fa fa-comment"></i> <?= Html::encode($model->commentsCount); ?>
 
     <?php if (!empty($model->tags)): ?>
         <i class="fa fa-tags"></i> <?= Text::getTagsList($model); ?>

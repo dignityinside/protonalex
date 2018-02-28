@@ -13,7 +13,8 @@ use yii\widgets\ActiveForm;
 
 <hr/>
 
-<h3 class="text-primary"><span class="restore-comment-form" style="border-bottom: 1px dashed #585a53; cursor: pointer;">Написать новый комментарий</span>
+<h3 class="text-primary">
+    <span class="restore-comment-form" style="border-bottom: 1px dashed #585a53; cursor: pointer;">Написать новый комментарий</span>
 </h3>
 
 <div class="primary-form-container">

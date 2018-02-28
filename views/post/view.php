@@ -9,7 +9,7 @@ use yii\helpers\Markdown;
 /* @var $this yii\web\View */
 /* @var $model app\models\Post */
 
-$this->title = $model->title;
+$this->title = Html::encode($model->title);
 
 $this->params['breadcrumbs'][] = $this->title;
 

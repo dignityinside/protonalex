@@ -7,12 +7,13 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use yii\web\JsExpression;
 use kartik\select2\Select2;
+use \app\assets\MarkdownEditorAsset;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Post */
 /* @var $form yii\widgets\ActiveForm */
 
-\app\assets\MarkdownEditorAsset::register($this);
+MarkdownEditorAsset::register($this);
 
 if (!is_array($model->form_tags) && !$model->isNewRecord) {
     $model->form_tags = ArrayHelper::map($model->tags, 'name', 'name');

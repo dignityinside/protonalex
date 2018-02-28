@@ -15,6 +15,7 @@ if (UserPermissions::canAdminPost()) {
 }
 
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="post-create">
 

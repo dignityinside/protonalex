@@ -9,10 +9,11 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\assets\HighlightAsset;
 use app\components\UserPermissions;
 
 AppAsset::register($this);
-\app\assets\HighlightAsset::register($this);
+HighlightAsset::register($this);
 
 ?>
 <?php $this->beginPage() ?>
@@ -41,7 +42,12 @@ AppAsset::register($this);
         ]
     );
 
+    $menuItems[] = ['label' => 'Главная', 'url' => ['/post/index']];
     $menuItems[] = ['label' => 'О проекте', 'url' => ['/site/about']];
+    $menuItems[] = ['label' => 'YouTube', 'url' => 'http://r.phpland.org/40/youtube', 'linkOptions' => ['target' => '_blank']];
+    $menuItems[] = ['label' => 'Telegram', 'url' => 'http://r.phpland.org/42/telegram', 'linkOptions' => ['target' => '_blank']];
+    $menuItems[] = ['label' => 'Форум', 'url' => 'https://forum.phpland.org/', 'linkOptions' => ['target' => '_blank']];
+    $menuItems[] = ['label' => 'Github', 'url' => 'https://github.com/dignityinside/community', 'linkOptions' => ['target' => '_blank']];
     $menuItems[] = ['label' => 'Обратная связь', 'url' => ['/site/contact']];
 
     if (Yii::$app->user->isGuest) {
@@ -51,8 +57,7 @@ AppAsset::register($this);
 
         $menuItems[] = [
             'label' => 'Панель пользователя', 'items' => [
-                ['label' => 'Добавить новую запись', 'url' => ['/post/create']],
-                ['label' => 'Записи', 'url' => ['/post/my']],
+                ['label' => 'Мои записи', 'url' => ['/post/my']],
                 ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
                 ['label'       => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'],
                  'linkOptions' => ['data-method' => 'post']

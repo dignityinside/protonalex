@@ -27,7 +27,7 @@ echo \demi\comments\frontend\widgets\Comments::widget(
         ],
         // jQuery-plugin options, see all options: vendor/demi/comments/frontend/widgets/assets/js/comments.js:55
         'clientOptions'   => [
-            'deleteComfirmText'      => 'Are you sure you want to delete this comment?',
+            'deleteComfirmText'      => 'Вы уверены что хотите удалить данный комментарий?',
             'updateButtonText'       => 'Обновить',
             'cancelUpdateButtonText' => 'Отменить',
         ],
@@ -41,4 +41,5 @@ echo \demi\comments\frontend\widgets\Comments::widget(
             'enableAjaxValidation'   => false,
         ],
     ]
-) ?>
+); ?>
+
