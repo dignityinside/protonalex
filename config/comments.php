@@ -34,6 +34,16 @@ return [
             return Yii::$app->request->baseUrl . '/img/no-avatar.jpg';
         }
 
+        if (!empty($comment->user->email)) {
+
+            $gravatar = new \cebe\gravatar\Gravatar();
+            $gravatar->email = $comment->user->email;
+            $gravatar->size = 80;
+
+            return $gravatar->getImageUrl();
+
+        }
+
         // $comment->user by default relation to your \common\models\User
         // return $comment->user->avatar_url;
         return Yii::$app->request->baseUrl . '/img/no-avatar.jpg';
@@ -43,7 +53,7 @@ return [
     // By default: nl2br(Html::encode($comment->text))
     'getCommentText'     => function (Comment $comment) {
         // @todo add markdown support
-        return nl2br($comment->text);
+        return nl2br(Html::encode($comment->text));
     },
     // Anonymous function to get comment create time
     // By default: Yii::$app->formatter->asDatetime($comment->created_at)

@@ -236,10 +236,25 @@ ul.comments li {
     padding: 10px 0 0 115px;
 }
 
+@media screen and (max-width: 768px) {
+
+    ul.comments li {
+        padding: 10px 0;
+    }
+
+    .comment-user-photo {
+        display: none;
+    }
+
+}
+
 .comment-user-photo {
     float: left;
-    padding: 10px;
+    padding: 5px;
     margin-left: -115px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 ul.comments .comment-arrow {
