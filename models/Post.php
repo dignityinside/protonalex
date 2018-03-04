@@ -87,7 +87,6 @@ class Post extends ActiveRecord
             'allow_comments',
             'status_id',
             'slug',
-            'form_tags',
         ];
 
         $scenarios[self::SCENARIO_UPDATE] = [
@@ -96,7 +95,6 @@ class Post extends ActiveRecord
             'allow_comments',
             'status_id',
             'slug',
-            'form_tags',
         ];
 
         $scenarios[self::SCENARIO_ADMIN] = [

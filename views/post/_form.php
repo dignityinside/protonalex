@@ -39,39 +39,41 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
     <?= $form->field($model, 'status_id')->dropDownList(['0' => 'Черновик', '1' => 'Опубликовать']) ?>
 
-    <?= $form->field($model, 'form_tags')->widget(
-        Select2::classname(), [
-        'options'       => [
-            'placeholder' => 'Найти тэг...',
-            'multiple'    => true,
-        ],
-        'data'          => $model->form_tags,
-        'pluginOptions' => [
-            'tags'               => true,
-            'tokenSeparators'    => [','],
-            'minimumInputLength' => 2,
-            'maximumInputLength' => 20,
-            'allowClear'         => true,
-            'initSelection'      => new JsExpression(
-                '
-            function (element, callback) {
-                var data = [];
-                $(element.val()).each(function () {
-                    data.push({id: this, text: this});
-                });
-                callback(data);
-            }
-        '
-            ),
-            'ajax'               => [
-                'url'      => Url::to(['tag/search']),
-                'dataType' => 'json',
-                'data'     => new JsExpression('function(params) { return {q:params.term}; }')
+    <?php if (UserPermissions::canAdminPost()): ?>
+        <?= $form->field($model, 'form_tags')->widget(
+            Select2::classname(), [
+            'options'       => [
+                'placeholder' => 'Найти тэг...',
+                'multiple'    => true,
             ],
-        ],
-    ]
-    );
-    ?>
+            'data'          => $model->form_tags,
+            'pluginOptions' => [
+                'tags'               => true,
+                'tokenSeparators'    => [','],
+                'minimumInputLength' => 2,
+                'maximumInputLength' => 20,
+                'allowClear'         => true,
+                'initSelection'      => new JsExpression(
+                    '
+                function (element, callback) {
+                    var data = [];
+                    $(element.val()).each(function () {
+                        data.push({id: this, text: this});
+                    });
+                    callback(data);
+                }
+            '
+                ),
+                'ajax'               => [
+                    'url'      => Url::to(['tag/search']),
+                    'dataType' => 'json',
+                    'data'     => new JsExpression('function(params) { return {q:params.term}; }')
+                ],
+            ],
+        ]
+        );
+        ?>
+    <?php endif ?>
 
     <?= $form->field($model, 'allow_comments')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
 
