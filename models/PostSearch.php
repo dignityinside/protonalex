@@ -53,6 +53,9 @@ class PostSearch extends Post
         $dataProvider = new ActiveDataProvider(
             [
                 'query' => $query,
+                'pagination' => [
+                    'pageSize' => 10,
+                ],
             ]
         );
 
@@ -69,7 +72,6 @@ class PostSearch extends Post
             [
                 'id'          => $this->id,
                 'status_id'   => $this->status_id,
-                'category_id' => $this->category_id,
                 'user_id'     => $this->user_id,
                 'ontop'       => $this->ontop,
             ]
