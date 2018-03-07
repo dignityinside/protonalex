@@ -51,7 +51,7 @@ $profileLink = $userProfileUrl ? Html::a($username, $userProfileUrl, ['class' =>
             <?= $profileLink ?> написал(а):
         </div>
         <div class="comment-text e-content">
-            <p><?= $comment->getPreparedText() ?></p>
+            <div><?= $comment->getPreparedText() ?></div>
         </div>
         <div class="comment-bottom">
             <div class="comment-actions">

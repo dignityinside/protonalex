@@ -30,6 +30,7 @@ echo \demi\comments\frontend\widgets\Comments::widget(
             'deleteComfirmText'      => 'Вы уверены что хотите удалить данный комментарий?',
             'updateButtonText'       => 'Обновить',
             'cancelUpdateButtonText' => 'Отменить',
+            'commentTextSelector' => '.comment-text > div',
         ],
         // Maximum nested level. If level reached - nested comments will be outputted without ul-tag.
         'maxNestedLevel'  => 5,

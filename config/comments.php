@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use demi\comments\common\models\Comment;
+use yii\helpers\HtmlPurifier;
+use yii\helpers\Markdown;
 
 return [
     "userModelClass"     => 'app\models\User',
@@ -52,8 +54,7 @@ return [
     // Anonymous function to get comment text
     // By default: nl2br(Html::encode($comment->text))
     'getCommentText'     => function (Comment $comment) {
-        // @todo add markdown support
-        return nl2br(Html::encode($comment->text));
+        return HtmlPurifier::process(Markdown::process($comment->text, 'gfm'));
     },
     // Anonymous function to get comment create time
     // By default: Yii::$app->formatter->asDatetime($comment->created_at)
