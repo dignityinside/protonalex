@@ -34,7 +34,7 @@ HighlightAsset::register($this);
 
     NavBar::begin(
         [
-            'brandLabel' => Yii::$app->name,
+            'brandLabel' => '<span>php</span>land',
             'brandUrl'   => Yii::$app->homeUrl,
             'options'    => [
                 'class' => 'navbar-inverse navbar-fixed-top',
@@ -43,12 +43,29 @@ HighlightAsset::register($this);
     );
 
     $menuItems[] = ['label' => 'Главная', 'url' => ['/post/index']];
+    $menuItems[] = ['label' => 'PHP', 'items' => [
+        ['label' => 'PHP', 'url' => ['/tag/php']],
+        ['label' => 'Composer', 'url' => ['/tag/composer']],
+        ['label' => 'Git', 'url' => ['/tag/git']],
+        ['label' => 'CMS', 'url' => ['/tag/cms']],
+        ['label' => 'Yii Framework', 'url' => ['/tag/yii']],
+        ['label' => 'Zend Framework', 'url' => ['/tag/zf']],
+        ['label' => 'IDE', 'url' => ['/tag/ide']],
+    ]];
+    $menuItems[] = ['label' => 'Linux', 'items' => [
+        ['label' => 'Linux', 'url' => ['/tag/linux']],
+        ['label' => 'Linux Mint', 'url' => ['/tag/linux-mint']],
+        ['label' => 'Manjaro Linux', 'url' => ['/tag/manjaro-linux']],
+        ['label' => 'Bash', 'url' => ['/tag/bash']],
+        ['label' => 'Сервер', 'url' => ['/tag/server']],
+        ['label' => 'Софт', 'url' => ['/tag/soft']],
+        ['label' => 'Игры', 'url' => ['/tag/games']],
+    ]];
+    $menuItems[] = ['label' => 'macOS', 'url' => ['/tag/macos']];
     $menuItems[] = ['label' => 'О проекте', 'url' => ['/site/about']];
     $menuItems[] = ['label' => 'YouTube', 'url' => 'http://r.phpland.org/40/youtube', 'linkOptions' => ['target' => '_blank']];
     $menuItems[] = ['label' => 'Telegram', 'url' => 'http://r.phpland.org/42/telegram', 'linkOptions' => ['target' => '_blank']];
-    $menuItems[] = ['label' => 'Форум', 'url' => 'https://forum.phpland.org/', 'linkOptions' => ['target' => '_blank']];
     $menuItems[] = ['label' => 'Github', 'url' => 'https://github.com/dignityinside/community', 'linkOptions' => ['target' => '_blank']];
-    $menuItems[] = ['label' => 'Обратная связь', 'url' => ['/site/contact']];
 
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
@@ -60,7 +77,7 @@ HighlightAsset::register($this);
                 ['label' => 'Мои записи', 'url' => ['/post/my']],
                 ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
                 ['label'       => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'],
-                 'linkOptions' => ['data-method' => 'post']
+                    'linkOptions' => ['data-method' => 'post']
                 ],
             ]
         ];
@@ -97,7 +114,7 @@ HighlightAsset::register($this);
 
 <footer>
     <div class="container footer">
-        <p>&copy; <?= date('Y') ?> Сообщество phpland</p>
+        <p>&copy; <?= date('Y') ?> Сообщество phpland | <a href="/site/contact">Обратная связь</a></p>
         <p>Копирование материалов разрешается только с указанием названия сайта (Сообщество phpland)<br> и индексируемой
             прямой ссылкой на сайт (https://phpland.org)</p>
     </div>

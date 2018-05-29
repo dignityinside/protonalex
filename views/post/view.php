@@ -30,7 +30,7 @@ $this->registerMetaTag(
 ?>
 <div class="post-view">
 
-    <h3><?= $this->title; ?></h3>
+    <h1><?= $this->title; ?></h1>
 
     <?php if (UserPermissions::canAdminPost()) : ?>
         <p><i class="fa fa-edit"></i>

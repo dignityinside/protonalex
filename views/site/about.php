@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Меня зовут Александр Шиллинг, я основатель проекта "phpland".</p>
     <p>Моё первое знакомство с PHP было в 2005 году, когда я купил свою первую книгу по этому замечательному языку программирования.</p>
     <p>Примерно с того времени я начал использовать PHP практически ежедневно и за это время собрал довольно большую информационную базу знаний про PHP.</p>
-    <p>На этом сайте я хотел бы делиться своим уникальным опытом и знанием с теме, кому нравится PHP, JavaScript и конечно же Ubuntu-Linux :)</p>
+    <p>На этом сайте я хотел бы делиться своим уникальным опытом и знанием с теме, кому нравится PHP, JavaScript и конечно же Linux :)</p>
     <p>Если вам нравится моя идея, подписывайтесь в социальных сетях и пишите комментарии к статьям чтобы вместе сделать сайт популярнее :)</p>
     <p>С уважением, Александр Шиллинг.</p>
     <h3>Поддержите проект:</h3>
@@ -32,6 +32,4 @@ $this->params['breadcrumbs'][] = $this->title;
     <p><i class="fa fa-telegram"></i> <a href="http://r.phpland.org/42/telegram" target="_blank" rel="nofollow noopener">https://t.me/phpland</a></p>
 
     <p><i class="fa fa-link"></i> <a href="http://r.phpland.org/49/golos" target="_blank" rel="nofollow noopener">https://golos.io/@phpland</a></p>
-
-    <p><i class="fa fa-comments"></i> <a href="https://forum.phpland.org">https://forum.phpland.org</a></p>
 </div>

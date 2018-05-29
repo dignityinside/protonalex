@@ -11,7 +11,9 @@ use yii\helpers\Markdown;
 ?>
 <div class="post-view">
 
-    <h3><?= Html::a($model->title, ['post/view', 'slug' => $model->slug]); ?></h3>
+    <div class="index_title">
+        <h3><?= Html::a($model->title, ['post/view', 'slug' => $model->slug]); ?></h3>
+    </div>
 
     <?= $this->render('_post_header', ['model' => $model]) ?>
 
