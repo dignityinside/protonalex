@@ -10,7 +10,9 @@ $config = [
     ],
     'defaultRoute' => 'post/index',
     'language'     => 'ru-RU',
-    'bootstrap'    => ['log'],
+    'bootstrap'    => [
+        'log'
+    ],
     'components'   => [
         'authManager'          => [
             'class' => 'yii\rbac\PhpManager',
@@ -34,15 +36,7 @@ $config = [
         ],
         'mailer'               => [
             'class'            => 'yii\swiftmailer\Mailer',
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => '', // smtp.yandex.com
-                'username' => '',
-                'password' => '',
-                'port' => '587', // 587 (tls) or 465 (ssl)
-                'encryption' => 'tls', // tls or ssl
-            ],
-            'useFileTransport' => false,
+            'useFileTransport' => true,
         ],
         'log'                  => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
