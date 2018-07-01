@@ -17,7 +17,7 @@
                         <i class="fa fa-telegram"></i> <a href="https://t.me/phpland" target="_blank" rel="nofollow noopener">Канал в Telegram</a> | <a href="https://t.me/phpland_chat" target="_blank" rel="nofollow noopener">Чат</a>
                     </div>
                     <div class="widget-content-social">
-                        <i class="fa fa-users"></i> <a href="https://gitter.im/phpland" target="_blank" rel="nofollow noopener">Чат в Gitter</a>
+                        <i class="fa fa-users"></i> <a href="https://discord.gg/hJ86d94" target="_blank" rel="nofollow noopener">Чат в Discord</a>
                     </div>
                     <div class="widget-content-social">
                         <i class="fa fa-twitter"></i> <a href="https://twitter.com/phplandorg" target="_blank" rel="nofollow noopener">Микроблог в Twitter</a>
