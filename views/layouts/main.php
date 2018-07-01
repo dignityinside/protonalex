@@ -15,6 +15,9 @@ use app\components\UserPermissions;
 AppAsset::register($this);
 HighlightAsset::register($this);
 
+$googleSiteVerification = \Yii::$app->params['googleSiteVerification'];
+$yandexVerification = \Yii::$app->params['yandexVerification'];
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -22,6 +25,12 @@ HighlightAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php if ($googleSiteVerification) : ?>
+        <meta name="google-site-verification" content="<?=\Yii::$app->params['googleSiteVerification'];?>">
+    <?php endif; ?>
+    <?php if ($yandexVerification) : ?>
+        <meta name="yandex-verification" content="<?=\Yii::$app->params['yandexVerification'];?>" />
+    <?php endif; ?>
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -65,7 +74,6 @@ HighlightAsset::register($this);
     $menuItems[] = ['label' => 'О проекте', 'url' => ['/site/about']];
     $menuItems[] = ['label' => 'YouTube', 'url' => 'http://r.phpland.org/40/youtube', 'linkOptions' => ['target' => '_blank']];
     $menuItems[] = ['label' => 'Telegram', 'url' => 'http://r.phpland.org/42/telegram', 'linkOptions' => ['target' => '_blank']];
-    $menuItems[] = ['label' => 'Github', 'url' => 'https://github.com/dignityinside/community', 'linkOptions' => ['target' => '_blank']];
 
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
@@ -77,7 +85,7 @@ HighlightAsset::register($this);
                 ['label' => 'Мои записи', 'url' => ['/post/my']],
                 ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
                 ['label'       => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
+                 'linkOptions' => ['data-method' => 'post']
                 ],
             ]
         ];
@@ -115,14 +123,15 @@ HighlightAsset::register($this);
 <footer>
     <div class="container footer">
         <p>&copy; <?= date('Y') ?> Сообщество phpland | <a href="/site/contact">Обратная связь</a></p>
-        <p>Копирование материалов разрешается только с указанием названия сайта (Сообщество phpland)<br> и индексируемой
-            прямой ссылкой на сайт (https://phpland.org)</p>
     </div>
 </footer>
 
 <?php $this->endBody() ?>
 
 <script>hljs.initHighlightingOnLoad();</script>
+
+<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter41388724 = new Ya.Metrika({ id:41388724, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/41388724" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
 </body>
 </html>
 <?php $this->endPage() ?>
