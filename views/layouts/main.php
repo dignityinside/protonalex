@@ -43,7 +43,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
     NavBar::begin(
         [
-            'brandLabel' => '<span>php</span>land',
+            'brandLabel' => '<span>roo</span>land',
             'brandUrl'   => Yii::$app->homeUrl,
             'options'    => [
                 'class' => 'navbar-inverse navbar-fixed-top',
@@ -52,28 +52,8 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
     );
 
     $menuItems[] = ['label' => 'Главная', 'url' => ['/post/index']];
-    $menuItems[] = ['label' => 'PHP', 'items' => [
-        ['label' => 'PHP', 'url' => ['/tag/php']],
-        ['label' => 'Composer', 'url' => ['/tag/composer']],
-        ['label' => 'Git', 'url' => ['/tag/git']],
-        ['label' => 'CMS', 'url' => ['/tag/cms']],
-        ['label' => 'Yii Framework', 'url' => ['/tag/yii']],
-        ['label' => 'Zend Framework', 'url' => ['/tag/zf']],
-        ['label' => 'IDE', 'url' => ['/tag/ide']],
-    ]];
-    $menuItems[] = ['label' => 'Linux', 'items' => [
-        ['label' => 'Linux', 'url' => ['/tag/linux']],
-        ['label' => 'Linux Mint', 'url' => ['/tag/linux-mint']],
-        ['label' => 'Manjaro Linux', 'url' => ['/tag/manjaro-linux']],
-        ['label' => 'Bash', 'url' => ['/tag/bash']],
-        ['label' => 'Сервер', 'url' => ['/tag/server']],
-        ['label' => 'Софт', 'url' => ['/tag/soft']],
-        ['label' => 'Игры', 'url' => ['/tag/games']],
-    ]];
-    $menuItems[] = ['label' => 'macOS', 'url' => ['/tag/macos']];
     $menuItems[] = ['label' => 'О проекте', 'url' => ['/site/about']];
-    $menuItems[] = ['label' => 'YouTube', 'url' => 'http://r.phpland.org/40/youtube', 'linkOptions' => ['target' => '_blank']];
-    $menuItems[] = ['label' => 'Telegram', 'url' => 'http://r.phpland.org/42/telegram', 'linkOptions' => ['target' => '_blank']];
+    $menuItems[] = ['label' => 'Telegram', 'url' => 'https://t.me/roolandorg', 'linkOptions' => ['target' => '_blank']];
 
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
@@ -122,15 +102,13 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
 <footer>
     <div class="container footer">
-        <p>&copy; <?= date('Y') ?> Сообщество phpland | <a href="/site/contact">Обратная связь</a></p>
+        <p>&copy; <?= date('Y') ?> Сообщество rooland | <a href="/site/contact">Обратная связь</a></p>
     </div>
 </footer>
 
 <?php $this->endBody() ?>
 
 <script>hljs.initHighlightingOnLoad();</script>
-
-<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter41388724 = new Ya.Metrika({ id:41388724, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/41388724" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
 </body>
 </html>

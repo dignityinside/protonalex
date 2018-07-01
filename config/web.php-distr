@@ -2,7 +2,7 @@
 
 $config = [
     'id'           => 'app',
-    'name'         => 'phpland',
+    'name'         => 'rooland',
     'basePath'     => dirname(__DIR__),
     'aliases'      => [
         '@bower' => '@vendor/bower-asset',
