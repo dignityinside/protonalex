@@ -1,6 +1,6 @@
-# phpland
+# rooland
 
-Source code of the phpland community.
+Source code of the rooland community.
 
 ## Technology
 
@@ -13,8 +13,8 @@ Source code of the phpland community.
 ## Clone project via GIT
 
 ```
-git clone https://github.com/dignityinside/phpland
-cd phpland
+git clone https://github.com/rooland/rooland
+cd rooland
 ```
 
 ## Install all dependencies via Composer
