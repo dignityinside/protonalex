@@ -63,6 +63,9 @@ class PostController extends Controller
     public function actionIndex()
     {
 
+
+        $this->layout = "/column2";
+
         $query = Post::find()->where(
             [
                 'status_id' => Post::STATUS_PUBLIC,
@@ -185,6 +188,8 @@ class PostController extends Controller
      */
     public function actionView($slug)
     {
+
+        $this->layout = "/column2";
 
         $model = Post::find()->where(['slug' => $slug])->withCommentsCount()->one();
 

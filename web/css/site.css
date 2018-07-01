@@ -343,3 +343,33 @@ ul.comments .comment-arrow {
 h3.comment-box__title {
     border-bottom: none;
 }
+
+.widget {
+    padding: 20px 20px 15px 20px;
+    border-radius: 7px;
+}
+
+.widget-title {
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.widget-content-social {
+    color: #2a6194;
+    border: solid 1px #bedaf4;
+    background-color: #eaf3fb;
+    padding: 15px 15px 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.widget-content-social .fa {
+    padding-right: 10px;
+}
+
+
+.widget-content .fa.green {
+    color: #58c649;
+    padding-right: 8px;
+}
