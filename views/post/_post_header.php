@@ -14,7 +14,7 @@ use yii\helpers\Html;
 
     <i class="fa fa-user"></i>
 
-    <?php if (!empty($model->user_id)) : ?>
+    <?php if (isset($model->author->username)) : ?>
         <?= Html::a($model->author->username, ['user/view', 'id' => $model->user_id]); ?>
     <?php else: ?>
         <?= 'Аноним'; ?>

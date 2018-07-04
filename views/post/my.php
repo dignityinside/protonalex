@@ -11,7 +11,7 @@ use yii\widgets\Pjax;
 $this->title = 'Записи';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="post-index">
+<div class="post-my">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
