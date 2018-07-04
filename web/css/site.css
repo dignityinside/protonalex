@@ -1,7 +1,7 @@
 html,
 body {
     height: 100%;
-    background: #EDEEF0;
+    background: #8fca58;
 }
 
 .wrap {
@@ -12,13 +12,17 @@ body {
 }
 
 .wrap > .container {
-    padding: 70px 15px 20px;
+    padding: 0 15px 20px;
 }
 
 .footer {
-    border-top: 1px solid #DDD;
-    padding-top: 20px;
     text-align: center;
+    color: #000;
+}
+
+.footer a,
+.footer a:hover {
+    color: #000;
 }
 
 .hljs {
@@ -67,28 +71,26 @@ pre {
     background: #FFF;
     padding: 0 20px 10px 20px;
     border-radius: 10px;
-    border: solid 1px #DCDCDC;
+    border: solid 1px #fff;
 }
 
 .post-view h1,
 .post-view h1 a {
-    color: #E13300;
-    border-bottom: 1px solid #E13300;
+    color: #3fa41a;
     text-decoration: none;
     padding-bottom: 3px;
 }
 
 .post-view h2,
 .post-view h2 a {
-    color: #4F5B93;
-    border-bottom: 1px solid #4F5B93;
+    color: #3fa41a;
     padding-bottom: 3px;
 }
 
 .post-view h3,
 .post-view h3 a {
     color: #333;
-    border-bottom: 1px solid #a2a9b1;
+    border: none;
     padding-bottom: 3px;
 }
 
@@ -101,9 +103,7 @@ pre {
 .post-view .index_title h3,
 .post-view .index_title h3 a{
     font-size: 24px;
-    color: #E13300;
-    border-bottom: 1px solid #E13300;
-    text-decoration: none;
+    color: #3fa41a;
     padding-bottom: 3px;
 }
 
@@ -177,7 +177,11 @@ a.desc:after {
 
 .navbar-inverse {
     background: #333333;
-    border-bottom: solid 4px #0088cc;
+    border-bottom: solid 4px #8fca58;
+}
+
+.navbar-brand {
+    text-decoration: none;
 }
 
 .navbar-inverse .navbar-brand {
@@ -185,29 +189,31 @@ a.desc:after {
 }
 
 .navbar-inverse .navbar-brand span {
-    color: #0088cc;
+    color: #8fca58;
 }
 
 .navbar-inverse .navbar-nav > li > a {
     color: #FFF;
+    text-decoration: none;
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    background-color: #0088cc;
+    background-color: #8fca58;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #0088cc;
+    background-color: #8fca58;
 }
 
 .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
-    background-color: #0088cc;
+    background-color: #8fca58;
 }
 
 /* Links */
 
 a {
     color: #4F5B93;
+    text-decoration: underline;
 }
 
 a:hover {
@@ -229,8 +235,8 @@ a:hover {
 /* Pagination */
 
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-    background: #4F5B93;
-    border-color: #8892BF;
+    background: #8fca58;
+    border-color: #ddd;
 }
 
 .pagination > li > a, .pagination > li > span {
@@ -345,20 +351,28 @@ h3.comment-box__title {
 }
 
 .widget {
-    padding: 20px 20px 15px 20px;
+    margin-top: 20px;
+    padding: 0 20px 15px 20px;
     border-radius: 7px;
+    background: #fff;
+    box-shadow: 1px 1px 2px #aaa;
 }
 
 .widget-title {
-    padding-bottom: 20px;
-    font-weight: bold;
+    margin-bottom: 20px;
     font-size: 16px;
+    color: #fff;
+    padding: 10px 0;
+    border-bottom: solid 2px #fff;
+    text-align: center;
+    background: #7bcc31;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
 }
 
 .widget-content-social {
     color: #2a6194;
-    border: solid 1px #bedaf4;
-    background-color: #eaf3fb;
+    background-color: #fff;
     padding: 15px 15px 10px 15px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -372,4 +386,38 @@ h3.comment-box__title {
 .widget-content .fa.green {
     color: #58c649;
     padding-right: 8px;
+}
+
+.site-about,
+.post-admin,
+.post-create,
+.post-update,
+.post-my,
+.user-index,
+.comment-index,
+.site-signup,
+.site-login,
+.site-request-password-reset,
+.site-contact {
+    background: #FFF;
+    padding: 0 20px 10px 20px;
+    border-radius: 10px;
+    border: solid 1px #fff;
+}
+
+.user-view {
+    background: #fff;
+    padding: 20px 20px 10px 20px;
+    border-radius: 10px;
+    border: solid 1px #fff;
+}
+
+.breadcrumb {
+    background: none;
+}
+
+.breadcrumb .active,
+.breadcrumb a,
+.breadcrumb a:hover {
+    color: #000;
 }

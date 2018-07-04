@@ -43,10 +43,10 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
     NavBar::begin(
         [
-            'brandLabel' => '<span>roo</span>land',
+            'brandLabel' => '<span>rooland</span>',
             'brandUrl'   => Yii::$app->homeUrl,
             'options'    => [
-                'class' => 'navbar-inverse navbar-fixed-top',
+                'class' => 'navbar-inverse',
             ],
         ]
     );
