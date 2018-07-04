@@ -1,0 +1,5 @@
+{
+    "require": {
+        "dignityinside/databasehelper": "^0.0.1"
+    }
+}
