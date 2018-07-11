@@ -24,6 +24,7 @@ use Dignity\TranslitHelper;
  * @property integer $ontop
  * @property string  $meta_keywords
  * @property string  $meta_description
+ * @property integer $category_id
  *
  * relations
  * @property Tag[] $tags
@@ -63,9 +64,9 @@ class Post extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop'], 'required'],
+            [['title', 'content', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop', 'category_id'], 'required'],
             [['content', 'allow_comments', 'slug'], 'string'],
-            [['status_id', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop'], 'integer'],
+            [['status_id', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop', 'category_id'], 'integer'],
             [['title'], 'string', 'max' => 69],
             [['meta_keywords'], 'string', 'max' => 256],
             [['meta_description'], 'string', 'max' => 156],
@@ -87,6 +88,7 @@ class Post extends ActiveRecord
             'allow_comments',
             'status_id',
             'slug',
+            'category_id'
         ];
 
         $scenarios[self::SCENARIO_UPDATE] = [
@@ -95,6 +97,7 @@ class Post extends ActiveRecord
             'allow_comments',
             'status_id',
             'slug',
+            'category_id'
         ];
 
         $scenarios[self::SCENARIO_ADMIN] = [
@@ -107,6 +110,7 @@ class Post extends ActiveRecord
             'meta_description',
             'slug',
             'form_tags',
+            'category_id'
         ];
 
         return $scenarios;
@@ -134,6 +138,7 @@ class Post extends ActiveRecord
             'meta_description' => 'Описание страницы (meta-description)',
             'slug'             => 'Постоянная ссылка',
             'form_tags'        => 'Тэги',
+            'category_id'      => 'Категория'
         ];
 
     }
@@ -178,6 +183,10 @@ class Post extends ActiveRecord
 
     }
 
+    /**
+     * @param bool $insert
+     * @return bool
+     */
     public function beforeSave($insert)
     {
 
@@ -210,6 +219,9 @@ class Post extends ActiveRecord
 
     }
 
+    /**
+     * @return mixed
+     */
     public function getStatusLabel()
     {
 
@@ -219,6 +231,9 @@ class Post extends ActiveRecord
 
     }
 
+    /**
+     * @return array
+     */
     public static function getStatuses()
     {
         return [
@@ -258,7 +273,17 @@ class Post extends ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    /**
+     * @param bool $insert
+     * @param array $changedAttributes
+     * @throws \yii\db\Exception
      */
     public function afterSave($insert, $changedAttributes)
     {
@@ -303,6 +328,9 @@ class Post extends ActiveRecord
         parent::afterSave($insert, $changedAttributes);
     }
 
+    /**
+     * @return bool
+     */
     public function beforeDelete()
     {
         if (!parent::beforeDelete()) {

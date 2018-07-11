@@ -73,6 +73,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         $menuItems[] = [
             'label'      => 'Админ-панель', 'items' => [
                 ['label' => 'Записи', 'url' => ['/post/admin'], 'visible' => \Yii::$app->user->can('adminPost')],
+                ['label' => 'Категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
                 ['label' => 'Пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
                 ['label' => 'Комментарии', 'url' => ['/comment-admin/manage/index']]
             ], 'visible' => Yii::$app->user->can('admin')
