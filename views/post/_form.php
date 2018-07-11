@@ -75,6 +75,8 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
         ?>
     <?php endif ?>
 
+    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(\app\models\Category::find()->all(), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
+
     <?= $form->field($model, 'allow_comments')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
 
     <?php if (UserPermissions::canAdminPost()): ?>

@@ -44,6 +44,14 @@ class PostUrlRule extends BaseObject implements UrlRuleInterface
 
             return "/tag/$tagName" . Url::getQueryString($params);
 
+        } elseif ($route === 'post/category') {
+
+            if (!($categoryName = ArrayHelper::remove($params, 'categoryName'))) {
+                return false;
+            }
+
+            return "/category/$categoryName" . Url::getQueryString($params);
+
         }
 
         return false; // this rule does not apply
@@ -71,7 +79,17 @@ class PostUrlRule extends BaseObject implements UrlRuleInterface
             }
 
         } elseif (isset($parts[0]) && $parts[0] === 'tag' && !empty($parts[1])) {
+
             return ['post/tag', ['tagName' => $parts[1]]];
+
+        } elseif (isset($parts[0]) && $parts[0] === 'category' && !empty($parts[1])) {
+
+            if (in_array($parts[1], ['admin', 'create', 'update', 'delete'])) {
+                return false;
+            }
+
+            return ['post/category', ['categoryName' => $parts[1]]];
+
         }
 
         return false; // this rule does not apply

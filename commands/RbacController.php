@@ -13,7 +13,7 @@ use yii\console\Controller;
  *
  * @package app\commands
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * @author Alexander Schilling
  */
 class RbacController extends Controller
 {
@@ -41,11 +41,16 @@ class RbacController extends Controller
         $adminUsers->description = 'Administrate users';
         $auth->add($adminUsers);
 
+        $adminCategory = $auth->createPermission(UserPermissions::ADMIN_CATEGORY);
+        $adminCategory->description = 'Administrate categories';
+        $auth->add($adminCategory);
+
         $admin = $auth->createRole('admin');
         $admin->description = 'Administrator';
         $auth->add($admin);
         $auth->addChild($admin, $adminUsers);
         $auth->addChild($admin, $adminPost);
+        $auth->addChild($admin, $adminCategory);
 
     }
 

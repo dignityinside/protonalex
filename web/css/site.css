@@ -398,7 +398,10 @@ h3.comment-box__title {
 .site-signup,
 .site-login,
 .site-request-password-reset,
-.site-contact {
+.site-contact,
+.category-create,
+.category-update,
+.category-admin {
     background: #FFF;
     padding: 0 20px 10px 20px;
     border-radius: 10px;

@@ -2,10 +2,8 @@
 
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Post;
 
 /**
  * PostSearch represents the model behind the search form about `app\models\Post`.
@@ -15,7 +13,11 @@ use app\models\Post;
 class PostSearch extends Post
 {
 
+    /** @var int */
     public $tagId;
+
+    /** @var int */
+    public $categoryId;
 
     /**
      * @inheritdoc
@@ -88,6 +90,14 @@ class PostSearch extends Post
             $query->andWhere(['post_tags.tag_id' => $this->tagId]);
         }
 
+        // Filter by category
+
+        if ($this->categoryId) {
+            $query->andWhere(['category_id' => $this->categoryId]);
+        }
+
         return $dataProvider;
+
     }
+
 }
