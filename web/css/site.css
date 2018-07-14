@@ -398,7 +398,9 @@ h3.comment-box__title {
 .site-signup,
 .site-login,
 .site-request-password-reset,
-.site-contact {
+.site-contact,
+.user-index,
+.user-update {
     background: #FFF;
     padding: 0 20px 10px 20px;
     border-radius: 10px;
@@ -420,4 +422,21 @@ h3.comment-box__title {
 .breadcrumb a,
 .breadcrumb a:hover {
     color: #000;
+}
+
+.author_support {
+    width:120px;
+    height:60px;
+    border:0;
+    padding:0;
+    overflow:hidden;
+    display: block;
+    margin: 0 auto;
+}
+
+.author_support_hint {
+    display: none;
+    color: #C55;
+    font-style: italic;
+    text-align: center;
 }

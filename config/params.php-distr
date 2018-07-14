@@ -19,5 +19,6 @@ return [
      */
     'sharpayAppId'                  => '',
     'googleSiteVerification'        => '',
-    'yandexVerification'            => ''
+    'yandexVerification'            => '',
+    'aads_com_id'                   => ''
 ];
