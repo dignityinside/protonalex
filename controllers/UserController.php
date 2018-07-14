@@ -8,6 +8,7 @@ use app\components\UserPermissions;
 use yii\authclient\Collection;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -31,15 +32,16 @@ class UserController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'only'  => ['update'],
                 'rules' => [
                     [
                         'allow'   => true,
-                        'actions' => ['view'],
+                        'actions' => ['view', 'update'],
                         'roles'   => ['@'],
                     ],
                     [
                         'allow'   => true,
-                        'actions' => ['admin', 'create', 'update', 'delete'],
+                        'actions' => ['admin', 'create', 'delete'],
                         'roles'   => [UserPermissions::ADMIN_USERS],
                     ],
                 ],
@@ -129,12 +131,25 @@ class UserController extends Controller
      *
      * @param integer $id
      *
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
+     *
      * @return mixed
      */
     public function actionUpdate($id)
     {
 
         $model = $this->findModel($id);
+
+        if (!UserPermissions::canEditUser($model)) {
+            throw new ForbiddenHttpException('Вы не можете редактировать этот профиль.');
+        }
+
+        if (UserPermissions::canAdminUsers()) {
+            $model->scenario = User::SCENARIO_ADMIN;
+        } else {
+            $model->scenario = User::SCENARIO_UPDATE;
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

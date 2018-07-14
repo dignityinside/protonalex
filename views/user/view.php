@@ -28,17 +28,21 @@ $this->title = $model->username;
                     <h3><?= Html::a(Html::encode($model->getGithubProfileUrl()), $model->getGithubProfileUrl()) ?></h3>
                 <?php endif ?>
 
+                <?php if (UserPermissions::canEditUser($model)): ?>
+                    <p>
+                        <?= Html::a('Изменить профиль', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    </p>
+                <?php endif ?>
                 <?php if (UserPermissions::canAdminUsers()): ?>
                     <p>
-                        <?= Html::a('Изменить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                         <?= Html::a(
                             'Удалить', ['delete', 'id' => $model->id], [
-                            'class' => 'btn btn-danger',
-                            'data'  => [
-                                'confirm' => 'Вы уверены что хотите удалить свой аккаунт?',
-                                'method'  => 'post',
-                            ],
-                        ]
+                                'class' => 'btn btn-danger',
+                                'data'  => [
+                                    'confirm' => 'Вы уверены что хотите удалить свой аккаунт?',
+                                    'method'  => 'post',
+                                ],
+                            ]
                         ) ?>
                     </p>
                 <?php endif ?>

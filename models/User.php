@@ -13,18 +13,20 @@ use yii\helpers\ArrayHelper;
  * User model
  *
  * @property integer $id
- * @property string  $username
- * @property string  $password_hash
- * @property string  $password_reset_token
- * @property string  $email
- * @property string  $auth_key
+ * @property string $username
+ * @property string $password_hash
+ * @property string $password_reset_token
+ * @property string $email
+ * @property string $auth_key
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
- * @property string  $password write-only password
- * @property string  $github
+ * @property string $password write-only password
+ * @property string $github
+ * @property string $aads_com_id
+ * @property integer $ads_visibility
  *
- * @property Auth[]  $auths
+ * @property Auth[] $auths
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -32,7 +34,21 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
+    const SCENARIO_UPDATE = 'update';
+    const SCENARIO_ADMIN = 'admin';
+
+    const VISIBILITY_HIDE = 0;
+    const VISIBILITY_REGISTER_USER_ONLY = 1;
+    const VISIBILITY_ALL_USERS = 2;
+
     public $avatar_url = '';
+
+    /** @var array */
+    public $visibilityMapping = [
+        self::VISIBILITY_HIDE => 'Никому',
+        self::VISIBILITY_REGISTER_USER_ONLY => 'Только не зарегистированным пользователям',
+        self::VISIBILITY_ALL_USERS => 'Всем пользователям'
+    ];
 
     /**
      * @inheritdoc
@@ -61,7 +77,31 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
             ['status', 'filter', 'filter' => 'intval'],
+            [['aads_com_id', 'ads_visibility'], 'integer'],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function scenarios()
+    {
+
+        $scenarios = parent::scenarios();
+
+        $scenarios[self::SCENARIO_UPDATE] = [
+            'aads_com_id',
+            'ads_visibility'
+        ];
+
+        $scenarios[self::SCENARIO_ADMIN] = [
+            'status',
+            'aads_com_id',
+            'ads_visibility'
+        ];
+
+        return $scenarios;
+
     }
 
     /**
@@ -215,11 +255,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'id'         => 'ID',
-            'username'   => 'Username',
-            'email'      => 'E-mail',
-            'status'     => 'Status',
-            'created_at' => 'Created At',
+            'id'             => 'ID',
+            'username'       => 'Имя пользователя',
+            'email'          => 'E-Mail',
+            'status'         => 'Статус',
+            'created_at'     => 'Создан в',
+            'aads_com_id'    => 'a-ads.com id',
+            'ads_visibility' => 'Кому можно показывать рекламу?'
         ];
     }
 
@@ -252,6 +294,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function getGithubProfileUrl()
     {
         return $this->github ? 'http://github.com/' . $this->github : null;
+    }
+
+    /**
+     * Returns ads visibility mapping
+     *
+     * @return array
+     */
+    public function getAdsVisibility() {
+        return $this->visibilityMapping;
     }
 
 }
