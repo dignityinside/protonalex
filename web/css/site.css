@@ -399,6 +399,10 @@ h3.comment-box__title {
 .site-login,
 .site-request-password-reset,
 .site-contact,
+.category-create,
+.category-update,
+.category-admin,
+.site-contact,
 .user-index,
 .user-update {
     background: #FFF;

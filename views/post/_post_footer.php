@@ -23,6 +23,10 @@ use app\helpers\Text;
 
     <i class="fa fa-comment"></i> <?= Html::encode($model->commentsCount); ?>
 
+    <?php if (isset($model->category->name)) : ?>
+        <i class="fa fa-folder"></i> <?= Html::a($model->category->name, '/category/' . $model->category->slug); ?>
+    <?php endif; ?>
+
     <?php if (!empty($model->tags)): ?>
         <i class="fa fa-tags"></i> <?= Text::getTagsList($model); ?>
     <?php endif; ?>

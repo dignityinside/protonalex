@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use app\models\Tag;
 use Yii;
 use app\models\Post;
@@ -36,7 +37,7 @@ class PostController extends Controller
                 'rules' => [
                     [
                         'allow'   => true,
-                        'actions' => ['create', 'update', 'my', 'tag'],
+                        'actions' => ['create', 'update', 'my', 'tag', 'category'],
                         'roles'   => ['@'],
                     ],
                     [
@@ -291,6 +292,15 @@ class PostController extends Controller
         return $this->redirect(['index']);
     }
 
+    /**
+     * Action tag
+     *
+     * @param $tagName
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return string
+     */
     public function actionTag($tagName) {
 
         $tag = Tag::findOne(['name' => $tagName]);
@@ -301,6 +311,36 @@ class PostController extends Controller
 
         $searchModel = new PostSearch([
             'tagId' => $tag->id,
+        ]);
+
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
+    }
+
+    /**
+     * Action category
+     *
+     * @param $categoryName
+     *
+     * @return string
+     *
+     * @throws NotFoundHttpException
+     */
+    public function actionCategory($categoryName) {
+
+        $category = Category::findOne(['slug' => $categoryName]);
+
+        if (!$category) {
+            throw new NotFoundHttpException("Категория не найдена.");
+        }
+
+        $searchModel = new PostSearch([
+            'categoryId' => $category->id,
         ]);
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
