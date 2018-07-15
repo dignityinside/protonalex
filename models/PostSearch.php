@@ -13,11 +13,17 @@ use yii\data\ActiveDataProvider;
 class PostSearch extends Post
 {
 
+    const FILTER_BY_HITS = 1;
+    const FILTER_BY_COMMENTS = 2;
+
     /** @var int */
     public $tagId;
 
     /** @var int */
     public $categoryId;
+
+    /** @var int */
+    public $sortBy;
 
     /**
      * @inheritdoc
@@ -47,6 +53,74 @@ class PostSearch extends Post
      * @return ActiveDataProvider
      */
     public function search($params)
+    {
+        $query = Post::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider(
+            [
+                'query' => $query,
+                'pagination' => [
+                    'pageSize' => 10,
+                ],
+            ]
+        );
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere(
+            [
+                'status_id' => Post::STATUS_PUBLIC,
+                'ontop'     => Post::SHOW_ON_TOP
+            ]
+        );
+
+        $query->andFilterWhere(['like', 'title', $this->title]);
+
+        // Filter by tag id
+
+        if (!$this->tagId) {
+            $query->withCommentsCount()->all();
+            $query->with(['tags']);
+        } else {
+            $query->joinWith(['tags']);
+            $query->andWhere(['post_tags.tag_id' => $this->tagId]);
+        }
+
+        // Filter by category
+
+        if ($this->categoryId) {
+            $query->andWhere(['category_id' => $this->categoryId]);
+        }
+
+        if ($this->sortBy === self::FILTER_BY_HITS) {
+            $query->orderBy('hits DESC');
+        } elseif ($this->sortBy === self::FILTER_BY_COMMENTS) {
+            $query->orderBy('commentsCount DESC');
+        } else {
+            $query->orderBy('datecreate DESC');
+        }
+
+        return $dataProvider;
+
+    }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function adminSearch($params)
     {
         $query = Post::find()->orderBy('datecreate DESC');
 
@@ -80,21 +154,6 @@ class PostSearch extends Post
         );
 
         $query->andFilterWhere(['like', 'title', $this->title]);
-
-        // Filter by tag id
-
-        if (!$this->tagId) {
-            $query->with(['tags']);
-        } else {
-            $query->joinWith(['tags']);
-            $query->andWhere(['post_tags.tag_id' => $this->tagId]);
-        }
-
-        // Filter by category
-
-        if ($this->categoryId) {
-            $query->andWhere(['category_id' => $this->categoryId]);
-        }
 
         return $dataProvider;
 
