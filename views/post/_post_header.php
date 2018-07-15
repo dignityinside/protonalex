@@ -20,6 +20,8 @@ use yii\helpers\Html;
         <?= 'Аноним'; ?>
     <?php endif; ?>
 
-    <i class="fa fa-comment"></i> <?= Html::encode($model->commentsCount); ?>
+    <?php if ($model->commentsCount > 1): ?>
+        <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>
+    <?php endif; ?>
 
 </div>

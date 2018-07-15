@@ -59,37 +59,24 @@ class PostController extends Controller
     /**
      * Lists all posts
      *
+     * @param null $id
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id = null)
     {
-
 
         $this->layout = "/column2";
 
-        $query = Post::find()->where(
-            [
-                'status_id' => Post::STATUS_PUBLIC,
-                'ontop'     => Post::SHOW_ON_TOP
-            ]
-        )->orderBy('datecreate DESC');
+        $searchModel = new PostSearch([
+            'sortBy' => (int) $id,
+        ]);
 
-        $query->withCommentsCount()->all();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $dataProvider = new ActiveDataProvider(
-            [
-                'query'      => $query,
-                'pagination' => [
-                    'pageSize' => 10,
-                ],
-            ]
-        );
-
-        return $this->render(
-            'index', [
+        return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]
-        );
+        ]);
 
     }
 
@@ -138,7 +125,7 @@ class PostController extends Controller
 
         $searchModel = new PostSearch();
 
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->adminSearch(Yii::$app->request->queryParams);
 
         return $this->render(
             'admin', [
@@ -315,9 +302,10 @@ class PostController extends Controller
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('tag', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'tagName' => $tag->name
         ]);
 
     }
@@ -345,9 +333,10 @@ class PostController extends Controller
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('category', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'categoryName' => $category->name
         ]);
 
     }

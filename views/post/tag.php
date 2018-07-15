@@ -1,37 +1,33 @@
 <?php
 
-use yii\helpers\Html;
 use \yii\widgets\ListView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var string $tagName */
 
-$this->title = 'Список записей';
+$this->title = sprintf('Записи с меткой: %s', $tagName);
 
 $this->registerMetaTag(
     [
         'name'    => 'description',
-        'content' => 'Список записей',
+        'content' => $this->title,
     ]
 );
 
 $this->registerMetaTag(
     [
         'name'    => 'keywords',
-        'content' => 'Список записей',
+        'content' => strtolower($tagName),
     ]
 );
 
 ?>
 <div class="post-index">
 
-    <ul class="post-filter">
-        <?= Html::a('<li><i class="fa fa-columns"></i>Все</li>', '/post/index') ?>
-        <?= Html::a('<li><i class="fa fa-eye"></i>Популярные</li>', '/post/index/1') ?>
-        <?= Html::a('<li><i class="fa fa-comments"></i>Обсуждаемые</li>', '/post/index/2') ?>
-    </ul>
+    <h1><i class="fa fa-tags"></i> <?= $tagName; ?></h1>
 
     <?php Pjax::begin(); ?>
     <?= ListView::widget(
@@ -43,4 +39,5 @@ $this->registerMetaTag(
         ]
     ); ?>
     <?php Pjax::end(); ?>
+
 </div>
