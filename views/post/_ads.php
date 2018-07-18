@@ -16,7 +16,7 @@
     <hr>
 
     <div class="author_support_hint">
-        У вас включён блокировщик релкамы (Adblocker, Adblocker Plus, uBlock).<br>
+        У вас включён блокировщик рекламы (Adblocker, Adblocker Plus, uBlock).<br>
         Если вы хотите поддержать автора данного поста, пожалуйста выключите его!
     </div>
 
