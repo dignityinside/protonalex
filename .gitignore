@@ -20,3 +20,6 @@ Thumbs.db
 # ignore uploads and legacy folders
 /web/uploads
 /web/wp-content
+
+# nginx production file
+server/nginx/conf.d/rooland.conf
