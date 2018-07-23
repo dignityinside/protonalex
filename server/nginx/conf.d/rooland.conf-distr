@@ -1,0 +1,66 @@
+server {
+
+    access_log off;
+
+    listen 443 ssl;
+
+    root /var/www/rooland/web;
+
+    index index.php;
+
+    server_name rooland.org;
+
+    charset utf-8;
+
+    index index.php;
+
+    location ~ /\.(ht|svn|git) { return 404; }
+
+    if ($request_uri ~* \..*\/.*php) { return 404; }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    location ~* \.(jp?g|js|css|png|jpg|jpeg|gif|ico)$ {
+        expires max;
+        log_not_found off;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+    	try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+	    fastcgi_index index.php;
+	    include fastcgi.conf;
+	    fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+    }
+
+}
+
+# redirect all requests to HTTPS
+
+server {
+
+    listen 80;
+
+    server_name rooland.org;
+
+    if ($host = rooland.org) {
+        return 301 https://$host$request_uri;
+    }
+
+}
+
+# redirect all requests to non www
+
+server {
+
+    server_name  www.rooland.org;
+
+    rewrite ^(.*) http://rooland.org$1 permanent;
+
+}
