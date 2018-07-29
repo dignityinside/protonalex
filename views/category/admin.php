@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -27,11 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'name',
             'slug',
-            'material_id',
-
+            [
+                'attribute'=>'material_id',
+                'filter' => \app\models\Category::MATERIAL_MAPPING,
+                'format' => 'text',
+                'content' => function($data){
+                    return ArrayHelper::getValue(\app\models\Category::MATERIAL_MAPPING, $data->material_id);
+                },
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',

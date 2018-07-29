@@ -16,6 +16,15 @@ use Dignity\TranslitHelper;
  */
 class Category extends \yii\db\ActiveRecord
 {
+
+    /** @var int */
+    const MATERIAL_POST = 1;
+
+    /** @var array */
+    const MATERIAL_MAPPING = [
+        self::MATERIAL_POST => 'Post',
+    ];
+
     /**
      * {@inheritdoc}
      */
@@ -45,7 +54,7 @@ class Category extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название',
             'slug' => 'Ярлык',
-            'material_id' => 'Material ID',
+            'material_id' => 'ID сущности',
         ];
     }
 
@@ -74,4 +83,13 @@ class Category extends \yii\db\ActiveRecord
 
     }
 
+    /**
+     * Returns all post categories
+     *
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getAllPostCategories(): array
+    {
+        return Category::find()->andWhere(['material_id'=>self::MATERIAL_POST])->all();
+    }
 }
