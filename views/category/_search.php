@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'material_id') ?>
+    <?= $form->field($model, 'material_id')->dropDownList(\app\models\Category::MATERIAL_MAPPING) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Найти', ['class' => 'btn btn-primary']) ?>

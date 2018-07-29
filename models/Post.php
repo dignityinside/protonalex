@@ -277,7 +277,8 @@ class Post extends ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+        return $this->hasOne(Category::className(), ['id' => 'category_id'])
+                    ->andOnCondition(['material_id' => \app\models\Category::MATERIAL_POST]);
     }
 
     /**
