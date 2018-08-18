@@ -415,7 +415,8 @@ h3.comment-box__title {
 .category-admin,
 .site-contact,
 .user-index,
-.user-update {
+.user-update,
+.site-search {
     background: #FFF;
     padding: 0 20px 10px 20px;
     border-radius: 10px;
