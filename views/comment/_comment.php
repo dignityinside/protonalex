@@ -29,10 +29,9 @@ if (empty($username)) {
 $profileLink = $userProfileUrl ? Html::a($username, $userProfileUrl, ['class' => 'p-author h-card']) : $username;
 
 ?>
-<article class="comment h-entry<?php if (empty($userPhoto)) {
+<div class="comment h-entry<?php if (empty($userPhoto)) {
     echo ' no-user-photo';
 } ?>">
-    <a name="<?= 'comment-' . $cid ?>"></a>
     <?php if (!empty($userPhoto)): ?>
         <div class="comment-user-photo">
             <?php
@@ -73,4 +72,4 @@ $profileLink = $userProfileUrl ? Html::a($username, $userProfileUrl, ['class' =>
             <time class="dt-published" datetime="<?= $comment->created_at ?>"><?= $comment->fDate ?></time>
         </div>
     </div>
-</article>
+</div>
