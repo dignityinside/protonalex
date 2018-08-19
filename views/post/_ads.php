@@ -20,8 +20,7 @@
         Если вы хотите поддержать автора данного поста, пожалуйста выключите его!
     </div>
 
-    <iframe data-aa='956289' src='//ad.a-ads.com/<?= $model->author->aads_com_id; ?>?size=120x60' scrolling='no'
-        class='author_support' allowtransparency='true'></iframe>
+    <iframe data-aa='956289' src='//ad.a-ads.com/<?= $model->author->aads_com_id; ?>?size=120x60' class='author_support'></iframe>
 
     <hr>
 

@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
                          ->textInput(['maxlength' => true])->label('Имя') ?>
 
                 <?= $form->field($model, 'user_email', ['options' => ['class' => 'col-md-6']])
-                         ->input('email', ['maxlength' => true])->label('E-Mail') ?>
+                         ->input('email')->label('E-Mail') ?>
             </div>
         <?php endif ?>
 

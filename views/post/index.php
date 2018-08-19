@@ -28,9 +28,9 @@ $this->registerMetaTag(
 <div class="post-index">
 
     <ul class="post-filter">
-        <?= Html::a('<li><i class="fa fa-columns"></i>Все</li>', '/post/index') ?>
-        <?= Html::a('<li><i class="fa fa-eye"></i>Популярные</li>', '/post/index/1') ?>
-        <?= Html::a('<li><i class="fa fa-comments"></i>Обсуждаемые</li>', '/post/index/2') ?>
+        <li><?= Html::a('<i class="fa fa-columns"></i>Все', '/post/index') ?></li>
+        <li><?= Html::a('<i class="fa fa-eye"></i>Популярные', '/post/index/1') ?></li>
+        <li><?= Html::a('<i class="fa fa-comments"></i>Обсуждаемые', '/post/index/2') ?></li>
     </ul>
 
     <?php Pjax::begin(); ?>
