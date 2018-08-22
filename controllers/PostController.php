@@ -179,7 +179,10 @@ class PostController extends Controller
 
         $this->layout = "/column2";
 
-        $model = Post::find()->where(['slug' => $slug])->withCommentsCount()->one();
+        $model = Post::find()->where([
+            'status_id' => Post::STATUS_PUBLIC,
+            'slug' => $slug,
+        ])->withCommentsCount()->one();
 
         if (!$model) {
             throw new NotFoundHttpException('Запись не найдена.');
