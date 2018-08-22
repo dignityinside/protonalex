@@ -10,9 +10,7 @@ $config = [
     ],
     'defaultRoute' => 'post/index',
     'language'     => 'ru-RU',
-    'bootstrap'    => [
-        'log'
-    ],
+    'bootstrap'    => ['log'],
     'components'   => [
         'authManager'          => [
             'class' => 'yii\rbac\PhpManager',
@@ -70,6 +68,7 @@ $config = [
                     'class' => 'app\components\PostUrlRule',
                 ]
             ],
+            'baseUrl' => 'https://rooland.org',
         ],
         'comment'              => require(__DIR__ . '/comments.php'),
     ],

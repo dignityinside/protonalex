@@ -20,7 +20,8 @@
         "bower-asset/codemirror": "~5.9.0",
         "bower-asset/codemirror-buttons": "~1.0.0",
         "dignityinside/translithelper": "^0.0.1",
-        "kartik-v/yii2-widget-select2": "^2.1"
+        "kartik-v/yii2-widget-select2": "^2.1",
+        "demi/sitemap-generator": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

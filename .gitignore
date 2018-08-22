@@ -17,6 +17,9 @@ Thumbs.db
 /rbac/items.php
 /rbac/rules.php
 
+# ignore generated sitemaps files
+/web/sitemap*.xml
+
 # ignore uploads and legacy folders
 /web/uploads
 /web/wp-content

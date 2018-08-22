@@ -52,6 +52,12 @@ php yii rbac/assign admin dignity
 php yii rbac/assign moderator dignity
 ```
 
+## Generate sitemap.xml
+
+```
+php yii sitemap
+```
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
