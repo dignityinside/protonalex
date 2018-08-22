@@ -1,7 +1,11 @@
 <?php
 
+$params = require(__DIR__ . '/params.php');
+$db = require(__DIR__ . '/db.php');
+$web = require(__DIR__ . '/web.php');
+
 $config = [
-    'id'                  => 'basic-console',
+    'id'                  => 'app-console',
     'basePath'            => dirname(__DIR__),
     'bootstrap'           => ['log'],
     'controllerNamespace' => 'app\commands',
@@ -17,12 +21,22 @@ $config = [
                 ],
             ],
         ],
-        'db'          => require(__DIR__ . '/db.php'),
+        'db'          => $db,
         'authManager' => [
             'class' => 'yii\rbac\PhpManager',
         ],
+        'urlManager' => $web['components']['urlManager'],
     ],
-    'params'              => require(__DIR__ . '/params.php'),
+    'params'              => $params,
+    'controllerMap' => [
+        'sitemap' => [
+            'class' => 'demi\sitemap\SitemapController',
+            'modelsPath' => '@app/models/sitemap',
+            'modelsNamespace' => 'app\models\sitemap',
+            'savePathAlias' => 'web',
+            'sitemapFileName' => 'sitemap.xml'
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
