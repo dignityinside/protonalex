@@ -6,27 +6,26 @@
     border: solid 1px #DCDCDC;
 }
 
-.planet-view h3,
-.planet-view h3 a {
+.planet-view h3 {
     font-size: 24px;
-    color: #E13300;
     border-bottom: 1px solid #E13300;
-    text-decoration: none;
     padding-bottom: 3px;
 }
 
-.planet-view h3 span {
-    float: right;
+.planet-view h3 a {
+    text-decoration: none;
+    color: #E13300;
 }
 
-.content_footer {
+.planet-view__footer {
     border-top: solid 1px #DDD;
     padding-top: 5px;
     font-size: 11px;
     color: #7B848D;
+    margin-top: 10px;
 }
 
-.content_footer .fa {
+.planet-view__footer .fa {
     margin: 0 5px 0 10px;
 }
 

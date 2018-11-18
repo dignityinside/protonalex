@@ -15,7 +15,7 @@ PlanetAsset::register($this);
 ?>
 
 <div class="planet-index">
-    <h2><i class="fa fa-globe"></i> Планета</h2>
+    <h1><i class="fa fa-globe"></i> Планета</h1>
     <p>Планета собирает интересные статьи из различных источников и объединяет их в одну ленту.</p>
     <?php Pjax::begin(); ?>
         <?= ListView::widget(
