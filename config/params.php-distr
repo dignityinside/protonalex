@@ -20,5 +20,9 @@ return [
     'sharpayAppId'                  => '',
     'googleSiteVerification'        => '',
     'yandexVerification'            => '',
-    'aads_com_id'                   => ''
+    'aads_com_id'                   => '',
+    /**
+     * RSS Planet feeds
+     */
+    'planetFeeds' => [],
 ];

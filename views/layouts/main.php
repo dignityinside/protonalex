@@ -57,6 +57,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
     );
 
     $menuItems[] = ['label' => 'Главная', 'url' => ['/post/index']];
+    $menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
     $menuItems[] = ['label' => 'О проекте', 'url' => ['/site/about']];
     $menuItems[] = ['label' => 'Telegram', 'url' => 'https://t.me/roolandorg', 'linkOptions' => ['target' => '_blank']];
 
@@ -66,23 +67,19 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
     } else {
 
         $menuItems[] = [
-            'label' => 'Панель пользователя', 'items' => [
+            'label' => 'Панель', 'items' => [
                 ['label' => 'Мои записи', 'url' => ['/post/my']],
                 ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
-                ['label'       => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'],
-                 'linkOptions' => ['data-method' => 'post']
-                ],
-            ]
+                Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
+                ['label' => 'Все записи', 'url' => ['/post/admin'], 'visible' => UserPermissions::canAdminPost()],
+                ['label' => 'Все категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
+                ['label' => 'Все пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
+                ['label' => 'Все комментарии', 'url' => ['/comment-admin/manage/index'], 'visible' => UserPermissions::canAdminPost()],
+                ['label' => 'Планета', 'url' => ['/planet/admin'], 'visible' => UserPermissions::canAdminPlanet()],
+            ],
         ];
 
-        $menuItems[] = [
-            'label'      => 'Админ-панель', 'items' => [
-                ['label' => 'Записи', 'url' => ['/post/admin'], 'visible' => \Yii::$app->user->can('adminPost')],
-                ['label' => 'Категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
-                ['label' => 'Пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
-                ['label' => 'Комментарии', 'url' => ['/comment-admin/manage/index']]
-            ], 'visible' => Yii::$app->user->can('admin')
-        ];
+        $menuItems[] = ['label' => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']];
 
     }
 

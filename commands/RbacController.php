@@ -7,6 +7,7 @@ use app\models\User;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\console\Controller;
+use yii\console\ExitCode;
 
 /**
  * Class RbacController
@@ -27,7 +28,7 @@ class RbacController extends Controller
     {
 
         if (!$this->confirm('Are you sure? It will re-create permissions tree.')) {
-            return self::EXIT_CODE_NORMAL;
+            return ExitCode::OK;
         }
 
         $auth = Yii::$app->authManager;
@@ -45,12 +46,18 @@ class RbacController extends Controller
         $adminCategory->description = 'Administrate categories';
         $auth->add($adminCategory);
 
+        $adminPlanet = $auth->createPermission(UserPermissions::ADMIN_PLANET);
+        $adminPlanet->description = 'Administrate planet';
+        $auth->add($adminPlanet);
+
         $admin = $auth->createRole('admin');
         $admin->description = 'Administrator';
+
         $auth->add($admin);
         $auth->addChild($admin, $adminUsers);
         $auth->addChild($admin, $adminPost);
         $auth->addChild($admin, $adminCategory);
+        $auth->addChild($admin, $adminPlanet);
 
     }
 

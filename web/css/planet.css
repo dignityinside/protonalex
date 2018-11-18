@@ -1,0 +1,39 @@
+.planet-view {
+    margin-top: 20px;
+    background: #FFF;
+    padding: 0 20px 10px 20px;
+    border-radius: 10px;
+    border: solid 1px #DCDCDC;
+}
+
+.planet-view h3,
+.planet-view h3 a {
+    font-size: 24px;
+    color: #E13300;
+    border-bottom: 1px solid #E13300;
+    text-decoration: none;
+    padding-bottom: 3px;
+}
+
+.planet-view h3 span {
+    float: right;
+}
+
+.content_footer {
+    border-top: solid 1px #DDD;
+    padding-top: 5px;
+    font-size: 11px;
+    color: #7B848D;
+}
+
+.content_footer .fa {
+    margin: 0 5px 0 10px;
+}
+
+.planet-index,
+.planet-admin {
+    background: #FFF;
+    padding: 0 20px 10px 20px;
+    border-radius: 10px;
+    border: solid 1px #fff;
+}
