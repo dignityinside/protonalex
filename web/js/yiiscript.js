@@ -1,9 +1,30 @@
-$("document").ready(function() {
+/**
+ * @author Alexander Schilling
+ * @package phpland/yiiscript
+ */
 
-    var $markdownEditor = $('.markdown-editor');
+var phpland = phpland || {};
 
-    if ($markdownEditor.length) {
-        initEditor($markdownEditor);
-    }
+phpland.yiiscript = (function($) {
 
+    'use strict';
+
+    return {
+
+        init: function() {
+
+            var $markdownEditor = $('.markdown-editor');
+
+            if ($markdownEditor.length) {
+                initEditor($markdownEditor);
+            }
+
+        }
+
+    };
+
+})($);
+
+$(document).ready(function(){
+    phpland.yiiscript.init();
 });

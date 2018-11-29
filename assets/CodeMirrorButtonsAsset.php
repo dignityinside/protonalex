@@ -9,9 +9,8 @@ class CodeMirrorButtonsAsset extends AssetBundle
 
     public $sourcePath = '@bower/codemirror-buttons';
 
-    public $js
-        = [
-            'buttons.js',
-        ];
+    public $js = [
+        'buttons.js',
+    ];
 
 }

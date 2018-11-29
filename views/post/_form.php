@@ -7,13 +7,17 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use yii\web\JsExpression;
 use kartik\select2\Select2;
-use \app\assets\MarkdownEditorAsset;
+use app\assets\MarkdownEditorAsset;
+use app\assets\ClipboardAsset;
+use app\assets\ImgurUploaderAsset;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Post */
 /* @var $form yii\widgets\ActiveForm */
 
 MarkdownEditorAsset::register($this);
+ClipboardAsset::register($this);
+ImgurUploaderAsset::register($this);
 
 if (!is_array($model->form_tags) && !$model->isNewRecord) {
     $model->form_tags = ArrayHelper::map($model->tags, 'name', 'name');
@@ -36,6 +40,12 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
             'template' => "{label}\n{error}\n{input}\n{hint}"
         ]
     )->textarea(['class' => 'markdown-editor']) ?>
+
+    <div id="imgur_add_img">
+        Нажмите здесь или перетащите файл, что бы загрузить картинку.
+    </div>
+    <input id="imgur_img_upload_field" type="file">
+    <div id="imgur_img_list"></div>
 
     <?= $form->field($model, 'status_id')->dropDownList(['0' => 'Черновик', '1' => 'Опубликовать']) ?>
 

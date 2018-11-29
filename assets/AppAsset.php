@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
  *
  * @package app\assets
  *
- * @author  Alexander Schilling <dignityinside@gmail.com>
+ * @author  Alexander Schilling
  */
 class AppAsset extends AssetBundle
 {
@@ -21,27 +21,23 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
 
     /** @var array */
-    public $css
-        = [
-            'css/font-awesome.min.css',
-            'css/site.css',
-        ];
+    public $css = [
+        'css/font-awesome.min.css',
+        'css/site.css',
+    ];
 
     /** @var array */
-    public $js
-        = [
-            'js/yiiscript.js',
-            'js/jquery.sticky.js',
-            'js/ads.js',
-            'js/main.js',
-        ];
+    public $js = [
+        'js/yiiscript.js',
+        'js/ads.js',
+        'js/main.js',
+    ];
 
     /** @var array */
-    public $depends
-        = [
-            'yii\web\YiiAsset',
-            'yii\bootstrap\BootstrapAsset',
-            'yii\bootstrap\BootstrapPluginAsset',
-        ];
+    public $depends = [
+        'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapPluginAsset',
+    ];
 
 }

@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
  *
  * @package app\assets
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * @author Alexander Schilling
  */
 class HighlightAsset extends AssetBundle
 {
@@ -21,18 +21,13 @@ class HighlightAsset extends AssetBundle
     public $baseUrl = '@web';
 
     /** @var array */
-    public $css
-        = [
-            'css/highlight/github.css'
-        ];
+    public $css = [
+        'css/highlight/github.css'
+    ];
 
     /** @var array */
-    public $js
-        = [
-            'js/highlight.js'
-        ];
-
-    /** @var array */
-    public $depends = [];
+    public $js = [
+        'js/highlight.js'
+    ];
 
 }
