@@ -17,6 +17,10 @@
     color: #E13300;
 }
 
+.planet-view img {
+    max-width: 100%;
+}
+
 .planet-view__footer {
     border-top: solid 1px #DDD;
     padding-top: 5px;

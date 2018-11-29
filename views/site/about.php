@@ -17,6 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Приятного чтения, просмотра и прослушивания! 🙂</p>
     <p>С уважением, dignity.</p>
     <h3>Мы в социальных сетях:</h3>
-    <p><i class="fa fa-vk"></i> <a href="https://vk.com/roolandorg" target="_blank" rel="nofollow noopener">https://vk.com/roolandorg</a></p>
-    <p><i class="fa fa-telegram"></i> <a href="https://t.me/roolandorg" target="_blank" rel="nofollow noopener">https://t.me/roolandorg</a></p>
+    <p><i class="fa fa-vk"></i> <a href="https://vk.com/roolandorg" target="_blank" rel="nofollow">https://vk.com/roolandorg</a></p>
+    <p><i class="fa fa-telegram"></i> <a href="https://t.me/roolandorg" target="_blank" rel="nofollow">https://t.me/roolandorg</a></p>
 </div>
