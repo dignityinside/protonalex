@@ -10,18 +10,14 @@ use yii\web\AssetBundle;
 class MarkdownEditorAsset extends AssetBundle
 {
 
-    public $sourcePath = '@app/assets/markdown';
+    public $js = [
+        'js\editor.js',
+    ];
 
-    public $js
-        = [
-            'editor.js',
-        ];
-
-    public $depends
-        = [
-            'yii\web\JqueryAsset',
-            'app\assets\CodeMirrorAsset',
-            'app\assets\CodeMirrorButtonsAsset',
-        ];
+    public $depends = [
+        'yii\web\JqueryAsset',
+        'app\assets\CodeMirrorAsset',
+        'app\assets\CodeMirrorButtonsAsset',
+    ];
 
 }

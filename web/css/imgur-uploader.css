@@ -1,0 +1,22 @@
+#imgur_add_img {
+    padding: 20px 10px;
+    text-align: center;
+    background: whitesmoke;
+    font-size: 18px;
+    color: darkgray;
+    box-shadow: inset 0 0 30px -15px black;
+    cursor: pointer;
+    border: solid 1px;
+}
+
+#imgur_img_upload_field {
+    visibility: collapse;
+    width: 0;
+}
+
+#imgur_img_list img {
+    cursor: pointer;
+    padding: 0 20px 20px 20px;
+    max-width: 100px;
+    height: auto;
+}
