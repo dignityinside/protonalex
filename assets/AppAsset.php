@@ -22,7 +22,6 @@ class AppAsset extends AssetBundle
 
     /** @var array */
     public $css = [
-        'css/font-awesome.min.css',
         'css/site.css',
     ];
 
@@ -38,6 +37,7 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',
+        'app\assets\FontAwesomeAsset'
     ];
 
 }

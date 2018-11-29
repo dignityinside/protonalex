@@ -4,20 +4,15 @@
         <div class="col-md-3">
             <div class="widget">
                 <div class="widget-title">
-                    Наше сообщество
+                    Сообщество
                 </div>
                 <div class="widget-content">
-                    <div class="widget-content-social">
-                        <i class="fa fa-vk"></i> <a href="https://vk.com/roolandorg" target="_blank" rel="nofollow noopener">Группа ВК</a>
-                    </div>
-                    <div class="widget-content-social">
-                        <i class="fa fa-telegram"></i> <a href="https://t.me/roolandorg" target="_blank" rel="nofollow noopener">Канал в Telegram</a>
-                    </div>
-                    <div class="widget-content-social">
-                        <i class="fa fa-twitter"></i> <a href="https://twitter.com/roolandorg" target="_blank" rel="nofollow noopener">Микроблог в Twitter</a>
-                    </div>
-                    <div class="widget-content-social">
-                        <i class="fa fa-instagram"></i> <a href="https://instagram.com/roolandorg" target="_blank" rel="nofollow noopener">Истории в Instagram</a>
+                    <div class="widget-content__social-icons">
+                        <a href="https://t.me/roolandorg" target="_blank" rel="nofollow" title="Telegram канал"><i class="fa fa-telegram"></i></a>
+                        <a href="https://vk.com/roolandorg" target="_blank" rel="nofollow" title="Группа ВК"><i class="fa fa-vk"></i></a>
+                        <a href="https://mastodon.social/@roolandorg" rel="me nofollow" target="_blank"><i class="fab fa-mastodon"></i></a>
+                        <a href="https://instagram.com/roolandorg" target="_blank" rel="nofollow" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/rooland" target="_blank" rel="nofollow" title="Исходный код на Github"><i class="fa fa-github"></i></a>
                     </div>
                 </div>
             </div>

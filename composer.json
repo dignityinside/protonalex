@@ -20,6 +20,7 @@
         "demi/comments": "~1.0",
         "bower-asset/codemirror": "~5.9.0",
         "bower-asset/codemirror-buttons": "~1.0.0",
+        "bower-asset/font-awesome": "~5.5.0",
         "npm-asset/clipboard": "~2.0.1",
         "dignityinside/translithelper": "^0.0.1",
         "kartik-v/yii2-widget-select2": "^2.1",
