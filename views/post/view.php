@@ -41,7 +41,7 @@ $this->registerMetaTag(
 
     <?= $this->render('_ads', ['model' => $model]); ?>
 
-    <?= $this->render('_share'); ?>
+    <?= $this->render('/partials/share'); ?>
 
     <?= $this->render(
         '_post_footer', [

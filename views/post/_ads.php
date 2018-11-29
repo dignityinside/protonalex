@@ -1,17 +1,18 @@
 <?php
 
+    use app\models\User;
+
     $adsVisibility = $model->author->ads_visibility;
 
-    $show = false;
+    $show =  $adsVisibility === User::VISIBILITY_REGISTER_USER_ONLY
+        && Yii::$app->user->isGuest
+        || $adsVisibility === User::VISIBILITY_ALL_USERS ? true : false;
 
-    if ($adsVisibility === app\models\User::VISIBILITY_REGISTER_USER_ONLY
-        && Yii::$app->user->isGuest || $adsVisibility === app\models\User::VISIBILITY_ALL_USERS) {
-        $show = true;
-    }
+    $aadsComId = $model->author->aads_com_id ?? '';
 
 ?>
 
-<?php if (isset($model->author->aads_com_id) && $show) : ?>
+<?php if (!empty($aadsComId) && $show) : ?>
 
     <hr>
 
@@ -20,7 +21,7 @@
         Если вы хотите поддержать автора данного поста, пожалуйста выключите его!
     </div>
 
-    <iframe data-aa='956289' src='//ad.a-ads.com/<?= $model->author->aads_com_id; ?>?size=120x60' class='author_support'></iframe>
+    <iframe data-aa='<?= $aadsComId ?>' src='//ad.a-ads.com/<?= $aadsComId; ?>?size=120x60' class='author_support'></iframe>
 
     <hr>
 

@@ -8,13 +8,14 @@
 
 .planet-view h3 {
     font-size: 24px;
-    border-bottom: 1px solid #E13300;
+    border-bottom: 1px solid #3fa41a;
     padding-bottom: 3px;
+    color: #3fa41a;
 }
 
 .planet-view h3 a {
     text-decoration: none;
-    color: #E13300;
+    color: #3fa41a;
 }
 
 .planet-view img {
@@ -39,4 +40,12 @@
     padding: 0 20px 10px 20px;
     border-radius: 10px;
     border: solid 1px #fff;
+}
+
+.planet-view__permanent_link {
+    float: right;
+}
+
+.planet-view__source_link {
+    padding-top: 10px;
 }

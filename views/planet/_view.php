@@ -11,7 +11,10 @@ use yii\helpers\HtmlPurifier;
 <div class="planet-view">
 
     <h3>
-        <?= Html::a($model->title, $model->guid, ['target' => '_blank', 'rel' => 'nofollow']); ?>
+        <?= Html::a($model->title, 'post/' . $model->id); ?>
+        <span class="planet-view__permanent_link">
+            <?= Html::a('<i class="fa fa-link"></i>', $model->guid, ['target' => '_blank', 'rel' => 'nofollow']); ?>
+        </span>
     </h3>
 
     <?= HtmlPurifier::process($model->description); ?>

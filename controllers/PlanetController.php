@@ -97,6 +97,32 @@ class PlanetController extends Controller
     }
 
     /**
+     * Action post
+     *
+     * @param int $id Id
+     *
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionPost(int $id)
+    {
+
+        $model = Planet::findOne([
+            'id' => $id,
+            'status_id' => Planet::STATUS_PUBLIC
+        ]);
+
+        if (!$model) {
+            throw new NotFoundHttpException("Запись планеты не найдена.");
+        }
+
+        return $this->render('post', [
+            'model' => $model,
+        ]);
+
+    }
+
+    /**
      * Deletes an existing Planet model.
      *
      * If deletion is successful, the browser will be redirected to the 'admin' page.
