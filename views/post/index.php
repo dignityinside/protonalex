@@ -28,7 +28,7 @@ $this->registerMetaTag(
 <div class="post-index">
 
     <ul class="post-filter">
-        <li><?= Html::a('<i class="fa fa-columns"></i>Все', '/post/index') ?></li>
+        <li><?= Html::a('<i class="fa fa-clock"></i>Новые', '/post/index') ?></li>
         <li><?= Html::a('<i class="fa fa-eye"></i>Популярные', '/post/index/1') ?></li>
         <li><?= Html::a('<i class="fa fa-comments"></i>Обсуждаемые', '/post/index/2') ?></li>
     </ul>

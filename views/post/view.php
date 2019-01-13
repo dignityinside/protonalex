@@ -11,6 +11,7 @@ use yii\helpers\Markdown;
 
 $this->title = Html::encode($model->title);
 
+$this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['/post/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerMetaTag(

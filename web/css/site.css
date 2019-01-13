@@ -400,10 +400,12 @@ h3.comment-box__title {
     font-size: 30px;
 }
 
+.widget a,
 .widget-content__social-icons a {
     color: #8fca58;
 }
 
+.widget a:hover,
 .widget-content__social-icons a:hover {
     color: #3fa41a;
 }
@@ -430,6 +432,10 @@ h3.comment-box__title {
     padding: 0 20px 10px 20px;
     border-radius: 10px;
     border: solid 1px #fff;
+}
+
+.site-about a {
+    color: #8fca58;
 }
 
 .user-view {
@@ -488,4 +494,12 @@ h3.comment-box__title {
 
 .post-filter li .fa {
     margin-right: 10px;
+}
+
+.site-search {
+    margin-top: 20px;
+    background: #FFF;
+    padding: 0 20px 10px 20px;
+    border-radius: 10px;
+    border: solid 1px #DCDCDC;
 }

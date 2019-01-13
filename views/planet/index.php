@@ -17,6 +17,7 @@ PlanetAsset::register($this);
 <div class="planet-index">
     <h1><i class="fa fa-globe"></i> Планета</h1>
     <p>Планета собирает интересные статьи из различных источников и объединяет их в одну ленту.</p>
+    <!--noindex-->
     <?php Pjax::begin(); ?>
         <?= ListView::widget(
             [
@@ -27,4 +28,5 @@ PlanetAsset::register($this);
             ]
         ); ?>
     <?php Pjax::end(); ?>
+    <!--/noindex-->
 </div>

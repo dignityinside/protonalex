@@ -20,6 +20,8 @@
 
 .planet-view img {
     max-width: 100%;
+    padding-bottom: 10px;
+    display: flex;
 }
 
 .planet-view__footer {
@@ -34,7 +36,6 @@
     margin: 0 5px 0 10px;
 }
 
-.planet-index,
 .planet-admin {
     background: #FFF;
     padding: 0 20px 10px 20px;
