@@ -26,12 +26,28 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns'      => [
                 ['class' => 'yii\grid\SerialColumn'],
                 'title',
-                'status_id',
-                //'datecreate',
-                'user_id',
+                [
+                    'attribute' => 'status_id',
+                    'label'     => 'Статус',
+                    'value'     => function ($model) {
+                        return $model->getStatusLabel();
+                    }
+                ],
+                [
+                    'attribute' => 'user_id',
+                    'label'     => 'Автор',
+                    'value'     => function ($model) {
+                        return $model->author->username ?? 'Аноним';
+                    }
+                ],
                 'hits',
-                // 'allow_comments',
-                'ontop',
+                [
+                    'attribute' => 'ontop',
+                    'label'     => 'На главной',
+                    'value'     => function ($model) {
+                        return $model->ontop ? 'Да' : 'Нет';
+                    }
+                ],
 
                 [
                         'class' => 'yii\grid\ActionColumn',

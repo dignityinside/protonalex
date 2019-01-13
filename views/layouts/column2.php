@@ -16,6 +16,15 @@
                     </div>
                 </div>
             </div>
+            <div class="widget">
+                <div class="widget-title">
+                    Планета
+                </div>
+                <div class="widget-content">
+                    <p>Наша планета собирает интересные статьи из различных источников и объединяет их в одну ленту. Которую можно читать на нашем сайте.</p>
+                    <p><?= \yii\helpers\Html::a('Подробнее »', '/planet')?></p>
+                </div>
+            </div>
         </div>
         <div class="col-md-9">
             <?= $content; ?>

@@ -11,7 +11,7 @@ PlanetAsset::register($this);
 
 $this->title = Html::encode($model->title);
 
-$this->params['breadcrumbs'][] = ['label' => 'Планета', 'url' => ['planet/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Планета', 'url' => ['/planet/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerMetaTag(
@@ -33,15 +33,19 @@ $this->registerMetaTag(
 
 <div class="planet-view">
 
+    <!--noindex-->
+
     <h3>
-        <?= Html::a($this->title, $model->guid, ['target' => '_blank', 'rel' => 'nofollow']); ?>
+        <?= Html::a($this->title, $model->link, ['target' => '_blank', 'rel' => 'nofollow']); ?>
     </h3>
 
     <?= HtmlPurifier::process($model->description); ?>
 
     <div class="planet-view__source_link">
-        <?= Html::a('Открыть полную статью на сайте источника →', $model->guid, ['target' => '_blank', 'rel' => 'nofollow']) ?>
+        <?= Html::a('Открыть полную статью на сайте источника →', $model->link, ['target' => '_blank', 'rel' => 'nofollow']) ?>
     </div>
+
+    <!--/noindex-->
 
     <?= $this->render('/partials/ads'); ?>
 

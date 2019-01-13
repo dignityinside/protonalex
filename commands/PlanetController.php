@@ -17,7 +17,7 @@ class PlanetController extends Controller
 {
 
     /** @var int */
-    private const ITEMS = 10;
+    private const ITEMS = 5;
 
     /** @var string */
     private const NOT_OLDER_THAN = 'P30D';

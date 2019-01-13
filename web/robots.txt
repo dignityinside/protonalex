@@ -6,6 +6,6 @@ Disallow: /*sort=
 Disallow: /post/index
 Disallow: /contact
 Disallow: /signup
-Disallow: /about
+Disallow: /planet/index
 
 Host: rooland.org
