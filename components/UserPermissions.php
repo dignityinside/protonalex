@@ -4,11 +4,12 @@ namespace app\components;
 
 use app\models\Post;
 use app\models\User;
+use app\models\Video;
 
 /**
  * User permissions contains various methods to check what user can do
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * @author Alexander Schilling
  */
 class UserPermissions
 {
@@ -17,13 +18,14 @@ class UserPermissions
     const ADMIN_USERS = 'adminUsers';
     const ADMIN_CATEGORY = 'adminCategory';
     const ADMIN_PLANET = 'adminPlanet';
+    const ADMIN_VIDEO = 'adminVideo';
 
     /**
      * Checks if user can admin posts
      *
      * @return bool
      */
-    public static function canAdminPost()
+    public static function canAdminPost(): bool
     {
 
         if (\Yii::$app->user->isGuest) {
@@ -45,7 +47,7 @@ class UserPermissions
      *
      * @return bool
      */
-    public static function canEditPost(Post $post)
+    public static function canEditPost(Post $post): bool
     {
         if (\Yii::$app->user->isGuest) {
             return false;
@@ -69,7 +71,7 @@ class UserPermissions
      *
      * @return bool
      */
-    public static function canAdminUsers()
+    public static function canAdminUsers(): bool
     {
 
         if (\Yii::$app->user->isGuest) {
@@ -91,7 +93,7 @@ class UserPermissions
      *
      * @return bool
      */
-    public static function canEditUser(User $user)
+    public static function canEditUser(User $user): bool
     {
 
         if (\Yii::$app->user->isGuest) {
@@ -117,7 +119,7 @@ class UserPermissions
      *
      * @return bool
      */
-    public static function canAdminCategory()
+    public static function canAdminCategory(): bool
     {
 
         if (\Yii::$app->user->isGuest) {
@@ -137,7 +139,7 @@ class UserPermissions
      *
      * @return bool
      */
-    public static function canAdminPlanet()
+    public static function canAdminPlanet(): bool
     {
 
         if (\Yii::$app->user->isGuest) {
@@ -150,6 +152,52 @@ class UserPermissions
 
         return false;
 
+    }
+
+    /**
+     * Checks if user can admin video
+     *
+     * @return bool
+     */
+    public static function canAdminVideo(): bool
+    {
+
+        if (\Yii::$app->user->isGuest) {
+            return false;
+        }
+
+        if (\Yii::$app->user->can(self::ADMIN_VIDEO)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    /**
+     * Checks if user can edit particular video
+     *
+     * @param Video $video
+     *
+     * @return bool
+     */
+    public static function canEditVideo(Video $video): bool
+    {
+        if (\Yii::$app->user->isGuest) {
+            return false;
+        }
+
+        if (self::canAdminVideo()) {
+            return true;
+        }
+
+        $currentUserID = \Yii::$app->user->getId();
+
+        if ((int)$video->user_id === (int)$currentUserID) {
+            return true;
+        }
+
+        return false;
     }
 
 }

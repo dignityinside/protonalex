@@ -25,4 +25,12 @@ return [
      * RSS Planet feeds
      */
     'planetFeeds' => [],
+    'video' => [
+        'youtubeFeeds' => [
+            'https://www.youtube.com/feeds/videos.xml?user=dignityinside' => 'phpland',
+        ],
+        'userId' => 1,
+        'preModeration' => true,
+        'pageSize' => 6
+    ],
 ];

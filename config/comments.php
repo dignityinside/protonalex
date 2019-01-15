@@ -12,6 +12,7 @@ return [
     'types'              => [
         1 => 'Post',
         2 => 'Planet',
+        3 => 'Video',
     ],
     // Anonymous function to get user display name
     'getUsername'        => function (Comment $comment) {

@@ -7,5 +7,6 @@ Disallow: /post/index
 Disallow: /contact
 Disallow: /signup
 Disallow: /planet/index
+Disallow: /video/index
 
 Host: rooland.org

@@ -26,6 +26,10 @@ $config = [
             'class' => 'yii\rbac\PhpManager',
         ],
         'urlManager' => $web['components']['urlManager'],
+        'user' => [
+            'class' => 'yii\web\User',
+            'identityClass' => 'app\models\User',
+        ],
     ],
     'params'              => $params,
     'controllerMap' => [

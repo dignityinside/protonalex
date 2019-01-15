@@ -63,6 +63,12 @@ $config = [
                 '<_c:[\w\-]+>/update/<id:\d+>'                                                        => '<_c>/update',
                 '<_c:[\w\-]+>/delete/<id:\d+>'                                                        => '<_c>/delete',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>'                                                  => '<_c>/<_a>',
+                // video
+                'video/<_a:(watch|my|admin|create|update|delete)>' => 'video/<_a>',
+                'video/category/<categoryName:[\w\-]+>' => 'video/category',
+                'video/user/<userName:[\w\-]+>' => 'video/user',
+                'video/<sortBy:[\w\-]+>' => 'video/index',
+                // tags
                 'tag/search' => 'tag/search',
                 [
                     'class' => 'app\components\PostUrlRule',
