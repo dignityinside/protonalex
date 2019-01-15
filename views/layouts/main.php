@@ -58,6 +58,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
     $menuItems[] = ['label' => 'Главная', 'url' => ['/post/index']];
     $menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
+    $menuItems[] = ['label' => 'Видео', 'url' => ['/video/index']];
     $menuItems[] = ['label' => 'Сообщество', 'url' => ['/site/about']];
     $menuItems[] = ['label' => 'Telegram', 'url' => 'https://t.me/roolandorg', 'linkOptions' => ['target' => '_blank']];
 
@@ -69,12 +70,14 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         $menuItems[] = [
             'label' => 'Панель', 'items' => [
                 ['label' => 'Мои записи', 'url' => ['/post/my']],
+                ['label' => 'Мои видео', 'url' => ['/video/my']],
                 ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
                 Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
                 ['label' => 'Все записи', 'url' => ['/post/admin'], 'visible' => UserPermissions::canAdminPost()],
                 ['label' => 'Все категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
                 ['label' => 'Все пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
                 ['label' => 'Все комментарии', 'url' => ['/comment-admin/manage/index'], 'visible' => UserPermissions::canAdminPost()],
+                ['label' => 'Все видео', 'url' => ['/video/admin'], 'visible' => UserPermissions::canAdminVideo()],
                 ['label' => 'Планета', 'url' => ['/planet/admin'], 'visible' => UserPermissions::canAdminPlanet()],
                 '<li class="divider"></li>',
                 ['label' => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
@@ -108,7 +111,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
 <footer>
     <div class="container footer">
-        <p>&copy; <?= date('Y') ?> Сообщество rooland | <a href="/site/contact">Обратная связь</a></p>
+        <p>&copy; <?= date('Y') ?> Сообщество rooland | <a href="/contact">Обратная связь</a></p>
     </div>
 </footer>
 
