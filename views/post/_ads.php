@@ -12,6 +12,8 @@
 
 ?>
 
+<?= $this->render('/partials/banner'); ?>
+
 <?php if (!empty($aadsComId) && $show) : ?>
 
     <hr>

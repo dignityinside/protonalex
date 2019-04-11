@@ -10,7 +10,7 @@ use app\assets\VideoAsset;
 
 VideoAsset::register($this);
 
-$this->title = 'Видео';
+$this->title = 'Видео | ' . \Yii::$app->params['siteName'];;
 
 
 ?>

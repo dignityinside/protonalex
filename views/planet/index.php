@@ -8,7 +8,7 @@ use app\assets\PlanetAsset;
 /* @var $searchModel app\models\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Планета';
+$this->title = 'Планета | ' . \Yii::$app->params['siteName'];
 
 PlanetAsset::register($this);
 
