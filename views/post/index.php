@@ -8,19 +8,19 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Список записей';
+$this->title = 'Блог | ' . \Yii::$app->params['siteName'];
 
 $this->registerMetaTag(
     [
         'name'    => 'description',
-        'content' => 'Список записей',
+        'content' => '',
     ]
 );
 
 $this->registerMetaTag(
     [
         'name'    => 'keywords',
-        'content' => 'Список записей',
+        'content' => '',
     ]
 );
 

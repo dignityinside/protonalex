@@ -57,9 +57,8 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
     );
 
     $menuItems[] = ['label' => 'Главная', 'url' => ['/post/index']];
-    $menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
     $menuItems[] = ['label' => 'Видео', 'url' => ['/video/index']];
-    $menuItems[] = ['label' => 'Сообщество', 'url' => ['/site/about']];
+    $menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
     $menuItems[] = ['label' => 'Telegram', 'url' => 'https://t.me/roolandorg', 'linkOptions' => ['target' => '_blank']];
 
     if (Yii::$app->user->isGuest) {
