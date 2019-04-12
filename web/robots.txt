@@ -1,5 +1,4 @@
 User-agent: *
-
 Disallow: /login
 Disallow: /logout
 Disallow: /*sort=
@@ -8,5 +7,6 @@ Disallow: /contact
 Disallow: /signup
 Disallow: /planet/index
 Disallow: /video/index
-
+Disallow: /deals/index
 Host: rooland.org
+Sitemap: https://rooland.org/sitemap.xml

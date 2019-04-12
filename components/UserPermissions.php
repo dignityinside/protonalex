@@ -5,6 +5,7 @@ namespace app\components;
 use app\models\Post;
 use app\models\User;
 use app\models\Video;
+use app\models\Deals;
 
 /**
  * User permissions contains various methods to check what user can do
@@ -19,6 +20,7 @@ class UserPermissions
     const ADMIN_CATEGORY = 'adminCategory';
     const ADMIN_PLANET = 'adminPlanet';
     const ADMIN_VIDEO = 'adminVideo';
+    const ADMIN_DEALS = 'adminDeals';
 
     /**
      * Checks if user can admin posts
@@ -199,5 +201,52 @@ class UserPermissions
 
         return false;
     }
+
+    /**
+     * Checks if user can admin deals
+     *
+     * @return bool
+     */
+    public static function canAdminDeals(): bool
+    {
+
+        if (\Yii::$app->user->isGuest) {
+            return false;
+        }
+
+        if (\Yii::$app->user->can(self::ADMIN_DEALS)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    /**
+     * Checks if user can edit particular deal
+     *
+     * @param Deals $deals
+     *
+     * @return bool
+     */
+    public static function canEditDeals(Deals $deals): bool
+    {
+        if (\Yii::$app->user->isGuest) {
+            return false;
+        }
+
+        if (self::canAdminDeals()) {
+            return true;
+        }
+
+        $currentUserID = \Yii::$app->user->getId();
+
+        if ((int)$deals->user_id === (int)$currentUserID) {
+            return true;
+        }
+
+        return false;
+    }
+
 
 }

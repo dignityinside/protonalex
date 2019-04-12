@@ -427,7 +427,10 @@ h3.comment-box__title {
 .site-contact,
 .user-index,
 .user-update,
-.site-search {
+.site-search,
+.deals-admin,
+.deals-create,
+.deals-update {
     background: #FFF;
     padding: 0 20px 10px 20px;
     border-radius: 10px;

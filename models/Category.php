@@ -23,10 +23,14 @@ class Category extends \yii\db\ActiveRecord
     /** @var int */
     const MATERIAL_VIDEO = 3;
 
+    /** @var int */
+    const MATERIAL_DEALS = 4;
+
     /** @var array */
     const MATERIAL_MAPPING = [
         self::MATERIAL_POST => 'Post',
-        self::MATERIAL_VIDEO => 'Video'
+        self::MATERIAL_VIDEO => 'Video',
+        self::MATERIAL_DEALS => 'Deals',
     ];
 
     /**
@@ -105,5 +109,15 @@ class Category extends \yii\db\ActiveRecord
     public static function getAllVideoCategories(): array
     {
         return Category::find()->andWhere(['material_id'=>self::MATERIAL_VIDEO])->all();
+    }
+
+    /**
+     * Returns all deals categories
+     *
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getAllDealsCategories(): array
+    {
+        return Category::find()->andWhere(['material_id'=>self::MATERIAL_DEALS])->all();
     }
 }

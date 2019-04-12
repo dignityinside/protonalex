@@ -28,6 +28,15 @@
                     <p><?= \yii\helpers\Html::a('Подробнее »', '/planet')?></p>
                 </div>
             </div>
+            <div class="widget">
+                <div class="widget-title">
+                    Сделки
+                </div>
+                <div class="widget-content">
+                    <p>Самые горячие и выгодные сделки, акции и скидки на твои любимые игры, книги, видео курсы, программы и многое другое.</p>
+                    <p><?= \yii\helpers\Html::a('Подробнее »', '/deals')?></p>
+                </div>
+            </div>
         </div>
     </div>
 

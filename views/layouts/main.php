@@ -58,6 +58,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
     $menuItems[] = ['label' => 'Главная', 'url' => ['/post/index']];
     $menuItems[] = ['label' => 'Видео', 'url' => ['/video/index']];
+    $menuItems[] = ['label' => 'Сделки', 'url' => ['/deals/index']];
     $menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
     $menuItems[] = ['label' => 'Telegram', 'url' => 'https://t.me/roolandorg', 'linkOptions' => ['target' => '_blank']];
 
@@ -70,6 +71,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
             'label' => 'Панель', 'items' => [
                 ['label' => 'Мои записи', 'url' => ['/post/my']],
                 ['label' => 'Мои видео', 'url' => ['/video/my']],
+                ['label' => 'Мои сделки', 'url' => ['/deals/my']],
                 ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
                 Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
                 ['label' => 'Все записи', 'url' => ['/post/admin'], 'visible' => UserPermissions::canAdminPost()],
@@ -77,6 +79,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
                 ['label' => 'Все пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
                 ['label' => 'Все комментарии', 'url' => ['/comment-admin/manage/index'], 'visible' => UserPermissions::canAdminPost()],
                 ['label' => 'Все видео', 'url' => ['/video/admin'], 'visible' => UserPermissions::canAdminVideo()],
+                ['label' => 'Все сделки', 'url' => ['/deals/admin'], 'visible' => UserPermissions::canAdminDeals()],
                 ['label' => 'Планета', 'url' => ['/planet/admin'], 'visible' => UserPermissions::canAdminPlanet()],
                 '<li class="divider"></li>',
                 ['label' => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
@@ -118,7 +121,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
 <script>hljs.initHighlightingOnLoad();</script>
 
-<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(15912202, "init", { id:15912202, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/15912202" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+<?= $this->render('partials/counter.php'); ?>
 
 </body>
 </html>
