@@ -44,7 +44,8 @@
 }
 
 .deals-index-filter li .fa,
-.deals-index-filter li .far {
+.deals-index-filter li .far,
+.deals-index-filter li .fas {
     margin-right: 10px;
 }
 

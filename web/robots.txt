@@ -9,3 +9,4 @@ Disallow: /planet/index
 Disallow: /video/index
 Disallow: /deals/index
 Host: rooland.org
+Sitemap: https://rooland.org/sitemap.xml

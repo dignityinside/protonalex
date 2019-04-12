@@ -41,7 +41,7 @@ $this->registerMetaTag(
             <div class="deals-view-title">
                 <h1>
                     <?= $this->title; ?>
-                    <?= $this->render('partials/price', ['model' => $model]); ?>
+                    <?= Html::encode($model->getDiscount()); ?>
                 </h1>
             </div>
 
@@ -69,7 +69,7 @@ $this->registerMetaTag(
                         <p>Скидка действует ограниченное время!</p>
                         <p><?= \russ666\widgets\Countdown::widget([
                                 'datetime' => $model->valid_until,
-                                'format' => '<span>%-d</span> дней <span>%-H</span> часов <span>%M</span> минут <span>%S</span> секунд',
+                                'format' => '<span>%-D</span> дней <span>%-H</span> часов <span>%M</span> минут <span>%S</span> секунд',
                                 'events' => [
                                     'finish' => 'function(){location.reload()}',
                                 ],

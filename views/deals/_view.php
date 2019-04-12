@@ -18,7 +18,7 @@ use app\helpers\Text;
 
             <div class="deals-view-title">
                 <?= Html::a($model->title, ['deals/view', 'id'=>$model->id]); ?>
-                <?= $this->render('partials/price', ['model' => $model]); ?>
+                <?= Html::encode($model->getDiscount()); ?>
             </div>
 
             <div class="deals-view-footer">

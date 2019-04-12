@@ -22,11 +22,19 @@ class DealsSearch extends Deals
     /** @var string */
     const SORT_BY_PUBLISHED_ASC = 'old';
 
+    /** @var string */
+    const FILTER_BY_EXPIRED = 'expired';
+
+    /** @var string */
+    const FILTER_BY_EXPIRED_SOON = 'soon';
+
     /** @var array */
     const SORT_BY = [
         self::SORT_BY_HITS,
         self::SORT_BY_COMMENTS,
-        self::SORT_BY_PUBLISHED_ASC
+        self::SORT_BY_PUBLISHED_ASC,
+        self::FILTER_BY_EXPIRED_SOON,
+        self::FILTER_BY_EXPIRED
     ];
 
     /** @var string */
@@ -100,6 +108,17 @@ class DealsSearch extends Deals
             $query->andWhere(['user_id' => $this->userId]);
         }
 
+        if ($this->sortBy === self::FILTER_BY_EXPIRED) {
+            $query->andWhere(['<','valid_until', new \yii\db\Expression('now()')]);
+        } elseif ($this->sortBy === self::FILTER_BY_EXPIRED_SOON) {
+            $query->andWhere(['<>','valid_until', '']);
+            $query->andWhere(['>','valid_until', new \yii\db\Expression('now()')]);
+        } else {
+            // Filter expired deals
+            $query->andWhere(['is', 'valid_until', new \yii\db\Expression('null')]);
+            $query->orWhere(['>','valid_until', new \yii\db\Expression('now()')]);
+        }
+
         // Sort by
 
         if ($this->sortBy === self::SORT_BY_HITS) {
@@ -109,6 +128,10 @@ class DealsSearch extends Deals
             $query->orderBy('commentsCount DESC');
         } elseif ($this->sortBy === self::SORT_BY_PUBLISHED_ASC) {
             $query->orderBy('created ASC');
+        } elseif ($this->sortBy === self::FILTER_BY_EXPIRED_SOON) {
+            $query->orderBy('valid_until ASC');
+        } elseif ($this->sortBy === self::FILTER_BY_EXPIRED) {
+            $query->orderBy('valid_until DESC');
         } else {
             $query->orderBy('created DESC');
         }

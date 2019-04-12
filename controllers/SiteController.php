@@ -21,15 +21,17 @@ use yii\web\BadRequestHttpException;
  *
  * @package app\controllers
  *
- * @author Alexander Schilling <dignityinside@gmail.com>
+ * @author Alexander Schilling
  */
 class SiteController extends Controller
 {
 
     /**
-     * @inheritdoc
+     * Returns behaviors
+     *
+     * @return array
      */
-    public function behaviors()
+    public function behaviors(): array
     {
 
         return [
@@ -60,9 +62,11 @@ class SiteController extends Controller
     }
 
     /**
-     * @inheritdoc
+     * Returns actions
+     *
+     * @return array
      */
-    public function actions()
+    public function actions(): array
     {
 
         return [
@@ -81,13 +85,20 @@ class SiteController extends Controller
 
     }
 
+    /**
+     * On auth success
+     *
+     * @param $client
+     */
     public function onAuthSuccess($client)
     {
         (new AuthHandler($client))->handle();
     }
 
     /**
-     * @return string
+     * Display login page
+     *
+     * @return string|\yii\web\Response
      */
     public function actionLogin()
     {
@@ -111,6 +122,8 @@ class SiteController extends Controller
     }
 
     /**
+     * Log out user
+     *
      * @return \yii\web\Response
      */
     public function actionLogout()
@@ -123,6 +136,8 @@ class SiteController extends Controller
     }
 
     /**
+     * Display signup page
+     *
      * @return string|\yii\web\Response
      */
     public function actionSignup()
@@ -151,6 +166,8 @@ class SiteController extends Controller
     }
 
     /**
+     * Display request password reset page
+     *
      * @return string|\yii\web\Response
      */
     public function actionRequestPasswordReset()
@@ -183,12 +200,15 @@ class SiteController extends Controller
     }
 
     /**
+     * Display reset password page
+     *
      * @param string $token
      *
      * @return string|\yii\web\Response
+     *
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
+    public function actionResetPassword(string $token)
     {
 
         try {
@@ -212,9 +232,9 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
+     * Displays contact page
      *
-     * @return string
+     * @return string|\yii\web\Response
      */
     public function actionContact()
     {
@@ -238,23 +258,13 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
+     * Displays about page
      *
      * @return string
      */
-    public function actionAbout()
+    public function actionAbout(): string
     {
         return $this->render('about');
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionMiner()
-    {
-        return $this->render('miner');
     }
 
     /**
