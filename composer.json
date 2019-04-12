@@ -12,6 +12,7 @@
     "require": {
         "php": ">=7.2.0",
         "ext-simplexml": "*",
+        "ext-mbstring": "*",
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
@@ -24,7 +25,10 @@
         "npm-asset/clipboard": "~2.0.1",
         "dignityinside/translithelper": "^0.0.1",
         "kartik-v/yii2-widget-select2": "^2.1",
-        "demi/sitemap-generator": "~1.0"
+        "demi/sitemap-generator": "~1.0",
+        "chiliec/yii2-vote": "^4.2",
+        "yiisoft/yii2-jui": "^2.0",
+        "russ666/yii2-countdown": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

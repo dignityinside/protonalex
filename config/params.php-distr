@@ -33,4 +33,13 @@ return [
         'preModeration' => true,
         'pageSize' => 6
     ],
+    'deals' => [
+        'userId' => 1,
+        'preModeration' => true,
+        'pageSize' => 6,
+        'cbr' => [
+            'USD' => 66.44,
+            'EUR' => 75.63
+        ],
+    ],
 ];

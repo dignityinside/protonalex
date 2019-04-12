@@ -20,6 +20,10 @@ return [
         'type' => 2,
         'description' => 'Administrate video',
     ],
+    'adminDeals' => [
+        'type' => 2,
+        'description' => 'Administrate deals',
+    ],
     'admin' => [
         'type' => 1,
         'description' => 'Administrator',
@@ -29,6 +33,7 @@ return [
             'adminCategory',
             'adminPlanet',
             'adminVideo',
+            'adminDeals',
         ],
     ],
 ];

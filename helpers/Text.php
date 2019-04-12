@@ -42,6 +42,33 @@ class Text
     }
 
     /**
+     * Cut text on max length
+     *
+     * @param string $text
+     * @param int $maxLength
+     *
+     * @return string
+     */
+    public static function xCut(string $text, int $maxLength = 135) {
+
+        $text = strip_tags($text);
+
+        if(mb_strlen($text) > $maxLength) {
+
+            $text_cut = mb_substr($text, 0, $maxLength, "UTF-8");
+            $text_explode = explode(" ", $text_cut);
+
+            unset($text_explode[count($text_explode) - 1]);
+
+            return implode(" ", $text_explode) . " ...";
+
+        }
+
+        return $text;
+
+    }
+
+    /**
      * Returns tags list
      *
      * @param Post $model
