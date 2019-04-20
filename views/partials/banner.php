@@ -33,14 +33,6 @@ $ads = [
         'url' => 'https://w.cscore.ru/dignity/disc33',
         'cta' => 'Получить видео курс',
     ],
-    [
-        'img' => 'https://i.imgur.com/AYJo9H5.jpg',
-        'alt' => 'zdelki.ru',
-        'title' => 'Как экономить деньги при покупки всего?',
-        'text' => 'С помощью шоппинг-сообщества zdelki.ru! Cамые горячие и выгодные сделки, акции и скидки!',
-        'url' => 'https://zdelki.ru/chto-takoe-zdelki/',
-        'cta' => 'Перейти на сайт',
-    ],
 ];
 
 $id = array_rand($ads, 1);
