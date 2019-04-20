@@ -8,7 +8,7 @@ use app\assets\DealsAsset;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Сделки';
+$this->title = 'Сделки | ' . \Yii::$app->params['siteName'];
 
 DealsAsset::register($this);
 
