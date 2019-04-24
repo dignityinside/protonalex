@@ -6,6 +6,7 @@ use app\models\Post;
 use app\models\User;
 use app\models\Video;
 use app\models\Deals;
+use app\models\Forum;
 
 /**
  * User permissions contains various methods to check what user can do
@@ -21,6 +22,7 @@ class UserPermissions
     const ADMIN_PLANET = 'adminPlanet';
     const ADMIN_VIDEO = 'adminVideo';
     const ADMIN_DEALS = 'adminDeals';
+    const ADMIN_FORUM = 'adminForum';
 
     /**
      * Checks if user can admin posts
@@ -248,5 +250,50 @@ class UserPermissions
         return false;
     }
 
+    /**
+     * Checks if user can admin forum
+     *
+     * @return bool
+     */
+    public static function canAdminForum(): bool
+    {
+
+        if (\Yii::$app->user->isGuest) {
+            return false;
+        }
+
+        if (\Yii::$app->user->can(self::ADMIN_FORUM)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    /**
+     * Checks if user can edit particular forum
+     *
+     * @param Forum $forum
+     *
+     * @return bool
+     */
+    public static function canEditForum(Forum $forum): bool
+    {
+        if (\Yii::$app->user->isGuest) {
+            return false;
+        }
+
+        if (self::canAdminForum()) {
+            return true;
+        }
+
+        $currentUserID = \Yii::$app->user->getId();
+
+        if ((int)$forum->user_id === (int)$currentUserID) {
+            return true;
+        }
+
+        return false;
+    }
 
 }

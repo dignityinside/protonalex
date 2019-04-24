@@ -430,7 +430,10 @@ h3.comment-box__title {
 .site-search,
 .deals-admin,
 .deals-create,
-.deals-update {
+.deals-update,
+.forum-admin,
+.forum-create,
+.forum-update{
     background: #FFF;
     padding: 0 20px 10px 20px;
     border-radius: 10px;

@@ -18,6 +18,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'material_id')->dropDownList(\app\models\Category::MATERIAL_MAPPING) ?>
 
+    <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'order')->textInput(['maxlength' => true]) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>

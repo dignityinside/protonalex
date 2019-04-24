@@ -75,6 +75,16 @@ $config = [
                 'deals/category/<categoryName:[\w\-]+>' => 'deals/category',
                 'deals/user/<userName:[\w\-]+>' => 'deals/user',
                 'deals/<sortBy:[\w\-]+>' => 'deals/index',
+                // forum
+                'forum/<_a:(my|admin|update|delete|index)>' => 'forum/<_a>',
+                'forum/topic/<id:\d+>' => 'forum/topic',
+                'forum/user/<userName:[\w\-]+>' => 'forum/user',
+                'forum/<_a:(create|update|delete)>/<id:\d+>' => 'forum/<_a>',
+                [
+                    'pattern' => 'forum/topics/<categoryName:[\w\-]+>/<sortBy:[\w\-]+>',
+                    'route' => 'forum/topics',
+                    'defaults' => ['sortBy' => ''],
+                ],
                 // tags
                 'tag/search' => 'tag/search',
                 [

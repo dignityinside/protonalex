@@ -42,4 +42,8 @@ return [
             'EUR' => 75.63
         ],
     ],
+    'forum' => [
+        'preModeration' => false,
+        'pageSize' => 10,
+    ],
 ];

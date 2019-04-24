@@ -13,6 +13,8 @@ use Dignity\TranslitHelper;
  * @property string $name
  * @property string $slug
  * @property int $material_id
+ * @property string $description
+ * @property int $order
  */
 class Category extends \yii\db\ActiveRecord
 {
@@ -26,11 +28,15 @@ class Category extends \yii\db\ActiveRecord
     /** @var int */
     const MATERIAL_DEALS = 4;
 
+    /** @var int */
+    const MATERIAL_FORUM = 5;
+
     /** @var array */
     const MATERIAL_MAPPING = [
         self::MATERIAL_POST => 'Post',
         self::MATERIAL_VIDEO => 'Video',
         self::MATERIAL_DEALS => 'Deals',
+        self::MATERIAL_FORUM => 'Forum',
     ];
 
     /**
@@ -48,8 +54,8 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'material_id'], 'required'],
-            [['material_id'], 'integer'],
-            [['name', 'slug'], 'string', 'max' => 255],
+            [['material_id', 'order'], 'integer'],
+            [['name', 'slug', 'description'], 'string', 'max' => 255],
         ];
     }
 
@@ -63,6 +69,8 @@ class Category extends \yii\db\ActiveRecord
             'name' => 'Название',
             'slug' => 'Ярлык',
             'material_id' => 'ID сущности',
+            'description' => 'Описание',
+            'order' => 'Последовательность',
         ];
     }
 
@@ -92,32 +100,12 @@ class Category extends \yii\db\ActiveRecord
     }
 
     /**
-     * Returns all post categories
+     * Returns all categories for material id
      *
-     * @return array|\yii\db\ActiveRecord[]
+     * @return array
      */
-    public static function getAllPostCategories(): array
+    public static function getAllCategories(int $materialId): array
     {
-        return Category::find()->andWhere(['material_id'=>self::MATERIAL_POST])->all();
-    }
-
-    /**
-     * Returns all video categories
-     *
-     * @return array|\yii\db\ActiveRecord[]
-     */
-    public static function getAllVideoCategories(): array
-    {
-        return Category::find()->andWhere(['material_id'=>self::MATERIAL_VIDEO])->all();
-    }
-
-    /**
-     * Returns all deals categories
-     *
-     * @return array|\yii\db\ActiveRecord[]
-     */
-    public static function getAllDealsCategories(): array
-    {
-        return Category::find()->andWhere(['material_id'=>self::MATERIAL_DEALS])->all();
+        return Category::find()->andWhere(['material_id' => $materialId])->all();
     }
 }
