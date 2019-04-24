@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return ArrayHelper::getValue(\app\models\Category::MATERIAL_MAPPING, $data->material_id);
                 },
             ],
+            'order',
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',

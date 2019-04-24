@@ -44,6 +44,9 @@ class Post extends ActiveRecord
     const SCENARIO_UPDATE = 'update';
     const SCENARIO_ADMIN = 'admin';
 
+    /** @var int */
+    const MATERIAL_ID = 1;
+
     /** @var string Count of all comments */
     public $commentsCount;
 

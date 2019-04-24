@@ -24,7 +24,7 @@ MarkdownEditorAsset::register($this);
 
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::getAllDealsCategories(), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
+        <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::getAllCategories($model::MATERIAL_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
 
         <?= $form->field($model, 'title')->textInput(['maxlength' => true])->hint('Короткий и содержательный заголовок.') ?>
 

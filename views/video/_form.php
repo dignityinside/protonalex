@@ -26,7 +26,7 @@ use app\models\Category;
 
     <?= $form->field($model, 'author')->textInput(['maxlength' => true])->hint('Например: rooland') ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::getAllVideoCategories(), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
+    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::getAllCategories($model::MATERIAL_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
 
     <?= $form->field($model, 'language')->dropDownList($model::LANGUAGE) ?>
 
