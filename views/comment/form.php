@@ -49,10 +49,12 @@ use yii\widgets\ActiveForm;
             <?php if (Yii::$app->user->isGuest): ?>
                 <div class="col-md-6">
                     <div class="pull-right">
+                        <div class="captcha">
                         <?= $form->field($model, 'captcha', ['enableAjaxValidation' => false])->label(false)
                                  ->widget(
                                      'demi\recaptcha\ReCaptcha', ['siteKey' => $widget->component->reCaptchaSiteKey]
                                  ) ?>
+                        </div>
                     </div>
                 </div>
             <?php endif ?>

@@ -36,8 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
 
-                <?= $form->field($model, 'captcha', ['enableAjaxValidation' => false])->label(false)
+                <div class="captcha">
+                    <?= $form->field($model, 'captcha', ['enableAjaxValidation' => false])->label(false)
                          ->widget('demi\recaptcha\ReCaptcha', ['siteKey' => Yii::$app->params['reCAPTCHA.siteKey']]) ?>
+                </div>
 
                 <div class="form-group">
                     <?= Html::submitButton(

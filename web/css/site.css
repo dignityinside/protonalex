@@ -509,3 +509,12 @@ h3.comment-box__title {
     border-radius: 10px;
     border: solid 1px #DCDCDC;
 }
+
+.captcha .form-control {
+    height: auto;
+    padding: 0;
+    background-color: inherit;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
