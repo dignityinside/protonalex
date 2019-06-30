@@ -13,7 +13,7 @@ Source code of the rooland community.
 ## Clone project via GIT
 
 ```
-git clone https://github.com/rooland/rooland
+git clone https://github.com/dignityinside/rooland
 cd rooland
 ```
 

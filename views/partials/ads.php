@@ -13,7 +13,7 @@
 
     <div class="author_support_hint">
         У вас включён блокировщик рекламы (Adblocker, Adblocker Plus, uBlock).<br>
-        Если вы хотите поддержать наше сообщество, пожалуйста выключите его!
+        Если вы хотите поддержать меня, пожалуйста выключите его!
     </div>
 
     <iframe data-aa='<?= $aadsComId ?>' src='//ad.a-ads.com/<?= $aadsComId; ?>?size=120x60' class='author_support'></iframe>

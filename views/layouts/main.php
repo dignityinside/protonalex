@@ -60,7 +60,8 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
     $menuItems[] = ['label' => 'Видео', 'url' => ['/video/index']];
     $menuItems[] = ['label' => 'Форум', 'url' => ['/forum/index']];
     $menuItems[] = ['label' => 'Сделки', 'url' => ['/deals/index']];
-    $menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
+    //$menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
+    $menuItems[] = ['label' => 'Instagram', 'url' => 'https://instagram.com/roolandorg', 'linkOptions' => ['target' => '_blank']];
     $menuItems[] = ['label' => 'Telegram', 'url' => 'https://t.me/roolandorg', 'linkOptions' => ['target' => '_blank']];
 
     if (Yii::$app->user->isGuest) {
@@ -70,12 +71,13 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
         $menuItems[] = [
             'label' => 'Панель', 'items' => [
-                ['label' => 'Мои записи', 'url' => ['/post/my']],
-                ['label' => 'Мои видео', 'url' => ['/video/my']],
                 ['label' => 'Мои сделки', 'url' => ['/deals/my']],
                 ['label' => 'Мои темы форума', 'url' => ['/forum/my']],
                 ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
                 Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
+                ['label' => 'Мои записи', 'url' => ['/post/my'], 'visible' => UserPermissions::canAdminPost()],
+                ['label' => 'Мои видео', 'url' => ['/video/my'], 'visible' => UserPermissions::canAdminVideo()],
+                '<li class="divider"></li>',
                 ['label' => 'Все записи', 'url' => ['/post/admin'], 'visible' => UserPermissions::canAdminPost()],
                 ['label' => 'Все категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
                 ['label' => 'Все пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
@@ -116,7 +118,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
 <footer>
     <div class="container footer">
-        <p>&copy; <?= date('Y') ?> Сообщество rooland | <a href="/contact">Обратная связь</a></p>
+        <p>&copy; <?= date('Y') ?> Руланд - личный блог Александра Шиллинг | <a href="/about">Об авторе</a> | <a href="/contact">Обратная связь</a></p>
     </div>
 </footer>
 

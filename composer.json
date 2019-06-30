@@ -1,12 +1,12 @@
 {
-    "name": "rooland/rooland",
-    "description": "Source code of rooland community.",
+    "name": "dignityinside/rooland",
+    "description": "Source code of rooland.",
     "keywords": ["yii2"],
     "homepage": "https://rooland.org/",
     "type": "project",
     "license": "MIT",
     "support": {
-        "source": "https://github.com/rooland/rooland"
+        "source": "https://github.com/dignityinside/rooland"
     },
     "minimum-stability": "stable",
     "require": {

@@ -9,7 +9,7 @@ use app\helpers\Text;
 
 <div class="content_footer">
 
-    <i class="fa fa-clock-o"></i> <?= date('H:i → d.m.Y', Html::encode($model->datecreate)); ?>
+    <i class="fa fa-clock-o"></i> <?= date('d.m.Y', Html::encode($model->datecreate)); ?>
 
     <i class="fa fa-eye"></i> <?= Html::encode($model->hits); ?>
 

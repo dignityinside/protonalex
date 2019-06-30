@@ -19,9 +19,10 @@ Thumbs.db
 # ignore generated sitemaps files
 /web/sitemap*.xml
 
-# ignore uploads and legacy folders
+# ignore folders
 /web/uploads
 /web/wp-content
+/web/img/posts
 
 # nginx production file
 server/nginx/conf.d/rooland.conf

@@ -3,7 +3,7 @@ body {
     height: 100%;
     background: #8fca58;
     font-family: Ubuntu, Helvetica Neue, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+    line-height: 1.56;
 }
 
 .wrap {
@@ -75,6 +75,8 @@ pre {
     border-radius: 10px;
     border: solid 1px #fff;
     overflow-wrap: break-word;
+    font-size: 16px;
+    line-height: 1.56;
 }
 
 .post-view h1 a,
