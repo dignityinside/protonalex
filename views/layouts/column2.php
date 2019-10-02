@@ -14,7 +14,7 @@
                         <a href="https://instagram.com/roolandorg" target="_blank" rel="nofollow" title="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://t.me/roolandorg" target="_blank" rel="nofollow" title="Telegram канал"><i class="fa fa-telegram"></i></a>
                         <a href="https://vk.com/roolandorg" target="_blank" rel="nofollow" title="Группа ВК"><i class="fa fa-vk"></i></a>
-                        <a href="https://mastodonsocial.ru/@roolandorg" rel="me nofollow" target="_blank"><i class="fab fa-mastodon"></i></a>
+                        <a href="https://mastodon.social/@roolandorg" rel="me nofollow" target="_blank"><i class="fab fa-mastodon"></i></a>
                         <a href="https://twitter.com/roolandorg" rel="nofollow" target="_blank"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
