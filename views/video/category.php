@@ -22,13 +22,6 @@ $this->registerMetaTag(
     ]
 );
 
-$this->registerMetaTag(
-    [
-        'name'    => 'keywords',
-        'content' => strtolower($categoryName),
-    ]
-);
-
 $this->params['breadcrumbs'][] = ['label' => 'Видео', 'url' => ['index']];
 
 $this->params['breadcrumbs'][] = $categoryName;
@@ -36,7 +29,9 @@ $this->params['breadcrumbs'][] = $categoryName;
 ?>
 <div class="video-index">
 
-    <h1><i class="fa fa-folder"></i>  <?= $categoryName; ?></h1>
+    <div class="video-header text-center">
+        <h1><i class="fa fa-youtube"></i> <?= $categoryName; ?></h1>
+    </div>
 
     <div class="video-index-list">
         <?php Pjax::begin(); ?>

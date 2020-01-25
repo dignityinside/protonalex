@@ -170,7 +170,7 @@ class Deals extends ActiveRecord
             'thumbnail' => 'Картинка',
             'created' => 'Дата публикации',
             'updated' => 'Дата обновления',
-            'author' => 'Автор/Организатор сделки',
+            'author' => 'Автор/Организатор скидки',
             'user_id' => 'ID Автора',
             'status_id' => 'Статус',
             'category_id' => 'Категория',

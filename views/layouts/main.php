@@ -40,71 +40,64 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
 <div class="wrap">
 
-    <div class="header_container">
-        <div class="container header">
-            <?= Html::a('<img src="/img/rooland-logo.png" alt="rooland" class="header_logo">', Yii::$app->homeUrl); ?>
-        </div>
-    </div>
+        <?php
 
-    <?php
+        NavBar::begin(
+            [
+                'brandLabel' => Html::img('/img/rooland-logo.png'),
+                'options'    => [
+                    'class' => 'navbar-inverse',
+                ],
+            ]
+        );
 
-    NavBar::begin(
-        [
-            'options'    => [
-                'class' => 'navbar-inverse',
-            ],
-        ]
-    );
+        $menuItems[] = ['label' => 'Блог', 'url' => ['/post/index']];
+        $menuItems[] = ['label' => 'Видео', 'url' => ['/video/index']];
+        $menuItems[] = ['label' => 'Скидки', 'url' => ['/deals/index']];
+        //$menuItems[] = ['label' => 'Форум', 'url' => ['/forum/index']];
+        //$menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
 
-    $menuItems[] = ['label' => 'Главная', 'url' => ['/post/index']];
-    $menuItems[] = ['label' => 'Видео', 'url' => ['/video/index']];
-    $menuItems[] = ['label' => 'Форум', 'url' => ['/forum/index']];
-    $menuItems[] = ['label' => 'Сделки', 'url' => ['/deals/index']];
-    //$menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
-    $menuItems[] = ['label' => 'Instagram', 'url' => 'https://instagram.com/roolandorg', 'linkOptions' => ['target' => '_blank']];
-    $menuItems[] = ['label' => 'Telegram', 'url' => 'https://t.me/roolandorg', 'linkOptions' => ['target' => '_blank']];
+        if (Yii::$app->user->isGuest) {
+            $menuItems[] = ['label' => 'Регистрация', 'url' => ['/signup']];
+            $menuItems[] = ['label' => 'Войти', 'url' => ['/login']];
+        } else {
 
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Регистрация', 'url' => ['/signup']];
-        $menuItems[] = ['label' => 'Войти', 'url' => ['/login']];
-    } else {
+            $menuItems[] = [
+                'label' => 'Панель', 'items' => [
+                    ['label' => 'Мои скидки', 'url' => ['/deals/my'], 'visible' => UserPermissions::canAdminDeals()],
+                    ['label' => 'Мои темы форума', 'url' => ['/forum/my']],
+                    ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
+                    Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
+                    ['label' => 'Мои записи', 'url' => ['/post/my'], 'visible' => UserPermissions::canAdminPost()],
+                    ['label' => 'Мои видео', 'url' => ['/video/my'], 'visible' => UserPermissions::canAdminVideo()],
+                    '<li class="divider"></li>',
+                    ['label' => 'Все записи', 'url' => ['/post/admin'], 'visible' => UserPermissions::canAdminPost()],
+                    ['label' => 'Все категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
+                    ['label' => 'Все пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
+                    ['label' => 'Все комментарии', 'url' => ['/comment-admin/manage/index'], 'visible' => UserPermissions::canAdminPost()],
+                    ['label' => 'Все видео', 'url' => ['/video/admin'], 'visible' => UserPermissions::canAdminVideo()],
+                    ['label' => 'Все скидки', 'url' => ['/deals/admin'], 'visible' => UserPermissions::canAdminDeals()],
+                    ['label' => 'Все темы форума', 'url' => ['/forum/admin'], 'visible' => UserPermissions::canAdminForum()],
+                    ['label' => 'Планета', 'url' => ['/planet/admin'], 'visible' => UserPermissions::canAdminPlanet()],
+                    ['label' => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
+                ],
+            ];
 
-        $menuItems[] = [
-            'label' => 'Панель', 'items' => [
-                ['label' => 'Мои сделки', 'url' => ['/deals/my']],
-                ['label' => 'Мои темы форума', 'url' => ['/forum/my']],
-                ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
-                Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
-                ['label' => 'Мои записи', 'url' => ['/post/my'], 'visible' => UserPermissions::canAdminPost()],
-                ['label' => 'Мои видео', 'url' => ['/video/my'], 'visible' => UserPermissions::canAdminVideo()],
-                '<li class="divider"></li>',
-                ['label' => 'Все записи', 'url' => ['/post/admin'], 'visible' => UserPermissions::canAdminPost()],
-                ['label' => 'Все категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
-                ['label' => 'Все пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
-                ['label' => 'Все комментарии', 'url' => ['/comment-admin/manage/index'], 'visible' => UserPermissions::canAdminPost()],
-                ['label' => 'Все видео', 'url' => ['/video/admin'], 'visible' => UserPermissions::canAdminVideo()],
-                ['label' => 'Все сделки', 'url' => ['/deals/admin'], 'visible' => UserPermissions::canAdminDeals()],
-                ['label' => 'Все темы форума', 'url' => ['/forum/admin'], 'visible' => UserPermissions::canAdminForum()],
-                ['label' => 'Планета', 'url' => ['/planet/admin'], 'visible' => UserPermissions::canAdminPlanet()],
-                '<li class="divider"></li>',
-                ['label' => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
-            ],
-        ];
+        }
 
-    }
+        echo Nav::widget(
+            [
+                'options' => ['class' => 'navbar-nav navbar-left'],
+                'items'   => $menuItems,
+            ]
+        );
 
-    echo Nav::widget(
-        [
-            'options' => ['class' => 'navbar-nav navbar-right'],
-            'items'   => $menuItems,
-        ]
-    );
+        echo $this->render('partials/search.php');
 
-    echo $this->render('partials/search.php');
+        NavBar::end();
 
-    NavBar::end();
+        ?>
 
-    ?>
 
     <div class="container">
         <?= Breadcrumbs::widget(
@@ -114,13 +107,15 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         ) ?>
         <?= $content ?>
     </div>
-</div>
 
-<footer>
-    <div class="container footer">
-        <p>&copy; <?= date('Y') ?> Руланд - личный блог Александра Шиллинг | <a href="/about">Об авторе</a> | <a href="/contact">Обратная связь</a></p>
-    </div>
-</footer>
+    <footer>
+        <div class="container footer text-center">
+            <p>&copy; 2012-<?= date('Y') ?> <?= \Yii::$app->params['siteName'] ?> |
+                <?= Html::a('Об авторе', '/about'); ?></p>
+            <p>Копирование и распространение материалов с сайта разрешено только с указанием активной ссылки.</p>
+        </div>
+    </footer>
+</div>
 
 <?php $this->endBody() ?>
 

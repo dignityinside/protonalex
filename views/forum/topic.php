@@ -24,13 +24,6 @@ $this->registerMetaTag(
     ]
 );
 
-$this->registerMetaTag(
-    [
-        'name'    => 'keywords',
-        'content' => Html::encode($model->meta_keywords),
-    ]
-);
-
 ?>
 
 <div class="forum_topic">

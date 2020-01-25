@@ -13,7 +13,7 @@ DealsAsset::register($this);
 
 $this->title = Html::encode($model->title);
 
-$this->params['breadcrumbs'][] = ['label' => 'Сделки', 'url' => ['/deals/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Скидки', 'url' => ['/deals/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerMetaTag(
@@ -125,7 +125,7 @@ $this->registerMetaTag(
 
     <div class="deals-view-footer">
         <i class="fa fa-clock-o"></i> <?= date('d.m.Y', Html::encode($model->created)); ?>
-        <i class="fa fa-user-o"></i> Автор сделки: <?= Html::encode($model->author); ?>
+        <i class="fa fa-user-o"></i> Автор скидки: <?= Html::encode($model->author); ?>
         <i class="fa fa-user"></i> Добавил:
         <?php if (!empty($model->user_id)) : ?>
             <?= Html::a($model->user->username, ['/deals/user/' . $model->user->username]); ?>

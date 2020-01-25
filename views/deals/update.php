@@ -7,8 +7,8 @@ use yii\helpers\Html;
 
 $this->title = 'Обновить сделку';
 
-$this->params['breadcrumbs'][] = ['label' => 'Мои сделки', 'url' => ['my']];
-$this->params['breadcrumbs'][] = 'Обновить сделку';
+$this->params['breadcrumbs'][] = ['label' => 'Мои скидки', 'url' => ['my']];
+$this->params['breadcrumbs'][] = 'Обновить скидку';
 
 ?>
 

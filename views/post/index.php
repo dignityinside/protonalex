@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Блог | ' . \Yii::$app->params['siteName'];
+$this->title = \Yii::$app->params['siteName'];
 
 $this->registerMetaTag(
     [
@@ -17,15 +17,12 @@ $this->registerMetaTag(
     ]
 );
 
-$this->registerMetaTag(
-    [
-        'name'    => 'keywords',
-        'content' => '',
-    ]
-);
-
 ?>
 <div class="post-index">
+
+    <div class="post-header text-center">
+        <h1><i class="fas fa-feather"></i> Руланд блог</h1>
+    </div>
 
     <ul class="post-filter">
         <li><?= Html::a('<i class="fa fa-clock"></i>Новые', '/post/index') ?></li>

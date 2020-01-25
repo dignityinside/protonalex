@@ -177,7 +177,7 @@ class PostController extends Controller
     public function actionView($slug)
     {
 
-        $this->layout = "/column2";
+        $this->layout = "/blog";
 
         $model = Post::find()->where([
             'status_id' => Post::STATUS_PUBLIC,

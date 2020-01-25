@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /** @var $this yii\web\View */
 /** @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Сделки';
+$this->title = 'Скидки';
 
 $this->params['breadcrumbs'][] = $this->title;
 

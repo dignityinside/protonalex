@@ -13,7 +13,7 @@ DealsAsset::register($this);
 
 $categoryName = Html::encode($categoryName);
 
-$this->title = sprintf('Сделки из категории: %s', $categoryName);
+$this->title = sprintf('Скидки из категории: %s', $categoryName);
 
 $this->registerMetaTag(
     [
@@ -29,21 +29,23 @@ $this->registerMetaTag(
     ]
 );
 
-$this->params['breadcrumbs'][] = ['label' => 'Сделки', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Скидки', 'url' => ['index']];
 
 $this->params['breadcrumbs'][] = $categoryName;
 
 ?>
 <div class="deals-index">
 
-    <h1><i class="fa fa-folder"></i>  <?= $categoryName; ?></h1>
+    <div class="deals-header text-center">
+        <h1><i class="fa fa-folder"></i> Скидки - <?= $categoryName; ?></h1>
+    </div>
 
     <div class="deals-index-list">
         <?php Pjax::begin(); ?>
         <?= ListView::widget(
             [
                 'dataProvider' => $dataProvider,
-                'emptyText' => 'Сделки не найдены.',
+                'emptyText' => 'Скидки не найдены.',
                 'itemView' => '_view',
                 'layout' => "{items}{pager}",
             ]

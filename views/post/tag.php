@@ -17,17 +17,12 @@ $this->registerMetaTag(
     ]
 );
 
-$this->registerMetaTag(
-    [
-        'name'    => 'keywords',
-        'content' => strtolower($tagName),
-    ]
-);
-
 ?>
 <div class="post-index">
 
-    <h1><i class="fa fa-tags"></i> <?= $tagName; ?></h1>
+    <div class="post-header text-center">
+        <h1><i class="fa fa-tags"></i> <?= $tagName; ?></h1>
+    </div>
 
     <?php Pjax::begin(); ?>
     <?= ListView::widget(

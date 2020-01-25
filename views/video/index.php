@@ -10,13 +10,17 @@ use app\assets\VideoAsset;
 
 VideoAsset::register($this);
 
-$this->title = 'Видео | ' . \Yii::$app->params['siteName'];;
+$this->title = 'Руланд видео';;
 
 
 ?>
 
 <div class="video-index">
-    <h1><i class="fa fa-youtube"></i> Видео</h1>
+
+    <div class="post-header text-center">
+        <h1><i class="fa fa-youtube"></i> <?= $this->title ?></h1>
+    </div>
+
     <ul class="video-index-filter">
         <li><?= Html::a('<i class="fa fa-clock"></i>Новые', '/video') ?></li>
         <li><?= Html::a('<i class="fa fa-eye"></i>Популярные', '/video/hits') ?></li>

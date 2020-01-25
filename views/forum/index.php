@@ -8,17 +8,19 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Форум';
+$this->title = 'Руланд форум';
 
 ForumAsset::register($this);
-
-$this->params['breadcrumbs'][] = ['label' => 'Форум', 'url' => ['index']];
 
 ?>
 
 <div class="forum_index">
-    <h1><i class="fas fa-comments"></i> Форум</h1>
-    <p>
+
+    <div class="forum-index-header text-center">
+        <h1><i class="fas fa-comments"></i> <?= $this->title ?></h1>
+    </div>
+
+    <p class="text-center">
         <?= Html::a('<i class="fas fa-plus"></i> Новая тема', ['create'], ['class' => 'btn btn-success']); ?>
         <?= Html::a('<i class="fa fa-clock"></i> Новые темы', ['topics', 'categoryName' => 'new'], ['class' => 'btn btn-default']); ?>
         <?= Html::a('<i class="fas fa-comment-slash"></i> Без ответов', ['topics', 'categoryName' => 'new', 'sortBy' => 'unanswered'], ['class' => 'btn btn-default']); ?>

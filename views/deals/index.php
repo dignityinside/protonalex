@@ -8,14 +8,18 @@ use app\assets\DealsAsset;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Сделки | ' . \Yii::$app->params['siteName'];
+$this->title = 'Руланд скидки';
 
 DealsAsset::register($this);
 
 ?>
 
 <div class="deals-index">
-    <h1><i class="fas fa-handshake"></i> Сделки</h1>
+
+    <div class="post-header text-center">
+        <h1><i class="fas fa-handshake"></i> <?= $this->title ?></h1>
+    </div>
+
     <ul class="deals-index-filter">
         <li><?= Html::a('<i class="fa fa-clock"></i>Новые', '/deals') ?></li>
         <li><?= Html::a('<i class="fa fa-eye"></i>Популярные', '/deals/hits') ?></li>
@@ -28,7 +32,7 @@ DealsAsset::register($this);
             <?= ListView::widget(
                 [
                     'dataProvider' => $dataProvider,
-                    'emptyText' => 'Сделки не найдены.',
+                    'emptyText' => 'Скидки не найдены.',
                     'itemView' => '_view',
                     'layout' => "{items}{pager}",
                 ]

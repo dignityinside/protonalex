@@ -223,7 +223,7 @@ class DealsController extends Controller
         $user = User::findOne(['username' => $userName]);
 
         if (!$user) {
-            throw new NotFoundHttpException("Пользователь ещё не публиковал ни одной сделки.");
+            throw new NotFoundHttpException("Пользователь ещё не публиковал ни одной скидки.");
         }
 
         $searchModel = new DealsSearch(['userId' => $user->id]);
@@ -254,7 +254,7 @@ class DealsController extends Controller
         ]);
 
         if (!$model) {
-            throw new NotFoundHttpException("Сделки не найдены.");
+            throw new NotFoundHttpException("Скидки не найдены.");
         }
 
         $model->countViews();

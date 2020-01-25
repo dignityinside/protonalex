@@ -27,7 +27,7 @@ return [
     'planetFeeds' => [],
     'video' => [
         'youtubeFeeds' => [
-            'https://www.youtube.com/feeds/videos.xml?user=dignityinside' => 'phpland',
+            'https://www.youtube.com/feeds/videos.xml?user=dignityinside' => 'Александр Шиллинг',
         ],
         'userId' => 1,
         'preModeration' => true,
@@ -46,4 +46,9 @@ return [
         'preModeration' => false,
         'pageSize' => 10,
     ],
+    'donate' => [
+        'yandexMoney' => '',
+        'paypal'      => '',
+        'bitshares'   => '',
+    ]
 ];

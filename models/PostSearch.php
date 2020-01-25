@@ -62,7 +62,7 @@ class PostSearch extends Post
             [
                 'query' => $query,
                 'pagination' => [
-                    'pageSize' => 10,
+                    'pageSize' => 6,
                 ],
             ]
         );
