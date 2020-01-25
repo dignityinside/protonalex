@@ -1,6 +1,6 @@
 # rooland
 
-Source code of the rooland community.
+Source code of the rooland blog.
 
 ## Technology
 
