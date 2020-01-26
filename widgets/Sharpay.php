@@ -17,8 +17,9 @@ class Sharpay extends Widget
     public function run()
     {
 
-        $out = '<script async src="https://app.sharpay.io/api/script.js"></script>';
-        $out .= sprintf('<div class="sharpay_widget_button" data-sharpay="%s"></div>', \Yii::$app->params['sharpayAppId']);
+
+        $out = sprintf('<div class="sharpay_widget_simple" data-sharpay="%s" data-limit="3" data-networks="facebook,twitter,vkontakte,odnoklassniki,whatsapp,telegram,email,copy"></div>
+<script async src="https://app.sharpay.io/api/script.js"></script>', \Yii::$app->params['sharpayAppId']);
 
         return $out;
 
