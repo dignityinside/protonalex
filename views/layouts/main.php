@@ -9,11 +9,9 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-use app\assets\HighlightAsset;
 use app\components\UserPermissions;
 
 AppAsset::register($this);
-HighlightAsset::register($this);
 
 $googleSiteVerification = \Yii::$app->params['googleSiteVerification'];
 $yandexVerification = \Yii::$app->params['yandexVerification'];
@@ -123,8 +121,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 </div>
 
 <?php $this->endBody() ?>
-
-<script>hljs.initHighlightingOnLoad();</script>
 
 <?= $this->render('partials/counter.php'); ?>
 
