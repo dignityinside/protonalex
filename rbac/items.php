@@ -12,10 +12,6 @@ return [
         'type' => 2,
         'description' => 'Administrate categories',
     ],
-    'adminPlanet' => [
-        'type' => 2,
-        'description' => 'Administrate planet',
-    ],
     'adminVideo' => [
         'type' => 2,
         'description' => 'Administrate video',
@@ -35,7 +31,6 @@ return [
             'adminUsers',
             'adminPost',
             'adminCategory',
-            'adminPlanet',
             'adminVideo',
             'adminDeals',
             'adminForum',

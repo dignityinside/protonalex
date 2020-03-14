@@ -5,7 +5,6 @@ Disallow: /*sort=
 Disallow: /contact
 Disallow: /signup
 Disallow: /post/index
-Disallow: /planet/index
 Disallow: /video/index
 Disallow: /deals/index
 Disallow: /forum/index

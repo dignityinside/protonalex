@@ -58,12 +58,6 @@ php yii rbac/assign moderator dignity
 php yii sitemap
 ```
 
-## Fetch planet
-
-```
-php yii planet
-```
-
 ## Fetch new videos
 
 ```

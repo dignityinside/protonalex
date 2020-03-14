@@ -46,10 +46,6 @@ class RbacController extends Controller
         $adminCategory->description = 'Administrate categories';
         $auth->add($adminCategory);
 
-        $adminPlanet = $auth->createPermission(UserPermissions::ADMIN_PLANET);
-        $adminPlanet->description = 'Administrate planet';
-        $auth->add($adminPlanet);
-
         $adminVideo = $auth->createPermission(UserPermissions::ADMIN_VIDEO);
         $adminVideo->description = 'Administrate video';
         $auth->add($adminVideo);
@@ -69,7 +65,6 @@ class RbacController extends Controller
         $auth->addChild($admin, $adminUsers);
         $auth->addChild($admin, $adminPost);
         $auth->addChild($admin, $adminCategory);
-        $auth->addChild($admin, $adminPlanet);
         $auth->addChild($admin, $adminVideo);
         $auth->addChild($admin, $adminDeals);
         $auth->addChild($admin, $adminForum);

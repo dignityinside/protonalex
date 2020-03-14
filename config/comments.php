@@ -11,7 +11,7 @@ return [
     // Material types list
     'types'              => [
         1 => 'Post',
-        2 => 'Planet',
+        2 => '', // not used
         3 => 'Video',
         4 => 'Deals',
         5 => 'Forum',

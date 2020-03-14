@@ -19,7 +19,6 @@ class UserPermissions
     const ADMIN_POST = 'adminPost';
     const ADMIN_USERS = 'adminUsers';
     const ADMIN_CATEGORY = 'adminCategory';
-    const ADMIN_PLANET = 'adminPlanet';
     const ADMIN_VIDEO = 'adminVideo';
     const ADMIN_DEALS = 'adminDeals';
     const ADMIN_FORUM = 'adminForum';
@@ -131,26 +130,6 @@ class UserPermissions
         }
 
         if (\Yii::$app->user->can(self::ADMIN_CATEGORY)) {
-            return true;
-        }
-
-        return false;
-
-    }
-
-    /**
-     * Checks if user can admin planet
-     *
-     * @return bool
-     */
-    public static function canAdminPlanet(): bool
-    {
-
-        if (\Yii::$app->user->isGuest) {
-            return false;
-        }
-
-        if (\Yii::$app->user->can(self::ADMIN_PLANET)) {
             return true;
         }
 

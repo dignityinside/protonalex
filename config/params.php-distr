@@ -20,10 +20,6 @@ return [
     'sharpayAppId'                  => '',
     'googleSiteVerification'        => '',
     'yandexVerification'            => '',
-    /**
-     * RSS Planet feeds
-     */
-    'planetFeeds' => [],
     'video' => [
         'youtubeFeeds' => [
             'https://www.youtube.com/feeds/videos.xml?user=dignityinside' => 'Александр Шиллинг',

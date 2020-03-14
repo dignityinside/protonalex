@@ -62,7 +62,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         $menuItems[] = ['label' => 'Видео', 'url' => ['/video/index']];
         $menuItems[] = ['label' => 'Скидки', 'url' => ['/deals/index']];
         //$menuItems[] = ['label' => 'Форум', 'url' => ['/forum/index']];
-        //$menuItems[] = ['label' => 'Планета', 'url' => ['/planet/index']];
 
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => 'Регистрация', 'url' => ['/signup']];
@@ -85,7 +84,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
                     ['label' => 'Все видео', 'url' => ['/video/admin'], 'visible' => UserPermissions::canAdminVideo()],
                     ['label' => 'Все скидки', 'url' => ['/deals/admin'], 'visible' => UserPermissions::canAdminDeals()],
                     ['label' => 'Все темы форума', 'url' => ['/forum/admin'], 'visible' => UserPermissions::canAdminForum()],
-                    ['label' => 'Планета', 'url' => ['/planet/admin'], 'visible' => UserPermissions::canAdminPlanet()],
                     ['label' => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
                 ],
             ];
