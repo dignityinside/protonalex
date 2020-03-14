@@ -40,8 +40,6 @@ $this->registerMetaTag(
 
     <?= Text::hidecut(HtmlPurifier::process(Markdown::process($model->content, 'gfm'))); ?>
 
-    <?= $this->render('_ads', ['model' => $model]); ?>
-
     <?= $this->render('/partials/share'); ?>
 
     <?= $this->render(

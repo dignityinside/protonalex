@@ -1,11 +1,11 @@
 /**
  * @author Alexander Schilling
- * @package phpland/main
+ * @package app/main
  */
 
-var phpland = phpland || {};
+var app = app || {};
 
-phpland.main = (function($) {
+app.main = (function($) {
 
     'use strict';
 
@@ -13,9 +13,7 @@ phpland.main = (function($) {
 
         init: function() {
 
-            if (window.noAdBlock === undefined) {
-                $('.author_support_hint').css('display', 'block');
-            }
+            // do, something...
 
         }
 
@@ -25,5 +23,5 @@ phpland.main = (function($) {
 
 
 $(document).ready(function(){
-    phpland.main.init();
+    app.main.init();
 });

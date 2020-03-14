@@ -34,7 +34,7 @@ MarkdownEditorAsset::register($this);
             ]
         )->textarea(['class' => 'markdown-editor'])->hint('Здесь вы можете описать свою сделку своими словами.') ?>
 
-        <?= $form->field($model, 'author')->textInput(['maxlength' => true])->hint('Например: phpland') ?>
+        <?= $form->field($model, 'author')->textInput(['maxlength' => true])->hint('Например: rooland') ?>
 
         <?= $form->field($model, 'url')->textInput(['maxlength' => true])->hint('Добавьте сюда ссылку на сайт, где можно найти сделку и получить дополнительную информацию.') ?>
 

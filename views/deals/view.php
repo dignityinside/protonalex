@@ -119,8 +119,6 @@ $this->registerMetaTag(
 
     </div>
 
-    <?= $this->render('/partials/ads', ['model' => $model]); ?>
-
     <?= $this->render('/partials/share'); ?>
 
     <div class="deals-view-footer">

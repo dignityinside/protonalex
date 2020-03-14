@@ -40,8 +40,6 @@ $this->registerMetaTag(
         <?= nl2br(Html::encode($model->description)); ?>
     </div>
 
-    <?= $this->render('_ads', ['model' => $model]); ?>
-
     <?= $this->render('/partials/share'); ?>
 
     <div class="watch-view__footer">

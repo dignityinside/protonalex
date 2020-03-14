@@ -40,6 +40,16 @@ $donate = \Yii::$app->params['donate'];
                         </span>
                     </p>
                     <p>
+                        <a href="https://twitter.com/<?= $social['twitter'] ?>" target="_blank" rel="nofollow" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <span>
+                            <a href="https://twitter.com/<?= $social['twitter'] ?>" target="_blank" rel="nofollow" title="Twitter">
+                                Twitter
+                            </a>
+                        </span>
+                    </p>
+                    <p>
                         <a href="https://mastodon.social/@<?= $social['mastodon'] ?>" target="_blank" rel="nofollow" title="Mastodon">
                             <i class="fab fa-mastodon"></i>
                         </a>
@@ -64,18 +74,6 @@ $donate = \Yii::$app->params['donate'];
                 </p>
                 <p>PayPal:<br />
                     <a href="https://www.paypal.me/<?= $donate['paypal'] ?>" target="_blank"><?= $donate['paypal'] ?></a>
-                </p>
-            </div>
-        </div>
-        <div class="widget">
-            <div class="widget-title">
-                Рекомендую
-            </div>
-            <div class="widget-content">
-                <p>
-                    <a href="https://svoimxodom.com" target="_blank">
-                        <img src="https://svoimxodom.com/images/logo.png" width="220" alt="">
-                    </a>
                 </p>
             </div>
         </div>

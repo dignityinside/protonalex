@@ -47,8 +47,6 @@ $this->registerMetaTag(
 
     <!--/noindex-->
 
-    <?= $this->render('/partials/ads'); ?>
-
     <?= $this->render('/partials/share'); ?>
 
     <div class="planet-view__footer">

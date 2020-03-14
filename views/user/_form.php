@@ -13,10 +13,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'aads_com_id')->textInput(['maxlength' => true])->hint('Укажите здесь ваш <a href="http://a-ads.com?partner=' . \Yii::$app->params['aads_com_id'] . '" target="_blank"> a-ads.com id</a>, если хотите показывать рекламу в своих постах.') ?>
-
-    <?= $form->field($model, 'ads_visibility')->dropDownList($model->getAdsVisibility()) ?>
-
     <?php if (UserPermissions::canAdminUsers()): ?>
         <?= $form->field($model, 'status')->dropDownList(\app\models\User::getStatuses()) ?>
     <?php endif ?>

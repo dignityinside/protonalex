@@ -2,13 +2,13 @@
  * Imgur uploader
  *
  * @author Alexander Schilling
- * @package phpland/imgur_uploader
+ * @package app/imgur_uploader
  *
  */
 
-var phpland = phpland || {};
+var app = app || {};
 
-phpland.imgur_uploader = (function($, ClipboardJS) {
+app.imgur_uploader = (function($, ClipboardJS) {
 
     'use strict';
 
@@ -103,5 +103,5 @@ phpland.imgur_uploader = (function($, ClipboardJS) {
 })($, ClipboardJS);
 
 $(document).ready(function(){
-    phpland.imgur_uploader.init();
+    app.imgur_uploader.init();
 });

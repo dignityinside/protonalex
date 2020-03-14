@@ -28,7 +28,6 @@ class AppAsset extends AssetBundle
     /** @var array */
     public $js = [
         'js/yiiscript.js',
-        'js/ads.js',
         'js/main.js',
     ];
 

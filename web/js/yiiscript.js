@@ -1,11 +1,11 @@
 /**
  * @author Alexander Schilling
- * @package phpland/yiiscript
+ * @package app/yiiscript
  */
 
-var phpland = phpland || {};
+var app = app || {};
 
-phpland.yiiscript = (function($) {
+app.yiiscript = (function($) {
 
     'use strict';
 
@@ -26,5 +26,5 @@ phpland.yiiscript = (function($) {
 })($);
 
 $(document).ready(function(){
-    phpland.yiiscript.init();
+    app.yiiscript.init();
 });

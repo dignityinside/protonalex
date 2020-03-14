@@ -23,8 +23,6 @@ use yii\helpers\ArrayHelper;
  * @property integer $updated_at
  * @property string $password write-only password
  * @property string $github
- * @property string $aads_com_id
- * @property integer $ads_visibility
  *
  * @property Auth[] $auths
  */
@@ -77,7 +75,6 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
             ['status', 'filter', 'filter' => 'intval'],
-            [['aads_com_id', 'ads_visibility'], 'integer'],
         ];
     }
 
@@ -89,15 +86,10 @@ class User extends ActiveRecord implements IdentityInterface
 
         $scenarios = parent::scenarios();
 
-        $scenarios[self::SCENARIO_UPDATE] = [
-            'aads_com_id',
-            'ads_visibility'
-        ];
+        // $scenarios[self::SCENARIO_UPDATE] = [];
 
         $scenarios[self::SCENARIO_ADMIN] = [
             'status',
-            'aads_com_id',
-            'ads_visibility'
         ];
 
         return $scenarios;
@@ -260,8 +252,6 @@ class User extends ActiveRecord implements IdentityInterface
             'email'          => 'E-Mail',
             'status'         => 'Статус',
             'created_at'     => 'Создан в',
-            'aads_com_id'    => 'a-ads.com id',
-            'ads_visibility' => 'Кому можно показывать рекламу?'
         ];
     }
 
