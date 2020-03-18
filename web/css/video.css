@@ -82,6 +82,10 @@
     margin: 0 5px 0 10px;
 }
 
+.watch-view__button {
+    padding-top: 20px;
+}
+
 .videoPlayer {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */

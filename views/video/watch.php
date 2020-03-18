@@ -36,6 +36,15 @@ $this->registerMetaTag(
         <?= $this->render('_video_player', ['model' => $model]); ?>
     </div>
 
+    <div class="watch-view__button">
+        <p>
+            <?= Html::a('Открыть на <i class="fa fa-youtube"></i> YouTube', 'https://youtu.be/' . Html::encode($model->code), [
+                'class' => 'btn btn-danger',
+                'target' => 'blank'
+            ]); ?>
+        </p>
+    </div>
+
     <div class="watch-view__description">
         <?= nl2br(Html::encode($model->description)); ?>
     </div>
