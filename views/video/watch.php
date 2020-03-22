@@ -5,7 +5,7 @@ use app\components\UserPermissions;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Video */
+/* @var $model app\models\video\Video */
 
 VideoAsset::register($this);
 
@@ -54,12 +54,6 @@ $this->registerMetaTag(
     <div class="watch-view__footer">
         <i class="fa fa-clock-o"></i> <?= date('d.m.Y', Html::encode($model->published)); ?>
         <i class="fa fa-youtube"></i> Автор: <?= Html::encode($model->author); ?>
-        <i class="fa fa-user"></i> Добавил:
-        <?php if (!empty($model->user_id)) : ?>
-            <?= Html::a($model->user->username, ['/video/user/' . $model->user->username]); ?>
-        <?php else: ?>
-            <?= 'Аноним'; ?>
-        <?php endif; ?>
         <?php if (isset($model->category->name)) : ?>
             <i class="fa fa-folder"></i> <?= Html::a($model->category->name, '/video/category/' . $model->category->slug); ?>
         <?php endif; ?>

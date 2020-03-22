@@ -6,7 +6,7 @@ use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var \app\models\Category $categoryModel */
+/* @var \app\models\category\Category $categoryModel */
 
 ForumAsset::register($this);
 

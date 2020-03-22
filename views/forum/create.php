@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Forum */
+/* @var $model app\models\forum\Forum */
 
 $this->title = 'Новая тема';
 

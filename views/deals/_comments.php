@@ -2,10 +2,10 @@
 
 use yii\helpers\Url;
 use demi\comments\frontend\widgets\Comments;
-use app\models\Deals;
+use app\models\deals\Deals;
 
 /* @var $this yii\web\View */
-/** @var $model app\models\Deals */
+/** @var $model Deals */
 
 ?>
 
@@ -17,7 +17,7 @@ use app\models\Deals;
 
     <?= Comments::widget(
         [
-            'materialType' => Deals::MATERIAL_ID,
+            'materialType' => \app\models\Material::MATERIAL_DEALS_ID,
             'materialId' => $model->id,
             'options' => [
                 'class' => 'comments list-unstyled',

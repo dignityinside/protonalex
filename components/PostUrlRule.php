@@ -6,7 +6,7 @@ use app\helpers\Url;
 use yii\helpers\ArrayHelper;
 use yii\web\UrlRuleInterface;
 use yii\base\BaseObject;
-use app\models\Post;
+use app\models\post\Post;
 
 /**
  * Class PostUrlRule

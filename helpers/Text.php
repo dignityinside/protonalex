@@ -2,7 +2,7 @@
 
 namespace app\helpers;
 
-use app\models\Post;
+use app\models\post\Post;
 use yii\helpers\Html;
 
 /**

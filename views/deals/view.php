@@ -7,7 +7,7 @@ use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\deals */
+/* @var $model app\models\deals\Deals */
 
 DealsAsset::register($this);
 

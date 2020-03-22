@@ -1,8 +1,7 @@
 <?php
 
-namespace app\models;
+namespace app\models\post;
 
-use Yii;
 use yii\db\ActiveRecord;
 
 /**

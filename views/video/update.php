@@ -4,7 +4,7 @@ use app\assets\VideoAsset;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Video */
+/* @var $model app\models\video\Video */
 
 VideoAsset::register($this);
 

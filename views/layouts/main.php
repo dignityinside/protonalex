@@ -59,7 +59,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         $menuItems[] = ['label' => 'Блог', 'url' => ['/post/index']];
         $menuItems[] = ['label' => 'Видео', 'url' => ['/video/index']];
         $menuItems[] = ['label' => 'Скидки', 'url' => ['/deals/index']];
-        //$menuItems[] = ['label' => 'Форум', 'url' => ['/forum/index']];
+        $menuItems[] = ['label' => 'Форум', 'url' => ['/forum/index']];
 
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => 'Регистрация', 'url' => ['/signup']];
@@ -68,20 +68,17 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
             $menuItems[] = [
                 'label' => 'Панель', 'items' => [
-                    ['label' => 'Мои скидки', 'url' => ['/deals/my'], 'visible' => UserPermissions::canAdminDeals()],
                     ['label' => 'Мои темы форума', 'url' => ['/forum/my']],
                     ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
                     Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
-                    ['label' => 'Мои записи', 'url' => ['/post/my'], 'visible' => UserPermissions::canAdminPost()],
-                    ['label' => 'Мои видео', 'url' => ['/video/my'], 'visible' => UserPermissions::canAdminVideo()],
-                    '<li class="divider"></li>',
-                    ['label' => 'Все записи', 'url' => ['/post/admin'], 'visible' => UserPermissions::canAdminPost()],
-                    ['label' => 'Все категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
-                    ['label' => 'Все пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
-                    ['label' => 'Все комментарии', 'url' => ['/comment-admin/manage/index'], 'visible' => UserPermissions::canAdminPost()],
-                    ['label' => 'Все видео', 'url' => ['/video/admin'], 'visible' => UserPermissions::canAdminVideo()],
-                    ['label' => 'Все скидки', 'url' => ['/deals/admin'], 'visible' => UserPermissions::canAdminDeals()],
+                    ['label' => 'Записи', 'url' => ['/post/admin'], 'visible' => UserPermissions::canAdminPost()],
+                    ['label' => 'Видео', 'url' => ['/video/admin'], 'visible' => UserPermissions::canAdminVideo()],
+                    ['label' => 'Скидки', 'url' => ['/deals/admin'], 'visible' => UserPermissions::canAdminDeals()],
                     ['label' => 'Все темы форума', 'url' => ['/forum/admin'], 'visible' => UserPermissions::canAdminForum()],
+                    ['label' => 'Комментарии', 'url' => ['/comment-admin/manage/index'], 'visible' => UserPermissions::canAdminPost()],
+                    ['label' => 'Категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
+                    ['label' => 'Пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
+                    Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
                     ['label' => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
                 ],
             ];

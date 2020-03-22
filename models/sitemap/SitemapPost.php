@@ -2,8 +2,9 @@
 
 namespace app\models\sitemap;
 
+use app\models\Material;
 use yii\helpers\Url;
-use app\models\Post;
+use app\models\post\Post;
 use demi\sitemap\interfaces\Basic;
 
 /**
@@ -39,7 +40,7 @@ class SitemapPost extends Post implements Basic
     {
         return static::find()
             ->select(['title', 'datecreate', 'dateupdate', 'slug'])
-            ->where(['status_id' => Post::STATUS_PUBLIC])
+            ->where(['status_id' => Material::STATUS_PUBLIC])
             ->orderBy(['datecreate' => SORT_DESC]);
     }
 

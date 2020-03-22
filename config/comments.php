@@ -74,7 +74,7 @@ return [
         // If you have "admin" subdomain, you can specify absolute url path for use "goToComment" from admin page
         if ($comment->material_type == 1) {
             // http://site.com/publication/3221#comment-4
-            $postSlug = \app\models\Post::find()->select('slug')->where(['id' => $comment->material_id])->scalar();
+            $postSlug = \app\models\post\Post::find()->select('slug')->where(['id' => $comment->material_id])->scalar();
             return ['/post/view', 'slug' => $postSlug, '#' => "comment-$comment->id"];
         }
 

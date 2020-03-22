@@ -4,11 +4,11 @@ use app\components\UserPermissions;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use app\models\Category;
+use app\models\category\Category;
 use app\assets\MarkdownEditorAsset;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Forum */
+/* @var $model app\models\forum\Forum */
 /* @var $form yii\widgets\ActiveForm */
 /** @var int $categoryId */
 
@@ -23,7 +23,7 @@ $categoryId = !empty($categoryId) ? $categoryId : 0;
     <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($model, 'category_id')->dropDownList(
-                ArrayHelper::map(Category::getAllCategories($model::MATERIAL_ID), 'id', 'name'),
+                ArrayHelper::map(Category::getAllCategories(\app\models\Material::MATERIAL_FORUM_ID), 'id', 'name'),
                 ['prompt' => 'Выберите раздел форума', 'options'=>[(string)$categoryId=>['Selected'=>true]]]
         ); ?>
 
@@ -38,7 +38,7 @@ $categoryId = !empty($categoryId) ? $categoryId : 0;
         <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
 
         <?php if (UserPermissions::canAdminForum()): ?>
-            <?= $form->field($model, 'status_id')->dropDownList($model::STATUS) ?>
+            <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
             <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
         <?php endif ?>

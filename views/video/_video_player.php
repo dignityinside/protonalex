@@ -1,6 +1,6 @@
 <?php
 
-use app\models\Video;
+use app\models\video\Video;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */

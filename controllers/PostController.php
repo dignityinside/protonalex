@@ -2,11 +2,12 @@
 
 namespace app\controllers;
 
-use app\models\Category;
+use app\models\category\Category;
+use app\models\Material;
 use app\models\Tag;
 use Yii;
-use app\models\Post;
-use app\models\PostSearch;
+use app\models\post\Post;
+use app\models\post\PostSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -32,23 +33,23 @@ class PostController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
-                'only'  => ['create', 'admin', 'update', 'delete', 'my'],
+                'class' => AccessControl::class,
+                'only'  => ['create', 'admin', 'update', 'delete'],
                 'rules' => [
                     [
                         'allow'   => true,
-                        'actions' => ['create', 'update', 'my', 'tag', 'category'],
+                        'actions' => ['tag', 'category'],
                         'roles'   => ['@'],
                     ],
                     [
                         'allow'   => true,
-                        'actions' => ['admin', 'delete'],
+                        'actions' => ['create', 'update', 'admin', 'delete'],
                         'roles'   => [UserPermissions::ADMIN_POST],
                     ],
                 ],
             ],
             'verbs'  => [
-                'class'   => VerbFilter::className(),
+                'class'   => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -81,43 +82,6 @@ class PostController extends Controller
     }
 
     /**
-     * @param $id
-     *
-     * @return string
-     */
-    public function actionBlog($id)
-    {
-
-        $id = (int)$id;
-
-        $query = Post::find()->where(
-            [
-                'status_id' => Post::STATUS_PUBLIC,
-                'ontop'     => Post::SHOW_ON_TOP,
-                'user_id'   => $id
-            ]
-        )->orderBy('datecreate DESC');
-
-        $query->withCommentsCount()->all();
-
-        $dataProvider = new ActiveDataProvider(
-            [
-                'query'      => $query,
-                'pagination' => [
-                    'pageSize' => 10,
-                ],
-            ]
-        );
-
-        return $this->render(
-            'index', [
-            'dataProvider' => $dataProvider,
-        ]
-        );
-
-    }
-
-    /**
      * @return string
      */
     public function actionAdmin()
@@ -130,35 +94,6 @@ class PostController extends Controller
         return $this->render(
             'admin', [
             'searchModel'  => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]
-        );
-
-    }
-
-    /**
-     * @return string
-     */
-    public function actionMy()
-    {
-
-        $query = Post::find()->where(
-            [
-                'user_id' => Yii::$app->user->id,
-            ]
-        )->orderBy('datecreate DESC');
-
-        $dataProvider = new ActiveDataProvider(
-            [
-                'query'      => $query,
-                'pagination' => [
-                    'pageSize' => 15,
-                ],
-            ]
-        );
-
-        return $this->render(
-            'my', [
             'dataProvider' => $dataProvider,
         ]
         );
@@ -180,7 +115,7 @@ class PostController extends Controller
         $this->layout = "/blog";
 
         $model = Post::find()->where([
-            'status_id' => Post::STATUS_PUBLIC,
+            'status_id' => Material::STATUS_PUBLIC,
             'slug' => $slug,
         ])->withCommentsCount()->one();
 
@@ -188,7 +123,7 @@ class PostController extends Controller
             throw new NotFoundHttpException('Запись не найдена.');
         }
 
-        $model->countViews();
+        $model->countHits(Material::MATERIAL_POST_NAME);
 
         return $this->render(
             'view', [
@@ -211,9 +146,9 @@ class PostController extends Controller
         $model = new Post();
 
         if (UserPermissions::canAdminPost()) {
-            $model->scenario = Post::SCENARIO_ADMIN;
+            $model->scenario = Material::SCENARIO_ADMIN;
         } else {
-            $model->scenario = Post::SCENARIO_CREATE;
+            $model->scenario = Material::SCENARIO_CREATE;
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -250,9 +185,9 @@ class PostController extends Controller
         }
 
         if (UserPermissions::canAdminPost()) {
-            $model->scenario = Post::SCENARIO_ADMIN;
+            $model->scenario = Material::SCENARIO_ADMIN;
         } else {
-            $model->scenario = Post::SCENARIO_UPDATE;
+            $model->scenario = Material::SCENARIO_UPDATE;
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -291,7 +226,8 @@ class PostController extends Controller
      *
      * @return string
      */
-    public function actionTag($tagName) {
+    public function actionTag($tagName)
+    {
 
         $tag = Tag::findOne(['name' => $tagName]);
 
@@ -322,9 +258,13 @@ class PostController extends Controller
      *
      * @throws NotFoundHttpException
      */
-    public function actionCategory($categoryName) {
+    public function actionCategory($categoryName)
+    {
 
-        $category = Category::findOne(['slug' => $categoryName, 'material_id' => \app\models\Category::MATERIAL_POST]);
+        $category = Category::findOne([
+            'slug' => $categoryName,
+            'material_id' => Material::MATERIAL_POST_ID
+        ]);
 
         if (!$category) {
             throw new NotFoundHttpException("Категория не найдена.");

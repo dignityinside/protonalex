@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Category */
+/* @var $model app\models\category\Category */
 
 $this->title = 'Создать категорию';
 $this->params['breadcrumbs'][] = ['label' => 'Категории', 'url' => ['admin']];

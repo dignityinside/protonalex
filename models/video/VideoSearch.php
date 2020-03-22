@@ -1,16 +1,17 @@
 <?php
 
-namespace app\models;
+namespace app\models\video;
 
+use app\models\Material;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * DealsSearch represents the model behind the search form about `app\models\Deals`.
+ * VideoSearch represents the model behind the search form about `app\models\video\Video`.
  *
  * @author Alexander Schilling
  */
-class DealsSearch extends Deals
+class VideoSearch extends Video
 {
 
     /** @var string */
@@ -22,19 +23,11 @@ class DealsSearch extends Deals
     /** @var string */
     const SORT_BY_PUBLISHED_ASC = 'old';
 
-    /** @var string */
-    const FILTER_BY_EXPIRED = 'expired';
-
-    /** @var string */
-    const FILTER_BY_EXPIRED_SOON = 'soon';
-
     /** @var array */
     const SORT_BY = [
         self::SORT_BY_HITS,
         self::SORT_BY_COMMENTS,
-        self::SORT_BY_PUBLISHED_ASC,
-        self::FILTER_BY_EXPIRED_SOON,
-        self::FILTER_BY_EXPIRED
+        self::SORT_BY_PUBLISHED_ASC
     ];
 
     /** @var string */
@@ -52,7 +45,7 @@ class DealsSearch extends Deals
     public function rules()
     {
         return [
-            [['status_id', 'created', 'hits', 'category_id'], 'integer'],
+            [['status_id', 'published', 'hits', 'category_id'], 'integer'],
         ];
     }
 
@@ -75,13 +68,13 @@ class DealsSearch extends Deals
     public function search($params)
     {
 
-        $query = Deals::find();
+        $query = Video::find();
 
         $dataProvider = new ActiveDataProvider(
             [
                 'query' => $query,
                 'pagination' => [
-                    'pageSize' => \Yii::$app->params['deals']['pageSize'],
+                    'pageSize' => \Yii::$app->params['video']['pageSize'],
                 ],
             ]
         );
@@ -94,7 +87,7 @@ class DealsSearch extends Deals
 
         // Filter by status
 
-        $query->andFilterWhere(['status_id' => Deals::STATUS_PUBLIC]);
+        $query->andFilterWhere(['status_id' => Material::STATUS_PUBLIC]);
 
         // Filter by category
 
@@ -108,17 +101,6 @@ class DealsSearch extends Deals
             $query->andWhere(['user_id' => $this->userId]);
         }
 
-        if ($this->sortBy === self::FILTER_BY_EXPIRED) {
-            $query->andWhere(['<','valid_until', new \yii\db\Expression('now()')]);
-        } elseif ($this->sortBy === self::FILTER_BY_EXPIRED_SOON) {
-            $query->andWhere(['<>','valid_until', '']);
-            $query->andWhere(['>','valid_until', new \yii\db\Expression('now()')]);
-        } else {
-            // Filter expired deals
-            $query->andWhere(['is', 'valid_until', new \yii\db\Expression('null')]);
-            $query->orWhere(['>','valid_until', new \yii\db\Expression('now()')]);
-        }
-
         // Sort by
 
         if ($this->sortBy === self::SORT_BY_HITS) {
@@ -127,13 +109,9 @@ class DealsSearch extends Deals
             $query->withCommentsCount()->all();
             $query->orderBy('commentsCount DESC');
         } elseif ($this->sortBy === self::SORT_BY_PUBLISHED_ASC) {
-            $query->orderBy('created ASC');
-        } elseif ($this->sortBy === self::FILTER_BY_EXPIRED_SOON) {
-            $query->orderBy('valid_until ASC');
-        } elseif ($this->sortBy === self::FILTER_BY_EXPIRED) {
-            $query->orderBy('valid_until DESC');
+            $query->orderBy('published ASC');
         } else {
-            $query->orderBy('created DESC');
+            $query->orderBy('published DESC');
         }
 
         return $dataProvider;

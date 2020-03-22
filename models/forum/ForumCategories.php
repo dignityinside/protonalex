@@ -1,12 +1,14 @@
 <?php
 
-namespace app\models;
+namespace app\models\forum;
 
+use app\models\Material;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use app\models\category\Category;
 
 /**
- * ForumCategories represents the model behind the search form about `app\models\Forum`.
+ * ForumCategories represents the model behind the search form about `app\models\forum\Forum`.
  *
  * @author Alexander Schilling
  */
@@ -53,7 +55,7 @@ class ForumCategories extends Forum
             return $dataProvider;
         }
 
-        $query->andWhere(['material_id' => ForumSearch::MATERIAL_ID]);
+        $query->andWhere(['material_id' => Material::MATERIAL_FORUM_ID]);
 
         $query->orderBy('order');
 

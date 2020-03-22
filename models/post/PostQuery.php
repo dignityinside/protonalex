@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\models\post;
 
 use \yii\db\ActiveQuery;
 use demi\comments\common\models\Comment;

@@ -2,7 +2,7 @@
 
 use yii\helpers\Url;
 use demi\comments\frontend\widgets\Comments;
-use app\models\Video;
+use app\models\video\Video;
 
 /* @var $this yii\web\View */
 
@@ -16,7 +16,7 @@ use app\models\Video;
 
     <?= Comments::widget(
         [
-            'materialType' => Video::MATERIAL_ID,
+            'materialType' => \app\models\Material::MATERIAL_VIDEO_ID,
             'materialId' => $model->id,
             'options' => [
                 'class' => 'comments list-unstyled',

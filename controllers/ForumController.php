@@ -3,11 +3,12 @@
 namespace app\controllers;
 
 use app\components\UserPermissions;
-use app\models\Category;
-use app\models\ForumCategories;
+use app\models\category\Category;
+use app\models\forum\Forum;
+use app\models\forum\ForumSearch;
+use app\models\forum\ForumCategories;
+use app\models\Material;
 use app\models\User;
-use app\models\Forum;
-use app\models\ForumSearch;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -122,7 +123,7 @@ class ForumController extends Controller
 
         $model = new Forum();
 
-        $model->scenario = UserPermissions::canAdminForum() ? Forum::SCENARIO_ADMIN : Forum::SCENARIO_CREATE;
+        $model->scenario = UserPermissions::canAdminForum() ? Material::SCENARIO_ADMIN : Material::SCENARIO_CREATE;
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['forum/my']);
@@ -153,7 +154,7 @@ class ForumController extends Controller
             throw new ForbiddenHttpException('Вы не можете редактировать эту тему.');
         }
 
-        $model->scenario = UserPermissions::canAdminForum() ? Forum::SCENARIO_ADMIN : Forum::SCENARIO_UPDATE;
+        $model->scenario = UserPermissions::canAdminForum() ? Material::SCENARIO_ADMIN : Material::SCENARIO_UPDATE;
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['/forum/topic', 'id' => $model->id]);
@@ -207,7 +208,7 @@ class ForumController extends Controller
 
         // filter by category name
 
-        $category = Category::findOne(['slug' => $categoryName, 'material_id' => Category::MATERIAL_FORUM]);
+        $category = Category::findOne(['slug' => $categoryName, 'material_id' => Material::MATERIAL_FORUM_ID]);
 
         if (!$category) {
             throw new NotFoundHttpException("Форум не найден.");
@@ -276,14 +277,14 @@ class ForumController extends Controller
 
         $model = Forum::findOne([
             'id' => $id,
-            'status_id' => Forum::STATUS_PUBLIC
+            'status_id' => Material::STATUS_PUBLIC
         ]);
 
         if (!$model) {
             throw new NotFoundHttpException("Тема не найдена.");
         }
 
-        $model->countViews();
+        $model->countHits(Material::MATERIAL_FORUM_NAME);
 
         return $this->render('topic', [
             'model' => $model,

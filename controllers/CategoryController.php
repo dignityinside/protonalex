@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Category;
-use app\models\CategorySearch;
+use app\models\category\Category;
+use app\models\category\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,7 +25,7 @@ class CategoryController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only'  => ['create', 'update', 'admin', 'delete'],
                 'rules' => [
                     [
@@ -36,7 +36,7 @@ class CategoryController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],

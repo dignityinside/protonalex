@@ -2,11 +2,11 @@
 
 namespace app\components;
 
-use app\models\Post;
+use app\models\post\Post;
 use app\models\User;
-use app\models\Video;
-use app\models\Deals;
-use app\models\Forum;
+use app\models\video\Video;
+use app\models\deals\Deals;
+use app\models\forum\Forum;
 
 /**
  * User permissions contains various methods to check what user can do

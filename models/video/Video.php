@@ -1,10 +1,10 @@
 <?php
 
-namespace app\models;
+namespace app\models\video;
 
+use app\models\Material;
 use app\components\UserPermissions;
-use yii\helpers\ArrayHelper;
-use \yii\db\ActiveRecord;
+use app\models\category\Category;
 
 /**
  * This is the model class for table "video".
@@ -28,23 +28,8 @@ use \yii\db\ActiveRecord;
  * @property string $meta_description
  * @property string $meta_keywords
  */
-class Video extends ActiveRecord
+class Video extends Material
 {
-
-    /** @var int */
-    const MATERIAL_ID = 3;
-
-    /** @var int */
-    const STATUS_PUBLIC = 1;
-
-    /** @var int */
-    const STATUS_HIDDEN = 0;
-
-    /** @var array */
-    const STATUS = [
-        self::STATUS_PUBLIC => 'Опубликован',
-        self::STATUS_HIDDEN  => 'Не опубликованно',
-    ];
 
     /** @var string */
     const PLATFORM_YOUTUBE = 'youtube';
@@ -54,23 +39,11 @@ class Video extends ActiveRecord
         self::PLATFORM_YOUTUBE => 'YouTube'
     ];
 
-    /** @var string */
-    const SCENARIO_CREATE = 'create';
-
-    /** @var string */
-    const SCENARIO_UPDATE = 'update';
-
-    /** @var string */
-    const SCENARIO_ADMIN = 'admin';
-
     /** @var array */
     const LANGUAGE = [
         0 => 'Русский',
         1 => 'Английский',
     ];
-
-    /** @var string Count of all comments */
-    public $commentsCount = 0;
 
     /**
      * Table name
@@ -110,7 +83,7 @@ class Video extends ActiveRecord
 
         $scenarios = parent::scenarios();
 
-        $scenarios[self::SCENARIO_CREATE] = [
+        $scenarios[Material::SCENARIO_CREATE] = [
             'title',
             'description',
             'code',
@@ -122,7 +95,7 @@ class Video extends ActiveRecord
             'language'
         ];
 
-        $scenarios[self::SCENARIO_UPDATE] = [
+        $scenarios[Material::SCENARIO_UPDATE] = [
             'title',
             'description',
             'code',
@@ -134,7 +107,7 @@ class Video extends ActiveRecord
             'language'
         ];
 
-        $scenarios[self::SCENARIO_ADMIN] = [
+        $scenarios[Material::SCENARIO_ADMIN] = [
             'title',
             'description',
             'code',
@@ -191,16 +164,6 @@ class Video extends ActiveRecord
     }
 
     /**
-     * Returns user
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(User::class, ['id' => 'user_id']);
-    }
-
-    /**
      * Return category
      *
      * @return \yii\db\ActiveQuery
@@ -208,51 +171,7 @@ class Video extends ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::class, ['id' => 'category_id'])
-            ->andOnCondition(['material_id' => Category::MATERIAL_VIDEO]);
-    }
-
-    /**
-     * Return status label
-     *
-     * @return mixed
-     */
-    public function getStatusLabel()
-    {
-        return ArrayHelper::getValue(self::STATUS, $this->status_id);
-    }
-
-    /**
-     * Count hits
-     */
-    public function countViews()
-    {
-
-        global $_COOKIE;
-
-        $name_cookies = \Yii::$app->name . '-views-video-' . $this->id;
-        $expire = 2592000; // days
-        $slug = '/video/' . $this->id;
-        $all_slug = [];
-
-        if (isset($_COOKIE[$name_cookies])) {
-            $all_slug = explode('|', $_COOKIE[$name_cookies]);
-        }
-
-        if (in_array($slug, $all_slug)) {
-            false;
-        } else {
-
-            $all_slug[] = $slug;
-            $all_slug = array_unique($all_slug);
-            $all_slug = implode('|', $all_slug);
-            $expire = time() + $expire;
-
-            @setcookie($name_cookies, $all_slug, $expire);
-
-            $this->updateCounters(["hits" => 1]);
-
-        }
-
+            ->andOnCondition(['material_id' => Material::MATERIAL_VIDEO_ID]);
     }
 
     /**
@@ -280,7 +199,7 @@ class Video extends ActiveRecord
             }
 
             if (empty($this->allow_comments)) {
-                $this->allow_comments = self::STATUS_PUBLIC;
+                $this->allow_comments = Material::STATUS_PUBLIC;
             }
 
             if (empty($this->author)) {
@@ -296,7 +215,8 @@ class Video extends ActiveRecord
         }
 
         if (!UserPermissions::canAdminVideo()) {
-            $this->status_id = \Yii::$app->params['video']['preModeration'] ? self::STATUS_HIDDEN : self::STATUS_PUBLIC;
+            $this->status_id = \Yii::$app->params['video']['preModeration']
+                ? Material::STATUS_DRAFT : Material::STATUS_PUBLIC;
         }
 
         return true;

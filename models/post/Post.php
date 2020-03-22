@@ -1,12 +1,13 @@
 <?php
 
-namespace app\models;
+namespace app\models\post;
 
 use Yii;
 use yii\db\ActiveQuery;
-use yii\helpers\ArrayHelper;
-use \yii\db\ActiveRecord;
+use app\models\Material;
 use Dignity\TranslitHelper;
+use app\models\category\Category;
+use app\models\Tag;
 
 /**
  * This is the model class for table "post".
@@ -32,23 +33,10 @@ use Dignity\TranslitHelper;
  * @author Alexander Schilling
  *
  */
-class Post extends ActiveRecord
+class Post extends Material
 {
 
-    const STATUS_DRAFT = 0;
-    const STATUS_PUBLIC = 1;
-
     const SHOW_ON_TOP = 1;
-
-    const SCENARIO_CREATE = 'create';
-    const SCENARIO_UPDATE = 'update';
-    const SCENARIO_ADMIN = 'admin';
-
-    /** @var int */
-    const MATERIAL_ID = 1;
-
-    /** @var string Count of all comments */
-    public $commentsCount;
 
     /** @var array */
     public $form_tags;
@@ -85,7 +73,7 @@ class Post extends ActiveRecord
 
         $scenarios = parent::scenarios();
 
-        $scenarios[self::SCENARIO_CREATE] = [
+        $scenarios[Material::SCENARIO_CREATE] = [
             'title',
             'content',
             'allow_comments',
@@ -94,7 +82,7 @@ class Post extends ActiveRecord
             'category_id'
         ];
 
-        $scenarios[self::SCENARIO_UPDATE] = [
+        $scenarios[Material::SCENARIO_UPDATE] = [
             'title',
             'content',
             'allow_comments',
@@ -103,7 +91,7 @@ class Post extends ActiveRecord
             'category_id'
         ];
 
-        $scenarios[self::SCENARIO_ADMIN] = [
+        $scenarios[Material::SCENARIO_ADMIN] = [
             'title',
             'content',
             'allow_comments',
@@ -147,46 +135,6 @@ class Post extends ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAuthor()
-    {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }
-
-    // подсчет количества просмотров
-    public function countViews()
-    {
-
-        global $_COOKIE;
-
-        $name_cookies = Yii::$app->name . '-views-post-' . $this->id;
-        $expire = 2592000; // 30 дней
-        $slug = '/post/' . $this->id;
-        $all_slug = [];
-
-        if (isset($_COOKIE[$name_cookies])) {
-            $all_slug = explode('|', $_COOKIE[$name_cookies]);
-        }
-
-        if (in_array($slug, $all_slug)) {
-            false;
-        } else {
-
-            $all_slug[] = $slug;
-            $all_slug = array_unique($all_slug);
-            $all_slug = implode('|', $all_slug);
-            $expire = time() + $expire;
-
-            @setcookie($name_cookies, $all_slug, $expire);
-
-            $this->updateCounters(["hits" => 1]);
-
-        }
-
-    }
-
-    /**
      * @param bool $insert
      * @return bool
      */
@@ -220,29 +168,6 @@ class Post extends ActiveRecord
 
         return true;
 
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStatusLabel()
-    {
-
-        $statuses = self::getStatuses();
-
-        return ArrayHelper::getValue($statuses, $this->status_id);
-
-    }
-
-    /**
-     * @return array
-     */
-    public static function getStatuses()
-    {
-        return [
-            self::STATUS_PUBLIC => 'Опубликован',
-            self::STATUS_DRAFT  => 'Черновик',
-        ];
     }
 
     /**
@@ -280,8 +205,8 @@ class Post extends ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasOne(Category::className(), ['id' => 'category_id'])
-                    ->andOnCondition(['material_id' => \app\models\Category::MATERIAL_POST]);
+        return $this->hasOne(Category::class, ['id' => 'category_id'])
+                    ->andOnCondition(['material_id' => Material::MATERIAL_POST_ID]);
     }
 
     /**

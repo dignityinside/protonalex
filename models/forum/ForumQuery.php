@@ -1,19 +1,20 @@
 <?php
 
-namespace app\models;
+namespace app\models\forum;
 
-use demi\comments\common\models\Comment;
+use app\models\Material;
 use yii\db\Query;
 use yii\db\ActiveQuery;
+use demi\comments\common\models\Comment;
 
 /**
- * This is the ActiveQuery class for [[Video]].
+ * This is the ActiveQuery class for [[Forum]].
  *
  * @author Alexander Schilling
  *
- * @see Video
+ * @see Forum
  */
-class VideoQuery extends ActiveQuery
+class ForumQuery extends ActiveQuery
 {
 
     /**
@@ -43,9 +44,9 @@ class VideoQuery extends ActiveQuery
     /**
      * Return comments count
      *
-     * @return VideoQuery
+     * @return ForumQuery
      */
-    public function withCommentsCount(): VideoQuery
+    public function withCommentsCount(): ForumQuery
     {
 
         if ($this->select === null) {
@@ -54,8 +55,8 @@ class VideoQuery extends ActiveQuery
 
         $countQuery = (new Query())->select('COUNT(*)')->from(Comment::tableName())
             ->where(
-                'material_type=:typeVideo AND material_id=video.id', [
-                    ':typeVideo' => Video::MATERIAL_ID,
+                'material_type=:typeForum AND material_id=forum.id', [
+                    ':typeForum' => Material::MATERIAL_FORUM_ID,
                 ]
             );
 

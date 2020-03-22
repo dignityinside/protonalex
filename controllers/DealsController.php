@@ -3,10 +3,11 @@
 namespace app\controllers;
 
 use app\components\UserPermissions;
-use app\models\Category;
+use app\models\category\Category;
+use app\models\Material;
 use app\models\User;
-use app\models\Deals;
-use app\models\DealsSearch;
+use app\models\deals\Deals;
+use app\models\deals\DealsSearch;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -29,21 +30,16 @@ class DealsController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only'  => ['index', 'view', 'category', 'user', 'create', 'update', 'my', 'admin', 'delete'],
+                'only'  => ['index', 'view', 'category', 'create', 'update', 'admin', 'delete'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'category', 'view', 'user'],
+                        'actions' => ['index', 'category', 'view'],
                         'allow'   => true,
                         'roles'   => ['?', '@'],
                     ],
                     [
                         'allow'   => true,
-                        'actions' => ['create', 'update', 'my'],
-                        'roles'   => ['@'],
-                    ],
-                    [
-                        'allow'   => true,
-                        'actions' => ['admin', 'delete'],
+                        'actions' => ['create', 'update', 'admin', 'delete'],
                         'roles'   => [UserPermissions::ADMIN_DEALS],
                     ],
                 ],
@@ -81,32 +77,9 @@ class DealsController extends Controller
     }
 
     /**
-     * List current user deals
-     *
-     * @return string
-     */
-    public function actionMy()
-    {
-
-        $query = Deals::find()->where(['user_id' => \Yii::$app->user->id])->orderBy('created DESC');
-
-        $dataProvider = new ActiveDataProvider(
-            [
-                'query'      => $query,
-                'pagination' => [
-                    'pageSize' => 15,
-                ],
-            ]
-        );
-
-        return $this->render('my', ['dataProvider' => $dataProvider]);
-
-    }
-
-    /**
      * Creates a new deal
      *
-     * If creation is successful, the browser will be redirected to the 'my' page.
+     * If creation is successful, the browser will be redirected to the 'admin' page.
      *
      * @return mixed
      */
@@ -115,10 +88,10 @@ class DealsController extends Controller
 
         $model = new Deals();
 
-        $model->scenario = UserPermissions::canAdminDeals() ? Deals::SCENARIO_ADMIN : Deals::SCENARIO_CREATE;
+        $model->scenario = UserPermissions::canAdminDeals() ? Material::SCENARIO_ADMIN : Material::SCENARIO_CREATE;
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['deals/my']);
+            return $this->redirect(['deals/admin']);
         } else {
             return $this->render('create', ['model' => $model]);
         }
@@ -146,7 +119,7 @@ class DealsController extends Controller
             throw new ForbiddenHttpException('Вы не можете редактировать эту сделку.');
         }
 
-        $model->scenario = UserPermissions::canAdminDeals() ? Deals::SCENARIO_ADMIN : Deals::SCENARIO_UPDATE;
+        $model->scenario = UserPermissions::canAdminDeals() ? Material::SCENARIO_ADMIN : Material::SCENARIO_UPDATE;
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['/deals/view', 'id' => $model->id]);
@@ -190,7 +163,7 @@ class DealsController extends Controller
      */
     public function actionCategory(string $categoryName) {
 
-        $category = Category::findOne(['slug' => $categoryName, 'material_id' => Category::MATERIAL_DEALS]);
+        $category = Category::findOne(['slug' => $categoryName, 'material_id' => Material::MATERIAL_DEALS_ID]);
 
         if (!$category) {
             throw new NotFoundHttpException("Категория не найдена.");
@@ -209,34 +182,6 @@ class DealsController extends Controller
     }
 
     /**
-     * Lists all deals from user
-     *
-     * @param string|null $userName
-     *
-     * @return mixed
-     *
-     * @throws NotFoundHttpException
-     */
-    public function actionUser(string $userName = null)
-    {
-
-        $user = User::findOne(['username' => $userName]);
-
-        if (!$user) {
-            throw new NotFoundHttpException("Пользователь ещё не публиковал ни одной скидки.");
-        }
-
-        $searchModel = new DealsSearch(['userId' => $user->id]);
-
-        return $this->render('user', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $searchModel->search(\Yii::$app->request->queryParams),
-            'userName' => $user->username
-        ]);
-
-    }
-
-    /**
      * Action view
      *
      * @param int $id Id
@@ -250,14 +195,14 @@ class DealsController extends Controller
 
         $model = Deals::findOne([
             'id' => $id,
-            'status_id' => Deals::STATUS_PUBLIC
+            'status_id' => Material::STATUS_PUBLIC
         ]);
 
         if (!$model) {
             throw new NotFoundHttpException("Скидки не найдены.");
         }
 
-        $model->countViews();
+        $model->countHits(Material::MATERIAL_DEALS_NAME);
 
         return $this->render('view', [
             'model' => $model,

@@ -1,19 +1,20 @@
 <?php
 
-namespace app\models;
+namespace app\models\deals;
 
-use demi\comments\common\models\Comment;
+use app\models\Material;
 use yii\db\Query;
 use yii\db\ActiveQuery;
+use demi\comments\common\models\Comment;
 
 /**
- * This is the ActiveQuery class for [[Forum]].
+ * This is the ActiveQuery class for [[Deals]].
  *
  * @author Alexander Schilling
  *
- * @see Forum
+ * @see Deals
  */
-class ForumQuery extends ActiveQuery
+class DealsQuery extends ActiveQuery
 {
 
     /**
@@ -43,9 +44,9 @@ class ForumQuery extends ActiveQuery
     /**
      * Return comments count
      *
-     * @return ForumQuery
+     * @return DealsQuery
      */
-    public function withCommentsCount(): ForumQuery
+    public function withCommentsCount(): DealsQuery
     {
 
         if ($this->select === null) {
@@ -54,8 +55,8 @@ class ForumQuery extends ActiveQuery
 
         $countQuery = (new Query())->select('COUNT(*)')->from(Comment::tableName())
             ->where(
-                'material_type=:typeForum AND material_id=forum.id', [
-                    ':typeForum' => Forum::MATERIAL_ID,
+                'material_type=:typeDeals AND material_id=deals.id', [
+                    ':typeDeals' => Material::MATERIAL_DEALS_ID,
                 ]
             );
 

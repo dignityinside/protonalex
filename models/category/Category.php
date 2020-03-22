@@ -1,7 +1,8 @@
 <?php
 
-namespace app\models;
+namespace app\models\category;
 
+use app\models\Material;
 use Dignity\TranslitHelper;
 
 /**
@@ -16,28 +17,8 @@ use Dignity\TranslitHelper;
  * @property string $description
  * @property int $order
  */
-class Category extends \yii\db\ActiveRecord
+class Category extends Material
 {
-
-    /** @var int */
-    const MATERIAL_POST = 1;
-
-    /** @var int */
-    const MATERIAL_VIDEO = 3;
-
-    /** @var int */
-    const MATERIAL_DEALS = 4;
-
-    /** @var int */
-    const MATERIAL_FORUM = 5;
-
-    /** @var array */
-    const MATERIAL_MAPPING = [
-        self::MATERIAL_POST => 'Post',
-        self::MATERIAL_VIDEO => 'Video',
-        self::MATERIAL_DEALS => 'Deals',
-        self::MATERIAL_FORUM => 'Forum',
-    ];
 
     /**
      * {@inheritdoc}

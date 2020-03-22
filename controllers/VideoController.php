@@ -3,10 +3,11 @@
 namespace app\controllers;
 
 use app\components\UserPermissions;
-use app\models\Category;
+use app\models\category\Category;
+use app\models\Material;
 use app\models\User;
-use app\models\Video;
-use app\models\VideoSearch;
+use app\models\video\Video;
+use app\models\video\VideoSearch;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -29,21 +30,16 @@ class VideoController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only'  => ['index', 'watch', 'category', 'user', 'create', 'update', 'my', 'admin', 'delete'],
+                'only'  => ['index', 'watch', 'category', 'create', 'update', 'admin', 'delete'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'category', 'watch', 'user'],
+                        'actions' => ['index', 'category', 'watch'],
                         'allow'   => true,
                         'roles'   => ['?', '@'],
                     ],
                     [
                         'allow'   => true,
-                        'actions' => ['create', 'update', 'my'],
-                        'roles'   => ['@'],
-                    ],
-                    [
-                        'allow'   => true,
-                        'actions' => ['admin', 'delete'],
+                        'actions' => ['create', 'update', 'admin', 'delete'],
                         'roles'   => [UserPermissions::ADMIN_VIDEO],
                     ],
                 ],
@@ -81,32 +77,9 @@ class VideoController extends Controller
     }
 
     /**
-     * List current user videos
-     *
-     * @return string
-     */
-    public function actionMy()
-    {
-
-        $query = Video::find()->where(['user_id' => \Yii::$app->user->id])->orderBy('published DESC');
-
-        $dataProvider = new ActiveDataProvider(
-            [
-                'query'      => $query,
-                'pagination' => [
-                    'pageSize' => 15,
-                ],
-            ]
-        );
-
-        return $this->render('my', ['dataProvider' => $dataProvider]);
-
-    }
-
-    /**
      * Creates a new video
      *
-     * If creation is successful, the browser will be redirected to the 'my' page.
+     * If creation is successful, the browser will be redirected to the 'admin' page.
      *
      * @return mixed
      */
@@ -115,10 +88,10 @@ class VideoController extends Controller
 
         $model = new Video();
 
-        $model->scenario = UserPermissions::canAdminPost() ? Video::SCENARIO_ADMIN : Video::SCENARIO_CREATE;
+        $model->scenario = UserPermissions::canAdminPost() ? Material::SCENARIO_ADMIN : Material::SCENARIO_CREATE;
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['video/my']);
+            return $this->redirect(['video/admin']);
         } else {
             return $this->render('create', ['model' => $model]);
         }
@@ -146,7 +119,7 @@ class VideoController extends Controller
             throw new ForbiddenHttpException('Вы не можете редактировать это видео.');
         }
 
-        $model->scenario = UserPermissions::canAdminVideo() ? Video::SCENARIO_ADMIN : Video::SCENARIO_UPDATE;
+        $model->scenario = UserPermissions::canAdminVideo() ? Material::SCENARIO_ADMIN : Material::SCENARIO_UPDATE;
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['/video/watch', 'id' => $model->id]);
@@ -190,7 +163,7 @@ class VideoController extends Controller
      */
     public function actionCategory(string $categoryName) {
 
-        $category = Category::findOne(['slug' => $categoryName, 'material_id' => Category::MATERIAL_VIDEO]);
+        $category = Category::findOne(['slug' => $categoryName, 'material_id' => Material::MATERIAL_VIDEO_ID]);
 
         if (!$category) {
             throw new NotFoundHttpException("Категория не найдена.");
@@ -209,34 +182,6 @@ class VideoController extends Controller
     }
 
     /**
-     * Lists all videos from user
-     *
-     * @param string|null $userName
-     *
-     * @return mixed
-     *
-     * @throws NotFoundHttpException
-     */
-    public function actionUser(string $userName = null)
-    {
-
-        $user = User::findOne(['username' => $userName]);
-
-        if (!$user) {
-            throw new NotFoundHttpException("Пользователь ещё не публиковал ни одного видео.");
-        }
-
-        $searchModel = new VideoSearch(['userId' => $user->id]);
-
-        return $this->render('user', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $searchModel->search(\Yii::$app->request->queryParams),
-            'userName' => $user->username
-        ]);
-
-    }
-
-    /**
      * Action watch
      *
      * @param int $id Id
@@ -250,14 +195,14 @@ class VideoController extends Controller
 
         $model = Video::findOne([
             'id' => $id,
-            'status_id' => Video::STATUS_PUBLIC
+            'status_id' => Material::STATUS_PUBLIC
         ]);
 
         if (!$model) {
             throw new NotFoundHttpException("Видео не найдено.");
         }
 
-        $model->countViews();
+        $model->countHits(Material::MATERIAL_VIDEO_NAME);
 
         return $this->render('watch', [
             'model' => $model,

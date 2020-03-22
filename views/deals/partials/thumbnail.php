@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /** @var $this yii\web\View */
-/** @var $model app\models\Deals */
+/** @var $model app\models\deals\Deals */
 
 if ($model->thumbnail) {
 

@@ -1,12 +1,13 @@
 <?php
 
-namespace app\models;
+namespace app\models\post;
 
+use app\models\Material;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * PostSearch represents the model behind the search form about `app\models\Post`.
+ * PostSearch represents the model behind the search form about `app\models\post\Post`.
  *
  * @author Alexander Schilling
  */
@@ -78,7 +79,7 @@ class PostSearch extends Post
         // grid filtering conditions
         $query->andFilterWhere(
             [
-                'status_id' => Post::STATUS_PUBLIC,
+                'status_id' => Material::STATUS_PUBLIC,
                 'ontop'     => Post::SHOW_ON_TOP
             ]
         );

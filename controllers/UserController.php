@@ -31,7 +31,7 @@ class UserController extends Controller
 
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only'  => ['update'],
                 'rules' => [
                     [
@@ -47,7 +47,7 @@ class UserController extends Controller
                 ],
             ],
             'verbs'  => [
-                'class'   => VerbFilter::className(),
+                'class'   => VerbFilter::class,
                 'actions' => [
                     'delete' => ['post'],
                 ],

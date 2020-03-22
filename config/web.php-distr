@@ -64,16 +64,14 @@ $config = [
                 '<_c:[\w\-]+>/delete/<id:\d+>'                                                        => '<_c>/delete',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>'                                                  => '<_c>/<_a>',
                 // video
-                'video/<_a:(my|admin|create|update|delete)>' => 'video/<_a>',
+                'video/<_a:(admin|create|update|delete)>' => 'video/<_a>',
                 'video/watch/<id:\d+>' => 'video/watch',
                 'video/category/<categoryName:[\w\-]+>' => 'video/category',
-                'video/user/<userName:[\w\-]+>' => 'video/user',
                 'video/<sortBy:[\w\-]+>' => 'video/index',
                 // deals
-                'deals/<_a:(my|admin|create|update|delete)>' => 'deals/<_a>',
+                'deals/<_a:(admin|create|update|delete)>' => 'deals/<_a>',
                 'deals/view/<id:\d+>' => 'deals/view',
                 'deals/category/<categoryName:[\w\-]+>' => 'deals/category',
-                'deals/user/<userName:[\w\-]+>' => 'deals/user',
                 'deals/<sortBy:[\w\-]+>' => 'deals/index',
                 // forum
                 'forum/<_a:(my|admin|update|delete|index)>' => 'forum/<_a>',

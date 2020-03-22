@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /** @var $this yii\web\View */
-/** @var $model app\models\Video */
+/** @var $model app\models\video\Video */
 
 ?>
 
@@ -22,7 +22,7 @@ use yii\helpers\Html;
 
     <div class="video-view__footer">
         <i class="fa fa-clock-o"></i> <?= date('d.m.Y', Html::encode($model->published)); ?>
-        <i class="fa fa-user"></i> <?= Html::encode($model->author); ?>
+        <i class="fa fa-youtube"></i> <?= Html::encode($model->author); ?>
         <i class="fa fa-eye"></i> <?= Html::encode($model->hits); ?>
         <?php if ($model->commentsCount > 0): ?>
             <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>

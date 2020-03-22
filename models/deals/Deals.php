@@ -1,10 +1,10 @@
 <?php
 
-namespace app\models;
+namespace app\models\deals;
 
+use app\models\Material;
 use app\components\UserPermissions;
-use yii\helpers\ArrayHelper;
-use yii\db\ActiveRecord;
+use app\models\category\Category;
 
 /**
  * This is the model class for table "deals".
@@ -31,35 +31,8 @@ use yii\db\ActiveRecord;
  * @property string $coupon
  * @property string $valid_until
  */
-class Deals extends ActiveRecord
+class Deals extends Material
 {
-
-    /** @var int */
-    const MATERIAL_ID = 4;
-
-    /** @var int */
-    const STATUS_PUBLIC = 1;
-
-    /** @var int */
-    const STATUS_HIDDEN = 0;
-
-    /** @var array */
-    const STATUS = [
-        self::STATUS_PUBLIC => 'Опубликована',
-        self::STATUS_HIDDEN  => 'Не опубликованна',
-    ];
-
-    /** @var string */
-    const SCENARIO_CREATE = 'create';
-
-    /** @var string */
-    const SCENARIO_UPDATE = 'update';
-
-    /** @var string */
-    const SCENARIO_ADMIN = 'admin';
-
-    /** @var string Count of all comments */
-    public $commentsCount = 0;
 
     const USD = 'USD';
     const EUR = 'EUR';
@@ -104,7 +77,7 @@ class Deals extends ActiveRecord
 
         $scenarios = parent::scenarios();
 
-        $scenarios[self::SCENARIO_CREATE] = [
+        $scenarios[Material::SCENARIO_CREATE] = [
             'title',
             'content',
             'thumbnail',
@@ -119,7 +92,7 @@ class Deals extends ActiveRecord
             'valid_until'
         ];
 
-        $scenarios[self::SCENARIO_UPDATE] = [
+        $scenarios[Material::SCENARIO_UPDATE] = [
             'title',
             'content',
             'thumbnail',
@@ -134,7 +107,7 @@ class Deals extends ActiveRecord
             'valid_until'
         ];
 
-        $scenarios[self::SCENARIO_ADMIN] = [
+        $scenarios[Material::SCENARIO_ADMIN] = [
             'title',
             'content',
             'thumbnail',
@@ -199,16 +172,6 @@ class Deals extends ActiveRecord
     }
 
     /**
-     * Returns user
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(User::class, ['id' => 'user_id']);
-    }
-
-    /**
      * Return category
      *
      * @return \yii\db\ActiveQuery
@@ -216,51 +179,7 @@ class Deals extends ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::class, ['id' => 'category_id'])
-            ->andOnCondition(['material_id' => Category::MATERIAL_DEALS]);
-    }
-
-    /**
-     * Return status label
-     *
-     * @return mixed
-     */
-    public function getStatusLabel()
-    {
-        return ArrayHelper::getValue(self::STATUS, $this->status_id);
-    }
-
-    /**
-     * Count hits
-     */
-    public function countViews()
-    {
-
-        global $_COOKIE;
-
-        $name_cookies = \Yii::$app->name . '-views-deals-' . $this->id;
-        $expire = 2592000; // days
-        $slug = '/deals/' . $this->id;
-        $all_slug = [];
-
-        if (isset($_COOKIE[$name_cookies])) {
-            $all_slug = explode('|', $_COOKIE[$name_cookies]);
-        }
-
-        if (in_array($slug, $all_slug)) {
-            false;
-        } else {
-
-            $all_slug[] = $slug;
-            $all_slug = array_unique($all_slug);
-            $all_slug = implode('|', $all_slug);
-            $expire = time() + $expire;
-
-            @setcookie($name_cookies, $all_slug, $expire);
-
-            $this->updateCounters(["hits" => 1]);
-
-        }
-
+            ->andOnCondition(['material_id' => Material::MATERIAL_DEALS_ID]);
     }
 
     /**
@@ -397,7 +316,7 @@ class Deals extends ActiveRecord
             }
 
             if (empty($this->allow_comments)) {
-                $this->allow_comments = self::STATUS_PUBLIC;
+                $this->allow_comments = Material::STATUS_PUBLIC;
             }
 
             if (empty($this->author)) {
@@ -415,7 +334,8 @@ class Deals extends ActiveRecord
         $this->updated = time();
 
         if (!UserPermissions::canAdminDeals()) {
-            $this->status_id = \Yii::$app->params['deals']['preModeration'] ? self::STATUS_HIDDEN : self::STATUS_PUBLIC;
+            $this->status_id = \Yii::$app->params['deals']['preModeration']
+                ? Material::STATUS_DRAFT : Material::STATUS_PUBLIC;
         }
 
         return true;

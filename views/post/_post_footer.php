@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use app\helpers\Text;
 
-/* @var $model app\models\Post */
+/* @var $model app\models\post\Post */
 
 ?>
 
@@ -15,8 +15,8 @@ use app\helpers\Text;
 
     <i class="fa fa-user"></i>
 
-    <?php if (isset($model->author->username)) : ?>
-        <?= Html::a($model->author->username, ['/user/view', 'id' => $model->user_id]); ?>
+    <?php if (isset($model->user->username)) : ?>
+        <?= Html::a($model->user->username, ['/user/view', 'id' => $model->user_id]); ?>
     <?php else: ?>
         <?= 'Аноним'; ?>
     <?php endif; ?>

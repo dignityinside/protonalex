@@ -2,8 +2,9 @@
 
 namespace app\models\sitemap;
 
+use app\models\Material;
 use yii\helpers\Url;
-use app\models\Forum;
+use app\models\forum\Forum;
 use demi\sitemap\interfaces\Basic;
 
 /**
@@ -39,7 +40,7 @@ class SitemapForum extends Forum implements Basic
     {
         return static::find()
             ->select(['title', 'created', 'id'])
-            ->where(['status_id' => Forum::STATUS_PUBLIC])
+            ->where(['status_id' => Material::STATUS_PUBLIC])
             ->orderBy(['created' => SORT_DESC]);
     }
 

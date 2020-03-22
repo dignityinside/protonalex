@@ -2,8 +2,9 @@
 
 namespace app\commands;
 
+use app\models\Material;
 use app\models\User;
-use app\models\Video;
+use app\models\video\Video;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
@@ -162,7 +163,7 @@ class VideoController extends Controller
             $model->code = $video['code'];
             $model->published = $video['published'];
             $model->author = $author;
-            $model->status_id = \Yii::$app->params['video']['preModeration'] ? Video::STATUS_HIDDEN : Video::STATUS_PUBLIC;;
+            $model->status_id = \Yii::$app->params['video']['preModeration'] ? Material::STATUS_DRAFT : Material::STATUS_PUBLIC;;
             $model->thumbnail = $video['thumbnail'];
             $model->platform = $video['platform'];
             $model->user_id = \Yii::$app->params['video']['userId'];

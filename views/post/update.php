@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use app\components\UserPermissions;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Post */
+/* @var $model app\models\post\Post */
 
 $this->title = 'Обновить запись';
 

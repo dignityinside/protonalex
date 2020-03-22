@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace app\models\category;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * CategorySearch represents the model behind the search form of `app\models\Category`.
+ * CategorySearch represents the model behind the search form of `app\models\category\Category`.
  *
  * @author Alexander Schilling
  */

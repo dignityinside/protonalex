@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CategorySearch */
+/* @var $searchModel app\models\category\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Категории';
@@ -32,10 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'slug',
             [
                 'attribute'=>'material_id',
-                'filter' => \app\models\Category::MATERIAL_MAPPING,
+                'filter' => \app\models\Material::MATERIAL_MAPPING,
                 'format' => 'text',
                 'content' => function($data){
-                    return ArrayHelper::getValue(\app\models\Category::MATERIAL_MAPPING, $data->material_id);
+                    return ArrayHelper::getValue(\app\models\Material::MATERIAL_MAPPING, $data->material_id);
                 },
             ],
             'order',

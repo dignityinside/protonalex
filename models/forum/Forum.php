@@ -1,10 +1,10 @@
 <?php
 
-namespace app\models;
+namespace app\models\forum;
 
+use app\models\Material;
 use app\components\UserPermissions;
-use yii\helpers\ArrayHelper;
-use yii\db\ActiveRecord;
+use app\models\category\Category;
 
 /**
  * This is the model class for table "forum".
@@ -24,35 +24,8 @@ use yii\db\ActiveRecord;
  * @property string $meta_keywords
  * @property string $meta_description
  */
-class Forum extends ActiveRecord
+class Forum extends Material
 {
-
-    /** @var int */
-    const MATERIAL_ID = 5;
-
-    /** @var int */
-    const STATUS_PUBLIC = 1;
-
-    /** @var int */
-    const STATUS_HIDDEN = 0;
-
-    /** @var array */
-    const STATUS = [
-        self::STATUS_PUBLIC => 'Опубликована',
-        self::STATUS_HIDDEN  => 'Не опубликованна',
-    ];
-
-    /** @var string */
-    const SCENARIO_CREATE = 'create';
-
-    /** @var string */
-    const SCENARIO_UPDATE = 'update';
-
-    /** @var string */
-    const SCENARIO_ADMIN = 'admin';
-
-    /** @var string Count of all comments */
-    public $commentsCount = 0;
 
     /**
      * Table name
@@ -93,7 +66,7 @@ class Forum extends ActiveRecord
 
         $scenarios = parent::scenarios();
 
-        $scenarios[self::SCENARIO_CREATE] = [
+        $scenarios[Material::SCENARIO_CREATE] = [
             'title',
             'content',
             'category_id',
@@ -101,7 +74,7 @@ class Forum extends ActiveRecord
             'allow_comments'
         ];
 
-        $scenarios[self::SCENARIO_UPDATE] = [
+        $scenarios[Material::SCENARIO_UPDATE] = [
             'title',
             'content',
             'category_id',
@@ -109,7 +82,7 @@ class Forum extends ActiveRecord
             'allow_comments',
         ];
 
-        $scenarios[self::SCENARIO_ADMIN] = [
+        $scenarios[Material::SCENARIO_ADMIN] = [
             'title',
             'content',
             'status_id',
@@ -160,16 +133,6 @@ class Forum extends ActiveRecord
     }
 
     /**
-     * Returns user
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(User::class, ['id' => 'user_id']);
-    }
-
-    /**
      * Return category
      *
      * @return \yii\db\ActiveQuery
@@ -177,51 +140,7 @@ class Forum extends ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::class, ['id' => 'category_id'])
-            ->andOnCondition(['material_id' => Category::MATERIAL_FORUM]);
-    }
-
-    /**
-     * Return status label
-     *
-     * @return mixed
-     */
-    public function getStatusLabel()
-    {
-        return ArrayHelper::getValue(self::STATUS, $this->status_id);
-    }
-
-    /**
-     * Count hits
-     */
-    public function countViews()
-    {
-
-        global $_COOKIE;
-
-        $name_cookies = \Yii::$app->name . '-views-forum-' . $this->id;
-        $expire = 2592000; // days
-        $slug = '/forum/' . $this->id;
-        $all_slug = [];
-
-        if (isset($_COOKIE[$name_cookies])) {
-            $all_slug = explode('|', $_COOKIE[$name_cookies]);
-        }
-
-        if (in_array($slug, $all_slug)) {
-            false;
-        } else {
-
-            $all_slug[] = $slug;
-            $all_slug = array_unique($all_slug);
-            $all_slug = implode('|', $all_slug);
-            $expire = time() + $expire;
-
-            @setcookie($name_cookies, $all_slug, $expire);
-
-            $this->updateCounters(["hits" => 1]);
-
-        }
-
+            ->andOnCondition(['material_id' => Material::MATERIAL_FORUM_ID]);
     }
 
     /**
@@ -249,7 +168,7 @@ class Forum extends ActiveRecord
             }
 
             if (empty($this->allow_comments)) {
-                $this->allow_comments = self::STATUS_PUBLIC;
+                $this->allow_comments = Material::STATUS_PUBLIC;
             }
 
             $this->hits = 0;
@@ -263,7 +182,8 @@ class Forum extends ActiveRecord
         $this->updated = time();
 
         if (!UserPermissions::canAdminForum()) {
-            $this->status_id = \Yii::$app->params['forum']['preModeration'] ? self::STATUS_HIDDEN : self::STATUS_PUBLIC;
+            $this->status_id = \Yii::$app->params['forum']['preModeration']
+                ? Material::STATUS_DRAFT : Material::STATUS_PUBLIC;
         }
 
         return true;

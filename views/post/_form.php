@@ -12,7 +12,7 @@ use app\assets\ClipboardAsset;
 use app\assets\ImgurUploaderAsset;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Post */
+/* @var $model app\models\post\Post */
 /* @var $form yii\widgets\ActiveForm */
 
 MarkdownEditorAsset::register($this);
@@ -85,7 +85,7 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
         ?>
     <?php endif ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(\app\models\Category::getAllCategories($model::MATERIAL_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
+    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(\app\models\category\Category::getAllCategories(\app\models\Material::MATERIAL_POST_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
 
     <?= $form->field($model, 'allow_comments')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
 

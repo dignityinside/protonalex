@@ -6,7 +6,7 @@ use yii\helpers\Markdown;
 use app\helpers\Text;
 
 /** @var $this yii\web\View */
-/** @var $model app\models\Deals */
+/** @var $model app\models\deals\Deals */
 
 ?>
 
@@ -26,11 +26,6 @@ use app\helpers\Text;
                 <i class="fa fa-eye"></i> <?= Html::encode($model->hits); ?>
                 <?php if ($model->commentsCount > 0): ?>
                     <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>
-                <?php endif; ?>
-                <i class="fa fa-user"></i> <?php if (!empty($model->user_id)) : ?>
-                    <?= Html::encode($model->user->username); ?>
-                <?php else: ?>
-                    <?= 'Аноним'; ?>
                 <?php endif; ?>
             </div>
 

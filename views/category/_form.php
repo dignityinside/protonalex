@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Category */
+/* @var $model app\models\category\Category */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'material_id')->dropDownList(\app\models\Category::MATERIAL_MAPPING) ?>
+    <?= $form->field($model, 'material_id')->dropDownList(\app\models\Material::MATERIAL_MAPPING) ?>
 
     <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
 

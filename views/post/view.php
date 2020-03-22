@@ -7,7 +7,7 @@ use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Post */
+/* @var $model app\models\post\Post */
 
 $this->title = Html::encode($model->title);
 

@@ -1,16 +1,17 @@
 <?php
 
-namespace app\models;
+namespace app\models\deals;
 
+use app\models\Material;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * ForumSearch represents the model behind the search form about `app\models\Forum`.
+ * DealsSearch represents the model behind the search form about `app\models\deals\Deals`.
  *
  * @author Alexander Schilling
  */
-class ForumSearch extends Forum
+class DealsSearch extends Deals
 {
 
     /** @var string */
@@ -22,14 +23,19 @@ class ForumSearch extends Forum
     /** @var string */
     const SORT_BY_PUBLISHED_ASC = 'old';
 
-    const SORT_BY_UNANSWERED = 'unanswered';
+    /** @var string */
+    const FILTER_BY_EXPIRED = 'expired';
+
+    /** @var string */
+    const FILTER_BY_EXPIRED_SOON = 'soon';
 
     /** @var array */
     const SORT_BY = [
         self::SORT_BY_HITS,
         self::SORT_BY_COMMENTS,
         self::SORT_BY_PUBLISHED_ASC,
-        self::SORT_BY_UNANSWERED
+        self::FILTER_BY_EXPIRED_SOON,
+        self::FILTER_BY_EXPIRED
     ];
 
     /** @var string */
@@ -70,13 +76,13 @@ class ForumSearch extends Forum
     public function search($params)
     {
 
-        $query = Forum::find();
+        $query = Deals::find();
 
         $dataProvider = new ActiveDataProvider(
             [
                 'query' => $query,
                 'pagination' => [
-                    'pageSize' => \Yii::$app->params['forum']['pageSize'],
+                    'pageSize' => \Yii::$app->params['deals']['pageSize'],
                 ],
             ]
         );
@@ -89,7 +95,7 @@ class ForumSearch extends Forum
 
         // Filter by status
 
-        $query->andFilterWhere(['status_id' => Forum::STATUS_PUBLIC]);
+        $query->andFilterWhere(['status_id' => Material::STATUS_PUBLIC]);
 
         // Filter by category
 
@@ -103,18 +109,30 @@ class ForumSearch extends Forum
             $query->andWhere(['user_id' => $this->userId]);
         }
 
-        // Sort by
+        if ($this->sortBy === self::FILTER_BY_EXPIRED) {
+            $query->andWhere(['<','valid_until', new \yii\db\Expression('now()')]);
+        } elseif ($this->sortBy === self::FILTER_BY_EXPIRED_SOON) {
+            $query->andWhere(['<>','valid_until', '']);
+            $query->andWhere(['>','valid_until', new \yii\db\Expression('now()')]);
+        } else {
+            // Filter expired deals
+            $query->andWhere(['is', 'valid_until', new \yii\db\Expression('null')]);
+            $query->orWhere(['>','valid_until', new \yii\db\Expression('now()')]);
+        }
 
-        $query->withCommentsCount()->all();
+        // Sort by
 
         if ($this->sortBy === self::SORT_BY_HITS) {
             $query->orderBy('hits DESC');
         } elseif ($this->sortBy === self::SORT_BY_COMMENTS) {
+            $query->withCommentsCount()->all();
             $query->orderBy('commentsCount DESC');
         } elseif ($this->sortBy === self::SORT_BY_PUBLISHED_ASC) {
             $query->orderBy('created ASC');
-        } elseif ($this->sortBy === self::SORT_BY_UNANSWERED) {
-            $query->orderBy('commentsCount, created DESC');
+        } elseif ($this->sortBy === self::FILTER_BY_EXPIRED_SOON) {
+            $query->orderBy('valid_until ASC');
+        } elseif ($this->sortBy === self::FILTER_BY_EXPIRED) {
+            $query->orderBy('valid_until DESC');
         } else {
             $query->orderBy('created DESC');
         }

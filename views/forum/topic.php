@@ -7,7 +7,7 @@ use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\forum */
+/* @var $model app\models\forum\Forum */
 
 ForumAsset::register($this);
 

@@ -4,10 +4,10 @@ use app\components\UserPermissions;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use app\models\Category;
+use app\models\category\Category;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Video */
+/* @var $model app\models\video\Video */
 /* @var $form yii\widgets\ActiveForm */
 
 ?>
@@ -26,14 +26,14 @@ use app\models\Category;
 
     <?= $form->field($model, 'author')->textInput(['maxlength' => true])->hint('Например: rooland') ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::getAllCategories($model::MATERIAL_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
+    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::getAllCategories(\app\models\Material::MATERIAL_VIDEO_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
 
     <?= $form->field($model, 'language')->dropDownList($model::LANGUAGE) ?>
 
     <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
 
     <?php if (UserPermissions::canAdminVideo()): ?>
-        <?= $form->field($model, 'status_id')->dropDownList($model::STATUS) ?>
+        <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
         <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
         <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
     <?php endif ?>

@@ -2,10 +2,10 @@
 
 use yii\helpers\Url;
 use demi\comments\frontend\widgets\Comments;
-use app\models\Forum;
+use app\models\forum\Forum;
 
 /* @var $this yii\web\View */
-/** @var $model app\models\Forum */
+/** @var $model Forum */
 
 ?>
 
@@ -13,7 +13,7 @@ use app\models\Forum;
 
     <?= Comments::widget(
         [
-            'materialType' => Forum::MATERIAL_ID,
+            'materialType' => \app\models\Material::MATERIAL_FORUM_ID,
             'materialId' => $model->id,
             'options' => [
                 'class' => 'comments list-unstyled',

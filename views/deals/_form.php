@@ -4,14 +4,14 @@ use app\components\UserPermissions;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use app\models\Category;
+use app\models\category\Category;
 use app\assets\MarkdownEditorAsset;
 use app\assets\ClipboardAsset;
 use app\assets\ImgurUploaderAsset;
 use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Deals */
+/* @var $model app\models\deals\Deals */
 /* @var $form yii\widgets\ActiveForm */
 
 ClipboardAsset::register($this);
@@ -24,9 +24,19 @@ MarkdownEditorAsset::register($this);
 
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::getAllCategories($model::MATERIAL_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
+        <?= $form->field($model, 'category_id')->dropDownList(
+            ArrayHelper::map(
+                Category::getAllCategories(\app\models\Material::MATERIAL_DEALS_ID),
+                'id',
+                'name'
+            ),
+            [
+                'prompt' => 'Wähle eine Kategorie aus'
+            ]
+        ); ?>
 
-        <?= $form->field($model, 'title')->textInput(['maxlength' => true])->hint('Короткий и содержательный заголовок.') ?>
+        <?= $form->field($model, 'title')->textInput(['maxlength' => true])
+                 ->hint('Короткий и содержательный заголовок.') ?>
 
         <?= $form->field(
             $model, 'content', [
@@ -36,7 +46,8 @@ MarkdownEditorAsset::register($this);
 
         <?= $form->field($model, 'author')->textInput(['maxlength' => true])->hint('Например: rooland') ?>
 
-        <?= $form->field($model, 'url')->textInput(['maxlength' => true])->hint('Добавьте сюда ссылку на сайт, где можно найти сделку и получить дополнительную информацию.') ?>
+        <?= $form->field($model, 'url')->textInput(['maxlength' => true])
+                 ->hint('Добавьте сюда ссылку на сайт, где можно найти сделку и получить дополнительную информацию.') ?>
 
         <div id="imgur_add_img">
             Нажмите здесь или перетащите файл, что бы загрузить картинку.
@@ -44,7 +55,8 @@ MarkdownEditorAsset::register($this);
         <input id="imgur_img_upload_field" type="file">
         <div id="imgur_img_list"></div>
 
-        <?= $form->field($model, 'thumbnail')->textInput(['maxlength' => true])->hint('Добавьте сюда ссылку на картинку') ?>
+        <?= $form->field($model, 'thumbnail')->textInput(['maxlength' => true])
+                 ->hint('Добавьте сюда ссылку на картинку') ?>
 
         <?= $form->field($model, 'valid_until')->widget(DatePicker::class, [
             'language' => 'ru',
@@ -52,16 +64,19 @@ MarkdownEditorAsset::register($this);
             'options' => ['class' => 'form-control']
         ])->hint('Если сделка заканчивается в определенный день, пожалуйста, введите эту дату.') ?>
 
-        <?= $form->field($model, 'price_before')->textInput(['maxlength' => true])->hint('Пожалуйста, введите цену до скидки в рублях (по умолчанию), евро (eur) или долларах (usd).') ?>
+        <?= $form->field($model, 'price_before')->textInput(['maxlength' => true])
+                 ->hint('Пожалуйста, введите цену до скидки в рублях (по умолчанию), евро (eur) или долларах (usd).') ?>
 
-        <?= $form->field($model, 'price_after')->textInput(['maxlength' => true])->hint('Пожалуйста, введите цену после скидки в рублях, euro или usd') ?>
+        <?= $form->field($model, 'price_after')->textInput(['maxlength' => true])
+                 ->hint('Пожалуйста, введите цену после скидки в рублях, euro или usd') ?>
 
-        <?= $form->field($model, 'coupon')->textInput(['maxlength' => true])->hint('Если у вас есть купон, пожалуйста, введите здесь.') ?>
+        <?= $form->field($model, 'coupon')->textInput(['maxlength' => true])
+                 ->hint('Если у вас есть купон, пожалуйста, введите здесь.') ?>
 
         <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
 
         <?php if (UserPermissions::canAdminDeals()): ?>
-            <?= $form->field($model, 'status_id')->dropDownList($model::STATUS) ?>
+            <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
             <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
         <?php endif ?>

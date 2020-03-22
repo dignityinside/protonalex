@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\CategorySearch */
+/* @var $model app\models\category\CategorySearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'material_id')->dropDownList(\app\models\Category::MATERIAL_MAPPING) ?>
+    <?= $form->field($model, 'material_id')->dropDownList(\app\models\Material::MATERIAL_MAPPING) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Найти', ['class' => 'btn btn-primary']) ?>

@@ -2,8 +2,9 @@
 
 namespace app\models\sitemap;
 
+use app\models\Material;
 use yii\helpers\Url;
-use app\models\Video;
+use app\models\video\Video;
 use demi\sitemap\interfaces\Basic;
 
 /**
@@ -39,7 +40,7 @@ class SitemapVideo extends Video implements Basic
     {
         return static::find()
             ->select(['title', 'published', 'id'])
-            ->where(['status_id' => Video::STATUS_PUBLIC])
+            ->where(['status_id' => Material::STATUS_PUBLIC])
             ->orderBy(['published' => SORT_DESC]);
     }
 

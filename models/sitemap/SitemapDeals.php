@@ -2,8 +2,9 @@
 
 namespace app\models\sitemap;
 
+use app\models\Material;
 use yii\helpers\Url;
-use app\models\Deals;
+use app\models\deals\Deals;
 use demi\sitemap\interfaces\Basic;
 
 /**
@@ -39,7 +40,7 @@ class SitemapDeals extends Deals implements Basic
     {
         return static::find()
             ->select(['title', 'created', 'id'])
-            ->where(['status_id' => Deals::STATUS_PUBLIC])
+            ->where(['status_id' => Material::STATUS_PUBLIC])
             ->orderBy(['created' => SORT_DESC]);
     }
 

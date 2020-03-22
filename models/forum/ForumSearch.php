@@ -1,16 +1,17 @@
 <?php
 
-namespace app\models;
+namespace app\models\forum;
 
+use app\models\Material;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * VideoSearch represents the model behind the search form about `app\models\Video`.
+ * ForumSearch represents the model behind the search form about `app\models\forum\Forum`.
  *
  * @author Alexander Schilling
  */
-class VideoSearch extends Video
+class ForumSearch extends Forum
 {
 
     /** @var string */
@@ -22,11 +23,14 @@ class VideoSearch extends Video
     /** @var string */
     const SORT_BY_PUBLISHED_ASC = 'old';
 
+    const SORT_BY_UNANSWERED = 'unanswered';
+
     /** @var array */
     const SORT_BY = [
         self::SORT_BY_HITS,
         self::SORT_BY_COMMENTS,
-        self::SORT_BY_PUBLISHED_ASC
+        self::SORT_BY_PUBLISHED_ASC,
+        self::SORT_BY_UNANSWERED
     ];
 
     /** @var string */
@@ -44,7 +48,7 @@ class VideoSearch extends Video
     public function rules()
     {
         return [
-            [['status_id', 'published', 'hits', 'category_id'], 'integer'],
+            [['status_id', 'created', 'hits', 'category_id'], 'integer'],
         ];
     }
 
@@ -67,13 +71,13 @@ class VideoSearch extends Video
     public function search($params)
     {
 
-        $query = Video::find();
+        $query = Forum::find();
 
         $dataProvider = new ActiveDataProvider(
             [
                 'query' => $query,
                 'pagination' => [
-                    'pageSize' => \Yii::$app->params['video']['pageSize'],
+                    'pageSize' => \Yii::$app->params['forum']['pageSize'],
                 ],
             ]
         );
@@ -86,7 +90,7 @@ class VideoSearch extends Video
 
         // Filter by status
 
-        $query->andFilterWhere(['status_id' => Video::STATUS_PUBLIC]);
+        $query->andFilterWhere(['status_id' => Material::STATUS_PUBLIC]);
 
         // Filter by category
 
@@ -102,15 +106,18 @@ class VideoSearch extends Video
 
         // Sort by
 
+        $query->withCommentsCount()->all();
+
         if ($this->sortBy === self::SORT_BY_HITS) {
             $query->orderBy('hits DESC');
         } elseif ($this->sortBy === self::SORT_BY_COMMENTS) {
-            $query->withCommentsCount()->all();
             $query->orderBy('commentsCount DESC');
         } elseif ($this->sortBy === self::SORT_BY_PUBLISHED_ASC) {
-            $query->orderBy('published ASC');
+            $query->orderBy('created ASC');
+        } elseif ($this->sortBy === self::SORT_BY_UNANSWERED) {
+            $query->orderBy('commentsCount, created DESC');
         } else {
-            $query->orderBy('published DESC');
+            $query->orderBy('created DESC');
         }
 
         return $dataProvider;

@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /** @var $this yii\web\View */
-/** @var $model app\models\Forum */
+/** @var $model app\models\forum\Forum */
 
 ?>
 
@@ -25,11 +25,6 @@ use yii\helpers\Html;
                     <?= Html::a($model->user->username, ['/forum/user/' . $model->user->username]); ?>
                 <?php else: ?>
                     <?= 'Аноним'; ?>
-                <?php endif; ?>
-            </span>
-            <span>
-                <?php if (isset($model->category->name)) : ?>
-                    <i class="fa fa-folder"></i> <?= Html::a($model->category->name, '/forum/topics/' . $model->category->slug); ?>
                 <?php endif; ?>
             </span>
         </div>
