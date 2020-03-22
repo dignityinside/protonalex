@@ -9,6 +9,7 @@ Source code of the rooland blog.
 - PHP 7.2+, MySQL, Yii Framework 2
 - Composer (PHP), Bower and NPM (CSS, JavaScript)
 - Markdown + CodeMirror Editor
+- PSR-12 Coding Standard
 
 ## Clone project via GIT
 

@@ -50,8 +50,8 @@
         "post-create-project-cmd": [
             "yii\\composer\\Installer::postCreateProject"
         ],
-        "cs-check": "phpcs --standard=PSR2",
-        "cs-fix": "phpcbf --standard=PSR2"
+        "cs-check": "phpcs --extensions=php --standard=PSR12 --ignore=*/vendor/*,*/migrations/*",
+        "cs-fix": "phpcbf --extensions=php --standard=PSR12 --ignore=*/vendor/*,*/migrations/*"
     },
     "extra": {
         "yii\\composer\\Installer::postCreateProject": {
