@@ -62,7 +62,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         $menuItems[] = ['label' => 'Форум', 'url' => ['/forum/index']];
 
         if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'Регистрация', 'url' => ['/signup']];
             $menuItems[] = ['label' => 'Войти', 'url' => ['/login']];
         } else {
 
