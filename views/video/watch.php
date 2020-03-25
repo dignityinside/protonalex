@@ -42,6 +42,13 @@ $this->registerMetaTag(
                 'class' => 'btn btn-danger',
                 'target' => 'blank'
             ]); ?>
+
+            <?php if (!empty($model->playlist)) : ?>
+                <?= Html::a('Открыть плейлист на <i class="fa fa-youtube"></i> YouTube', Html::encode($model->playlist), [
+                    'class' => 'btn btn-info',
+                    'target' => 'blank'
+                ]); ?>
+            <?php endif; ?>
         </p>
     </div>
 

@@ -22,11 +22,25 @@ use app\models\category\Category;
 
     <?= $form->field($model, 'platform')->dropDownList($model::PLATFORM); ?>
 
-    <?= $form->field($model, 'code')->textInput(['maxlength' => true])->hint('Например: LaWxLvDgTM4 вместо https://youtu.be/LaWxLvDgTM4') ?>
+    <?= $form->field($model, 'code')->textInput(['maxlength' => true])
+             ->hint('Например: LaWxLvDgTM4 вместо https://youtu.be/LaWxLvDgTM4') ?>
+
+    <?= $form->field($model, 'playlist')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'author')->textInput(['maxlength' => true])->hint('Например: rooland') ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::getAllCategories(\app\models\Material::MATERIAL_VIDEO_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
+    <?= $form->field($model, 'channel_url')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'category_id')->dropDownList(
+        ArrayHelper::map(
+            Category::getAllCategories(\app\models\Material::MATERIAL_VIDEO_ID),
+            'id',
+            'name'
+        ),
+        [
+            'prompt' => 'Выберите категорию'
+        ]
+    ); ?>
 
     <?= $form->field($model, 'language')->dropDownList($model::LANGUAGE) ?>
 
@@ -34,7 +48,6 @@ use app\models\category\Category;
 
     <?php if (UserPermissions::canAdminVideo()): ?>
         <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
-        <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
         <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
     <?php endif ?>
 

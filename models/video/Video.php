@@ -26,7 +26,8 @@ use app\models\category\Category;
  * @property string $language
  * @property int $allow_comments
  * @property string $meta_description
- * @property string $meta_keywords
+ * @property string $playlist
+ * @property string $channel_url
  */
 class Video extends Material
 {
@@ -65,10 +66,9 @@ class Video extends Material
         return [
             [['title', 'code', 'published', 'author'], 'required'],
             [['description', 'code', 'platform', 'thumbnail', 'language'], 'string'],
-            [['title', 'author'], 'string', 'max' => 255],
+            [['title', 'author', 'playlist', 'channel_url'], 'string', 'max' => 255],
             [['title'], 'unique'],
             [['status_id', 'published', 'user_id', 'category_id', 'hits', 'allow_comments'], 'integer'],
-            [['meta_keywords'], 'string', 'max' => 256],
             [['meta_description'], 'string', 'max' => 156],
         ];
     }
@@ -92,7 +92,9 @@ class Video extends Material
             'allow_comments',
             'category_id',
             'author',
-            'language'
+            'language',
+            'playlist',
+            'channel_url'
         ];
 
         $scenarios[Material::SCENARIO_UPDATE] = [
@@ -104,7 +106,9 @@ class Video extends Material
             'allow_comments',
             'category_id',
             'author',
-            'language'
+            'language',
+            'playlist',
+            'channel_url'
         ];
 
         $scenarios[Material::SCENARIO_ADMIN] = [
@@ -117,9 +121,10 @@ class Video extends Material
             'status_id',
             'category_id',
             'author',
-            'meta_keywords',
             'meta_description',
-            'language'
+            'language',
+            'playlist',
+            'channel_url'
         ];
 
         return $scenarios;
@@ -147,7 +152,9 @@ class Video extends Material
             'category_id' => 'Категория',
             'hits' => 'Просмотров',
             'allow_comments' => 'Разрешить комментарии',
-            'language' => 'Язык видео'
+            'language' => 'Язык видео',
+            'playlist' => 'Ссылка на плейлист',
+            'channel_url' => 'Ссылка на канал',
         ];
     }
 
