@@ -63,7 +63,7 @@ class VideoController extends Controller
 
         $dataProvider = new ActiveDataProvider(
             [
-                'query' => Video::find()->orderBy('published DESC'),
+                'query' => Video::find()->orderBy('published DESC')->withCommentsCount(),
                 'pagination' => [
                     'pageSize' => 15,
                 ],

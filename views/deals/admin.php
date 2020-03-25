@@ -20,7 +20,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
             'title',
             'author',
             [
@@ -37,12 +36,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     return date('d.m.Y H:i', Html::encode($model->created));
                 }
             ],
-            'hits',
             [
-                'attribute' => 'user_id',
-                'label'     => 'Добавил',
-                'value'     => function ($model) {
-                    return $model->user->username ?? 'Аноним';
+                'attribute' => 'hits',
+                'label' => 'Просмотров',
+                'value' => function ($model) {
+                    return $model->hits;
+                }
+            ],
+            [
+                'attribute' => 'comments',
+                'label' => 'Комментарий',
+                'value' => function ($model) {
+                    return $model->commentsCount;
                 }
             ],
             [

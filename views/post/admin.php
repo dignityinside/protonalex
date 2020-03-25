@@ -34,13 +34,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 ],
                 [
-                    'attribute' => 'user_id',
-                    'label'     => 'Автор',
-                    'value'     => function ($model) {
-                        return $model->author->username ?? 'Аноним';
+                    'attribute' => 'hits',
+                    'label' => 'Просмотров',
+                    'value' => function ($model) {
+                        return $model->hits;
                     }
                 ],
-                'hits',
+                [
+                    'attribute' => 'comments',
+                    'label' => 'Комментарий',
+                    'value' => function ($model) {
+                        return $model->commentsCount;
+                    }
+                ],
                 [
                     'attribute' => 'ontop',
                     'label'     => 'На главной',

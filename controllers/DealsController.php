@@ -63,7 +63,7 @@ class DealsController extends Controller
 
         $dataProvider = new ActiveDataProvider(
             [
-                'query' => Deals::find()->orderBy('created DESC'),
+                'query' => Deals::find()->orderBy('created DESC')->withCommentsCount(),
                 'pagination' => [
                     'pageSize' => 15,
                 ],

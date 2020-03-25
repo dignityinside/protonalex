@@ -125,7 +125,6 @@ class DealsSearch extends Deals
         if ($this->sortBy === self::SORT_BY_HITS) {
             $query->orderBy('hits DESC');
         } elseif ($this->sortBy === self::SORT_BY_COMMENTS) {
-            $query->withCommentsCount()->all();
             $query->orderBy('commentsCount DESC');
         } elseif ($this->sortBy === self::SORT_BY_PUBLISHED_ASC) {
             $query->orderBy('created ASC');
@@ -136,6 +135,8 @@ class DealsSearch extends Deals
         } else {
             $query->orderBy('created DESC');
         }
+
+        $query->withCommentsCount()->all();
 
         return $dataProvider;
 

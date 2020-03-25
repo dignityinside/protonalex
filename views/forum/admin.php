@@ -19,7 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
             'title',
             [
                 'attribute' => 'user_id',
@@ -42,7 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->getStatusLabel();
                 }
             ],
-            'hits',
+            [
+                'attribute' => 'hits',
+                'label' => 'Просмотров',
+                'value' => function ($model) {
+                    return $model->hits;
+                }
+            ],
             [
                 'attribute' => 'comments',
                 'label' => 'Ответы',

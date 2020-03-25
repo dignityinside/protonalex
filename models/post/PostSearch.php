@@ -156,6 +156,8 @@ class PostSearch extends Post
 
         $query->andFilterWhere(['like', 'title', $this->title]);
 
+        $query->withCommentsCount()->all();
+
         return $dataProvider;
 
     }

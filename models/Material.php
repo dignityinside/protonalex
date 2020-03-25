@@ -73,8 +73,8 @@ class Material extends ActiveRecord
     public function getStatuses(): array
     {
         return [
-            Material::STATUS_PUBLIC => 'Veröffentlicht',
-            Material::STATUS_DRAFT  => 'Entwurf',
+            Material::STATUS_PUBLIC => 'Опубликован',
+            Material::STATUS_DRAFT  => 'Черновик',
         ];
     }
 

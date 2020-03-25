@@ -21,7 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
             'title',
             [
                 'attribute' => 'status_id',
@@ -44,7 +43,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->commentsCount;
                 }
             ],
-            'hits',
+            [
+                'attribute' => 'hits',
+                'label' => 'Просмотров',
+                'value' => function ($model) {
+                    return $model->hits;
+                }
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view}{update}',
