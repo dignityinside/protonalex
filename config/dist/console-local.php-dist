@@ -1,0 +1,10 @@
+<?php
+
+$config = [
+    'id' => 'app-console-local',
+    'components' => [
+        'db' => require(__DIR__ . '/db-local.php'),
+    ],
+];
+
+return $config;

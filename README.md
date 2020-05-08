@@ -5,7 +5,7 @@ Source code of the rooland blog.
 ## Technology
 
 - Nginx or Apache
-- HTML5 + CSS3 (Bootstrap), Javascript (jQuery)
+- HTML5 + CSS3 (Bootstrap), Javascript
 - PHP 7.2+, MySQL, Yii Framework 2
 - Composer (PHP), Bower and NPM (CSS, JavaScript)
 - Markdown + CodeMirror Editor
@@ -29,6 +29,14 @@ composer install
 ```
 composer run-script post-create-project-cmd
 ```
+
+## Copy config files from "/config/dist"
+
+```
+cp -r config/dist/* config
+```
+
+Remove "-dist" from this config files.
 
 ## Apply migrations
 

@@ -42,10 +42,10 @@ $config = [
                 'port' => '587', // 587 (tls) or 465 (ssl)
                 'encryption' => 'tls', // tls or ssl
             ],
-            'useFileTransport' => true,
+            'useFileTransport' => false,
         ],
         'log'                  => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'traceLevel' => 0,
             'targets'    => [
                 [
                     'class'  => 'yii\log\FileTarget',
@@ -103,19 +103,5 @@ $config = [
     ],
     'params'       => require(__DIR__ . '/params.php'),
 ];
-
-if (YII_ENV_DEV) {
-    $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = [
-        'class'      => 'yii\debug\Module',
-        'allowedIPs' => ['127.0.0.1', '::1'],
-    ];
-
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-        'class'      => 'yii\gii\Module',
-        'allowedIPs' => ['127.0.0.1', '::1'],
-    ];
-}
 
 return $config;

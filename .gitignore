@@ -5,13 +5,16 @@
 .DS_Store
 Thumbs.db
 
-# ignore production files
+# ignore local and production files
 
 /config/authclients.php
 /config/console.php
+/config/console-local.php
 /config/db.php
+/config/db-local.php
 /config/params.php
 /config/web.php
+/config/web-local.php
 /rbac/assignments.php
 /rbac/items.php
 /rbac/rules.php
@@ -20,8 +23,6 @@ Thumbs.db
 /web/sitemap*.xml
 
 # ignore folders
-/web/uploads
-/web/wp-content
 /web/img/posts
 
 # nginx production file
