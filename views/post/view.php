@@ -43,7 +43,8 @@ $this->registerMetaTag(
     <?= $this->render('/partials/share'); ?>
 
     <?= $this->render(
-        '_post_footer', [
+        '_post_footer',
+        [
             'model' => $model
         ]
     ); ?>

@@ -58,7 +58,6 @@ class SiteController extends Controller
                 ],
             ],
         ];
-
     }
 
     /**
@@ -82,7 +81,6 @@ class SiteController extends Controller
                 'successCallback' => [$this, 'onAuthSuccess'],
             ],
         ];
-
     }
 
     /**
@@ -114,11 +112,11 @@ class SiteController extends Controller
         }
 
         return $this->render(
-            'login', [
+            'login',
+            [
             'model' => $model,
-        ]
+            ]
         );
-
     }
 
     /**
@@ -132,7 +130,6 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
-
     }
 
     /**
@@ -146,23 +143,19 @@ class SiteController extends Controller
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post())) {
-
             if ($user = $model->signup()) {
-
                 if (Yii::$app->getUser()->login($user, Yii::$app->params['user.rememberMeDuration'])) {
                     return $this->goHome();
                 }
-
             }
-
         }
 
         return $this->render(
-            'signup', [
+            'signup',
+            [
             'model' => $model,
-        ]
+            ]
         );
-
     }
 
     /**
@@ -176,27 +169,24 @@ class SiteController extends Controller
         $model = new PasswordResetRequestForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-
             if ($model->sendEmail()) {
-
                 Yii::$app->getSession()->setFlash(
-                    'success', 'Проверьте электронную почту для получения дальнейших инструкций.'
+                    'success',
+                    'Проверьте электронную почту для получения дальнейших инструкций.'
                 );
 
                 return $this->goHome();
-
             }
 
             Yii::$app->getSession()->setFlash('error', 'Извините, мы не можем сбросить ваш пароль.');
-
         }
 
         return $this->render(
-            'requestPasswordResetToken', [
+            'requestPasswordResetToken',
+            [
             'model' => $model,
-        ]
+            ]
         );
-
     }
 
     /**
@@ -224,11 +214,11 @@ class SiteController extends Controller
         }
 
         return $this->render(
-            'resetPassword', [
+            'resetPassword',
+            [
             'model' => $model,
-        ]
+            ]
         );
-
     }
 
     /**
@@ -242,19 +232,17 @@ class SiteController extends Controller
         $model = new ContactForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->contact()) {
-
             Yii::$app->session->setFlash('contactFormSubmitted');
 
             return $this->refresh();
-
         }
 
         return $this->render(
-            'contact', [
+            'contact',
+            [
             'model' => $model,
-        ]
+            ]
         );
-
     }
 
     /**
@@ -276,5 +264,4 @@ class SiteController extends Controller
     {
         return $this->render('search');
     }
-
 }

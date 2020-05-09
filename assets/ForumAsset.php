@@ -1,5 +1,7 @@
 <?php
+
 namespace app\assets;
+
 use yii\web\AssetBundle;
 
 /**
@@ -16,5 +18,4 @@ class ForumAsset extends AssetBundle
     public $css = [
         'css/forum.css',
     ];
-
 }

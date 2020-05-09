@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
         <?= Html::activeHiddenInput($model, 'material_type') ?>
         <?= Html::activeHiddenInput($model, 'material_id') ?>
 
-        <?php if (Yii::$app->user->isGuest): ?>
+        <?php if (Yii::$app->user->isGuest) : ?>
             <div class="row">
                 <?= $form->field($model, 'user_name', ['options' => ['class' => 'col-md-6']])
                          ->textInput(['maxlength' => true])->label('Имя') ?>
@@ -43,16 +43,17 @@ use yii\widgets\ActiveForm;
         <div class="row">
             <div class="col-md-6">
                 <?= Html::submitButton('Отправить комментарий', ['class' => 'btn btn-primary btn-lg']) ?>
-                <?php if (Yii::$app->user->isGuest): ?>
+                <?php if (Yii::$app->user->isGuest) : ?>
                 <?php endif ?>
             </div>
-            <?php if (Yii::$app->user->isGuest): ?>
+            <?php if (Yii::$app->user->isGuest) : ?>
                 <div class="col-md-6">
                     <div class="pull-right">
                         <div class="captcha">
                         <?= $form->field($model, 'captcha', ['enableAjaxValidation' => false])->label(false)
                                  ->widget(
-                                     'demi\recaptcha\ReCaptcha', ['siteKey' => $widget->component->reCaptchaSiteKey]
+                                     'demi\recaptcha\ReCaptcha',
+                                     ['siteKey' => $widget->component->reCaptchaSiteKey]
                                  ) ?>
                         </div>
                     </div>

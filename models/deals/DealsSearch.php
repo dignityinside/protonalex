@@ -15,22 +15,22 @@ class DealsSearch extends Deals
 {
 
     /** @var string */
-    const SORT_BY_HITS = 'hits';
+    public const SORT_BY_HITS = 'hits';
 
     /** @var string */
-    const SORT_BY_COMMENTS = 'comments';
+    public const SORT_BY_COMMENTS = 'comments';
 
     /** @var string */
-    const SORT_BY_PUBLISHED_ASC = 'old';
+    public const SORT_BY_PUBLISHED_ASC = 'old';
 
     /** @var string */
-    const FILTER_BY_EXPIRED = 'expired';
+    public const FILTER_BY_EXPIRED = 'expired';
 
     /** @var string */
-    const FILTER_BY_EXPIRED_SOON = 'soon';
+    public const FILTER_BY_EXPIRED_SOON = 'soon';
 
     /** @var array */
-    const SORT_BY = [
+    public const SORT_BY = [
         self::SORT_BY_HITS,
         self::SORT_BY_COMMENTS,
         self::SORT_BY_PUBLISHED_ASC,
@@ -139,7 +139,5 @@ class DealsSearch extends Deals
         $query->withCommentsCount()->all();
 
         return $dataProvider;
-
     }
-
 }

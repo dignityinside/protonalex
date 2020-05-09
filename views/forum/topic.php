@@ -14,7 +14,7 @@ ForumAsset::register($this);
 $this->title = Html::encode($model->title);
 
 $this->params['breadcrumbs'][] = ['label' => 'Форум', 'url' => ['/forum/index']];
-$this->params['breadcrumbs'][] = ['label' => $model->category->name, 'url' => ['/forum/topics', 'categoryName'=>$model->category->slug]];
+$this->params['breadcrumbs'][] = ['label' => $model->category->name, 'url' => ['/forum/topics', 'categoryName' => $model->category->slug]];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerMetaTag(
@@ -52,13 +52,13 @@ $this->registerMetaTag(
         <i class="fa fa-user"></i>
         <?php if (!empty($model->user_id)) : ?>
             <?= Html::a($model->user->username, ['/forum/user/' . $model->user->username]); ?>
-        <?php else: ?>
+        <?php else : ?>
             <?= 'Аноним'; ?>
         <?php endif; ?>
         <?php if (isset($model->category->name)) : ?>
             <i class="fa fa-folder"></i> <?= Html::a($model->category->name, '/forum/topics/' . $model->category->slug); ?>
         <?php endif; ?>
-        <?php if ($model->commentsCount > 0): ?>
+        <?php if ($model->commentsCount > 0) : ?>
             <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>
         <?php endif; ?>
     </div>

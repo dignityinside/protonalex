@@ -2,8 +2,8 @@
 
 namespace app\models\post;
 
-use \yii\db\ActiveQuery;
 use demi\comments\common\models\Comment;
+use yii\db\ActiveQuery;
 use yii\db\Query;
 
 /**
@@ -53,13 +53,12 @@ class PostQuery extends ActiveQuery
 
         $countQuery = (new Query())->select('COUNT(*)')->from(Comment::tableName())
                                    ->where(
-                                       'material_type=:typePost AND material_id=post.id', [
+                                       'material_type=:typePost AND material_id=post.id',
+                                       [
                                        ':typePost' => 1,
-                                   ]
+                                       ]
                                    );
 
         return $this->addSelect(['commentsCount' => $countQuery]);
-
     }
-
 }

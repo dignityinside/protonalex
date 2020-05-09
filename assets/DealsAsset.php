@@ -18,5 +18,4 @@ class DealsAsset extends AssetBundle
     public $css = [
         'css/deals.css',
     ];
-
 }

@@ -30,7 +30,6 @@ class VideoController extends Controller
         parent::init();
 
         \Yii::$app->user->setIdentity(User::findOne(['id' => \Yii::$app->params['video']['userId']]));
-
     }
 
     /**
@@ -61,19 +60,14 @@ class VideoController extends Controller
         $this->emulateRssReader();
 
         foreach ($videoConfig as $key => $value) {
-
             if ($key === 'youtubeFeeds') {
-
                 foreach ($value as $feed => $author) {
                     $this->parseYoutube($feed, $author);
                 }
-
             }
-
         }
 
         return ExitCode::OK;
-
     }
 
     /**
@@ -100,7 +94,6 @@ class VideoController extends Controller
         $i = self::ITEMS;
 
         foreach ($xml->entry as $video) {
-
             if ($i-- == 0) {
                 break;
             }
@@ -115,11 +108,9 @@ class VideoController extends Controller
             $data['thumbnail'] = (string)$video->children('http://search.yahoo.com/mrss/')->group->thumbnail->attributes()->url;
 
             $this->saveVideo($data, $author);
-
         }
 
         return [];
-
     }
 
     /**
@@ -144,7 +135,9 @@ class VideoController extends Controller
         $date->add(new \DateInterval(self::NOT_OLDER_THAN));
         $date = $date->getTimestamp();
 
-        if ($today > $date) return;
+        if ($today > $date) {
+            return;
+        }
 
         // check title in db
 
@@ -153,7 +146,6 @@ class VideoController extends Controller
         $model = Video::findOne(['title' => $title]);
 
         if (!$model) {
-
             // save data
 
             $model = new Video();
@@ -163,11 +155,11 @@ class VideoController extends Controller
             $model->code = $video['code'];
             $model->published = $video['published'];
             $model->author = $author;
-            $model->status_id = \Yii::$app->params['video']['preModeration'] ? Material::STATUS_DRAFT : Material::STATUS_PUBLIC;;
+            $model->status_id = \Yii::$app->params['video']['preModeration'] ? Material::STATUS_DRAFT : Material::STATUS_PUBLIC;
+            ;
             $model->thumbnail = $video['thumbnail'];
             $model->platform = $video['platform'];
             $model->user_id = \Yii::$app->params['video']['userId'];
-
         }
 
         // error on save
@@ -175,7 +167,6 @@ class VideoController extends Controller
         if (!$model->save()) {
             print_r($model->getErrors());
         }
-
     }
 
     /**

@@ -5,11 +5,7 @@ namespace app\assets;
 use yii\web\AssetBundle;
 
 /**
- * ImgurUploaderAsset
- */
-
-/**
- * Class ImgurUploaderAsset
+ * Imgur uploader asset
  *
  * @package app\assets
  *
@@ -31,5 +27,4 @@ class ImgurUploaderAsset extends AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
     ];
-
 }

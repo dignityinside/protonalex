@@ -55,12 +55,12 @@ class VideoQuery extends ActiveQuery
 
         $countQuery = (new Query())->select('COUNT(*)')->from(Comment::tableName())
             ->where(
-                'material_type=:typeVideo AND material_id=video.id', [
+                'material_type=:typeVideo AND material_id=video.id',
+                [
                     ':typeVideo' => Material::MATERIAL_VIDEO_ID,
                 ]
             );
 
         return $this->addSelect(['commentsCount' => $countQuery]);
-
     }
 }

@@ -32,13 +32,12 @@ $this->params['breadcrumbs'][] = ['label' => 'Форум', 'url' => ['index']];
         <h1><i class="fa fa-folder"></i> Руланд форум - <?= $categoryName; ?></h1>
     </div>
 
-    <?php if ($dataProvider->totalCount > 0): ?>
-
+    <?php if ($dataProvider->totalCount > 0) : ?>
         <ul class="forum_topics_filter">
-            <li><?= Html::a('<i class="fa fa-clock"></i>Новые', ['/forum/topics/', 'categoryName'=>$categorySlug]) ?></li>
+            <li><?= Html::a('<i class="fa fa-clock"></i>Новые', ['/forum/topics/', 'categoryName' => $categorySlug]) ?></li>
             <li><?= Html::a('<i class="fa fa-eye"></i>Популярные', '/forum/topics/' . $categorySlug . '/hits') ?></li>
             <li><?= Html::a('<i class="fa fa-comments"></i>Обсуждаемые', '/forum/topics/' . $categorySlug . '/comments') ?></li>
-            <li><?= Html::a('<i class="fas fa-comment-slash"></i></i>Без ответов', '/forum/topics/' .  $categorySlug. '/unanswered') ?></li>
+            <li><?= Html::a('<i class="fas fa-comment-slash"></i></i>Без ответов', '/forum/topics/' .  $categorySlug . '/unanswered') ?></li>
         </ul>
 
     <?php endif; ?>

@@ -68,7 +68,6 @@ class RbacController extends Controller
         $auth->addChild($admin, $adminVideo);
         $auth->addChild($admin, $adminDeals);
         $auth->addChild($admin, $adminForum);
-
     }
 
     /**
@@ -95,7 +94,5 @@ class RbacController extends Controller
         }
 
         $auth->assign($roleObject, $user->id);
-
     }
-
 }

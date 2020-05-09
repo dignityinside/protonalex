@@ -23,21 +23,23 @@ $categoryId = !empty($categoryId) ? $categoryId : 0;
     <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($model, 'category_id')->dropDownList(
-                ArrayHelper::map(Category::getAllCategories(\app\models\Material::MATERIAL_FORUM_ID), 'id', 'name'),
-                ['prompt' => 'Выберите раздел форума', 'options'=>[(string)$categoryId=>['Selected'=>true]]]
+            ArrayHelper::map(Category::getAllCategories(\app\models\Material::MATERIAL_FORUM_ID), 'id', 'name'),
+            ['prompt' => 'Выберите раздел форума', 'options' => [(string)$categoryId => ['Selected' => true]]]
         ); ?>
 
         <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
         <?= $form->field(
-            $model, 'content', [
+            $model,
+            'content',
+            [
                 'template' => "{label}\n{error}\n{input}\n{hint}"
             ]
         )->textarea(['class' => 'markdown-editor']) ?>
 
         <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
 
-        <?php if (UserPermissions::canAdminForum()): ?>
+        <?php if (UserPermissions::canAdminForum()) : ?>
             <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
             <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>

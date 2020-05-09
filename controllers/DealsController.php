@@ -73,7 +73,6 @@ class DealsController extends Controller
         return $this->render('admin', [
             'dataProvider' => $dataProvider,
         ]);
-
     }
 
     /**
@@ -95,7 +94,6 @@ class DealsController extends Controller
         } else {
             return $this->render('create', ['model' => $model]);
         }
-
     }
 
     /**
@@ -126,7 +124,6 @@ class DealsController extends Controller
         } else {
             return $this->render('update', ['model' => $model,]);
         }
-
     }
 
     /**
@@ -149,7 +146,6 @@ class DealsController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $searchModel->search(\Yii::$app->request->queryParams),
         ]);
-
     }
 
     /**
@@ -161,7 +157,8 @@ class DealsController extends Controller
      *
      * @throws NotFoundHttpException
      */
-    public function actionCategory(string $categoryName) {
+    public function actionCategory(string $categoryName)
+    {
 
         $category = Category::findOne(['slug' => $categoryName, 'material_id' => Material::MATERIAL_DEALS_ID]);
 
@@ -178,7 +175,6 @@ class DealsController extends Controller
             'dataProvider' => $searchModel->search(\Yii::$app->request->queryParams),
             'categoryName' => $category->name
         ]);
-
     }
 
     /**
@@ -207,7 +203,6 @@ class DealsController extends Controller
         return $this->render('view', [
             'model' => $model,
         ]);
-
     }
 
     /**
@@ -229,7 +224,6 @@ class DealsController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['admin']);
-
     }
 
     /**
@@ -251,6 +245,5 @@ class DealsController extends Controller
         }
 
         throw new NotFoundHttpException('Cделки не найдены.');
-
     }
 }

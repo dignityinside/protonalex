@@ -94,7 +94,6 @@ class Forum extends Material
         ];
 
         return $scenarios;
-
     }
 
     /**
@@ -158,7 +157,6 @@ class Forum extends Material
         }
 
         if ($this->isNewRecord) {
-
             if (isset(\Yii::$app->user->id)) {
                 $this->user_id = \Yii::$app->user->id;
             }
@@ -176,7 +174,6 @@ class Forum extends Material
             if (empty($this->category_id)) {
                 $this->category_id = 0;
             }
-
         }
 
         $this->updated = time();
@@ -187,6 +184,5 @@ class Forum extends Material
         }
 
         return true;
-
     }
 }

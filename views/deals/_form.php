@@ -39,7 +39,9 @@ MarkdownEditorAsset::register($this);
                  ->hint('Короткий и содержательный заголовок.') ?>
 
         <?= $form->field(
-            $model, 'content', [
+            $model,
+            'content',
+            [
                 'template' => "{label}\n{error}\n{input}\n{hint}"
             ]
         )->textarea(['class' => 'markdown-editor'])->hint('Здесь вы можете описать свою сделку своими словами.') ?>
@@ -75,7 +77,7 @@ MarkdownEditorAsset::register($this);
 
         <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
 
-        <?php if (UserPermissions::canAdminDeals()): ?>
+        <?php if (UserPermissions::canAdminDeals()) : ?>
             <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
             <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>

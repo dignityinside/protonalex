@@ -68,7 +68,5 @@ class CategorySearch extends Category
             ->andFilterWhere(['like', 'slug', $this->slug]);
 
         return $dataProvider;
-
     }
-
 }

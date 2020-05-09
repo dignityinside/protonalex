@@ -53,7 +53,6 @@ class UserController extends Controller
                 ],
             ],
         ];
-
     }
 
     /**
@@ -71,11 +70,11 @@ class UserController extends Controller
         );
 
         return $this->render(
-            'admin', [
+            'admin',
+            [
             'dataProvider' => $dataProvider,
-        ]
+            ]
         );
-
     }
 
     /**
@@ -100,7 +99,6 @@ class UserController extends Controller
         $authClients = [];
 
         if (Yii::$app->user->id == $user->id) {
-
             // get clients user isn't connected with yet
             $auths = $user->auths;
 
@@ -112,16 +110,15 @@ class UserController extends Controller
             foreach ($auths as $auth) {
                 unset($authClients[$auth->source]);
             }
-
         }
 
         return $this->render(
-            'view', [
+            'view',
+            [
             'model'       => $user,
             'authClients' => $authClients,
-        ]
+            ]
         );
-
     }
 
     /**
@@ -156,11 +153,11 @@ class UserController extends Controller
         }
 
         return $this->render(
-            'update', [
+            'update',
+            [
             'model' => $model,
-        ]
+            ]
         );
-
     }
 
     /**
@@ -180,7 +177,6 @@ class UserController extends Controller
         $model->save();
 
         return $this->redirect(['admin']);
-
     }
 
     /**
@@ -201,7 +197,5 @@ class UserController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-
     }
-
 }

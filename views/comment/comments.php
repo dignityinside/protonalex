@@ -20,7 +20,6 @@ if ($nestedLevel <= $widget->maxNestedLevel) {
 }
 
 foreach ($comments as $comment) {
-
     if ($comment->parent_id != $parentId) {
         // Render only one level of comments. Level based on $parentId
         continue;
@@ -36,19 +35,19 @@ foreach ($comments as $comment) {
 
     // Recursive render sub-comments
     $subComments = $this->render(
-        $widget->component->listView, [
+        $widget->component->listView,
+        [
         'widget'      => $widget,
         'comments'    => $comments,
         'parentId'    => $comment->id,
         'nestedLevel' => $nestedLevel + 1,
-    ]
+        ]
     );
     if (!empty($subComments)) {
         $content[] = $subComments;
     }
 
     $content[] = "\t</li>";
-
 }
 
 if ($nestedLevel <= $widget->maxNestedLevel) {

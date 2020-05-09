@@ -55,12 +55,12 @@ class ForumQuery extends ActiveQuery
 
         $countQuery = (new Query())->select('COUNT(*)')->from(Comment::tableName())
             ->where(
-                'material_type=:typeForum AND material_id=forum.id', [
+                'material_type=:typeForum AND material_id=forum.id',
+                [
                     ':typeForum' => Material::MATERIAL_FORUM_ID,
                 ]
             );
 
         return $this->addSelect(['commentsCount' => $countQuery]);
-
     }
 }

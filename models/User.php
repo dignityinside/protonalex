@@ -29,15 +29,15 @@ use yii\helpers\ArrayHelper;
 class User extends ActiveRecord implements IdentityInterface
 {
 
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    public const STATUS_DELETED = 0;
+    public const STATUS_ACTIVE = 10;
 
-    const SCENARIO_UPDATE = 'update';
-    const SCENARIO_ADMIN = 'admin';
+    public const SCENARIO_UPDATE = 'update';
+    public const SCENARIO_ADMIN = 'admin';
 
-    const VISIBILITY_HIDE = 0;
-    const VISIBILITY_REGISTER_USER_ONLY = 1;
-    const VISIBILITY_ALL_USERS = 2;
+    public const VISIBILITY_HIDE = 0;
+    public const VISIBILITY_REGISTER_USER_ONLY = 1;
+    public const VISIBILITY_ALL_USERS = 2;
 
     public $avatar_url = '';
 
@@ -93,7 +93,6 @@ class User extends ActiveRecord implements IdentityInterface
         ];
 
         return $scenarios;
-
     }
 
     /**
@@ -144,7 +143,6 @@ class User extends ActiveRecord implements IdentityInterface
                 'status'               => self::STATUS_ACTIVE,
             ]
         );
-
     }
 
     /**
@@ -166,7 +164,6 @@ class User extends ActiveRecord implements IdentityInterface
         $timestamp = (int)end($parts);
 
         return $timestamp + $expire >= time();
-
     }
 
     /**
@@ -212,7 +209,8 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function setPassword($password)
     {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($password);;
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+        ;
     }
 
     public function getPassword()
@@ -291,8 +289,8 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @return array
      */
-    public function getAdsVisibility() {
+    public function getAdsVisibility()
+    {
         return $this->visibilityMapping;
     }
-
 }

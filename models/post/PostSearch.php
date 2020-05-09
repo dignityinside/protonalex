@@ -14,8 +14,8 @@ use yii\data\ActiveDataProvider;
 class PostSearch extends Post
 {
 
-    const FILTER_BY_HITS = 1;
-    const FILTER_BY_COMMENTS = 2;
+    public const FILTER_BY_HITS = 1;
+    public const FILTER_BY_COMMENTS = 2;
 
     /** @var int */
     public $tagId;
@@ -111,7 +111,6 @@ class PostSearch extends Post
         }
 
         return $dataProvider;
-
     }
 
     /**
@@ -159,7 +158,5 @@ class PostSearch extends Post
         $query->withCommentsCount()->all();
 
         return $dataProvider;
-
     }
-
 }

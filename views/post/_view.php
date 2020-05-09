@@ -19,7 +19,7 @@ use yii\helpers\Markdown;
 
     <?= Text::cut(HtmlPurifier::process(Markdown::process($model->content, 'gfm'))); ?>
 
-    <?php if ($model->content): ?>
+    <?php if ($model->content) : ?>
         <p><?= Html::a('Подробнее →', ['post/view', 'slug' => $model->slug]); ?></p>
     <?php endif; ?>
 

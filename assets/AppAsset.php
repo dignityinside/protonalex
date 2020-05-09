@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
  *
  * @package app\assets
  *
- * @author  Alexander Schilling
+ * @author Alexander Schilling
  */
 class AppAsset extends AssetBundle
 {
@@ -38,5 +38,4 @@ class AppAsset extends AssetBundle
         'yii\bootstrap\BootstrapPluginAsset',
         'app\assets\FontAwesomeAsset'
     ];
-
 }

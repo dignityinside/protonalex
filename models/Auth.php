@@ -17,7 +17,7 @@ use Yii;
 class Auth extends \yii\db\ActiveRecord
 {
 
-    const SOURCE_GITHUB = 'github';
+    public const SOURCE_GITHUB = 'github';
 
     /**
      * @inheritdoc

@@ -49,23 +49,21 @@ class Text
      *
      * @return string
      */
-    public static function xCut(string $text, int $maxLength = 135) {
+    public static function xCut(string $text, int $maxLength = 135)
+    {
 
         $text = strip_tags($text);
 
-        if(mb_strlen($text) > $maxLength) {
-
+        if (mb_strlen($text) > $maxLength) {
             $text_cut = mb_substr($text, 0, $maxLength, "UTF-8");
             $text_explode = explode(" ", $text_cut);
 
             unset($text_explode[count($text_explode) - 1]);
 
             return implode(" ", $text_explode) . " ...";
-
         }
 
         return $text;
-
     }
 
     /**
@@ -85,7 +83,5 @@ class Text
         }
 
         return implode(', ', $buffer);
-
     }
-
 }

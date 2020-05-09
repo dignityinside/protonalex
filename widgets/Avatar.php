@@ -43,7 +43,5 @@ class Avatar extends Widget
                 'size'         => $this->size,
             ]
         );
-
     }
-
 }

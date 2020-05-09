@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use \yii\widgets\ListView;
+use yii\widgets\ListView;
 use yii\widgets\Pjax;
 use app\assets\ForumAsset;
 

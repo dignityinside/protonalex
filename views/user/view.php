@@ -24,19 +24,21 @@ $this->title = $model->username;
                 </div>
 
                 <h1><?= Html::encode($this->title) ?></h1>
-                <?php if ($model->getGithubProfileUrl() !== null): ?>
+                <?php if ($model->getGithubProfileUrl() !== null) : ?>
                     <h3><?= Html::a(Html::encode($model->getGithubProfileUrl()), $model->getGithubProfileUrl()) ?></h3>
                 <?php endif ?>
 
-                <?php if (UserPermissions::canEditUser($model)): ?>
+                <?php if (UserPermissions::canEditUser($model)) : ?>
                     <p>
                         <?= Html::a('Изменить профиль', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                     </p>
                 <?php endif ?>
-                <?php if (UserPermissions::canAdminUsers()): ?>
+                <?php if (UserPermissions::canAdminUsers()) : ?>
                     <p>
                         <?= Html::a(
-                            'Удалить', ['delete', 'id' => $model->id], [
+                            'Удалить',
+                            ['delete', 'id' => $model->id],
+                            [
                                 'class' => 'btn btn-danger',
                                 'data'  => [
                                     'confirm' => 'Вы уверены что хотите удалить свой аккаунт?',
@@ -47,7 +49,7 @@ $this->title = $model->username;
                     </p>
                 <?php endif ?>
             </div>
-            <?php if (count($authClients) > 0): ?>
+            <?php if (count($authClients) > 0) : ?>
                 <div class="col-sm-4">
                     <div class="well well-sm">
                         <h2>Присоединить дополнительные профили:</h2>

@@ -64,7 +64,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => 'Войти', 'url' => ['/login']];
         } else {
-
             $menuItems[] = [
                 'label' => 'Панель', 'items' => [
                     ['label' => 'Мои темы форума', 'url' => ['/forum/my']],
@@ -81,7 +80,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
                     ['label' => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
                 ],
             ];
-
         }
 
         echo Nav::widget(

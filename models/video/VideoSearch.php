@@ -15,16 +15,16 @@ class VideoSearch extends Video
 {
 
     /** @var string */
-    const SORT_BY_HITS = 'hits';
+    public const SORT_BY_HITS = 'hits';
 
     /** @var string */
-    const SORT_BY_COMMENTS = 'comments';
+    public const SORT_BY_COMMENTS = 'comments';
 
     /** @var string */
-    const SORT_BY_PUBLISHED_ASC = 'old';
+    public const SORT_BY_PUBLISHED_ASC = 'old';
 
     /** @var array */
-    const SORT_BY = [
+    public const SORT_BY = [
         self::SORT_BY_HITS,
         self::SORT_BY_COMMENTS,
         self::SORT_BY_PUBLISHED_ASC
@@ -115,7 +115,5 @@ class VideoSearch extends Video
         }
 
         return $dataProvider;
-
     }
-
 }

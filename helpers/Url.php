@@ -30,7 +30,5 @@ class Url
         }
 
         return '?' . http_build_query($params);
-
     }
-
 }

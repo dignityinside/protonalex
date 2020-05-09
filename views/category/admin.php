@@ -31,10 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'slug',
             [
-                'attribute'=>'material_id',
+                'attribute' => 'material_id',
                 'filter' => \app\models\Material::MATERIAL_MAPPING,
                 'format' => 'text',
-                'content' => function($data){
+                'content' => function ($data) {
                     return ArrayHelper::getValue(\app\models\Material::MATERIAL_MAPPING, $data->material_id);
                 },
             ],

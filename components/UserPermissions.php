@@ -16,12 +16,12 @@ use app\models\forum\Forum;
 class UserPermissions
 {
 
-    const ADMIN_POST = 'adminPost';
-    const ADMIN_USERS = 'adminUsers';
-    const ADMIN_CATEGORY = 'adminCategory';
-    const ADMIN_VIDEO = 'adminVideo';
-    const ADMIN_DEALS = 'adminDeals';
-    const ADMIN_FORUM = 'adminForum';
+    public const ADMIN_POST = 'adminPost';
+    public const ADMIN_USERS = 'adminUsers';
+    public const ADMIN_CATEGORY = 'adminCategory';
+    public const ADMIN_VIDEO = 'adminVideo';
+    public const ADMIN_DEALS = 'adminDeals';
+    public const ADMIN_FORUM = 'adminForum';
 
     /**
      * Checks if user can admin posts
@@ -40,7 +40,6 @@ class UserPermissions
         }
 
         return false;
-
     }
 
     /**
@@ -86,7 +85,6 @@ class UserPermissions
         }
 
         return false;
-
     }
 
     /**
@@ -114,7 +112,6 @@ class UserPermissions
         }
 
         return false;
-
     }
 
     /**
@@ -134,7 +131,6 @@ class UserPermissions
         }
 
         return false;
-
     }
 
     /**
@@ -154,7 +150,6 @@ class UserPermissions
         }
 
         return false;
-
     }
 
     /**
@@ -200,7 +195,6 @@ class UserPermissions
         }
 
         return false;
-
     }
 
     /**
@@ -246,7 +240,6 @@ class UserPermissions
         }
 
         return false;
-
     }
 
     /**
@@ -274,5 +267,4 @@ class UserPermissions
 
         return false;
     }
-
 }

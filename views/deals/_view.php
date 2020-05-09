@@ -17,14 +17,14 @@ use app\helpers\Text;
         <div class="deals-view-item-left">
 
             <div class="deals-view-title">
-                <?= Html::a($model->title, ['deals/view', 'id'=>$model->id]); ?>
+                <?= Html::a($model->title, ['deals/view', 'id' => $model->id]); ?>
                 <?= Html::encode($model->getDiscount()); ?>
             </div>
 
             <div class="deals-view-footer">
                 <i class="fa fa-clock-o"></i> <?= date('d.m.Y', Html::encode($model->created)); ?>
                 <i class="fa fa-eye"></i> <?= Html::encode($model->hits); ?>
-                <?php if ($model->commentsCount > 0): ?>
+                <?php if ($model->commentsCount > 0) : ?>
                     <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>
                 <?php endif; ?>
             </div>
@@ -33,7 +33,7 @@ use app\helpers\Text;
                 <?= Text::xcut(Html::encode($model->content)); ?>
             </div>
 
-            <?php if ($model->content): ?>
+            <?php if ($model->content) : ?>
                 <div class="deals-view-more">
                     <?= Html::a('Подробнее →', ['/deals/view', 'id' => $model->id]); ?>
                 </div>

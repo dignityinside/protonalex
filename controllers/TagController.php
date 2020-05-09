@@ -11,7 +11,8 @@ use Yii;
  *
  * @author Alexander Schilling
  */
-class TagController extends \yii\web\Controller {
+class TagController extends \yii\web\Controller
+{
 
     /**
      * @param null $q
@@ -27,7 +28,6 @@ class TagController extends \yii\web\Controller {
         $out = ['results' => ['id' => '', 'text' => '']];
 
         if ($q !== null) {
-
             $data = \app\models\Tag::find()
                        ->select('name AS id, name AS text')
                        ->where('name LIKE :q', [':q' => '%' . addcslashes($q, '%_') . '%'])
@@ -36,7 +36,6 @@ class TagController extends \yii\web\Controller {
                        ->all();
 
             $out['results'] = array_values($data);
-
         } elseif ($id > 0) {
             $out['results'] = ['id' => $id, 'text' => $this->findModel($id)->name];
         }
@@ -61,5 +60,4 @@ class TagController extends \yii\web\Controller {
             throw new \yii\web\NotFoundHttpException('The requested page does not exist.');
         }
     }
-
 }

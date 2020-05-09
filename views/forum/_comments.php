@@ -10,7 +10,6 @@ use app\models\forum\Forum;
 ?>
 
 <?php if ($model->allow_comments) : ?>
-
     <?= Comments::widget(
         [
             'materialType' => \app\models\Material::MATERIAL_FORUM_ID,
@@ -36,4 +35,4 @@ use app\models\forum\Forum;
         ]
     ); ?>
 
-<?php endif; ?>
+<?php endif;

@@ -46,7 +46,7 @@ use app\models\category\Category;
 
     <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
 
-    <?php if (UserPermissions::canAdminVideo()): ?>
+    <?php if (UserPermissions::canAdminVideo()) : ?>
         <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
         <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
     <?php endif ?>

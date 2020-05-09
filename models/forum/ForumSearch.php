@@ -15,18 +15,18 @@ class ForumSearch extends Forum
 {
 
     /** @var string */
-    const SORT_BY_HITS = 'hits';
+    public const SORT_BY_HITS = 'hits';
 
     /** @var string */
-    const SORT_BY_COMMENTS = 'comments';
+    public const SORT_BY_COMMENTS = 'comments';
 
     /** @var string */
-    const SORT_BY_PUBLISHED_ASC = 'old';
+    public const SORT_BY_PUBLISHED_ASC = 'old';
 
-    const SORT_BY_UNANSWERED = 'unanswered';
+    public const SORT_BY_UNANSWERED = 'unanswered';
 
     /** @var array */
-    const SORT_BY = [
+    public const SORT_BY = [
         self::SORT_BY_HITS,
         self::SORT_BY_COMMENTS,
         self::SORT_BY_PUBLISHED_ASC,
@@ -121,7 +121,5 @@ class ForumSearch extends Forum
         }
 
         return $dataProvider;
-
     }
-
 }

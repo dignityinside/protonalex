@@ -33,15 +33,15 @@ class Video extends Material
 {
 
     /** @var string */
-    const PLATFORM_YOUTUBE = 'youtube';
+    public const PLATFORM_YOUTUBE = 'youtube';
 
     /** @var array */
-    const PLATFORM = [
+    public const PLATFORM = [
         self::PLATFORM_YOUTUBE => 'YouTube'
     ];
 
     /** @var array */
-    const LANGUAGE = [
+    public const LANGUAGE = [
         0 => 'Русский',
         1 => 'Английский',
     ];
@@ -128,7 +128,6 @@ class Video extends Material
         ];
 
         return $scenarios;
-
     }
 
     /**
@@ -196,7 +195,6 @@ class Video extends Material
         }
 
         if ($this->isNewRecord) {
-
             if (isset(\Yii::$app->user->id)) {
                 $this->user_id = \Yii::$app->user->id;
             }
@@ -218,7 +216,6 @@ class Video extends Material
             if (empty($this->category_id)) {
                 $this->category_id = 0;
             }
-
         }
 
         if (!UserPermissions::canAdminVideo()) {
@@ -227,6 +224,5 @@ class Video extends Material
         }
 
         return true;
-
     }
 }

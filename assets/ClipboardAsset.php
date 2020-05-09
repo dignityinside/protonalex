@@ -5,11 +5,7 @@ namespace app\assets;
 use yii\web\AssetBundle;
 
 /**
- * ClipboardAsset
- */
-
-/**
- * Class ClipboardAsset
+ * Clipboard asset
  *
  * @package app\assets
  *
@@ -26,8 +22,8 @@ class ClipboardAsset extends AssetBundle
         'dist/clipboard.js',
     ];
 
+    /** @var string[] */
     public $depends = [
         'yii\web\JqueryAsset',
     ];
-
 }

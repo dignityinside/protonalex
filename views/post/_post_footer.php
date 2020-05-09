@@ -17,7 +17,7 @@ use app\helpers\Text;
 
     <?php if (isset($model->user->username)) : ?>
         <?= Html::a($model->user->username, ['/user/view', 'id' => $model->user_id]); ?>
-    <?php else: ?>
+    <?php else : ?>
         <?= 'Аноним'; ?>
     <?php endif; ?>
 
@@ -27,7 +27,7 @@ use app\helpers\Text;
         <i class="fa fa-folder"></i> <?= Html::a($model->category->name, '/category/' . $model->category->slug); ?>
     <?php endif; ?>
 
-    <?php if (!empty($model->tags)): ?>
+    <?php if (!empty($model->tags)) : ?>
         <i class="fa fa-tags"></i> <?= Text::getTagsList($model); ?>
     <?php endif; ?>
 

@@ -36,7 +36,9 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field(
-        $model, 'content', [
+        $model,
+        'content',
+        [
             'template' => "{label}\n{error}\n{input}\n{hint}"
         ]
     )->textarea(['class' => 'markdown-editor']) ?>
@@ -49,9 +51,10 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
     <?= $form->field($model, 'status_id')->dropDownList(['0' => 'Черновик', '1' => 'Опубликовать']) ?>
 
-    <?php if (UserPermissions::canAdminPost()): ?>
+    <?php if (UserPermissions::canAdminPost()) : ?>
         <?= $form->field($model, 'form_tags')->widget(
-            Select2::classname(), [
+            Select2::classname(),
+            [
             'options'       => [
                 'placeholder' => 'Найти тэг...',
                 'multiple'    => true,
@@ -80,7 +83,7 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
                     'data'     => new JsExpression('function(params) { return {q:params.term}; }')
                 ],
             ],
-        ]
+            ]
         );
         ?>
     <?php endif ?>
@@ -89,7 +92,7 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
     <?= $form->field($model, 'allow_comments')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
 
-    <?php if (UserPermissions::canAdminPost()): ?>
+    <?php if (UserPermissions::canAdminPost()) : ?>
         <?= $form->field($model, 'ontop')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
         <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
         <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>

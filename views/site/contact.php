@@ -15,14 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-contact">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-
+    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')) : ?>
         <div class="alert alert-success">
             Спасибо. Ваше сообщения отправлено. Мы ответим вам в ближайщее время.
         </div>
 
-    <?php else: ?>
-
+    <?php else : ?>
         <div class="row">
             <div class="col-lg-5">
 
@@ -43,7 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="form-group">
                     <?= Html::submitButton(
-                        'Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']
+                        'Отправить',
+                        ['class' => 'btn btn-primary', 'name' => 'contact-button']
                     ) ?>
                 </div>
 

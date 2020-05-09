@@ -51,8 +51,10 @@ $this->registerMetaTag(
             <?php endif; ?>
 
             <div class="deals-price">
-                <?php if (!empty(Html::encode($model->price_before)) && !empty(Html::encode($model->price_after))
-                    || Html::encode($model->price_after) == 0): ?>
+                <?php if (
+                !empty(Html::encode($model->price_before)) && !empty(Html::encode($model->price_after))
+                    || Html::encode($model->price_after) == 0
+) : ?>
                     <span class="price-after"><?= $model->getPrice(Html::encode($model->price_after), true) ?></span>
                     <span class="price-before"><?= $model->getPrice(Html::encode($model->price_before), true) ?></span>
                     <span><?= Html::encode($model->getDiscount()); ?></span>
@@ -78,7 +80,7 @@ $this->registerMetaTag(
                 <?php endif; ?>
             <?php endif; ?>
 
-            <?php if (Html::encode($model->coupon)): ?>
+            <?php if (Html::encode($model->coupon)) : ?>
                 <div class="deals-coupon">
                     Промокод: <span><?= Html::encode($model->coupon) ?></span>
                 </div>
@@ -100,12 +102,10 @@ $this->registerMetaTag(
                 <?php
 
                 if ($model->thumbnail) {
-
                     echo Html::a(Html::img(Html::encode($model->thumbnail), [
                         'alt' => Html::encode($model->title),
                         'title' => Html::encode($model->title),
                     ]), '/deals/view/' . Html::encode($model->id));
-
                 }
 
                 ?>
@@ -127,7 +127,7 @@ $this->registerMetaTag(
         <i class="fa fa-user"></i> Добавил:
         <?php if (!empty($model->user_id)) : ?>
             <?= Html::a($model->user->username, ['/deals/user/' . $model->user->username]); ?>
-        <?php else: ?>
+        <?php else : ?>
             <?= 'Аноним'; ?>
         <?php endif; ?>
         <?php if (isset($model->category->name)) : ?>

@@ -81,7 +81,6 @@ class ForumController extends Controller
         return $this->render('admin', [
             'dataProvider' => $dataProvider,
         ]);
-
     }
 
     /**
@@ -104,7 +103,6 @@ class ForumController extends Controller
         );
 
         return $this->render('my', ['dataProvider' => $dataProvider]);
-
     }
 
     /**
@@ -130,7 +128,6 @@ class ForumController extends Controller
         } else {
             return $this->render('create', ['model' => $model, 'categoryId' => $categoryId]);
         }
-
     }
 
     /**
@@ -161,7 +158,6 @@ class ForumController extends Controller
         } else {
             return $this->render('update', ['model' => $model,]);
         }
-
     }
 
     /**
@@ -175,7 +171,6 @@ class ForumController extends Controller
         $searchModel = new ForumCategories();
 
         return $this->render('index', ['dataProvider' => $searchModel->search()]);
-
     }
 
     /**
@@ -196,14 +191,12 @@ class ForumController extends Controller
         }
 
         if (in_array($categoryName, ['new'])) {
-
             $searchModel = new ForumSearch(['sortBy' => $sortBy]);
 
             return $this->render('topics', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $searchModel->search(\Yii::$app->request->queryParams)
             ]);
-
         }
 
         // filter by category name
@@ -219,12 +212,10 @@ class ForumController extends Controller
         if ($sortBy === null || !in_array($sortBy, ForumSearch::SORT_BY)) {
             $searchModel = new ForumSearch(['categoryId' => $category->id]);
         } else {
-
             $searchModel = new ForumSearch([
                 'categoryId' => $category->id,
                 'sortBy' => $sortBy
             ]);
-
         }
 
         return $this->render('topics', [
@@ -232,7 +223,6 @@ class ForumController extends Controller
             'dataProvider' => $searchModel->search(\Yii::$app->request->queryParams),
             'categoryModel' => $category
         ]);
-
     }
 
     /**
@@ -260,7 +250,6 @@ class ForumController extends Controller
             'dataProvider' => $searchModel->search(\Yii::$app->request->queryParams),
             'userName' => $user->username
         ]);
-
     }
 
     /**
@@ -289,7 +278,6 @@ class ForumController extends Controller
         return $this->render('topic', [
             'model' => $model,
         ]);
-
     }
 
     /**
@@ -311,7 +299,6 @@ class ForumController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['admin']);
-
     }
 
     /**
@@ -333,6 +320,5 @@ class ForumController extends Controller
         }
 
         throw new NotFoundHttpException('Форум не найден.');
-
     }
 }

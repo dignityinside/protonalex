@@ -78,7 +78,6 @@ class PostController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-
     }
 
     /**
@@ -92,12 +91,12 @@ class PostController extends Controller
         $dataProvider = $searchModel->adminSearch(Yii::$app->request->queryParams);
 
         return $this->render(
-            'admin', [
+            'admin',
+            [
             'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
-        ]
+            ]
         );
-
     }
 
     /**
@@ -126,11 +125,11 @@ class PostController extends Controller
         $model->countHits(Material::MATERIAL_POST_NAME);
 
         return $this->render(
-            'view', [
+            'view',
+            [
             'model' => $model
-        ]
+            ]
         );
-
     }
 
     /**
@@ -154,15 +153,13 @@ class PostController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['post/view', 'slug' => $model->slug]);
         } else {
-
             return $this->render(
-                'create', [
+                'create',
+                [
                 'model' => $model,
-            ]
+                ]
             );
-
         }
-
     }
 
     /**
@@ -194,9 +191,10 @@ class PostController extends Controller
             return $this->redirect(['post/view', 'slug' => $model->slug]);
         } else {
             return $this->render(
-                'update', [
+                'update',
+                [
                 'model' => $model,
-            ]
+                ]
             );
         }
     }
@@ -246,7 +244,6 @@ class PostController extends Controller
             'dataProvider' => $dataProvider,
             'tagName' => $tag->name
         ]);
-
     }
 
     /**
@@ -281,7 +278,6 @@ class PostController extends Controller
             'dataProvider' => $dataProvider,
             'categoryName' => $category->name
         ]);
-
     }
 
     /**
@@ -303,6 +299,5 @@ class PostController extends Controller
         } else {
             throw new NotFoundHttpException('Запись не найдена.');
         }
-
     }
 }

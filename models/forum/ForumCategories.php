@@ -60,7 +60,5 @@ class ForumCategories extends Forum
         $query->orderBy('order');
 
         return $dataProvider;
-
     }
-
 }

@@ -24,7 +24,7 @@ use yii\helpers\Html;
         <i class="fa fa-clock-o"></i> <?= date('d.m.Y', Html::encode($model->published)); ?>
         <i class="fa fa-youtube"></i> <?= Html::encode($model->author); ?>
         <i class="fa fa-eye"></i> <?= Html::encode($model->hits); ?>
-        <?php if ($model->commentsCount > 0): ?>
+        <?php if ($model->commentsCount > 0) : ?>
             <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>
         <?php endif; ?>
     </div>

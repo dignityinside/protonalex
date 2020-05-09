@@ -46,7 +46,6 @@ class Tag extends ActiveRecord
         $scenarios['default'] = ['name'];
 
         return $scenarios;
-
     }
 
     /**
@@ -159,7 +158,7 @@ class Tag extends ActiveRecord
         }
 
         /** @var self $tag */
-        $tag = new static;
+        $tag = new static();
         $tag->name = $name;
         $tag->user_id = Yii::$app->user->id;
 

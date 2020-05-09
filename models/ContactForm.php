@@ -62,7 +62,6 @@ class ContactForm extends Model
     {
 
         if ($this->validate()) {
-
             $body = "$this->name ($this->email) написал:\n";
             $body .= $this->body;
 
@@ -74,11 +73,8 @@ class ContactForm extends Model
                              ->send();
 
             return true;
-
         }
 
         return false;
-
     }
-
 }

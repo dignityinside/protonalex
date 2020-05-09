@@ -41,19 +41,16 @@ return [
         }
 
         if (!empty($comment->user->email)) {
-
             $gravatar = new \cebe\gravatar\Gravatar();
             $gravatar->email = $comment->user->email;
             $gravatar->size = 80;
 
             return $gravatar->getImageUrl();
-
         }
 
         // $comment->user by default relation to your \common\models\User
         // return $comment->user->avatar_url;
         return Yii::$app->request->baseUrl . '/img/no-avatar.jpg';
-
     },
     // Anonymous function to get comment text
     // By default: nl2br(Html::encode($comment->text))
@@ -79,7 +76,6 @@ return [
         }
 
         return $url;
-
     },
     'canDelete'          => function (Comment $comment) {
         // Only admin can delete comment

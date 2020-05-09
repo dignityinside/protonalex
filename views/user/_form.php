@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php if (UserPermissions::canAdminUsers()): ?>
+    <?php if (UserPermissions::canAdminUsers()) : ?>
         <?= $form->field($model, 'status')->dropDownList(\app\models\User::getStatuses()) ?>
     <?php endif ?>
 

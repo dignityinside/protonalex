@@ -18,5 +18,4 @@ class VideoAsset extends AssetBundle
     public $css = [
         'css/video.css',
     ];
-
 }

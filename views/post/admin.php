@@ -62,7 +62,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             'view' => function ($url, $model) {
                                 return Html::a(
                                     '<span class="glyphicon glyphicon-eye-open"></span>',
-                                    ['post/view', 'slug' => $model->slug]);
+                                    ['post/view', 'slug' => $model->slug]
+                                );
                             },
                         ],
                 ],

@@ -55,12 +55,12 @@ class DealsQuery extends ActiveQuery
 
         $countQuery = (new Query())->select('COUNT(*)')->from(Comment::tableName())
             ->where(
-                'material_type=:typeDeals AND material_id=deals.id', [
+                'material_type=:typeDeals AND material_id=deals.id',
+                [
                     ':typeDeals' => Material::MATERIAL_DEALS_ID,
                 ]
             );
 
         return $this->addSelect(['commentsCount' => $countQuery]);
-
     }
 }

@@ -36,7 +36,7 @@ use app\models\Tag;
 class Post extends Material
 {
 
-    const SHOW_ON_TOP = 1;
+    public const SHOW_ON_TOP = 1;
 
     /** @var array */
     public $form_tags;
@@ -105,7 +105,6 @@ class Post extends Material
         ];
 
         return $scenarios;
-
     }
 
     /**
@@ -131,7 +130,6 @@ class Post extends Material
             'form_tags'        => 'Тэги',
             'category_id'      => 'Категория'
         ];
-
     }
 
     /**
@@ -146,7 +144,6 @@ class Post extends Material
         }
 
         if ($this->isNewRecord) {
-
             $this->user_id = Yii::$app->user->id;
             $this->datecreate = time();
             $this->dateupdate = time();
@@ -155,19 +152,15 @@ class Post extends Material
             if (empty($this->slug)) {
                 $this->slug = TranslitHelper::translit($this->title);
             }
-
         } else {
-
             $this->dateupdate = time();
 
             if (empty($this->slug)) {
                 $this->slug = TranslitHelper::translit($this->title);
             }
-
         }
 
         return true;
-
     }
 
     /**
@@ -218,14 +211,12 @@ class Post extends Material
     {
         // save tags
         if (is_array($this->form_tags)) {
-
             if (!$insert) {
                 // Remove current tags
                 PostTag::deleteAll(['post_id' => $this->id]);
             }
 
             if (count($this->form_tags)) {
-
                 // form tags array
                 $tag_ids = [];
 
@@ -240,7 +231,6 @@ class Post extends Material
                 }
 
                 if (count($tag_ids)) {
-
                     // Insert new relations data
                     $data = [];
 
@@ -248,8 +238,11 @@ class Post extends Material
                         $data[] = [$this->id, $tag_id];
                     }
 
-                    Yii::$app->db->createCommand()->batchInsert(PostTag::tableName(),
-                        ['post_id', 'tag_id'], $data)->execute();
+                    Yii::$app->db->createCommand()->batchInsert(
+                        PostTag::tableName(),
+                        ['post_id', 'tag_id'],
+                        $data
+                    )->execute();
                 }
             }
         }
@@ -268,5 +261,4 @@ class Post extends Material
 
         return true;
     }
-
 }

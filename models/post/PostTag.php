@@ -32,7 +32,6 @@ class PostTag extends ActiveRecord
         $scenarios['default'] = ['post_id', 'tag_id'];
 
         return $scenarios;
-
     }
 
     /**

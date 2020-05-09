@@ -58,7 +58,6 @@ class SignupForm extends Model
                 }
             ]
         ];
-
     }
 
     /**
@@ -83,7 +82,6 @@ class SignupForm extends Model
     {
 
         if ($this->validate()) {
-
             $user = new User();
 
             $user->username = $this->username;
@@ -93,11 +91,8 @@ class SignupForm extends Model
             $user->save();
 
             return $user;
-
         }
 
         return null;
-
     }
-
 }

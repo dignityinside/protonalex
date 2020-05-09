@@ -63,21 +63,16 @@ class Category extends Material
         }
 
         if ($this->isNewRecord) {
-
             if (empty($this->slug)) {
                 $this->slug = TranslitHelper::translit($this->name);
             }
-
         } else {
-
             if (empty($this->slug)) {
                 $this->slug = TranslitHelper::translit($this->name);
             }
-
         }
 
         return true;
-
     }
 
     /**

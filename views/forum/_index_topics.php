@@ -13,7 +13,7 @@ use yii\helpers\Html;
     </div>
     <div class="forum_topics_list__item__name">
         <div class="forum_topics_list__item__name__title">
-            <?= Html::a($model->title, ['forum/topic', 'id'=>$model->id]); ?>
+            <?= Html::a($model->title, ['forum/topic', 'id' => $model->id]); ?>
         </div>
         <div class="forum_topics_list__item__name__user">
             <span>
@@ -23,7 +23,7 @@ use yii\helpers\Html;
                 <i class="fa fa-user"></i>
                 <?php if (!empty($model->user_id)) : ?>
                     <?= Html::a($model->user->username, ['/forum/user/' . $model->user->username]); ?>
-                <?php else: ?>
+                <?php else : ?>
                     <?= 'Аноним'; ?>
                 <?php endif; ?>
             </span>

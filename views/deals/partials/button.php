@@ -10,9 +10,11 @@ $class = ($expired) ? 'disabled' : 'btn-success';
 
 echo Html::a(
     'К скидки <i class="fa fa-external-link"></i>',
-    Html::encode($model->url), [
+    Html::encode($model->url),
+    [
     'class' => 'btn ' . $class,
     'title' => 'Перейти на страницу со скидкой',
     'target' => '_blank',
     'rel' => 'nofollow'
-]);
+    ]
+);

@@ -22,6 +22,5 @@ class Sharpay extends Widget
 <script async src="https://app.sharpay.io/api/script.js"></script>', \Yii::$app->params['sharpayAppId']);
 
         return $out;
-
     }
 }

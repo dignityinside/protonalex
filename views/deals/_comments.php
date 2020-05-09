@@ -10,7 +10,6 @@ use app\models\deals\Deals;
 ?>
 
 <?php if ($model->allow_comments) : ?>
-
     <h3 class="comment-box__title">
         Оставьте комментарий!
     </h3>

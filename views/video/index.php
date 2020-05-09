@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use \yii\widgets\ListView;
+use yii\widgets\ListView;
 use yii\widgets\Pjax;
 use app\assets\VideoAsset;
 
@@ -10,7 +10,8 @@ use app\assets\VideoAsset;
 
 VideoAsset::register($this);
 
-$this->title = 'Руланд видео';;
+$this->title = 'Руланд видео';
+;
 
 
 ?>

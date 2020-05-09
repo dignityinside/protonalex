@@ -5,13 +5,19 @@ namespace app\assets;
 use yii\web\AssetBundle;
 
 /**
- * CodeMirrorAsset groups assets for code editing areas
+ * Code mirror asset - groups assets for code editing areas
+ *
+ * @package app\assets
+ *
+ * @author Alexander Schilling
  */
 class CodeMirrorAsset extends AssetBundle
 {
 
+    /** @var string */
     public $sourcePath = '@bower/codemirror';
 
+    /** @var string[] */
     public $js = [
         'lib/codemirror.js',
         // langs to highlight in markdown blocks
@@ -41,6 +47,7 @@ class CodeMirrorAsset extends AssetBundle
         'addon/display/panel.js',
     ];
 
+    /** @var string[] */
     public $css = [
         'lib/codemirror.css',
     ];

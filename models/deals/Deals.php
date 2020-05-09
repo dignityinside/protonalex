@@ -34,8 +34,8 @@ use app\models\category\Category;
 class Deals extends Material
 {
 
-    const USD = 'USD';
-    const EUR = 'EUR';
+    public const USD = 'USD';
+    public const EUR = 'EUR';
 
     /**
      * Table name
@@ -126,7 +126,6 @@ class Deals extends Material
         ];
 
         return $scenarios;
-
     }
 
     /**
@@ -191,20 +190,17 @@ class Deals extends Material
     {
 
         try {
-
             $priceBefore = $this->getPrice($this->price_before);
             $priceAfter = $this->getPrice($this->price_after);
 
             $discount = ($priceAfter - $priceBefore) / $priceBefore * 100;
 
             return '(' . number_format($discount, 0) . '%)';
-
         } catch (\Exception $exception) {
             // do nothing
         }
 
         return '';
-
     }
 
     /**
@@ -230,7 +226,7 @@ class Deals extends Material
 
         if (strrpos($price, self::USD)) {
             $price = $this->getPriceInRur($price, self::USD);
-        } else if (strrpos($price, self::EUR)) {
+        } elseif (strrpos($price, self::EUR)) {
             $price = $this->getPriceInRur($price, self::EUR);
         }
 
@@ -242,7 +238,6 @@ class Deals extends Material
         } else {
             return $formatted ? number_format($price, 0, ',', '.') . 'руб.' : $price;
         }
-
     }
 
     /**
@@ -263,7 +258,6 @@ class Deals extends Material
         }
 
         return 0;
-
     }
 
     /**
@@ -288,7 +282,6 @@ class Deals extends Material
         }
 
         return true;
-
     }
 
     /**
@@ -306,7 +299,6 @@ class Deals extends Material
         }
 
         if ($this->isNewRecord) {
-
             if (isset(\Yii::$app->user->id)) {
                 $this->user_id = \Yii::$app->user->id;
             }
@@ -328,7 +320,6 @@ class Deals extends Material
             if (empty($this->category_id)) {
                 $this->category_id = 0;
             }
-
         }
 
         $this->updated = time();
@@ -339,6 +330,5 @@ class Deals extends Material
         }
 
         return true;
-
     }
 }

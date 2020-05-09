@@ -6,10 +6,8 @@ use yii\helpers\Html;
 /** @var $model app\models\deals\Deals */
 
 if ($model->thumbnail) {
-
     echo Html::a(Html::img(Html::encode($model->thumbnail), [
         'alt' => Html::encode($model->title),
         'title' => Html::encode($model->title),
     ]), '/deals/view/' . Html::encode($model->id));
-
 }
