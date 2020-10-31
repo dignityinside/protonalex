@@ -92,6 +92,23 @@ $config = [
             'baseUrl' => 'https://rooland.org',
         ],
         'comment'              => require(__DIR__ . '/comments.php'),
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                        'app/blog' => 'blog.php',
+                        'app/video' => 'video.php',
+                        'app/deals' => 'deals.php',
+                        'app/forum' => 'forum.php',
+                        'app/comments' => 'comments.php',
+                        'app/category' => 'category.php',
+                    ],
+                ],
+            ],
+        ],
     ],
     'modules'      => [
         'comment-admin' => [
