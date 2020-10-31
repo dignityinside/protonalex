@@ -8,6 +8,7 @@ Source code of the rooland blog.
 - HTML5 + CSS3 (Bootstrap), Javascript
 - PHP 7.2+, MySQL, Yii Framework 2
 - Composer (PHP), Bower and NPM (CSS, JavaScript)
+- Docker for local development
 - Markdown + CodeMirror Editor
 - PSR-12 Coding Standard
 
@@ -16,6 +17,46 @@ Source code of the rooland blog.
 ```
 git clone https://github.com/dignityinside/rooland
 cd rooland
+```
+
+#### Install Docker (Ubuntu-Linux)
+
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+apt-cache policy docker-ce
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+sudo systemctl status docker
+```
+
+
+#### Install Docker-Compose (Ubuntu-Linux)
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+sudo usermod -aG docker <username>
+su - <username>
+```
+
+#### Build and run Docker
+
+- `docker-compose build` - Build Docker
+- `docker-compose up -d` - Start Docker
+- `docker-compose exec php /bin/bash` - SSH Login to Docker
+- `docker-compose down` - Stop Docker
+
+#### Add new hosts to your `hosts` File:
+
+```
+127.0.0.1 rooland.local
+```
+
+#### Development links
+```
+http://rooland.local:8025
 ```
 
 ## Install all dependencies via Composer
