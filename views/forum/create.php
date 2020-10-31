@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\forum\Forum */
 
-$this->title = 'Новая тема';
+$this->title = \Yii::t('app/forum', 'page_forum_create_title');
 
-$this->params['breadcrumbs'][] = ['label' => 'Форум', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'Мои темы', 'url' => ['my']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app/forum', 'breadcrumbs_forum_index'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app/forum', 'breadcrumbs_forum_my'), 'url' => ['my']];
 $this->params['breadcrumbs'][] = Html::encode($this->title);
 
 ?>

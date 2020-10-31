@@ -24,7 +24,7 @@ use yii\helpers\Html;
                 <?php if (!empty($model->user_id)) : ?>
                     <?= Html::a($model->user->username, ['/forum/user/' . $model->user->username]); ?>
                 <?php else : ?>
-                    <?= 'Аноним'; ?>
+                    <?= \Yii::t('app', 'user_anonym'); ?>
                 <?php endif; ?>
             </span>
         </div>

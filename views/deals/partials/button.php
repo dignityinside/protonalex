@@ -9,11 +9,11 @@ $expired = $model->url && $model->isExpired();
 $class = ($expired) ? 'disabled' : 'btn-success';
 
 echo Html::a(
-    'К скидки <i class="fa fa-external-link"></i>',
+    \Yii::t('app/blog', 'button_text_go_to_deal') . ' <i class="fa fa-external-link"></i>',
     Html::encode($model->url),
     [
     'class' => 'btn ' . $class,
-    'title' => 'Перейти на страницу со скидкой',
+    'title' => \Yii::t('app/blog', 'button_title_go_to_deal'),
     'target' => '_blank',
     'rel' => 'nofollow'
     ]

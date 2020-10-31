@@ -11,7 +11,7 @@ use app\models\deals\Deals;
 
 <?php if ($model->allow_comments) : ?>
     <h3 class="comment-box__title">
-        Оставьте комментарий!
+        <?= \Yii::t('app/comments', 'comment_box_title') ?>
     </h3>
 
     <?= Comments::widget(
@@ -25,9 +25,9 @@ use app\models\deals\Deals;
                 'class' => 'comments reply list-unstyled',
             ],
             'clientOptions' => [
-                'deleteComfirmText' => 'Вы уверены что хотите удалить данный комментарий?',
-                'updateButtonText' => 'Обновить',
-                'cancelUpdateButtonText' => 'Отменить',
+                'deleteComfirmText' => \Yii::t('app/comments', 'delete_confirm_text'),
+                'updateButtonText' => \Yii::t('app/comments', 'update_button_text'),
+                'cancelUpdateButtonText' => \Yii::t('app/comments', 'cancel_update_button_text'),
                 'commentTextSelector' => '.comment-text > div',
             ],
             'maxNestedLevel' => 5,

@@ -1,7 +1,6 @@
 <?php
 
-/* @var $this \yii\web\View */
-
+/* @var $this yii\web\View */
 /* @var $content string */
 
 use yii\helpers\Html;
@@ -56,28 +55,68 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
             ]
         );
 
-        $menuItems[] = ['label' => 'Блог', 'url' => ['/post/index']];
-        $menuItems[] = ['label' => 'Видео', 'url' => ['/video/index']];
-        $menuItems[] = ['label' => 'Скидки', 'url' => ['/deals/index']];
-        $menuItems[] = ['label' => 'Форум', 'url' => ['/forum/index']];
+        $menuItems[] = ['label' => \Yii::t('app/blog', 'menu_label_index_blog'), 'url' => ['/post/index']];
+        $menuItems[] = ['label' => \Yii::t('app/video', 'menu_label_video_index'), 'url' => ['/video/index']];
+        $menuItems[] = ['label' => \Yii::t('app/deals', 'menu_label_deals_index'), 'url' => ['/deals/index']];
+        $menuItems[] = ['label' => \Yii::t('app/forum', 'menu_label_forum_index'), 'url' => ['/forum/index']];
 
         if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'Войти', 'url' => ['/login']];
+            $menuItems[] = ['label' => \Yii::t('app', 'menu_label_login'), 'url' => ['/login']];
         } else {
             $menuItems[] = [
-                'label' => 'Панель', 'items' => [
-                    ['label' => 'Мои темы форума', 'url' => ['/forum/my']],
-                    ['label' => 'Профиль', 'url' => ['/user/view', 'id' => \Yii::$app->user->id]],
+                'label' => \Yii::t('app', 'menu_label_panel'), 'items' => [
+                    [
+                        'label' => \Yii::t('app/forum', 'menu_label_forum_my'),
+                        'url' => ['/forum/my']
+                    ],
+                    [
+                        'label' => \Yii::t('app', 'menu_label_profile'),
+                        'url' => ['/user/view', 'id' => \Yii::$app->user->id]
+                    ],
                     Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
-                    ['label' => 'Записи', 'url' => ['/post/admin'], 'visible' => UserPermissions::canAdminPost()],
-                    ['label' => 'Видео', 'url' => ['/video/admin'], 'visible' => UserPermissions::canAdminVideo()],
-                    ['label' => 'Скидки', 'url' => ['/deals/admin'], 'visible' => UserPermissions::canAdminDeals()],
-                    ['label' => 'Все темы форума', 'url' => ['/forum/admin'], 'visible' => UserPermissions::canAdminForum()],
-                    ['label' => 'Комментарии', 'url' => ['/comment-admin/manage/index'], 'visible' => UserPermissions::canAdminPost()],
-                    ['label' => 'Категории', 'url' => ['/category/admin'], 'visible' => UserPermissions::canAdminCategory()],
-                    ['label' => 'Пользователи', 'url' => ['/user/admin'], 'visible' => UserPermissions::canAdminUsers()],
+                    [
+                        'label' => \Yii::t('app/blog', 'menu_label_admin_blog'),
+                        'url' => ['/post/admin'],
+                        'visible' => UserPermissions::canAdminPost()
+                    ],
+                    [
+                        'label' => \Yii::t('app/video', 'menu_label_video_admin'),
+                        'url' => ['/video/admin'],
+                        'visible' => UserPermissions::canAdminVideo()
+                    ],
+                    [
+                        'label' => \Yii::t('app/deals', 'menu_label_deals_admin'),
+                        'url' => ['/deals/admin'],
+                        'visible' => UserPermissions::canAdminDeals()
+                    ],
+                    [
+                        'label' => \Yii::t('app/forum', 'menu_label_forum_admin'),
+                        'url' => ['/forum/admin'],
+                        'visible' => UserPermissions::canAdminForum()
+                    ],
+                    [
+                        'label' => \Yii::t('app/comments', 'menu_label_admin_comments'),
+                        'url' => ['/comment-admin/manage/index'],
+                        'visible' => UserPermissions::canAdminPost()
+                    ],
+                    [
+                        'label' => \Yii::t('app/category', 'menu_label_admin_category'),
+                        'url' => ['/category/admin'],
+                        'visible' => UserPermissions::canAdminCategory()
+                    ],
+                    [
+                        'label' => \Yii::t('app', 'menu_label_user_admin'),
+                        'url' => ['/user/admin'],
+                        'visible' => UserPermissions::canAdminUsers()
+                    ],
                     Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
-                    ['label' => 'Выйти (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
+                    [
+                        'label' => \Yii::t('app', 'logout_({username})', [
+                            'username' => Yii::$app->user->identity->username,
+                        ]),
+                        'url' => ['/site/logout'],
+                        'linkOptions' => ['data-method' => 'post']
+                    ]
                 ],
             ];
         }
@@ -95,7 +134,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
         ?>
 
-
     <div class="container">
         <?= Breadcrumbs::widget(
             [
@@ -107,9 +145,9 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
     <footer>
         <div class="container footer text-center">
-            <p>&copy; 2012-<?= date('Y') ?> <?= \Yii::$app->params['siteName'] ?> |
-                <?= Html::a('Об авторе', '/about'); ?></p>
-            <p>Копирование и распространение материалов с сайта разрешено только с указанием активной ссылки.</p>
+            <p>&copy; <?= date('Y') ?> <?= \Yii::$app->params['siteName'] ?> |
+                <?= Html::a(\Yii::t('app', 'footer_about_link'), '/about'); ?></p>
+            <p><?= \Yii::t('app', 'footer_copyright_text'); ?></p>
         </div>
     </footer>
 </div>

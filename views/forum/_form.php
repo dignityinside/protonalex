@@ -24,7 +24,8 @@ $categoryId = !empty($categoryId) ? $categoryId : 0;
 
         <?= $form->field($model, 'category_id')->dropDownList(
             ArrayHelper::map(Category::getAllCategories(\app\models\Material::MATERIAL_FORUM_ID), 'id', 'name'),
-            ['prompt' => 'Выберите раздел форума', 'options' => [(string)$categoryId => ['Selected' => true]]]
+            ['prompt' => \Yii::t('app/forum', 'forum_select_category'),
+             'options' => [(string)$categoryId => ['Selected' => true]]]
         ); ?>
 
         <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
@@ -37,17 +38,19 @@ $categoryId = !empty($categoryId) ? $categoryId : 0;
             ]
         )->textarea(['class' => 'markdown-editor']) ?>
 
-        <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
+        <?= $form->field($model, 'allow_comments')->dropDownList([
+            '1' => \Yii::t('app/comments', 'text_allow_comments_yes'),
+            '0' => \Yii::t('app/comments', 'text_allow_comments_no')
+        ]) ?>
 
         <?php if (UserPermissions::canAdminForum()) : ?>
             <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
-            <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
         <?php endif ?>
 
         <div class="form-group">
             <?= Html::submitButton(
-                $model->isNewRecord ? 'Сохранить' : 'Обновить',
+                $model->isNewRecord ? \Yii::t('app', 'button_save') : \Yii::t('app', 'button_update'),
                 ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
             ) ?>
         </div>

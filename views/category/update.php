@@ -5,9 +5,14 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\category\Category */
 
-$this->title = 'Обновить категорию: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Категории', 'url' => ['admin']];
-$this->params['breadcrumbs'][] = 'Обновить';
+$this->title = \Yii::t('app/category', 'page_update_category_title');
+
+$this->params['breadcrumbs'][] = [
+                                    'label' => \Yii::t('app/category', 'breadcrumbs_label_admin_category'),
+                                    'url'   => ['admin']
+                                 ];
+
+$this->params['breadcrumbs'][] = \Yii::t('app', 'breadcrumbs_label_update');
 
 ?>
 <div class="category-update">

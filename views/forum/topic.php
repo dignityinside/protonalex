@@ -13,8 +13,10 @@ ForumAsset::register($this);
 
 $this->title = Html::encode($model->title);
 
-$this->params['breadcrumbs'][] = ['label' => 'Форум', 'url' => ['/forum/index']];
-$this->params['breadcrumbs'][] = ['label' => $model->category->name, 'url' => ['/forum/topics', 'categoryName' => $model->category->slug]];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app/forum', 'breadcrumbs_forum_index'),
+                                  'url' => ['/forum/index']];
+$this->params['breadcrumbs'][] = ['label' => $model->category->name,
+                                  'url' => ['/forum/topics', 'categoryName' => $model->category->slug]];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerMetaTag(
@@ -38,7 +40,7 @@ $this->registerMetaTag(
 
         <?php if (UserPermissions::canAdminForum() || UserPermissions::canEditForum($model)) : ?>
             <p class="forum_topic__item__title__edit"><i class="fa fa-edit"></i>
-                <?= Html::a('Изменить', ['/forum/update', 'id' => $model->id]); ?></p>
+                <?= Html::a( \Yii::t('app', 'button_update'), ['/forum/update', 'id' => $model->id]); ?></p>
         <?php endif; ?>
 
         <div class="forum_topic__item__content">
@@ -53,10 +55,11 @@ $this->registerMetaTag(
         <?php if (!empty($model->user_id)) : ?>
             <?= Html::a($model->user->username, ['/forum/user/' . $model->user->username]); ?>
         <?php else : ?>
-            <?= 'Аноним'; ?>
+            <?= \Yii::t('app', 'user_anonym'); ?>
         <?php endif; ?>
         <?php if (isset($model->category->name)) : ?>
-            <i class="fa fa-folder"></i> <?= Html::a($model->category->name, '/forum/topics/' . $model->category->slug); ?>
+            <i class="fa fa-folder"></i>
+            <?= Html::a($model->category->name, '/forum/topics/' . $model->category->slug); ?>
         <?php endif; ?>
         <?php if ($model->commentsCount > 0) : ?>
             <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>

@@ -31,12 +31,12 @@ MarkdownEditorAsset::register($this);
                 'name'
             ),
             [
-                'prompt' => 'Wähle eine Kategorie aus'
+                'prompt' => \Yii::t('app/deals', 'deals_form_select_category')
             ]
         ); ?>
 
         <?= $form->field($model, 'title')->textInput(['maxlength' => true])
-                 ->hint('Короткий и содержательный заголовок.') ?>
+                 ->hint(\Yii::t('app/deals', 'deals_form_hint_title')) ?>
 
         <?= $form->field(
             $model,
@@ -44,38 +44,42 @@ MarkdownEditorAsset::register($this);
             [
                 'template' => "{label}\n{error}\n{input}\n{hint}"
             ]
-        )->textarea(['class' => 'markdown-editor'])->hint('Здесь вы можете описать свою сделку своими словами.') ?>
+        )->textarea(['class' => 'markdown-editor'])->hint(\Yii::t('app/deals', 'deals_form_hint_content')) ?>
 
-        <?= $form->field($model, 'author')->textInput(['maxlength' => true])->hint('Например: rooland') ?>
+        <?= $form->field($model, 'author')->textInput(['maxlength' => true])
+            ->hint(\Yii::t('app/deals', 'deals_form_hint_author')) ?>
 
         <?= $form->field($model, 'url')->textInput(['maxlength' => true])
-                 ->hint('Добавьте сюда ссылку на сайт, где можно найти сделку и получить дополнительную информацию.') ?>
+                 ->hint(\Yii::t('app/deals', 'deals_form_hint_field')) ?>
 
         <div id="imgur_add_img">
-            Нажмите здесь или перетащите файл, что бы загрузить картинку.
+            <?= \Yii::t('app', 'imgur_add_img_text'); ?>
         </div>
         <input id="imgur_img_upload_field" type="file">
         <div id="imgur_img_list"></div>
 
         <?= $form->field($model, 'thumbnail')->textInput(['maxlength' => true])
-                 ->hint('Добавьте сюда ссылку на картинку') ?>
+                 ->hint(\Yii::t('app/deals', 'deals_form_hint_thumbnail')) ?>
 
         <?= $form->field($model, 'valid_until')->widget(DatePicker::class, [
             'language' => 'ru',
             'dateFormat' => 'yyyy-MM-dd',
             'options' => ['class' => 'form-control']
-        ])->hint('Если сделка заканчивается в определенный день, пожалуйста, введите эту дату.') ?>
+        ])->hint(\Yii::t('app/deals', 'deals_form_hint_valid_until')) ?>
 
         <?= $form->field($model, 'price_before')->textInput(['maxlength' => true])
-                 ->hint('Пожалуйста, введите цену до скидки в рублях (по умолчанию), евро (eur) или долларах (usd).') ?>
+                 ->hint(\Yii::t('app/deals', 'deals_form_hint_price_before')) ?>
 
         <?= $form->field($model, 'price_after')->textInput(['maxlength' => true])
-                 ->hint('Пожалуйста, введите цену после скидки в рублях, euro или usd') ?>
+                 ->hint(\Yii::t('app/deals', 'deals_form_hint_price_after')) ?>
 
         <?= $form->field($model, 'coupon')->textInput(['maxlength' => true])
-                 ->hint('Если у вас есть купон, пожалуйста, введите здесь.') ?>
+                 ->hint(\Yii::t('app/deals', 'deals_form_hint_coupon')) ?>
 
-        <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
+        <?= $form->field($model, 'allow_comments')->dropDownList([
+                '1' => \Yii::t('app/comments', 'text_allow_comments_yes'),
+                '0' => \Yii::t('app/comments', 'text_allow_comments_no')
+            ]) ?>
 
         <?php if (UserPermissions::canAdminDeals()) : ?>
             <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
@@ -85,7 +89,7 @@ MarkdownEditorAsset::register($this);
 
         <div class="form-group">
             <?= Html::submitButton(
-                $model->isNewRecord ? 'Сохранить' : 'Обновить',
+                $model->isNewRecord ? \Yii::t('app', 'button_save') : \Yii::t('app', 'button_update'),
                 ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
             ) ?>
         </div>

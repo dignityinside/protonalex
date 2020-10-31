@@ -5,6 +5,6 @@ use app\widgets\Sharpay;
 ?>
 
 <div class="share">
-    Порекомендуй друзьям:<br>
+    <?= \Yii::t('app', 'share_friends') ?><br>
     <?= Sharpay::widget(); ?>
 </div>

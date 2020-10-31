@@ -13,20 +13,15 @@ DealsAsset::register($this);
 
 $this->title = Html::encode($model->title);
 
-$this->params['breadcrumbs'][] = ['label' => 'Скидки', 'url' => ['/deals/index']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app/deals', 'deals_breadcrumbs_label_index'),
+    'url' => ['/deals/index']];
+
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerMetaTag(
     [
         'name'    => 'description',
         'content' => Html::encode($model->meta_description),
-    ]
-);
-
-$this->registerMetaTag(
-    [
-        'name'    => 'keywords',
-        'content' => Html::encode($model->meta_keywords),
     ]
 );
 
@@ -47,7 +42,7 @@ $this->registerMetaTag(
 
             <?php if (UserPermissions::canAdmindeals() || UserPermissions::canEditdeals($model)) : ?>
                 <p class="deal-view-edit"><i class="fa fa-edit"></i>
-                    <?= Html::a('Изменить', ['/deals/update', 'id' => $model->id]); ?></p>
+                    <?= Html::a(\Yii::t('app', 'button_update'), ['/deals/update', 'id' => $model->id]); ?></p>
             <?php endif; ?>
 
             <div class="deals-price">
@@ -64,11 +59,11 @@ $this->registerMetaTag(
             <?php if ($model->valid_until !== null && $model->valid_until !== '0000-00-00 00:00:00') : ?>
                 <?php if ($model->isExpired()) : ?>
                     <div class="alert alert-info">
-                        Скидка закончилась.
+                        <?= \Yii::t('app/deals', 'deals_expired_text'); ?>
                     </div>
                 <?php else : ?>
                     <div class="alert alert-danger">
-                        <p>Скидка действует ограниченное время!</p>
+                        <p><?= \Yii::t('app/deals', 'deals_countdown_text') ?></p>
                         <p><?= \russ666\widgets\Countdown::widget([
                                 'datetime' => $model->valid_until,
                                 'format' => '<span>%-D</span> дней <span>%-H</span> часов <span>%M</span> минут <span>%S</span> секунд',
@@ -82,7 +77,8 @@ $this->registerMetaTag(
 
             <?php if (Html::encode($model->coupon)) : ?>
                 <div class="deals-coupon">
-                    Промокод: <span><?= Html::encode($model->coupon) ?></span>
+                    <?= \Yii::t('app/deals', 'deals_coupon') ?>:
+                    <span><?= Html::encode($model->coupon) ?></span>
                 </div>
             <?php endif; ?>
 
@@ -123,15 +119,17 @@ $this->registerMetaTag(
 
     <div class="deals-view-footer">
         <i class="fa fa-clock-o"></i> <?= date('d.m.Y', Html::encode($model->created)); ?>
-        <i class="fa fa-user-o"></i> Автор скидки: <?= Html::encode($model->author); ?>
-        <i class="fa fa-user"></i> Добавил:
+        <i class="fa fa-user-o"></i> <?= \Yii::t('app/deals', 'deals_author') ?>:
+        <?= Html::encode($model->author); ?>
+        <i class="fa fa-user"></i> <?= \Yii::t('app', 'added') ?>:
         <?php if (!empty($model->user_id)) : ?>
             <?= Html::a($model->user->username, ['/deals/user/' . $model->user->username]); ?>
         <?php else : ?>
-            <?= 'Аноним'; ?>
+            <?= \Yii::t('app', 'user_anonym'); ?>
         <?php endif; ?>
         <?php if (isset($model->category->name)) : ?>
-            <i class="fa fa-folder"></i> <?= Html::a($model->category->name, '/deals/category/' . $model->category->slug); ?>
+            <i class="fa fa-folder"></i>
+            <?= Html::a($model->category->name, '/deals/category/' . $model->category->slug); ?>
         <?php endif; ?>
     </div>
 

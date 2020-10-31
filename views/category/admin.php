@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\category\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Категории';
+$this->title = \Yii::t('app/category', 'page_admin_category_title');
 
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать категорию', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(\Yii::t('app/category', 'button_create_category'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

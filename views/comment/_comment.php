@@ -23,7 +23,7 @@ $userProfileUrl = $comment->getUserProfileUrl();
 $username = $comment->getUsername();
 
 if (empty($username)) {
-    $username = 'Аноним';
+    $username = \Yii::t('app', 'user_anonym');
 }
 
 $profileLink = $userProfileUrl ? Html::a($username, $userProfileUrl, ['class' => 'p-author h-card']) : $username;
@@ -47,24 +47,30 @@ $profileLink = $userProfileUrl ? Html::a($username, $userProfileUrl, ['class' =>
             <?= Html::a('#' . $cid, '#comment-' . $cid, ['class' => 'u-url']) ?>
         </div>
         <div class="comment-username">
-            <?= $profileLink ?> написал(а):
+            <?= $profileLink; ?> <?= \Yii::t('app/comments', 'user_wrote'); ?>:
         </div>
         <div class="comment-text e-content">
             <div><?= $comment->getPreparedText() ?></div>
         </div>
         <div class="comment-bottom">
             <div class="comment-actions">
-                <i class="fa fa-reply"></i> <a class="reply-button" data-comment-id="<?= $cid ?>" href="#">Ответить</a>
+                <i class="fa fa-reply"></i> <a class="reply-button" data-comment-id="<?= $cid ?>" href="#">
+                    <?= \Yii::t('app/comments', 'button_reply'); ?>
+                </a>
 
                 <?php if ($comment->canUpdate()): ?>
                     <i class="fa fa-edit"></i> <?= Html::a(
-                        'Редактировать', ['/comment/default/update', 'id' => $cid], ['class' => 'update-button']
+                        \Yii::t('app', 'button_edit'),
+                        ['/comment/default/update', 'id' => $cid],
+                        ['class' => 'update-button']
                     ) ?>
                 <?php endif ?>
 
                 <?php if ($comment->canDelete()): ?>
                     <i class="fa fa-remove"></i> <?= Html::a(
-                        'Удалить', ['/comment/default/delete', 'id' => $cid], ['class' => 'delete-button']
+                        \Yii::t('app', 'button_delete'),
+                        ['/comment/default/delete', 'id' => $cid],
+                        ['class' => 'delete-button']
                     ) ?>
                 <?php endif ?>
 

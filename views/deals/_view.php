@@ -35,7 +35,7 @@ use app\helpers\Text;
 
             <?php if ($model->content) : ?>
                 <div class="deals-view-more">
-                    <?= Html::a('Подробнее →', ['/deals/view', 'id' => $model->id]); ?>
+                    <?= Html::a(\Yii::t('app/deals', 'button_more'), ['/deals/view', 'id' => $model->id]); ?>
                 </div>
             <?php endif; ?>
 

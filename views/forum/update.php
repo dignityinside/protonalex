@@ -7,9 +7,9 @@ use yii\helpers\Html;
 
 $this->title = 'Обновить тему';
 
-$this->params['breadcrumbs'][] = ['label' => 'Форум', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'Мои темы форума', 'url' => ['my']];
-$this->params['breadcrumbs'][] = 'Обновить тему';
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app/forum', 'breadcrumbs_forum_index'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app/forum', 'breadcrumbs_forum_my'), 'url' => ['my']];
+$this->params['breadcrumbs'][] = \Yii::t('app', 'breadcrumbs_label_update');
 
 ?>
 

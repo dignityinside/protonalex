@@ -6,9 +6,9 @@ use yii\grid\GridView;
 /** @var $this yii\web\View */
 /** @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Форум (админ)';
+$this->title = \Yii::t('app/forum', 'page_forum_admin_title');
 
-$this->params['breadcrumbs'][] = ['label' => 'Форум', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app/forum', 'breadcrumbs_forum_index'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -22,34 +22,34 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             [
                 'attribute' => 'user_id',
-                'label'     => 'Автор',
+                'label'     => \Yii::t('app', 'author'),
                 'value'     => function ($model) {
-                    return $model->user->username ?? 'Аноним';
+                    return $model->user->username ?? \Yii::t('app', 'user_anonym');
                 }
             ],
             [
                 'attribute' => 'created',
-                'label' => 'Дата публикации',
+                'label' => \Yii::t('app', 'columns_label_created'),
                 'value' => function ($model) {
                     return date('d.m.Y H:i', Html::encode($model->created));
                 }
             ],
             [
                 'attribute' => 'status_id',
-                'label'     => 'Статус',
+                'label'     => \Yii::t('app', 'columns_label_status'),
                 'value'     => function ($model) {
                     return $model->getStatusLabel();
                 }
             ],
             [
                 'attribute' => 'hits',
-                'label' => 'Просмотров',
+                'label' => \Yii::t('app', 'columns_label_hits'),
                 'value' => function ($model) {
                     return $model->hits;
                 }
             ],
             [
-                'attribute' => 'comments',
+                'attribute' => \Yii::t('app', 'columns_label_comments'),
                 'label' => 'Ответы',
                 'value' => function ($model) {
                     return $model->commentsCount;

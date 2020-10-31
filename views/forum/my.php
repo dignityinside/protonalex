@@ -6,9 +6,9 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Мои темы форума';
+$this->title = \Yii::t('app/forum', 'page_forum_my_title');
 
-$this->params['breadcrumbs'][] = ['label' => 'Форум', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app/forum', 'breadcrumbs_forum_index'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -16,7 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p><?= Html::a('<i class="fas fa-plus"></i> Создать новую тему', ['create'], ['class' => 'btn btn-success']); ?></p>
+    <p><?= Html::a('<i class="fas fa-plus"></i> ' . \Yii::t('app/forum', 'forum_button_new_topics'),
+            ['create'], ['class' => 'btn btn-success']); ?></p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,28 +25,28 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             [
                 'attribute' => 'status_id',
-                'label'     => 'Статус',
+                'label'     => \Yii::t('app', 'columns_label_status'),
                 'value'     => function ($model) {
                     return $model->getStatusLabel();
                 }
             ],
             [
                 'attribute' => 'created',
-                'label' => 'Дата публикации',
+                'label' => \Yii::t('app', 'columns_label_created'),
                 'value' => function ($model) {
                     return date('d.m.Y H:i', Html::encode($model->created));
                 }
             ],
             [
                 'attribute' => 'comments',
-                'label' => 'Ответы',
+                'label' => \Yii::t('app', 'columns_label_comments'),
                 'value' => function ($model) {
                     return $model->commentsCount;
                 }
             ],
             [
                 'attribute' => 'hits',
-                'label' => 'Просмотров',
+                'label' => \Yii::t('app', 'columns_label_hits'),
                 'value' => function ($model) {
                     return $model->hits;
                 }

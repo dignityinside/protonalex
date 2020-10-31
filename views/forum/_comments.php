@@ -21,9 +21,9 @@ use app\models\forum\Forum;
                 'class' => 'comments reply list-unstyled',
             ],
             'clientOptions' => [
-                'deleteComfirmText' => 'Вы уверены что хотите удалить данный ответ?',
-                'updateButtonText' => 'Обновить',
-                'cancelUpdateButtonText' => 'Отменить',
+                'deleteComfirmText' => \Yii::t('app/comments', 'delete_confirm_text'),
+                'updateButtonText' => \Yii::t('app/comments', 'update_button_text'),
+                'cancelUpdateButtonText' => \Yii::t('app/comments', 'cancel_update_button_text'),
                 'commentTextSelector' => '.comment-text > div',
             ],
             'maxNestedLevel' => 5,

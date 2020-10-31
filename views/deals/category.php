@@ -13,7 +13,9 @@ DealsAsset::register($this);
 
 $categoryName = Html::encode($categoryName);
 
-$this->title = sprintf('Скидки из категории: %s', $categoryName);
+$this->title = \Yii::t('app/deals', 'deals_page_title_{name}', [
+    'name' => $categoryName,
+]);;
 
 $this->registerMetaTag(
     [
@@ -22,14 +24,7 @@ $this->registerMetaTag(
     ]
 );
 
-$this->registerMetaTag(
-    [
-        'name'    => 'keywords',
-        'content' => strtolower($categoryName),
-    ]
-);
-
-$this->params['breadcrumbs'][] = ['label' => 'Скидки', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app/deals', 'deals_breadcrumbs_label_index'), 'url' => ['index']];
 
 $this->params['breadcrumbs'][] = $categoryName;
 
@@ -37,7 +32,10 @@ $this->params['breadcrumbs'][] = $categoryName;
 <div class="deals-index">
 
     <div class="deals-header text-center">
-        <h1><i class="fa fa-folder"></i> Скидки - <?= $categoryName; ?></h1>
+        <h1>
+            <i class="fa fa-folder"></i>
+            <?= \Yii::t('app/deals', 'deals_category_header_title'); ?> - <?= $categoryName; ?>
+        </h1>
     </div>
 
     <div class="deals-index-list">
@@ -45,7 +43,7 @@ $this->params['breadcrumbs'][] = $categoryName;
         <?= ListView::widget(
             [
                 'dataProvider' => $dataProvider,
-                'emptyText' => 'Скидки не найдены.',
+                'emptyText' => \Yii::t('app/deals', 'deals_index_list_empty_text'),
                 'itemView' => '_view',
                 'layout' => "{items}{pager}",
             ]

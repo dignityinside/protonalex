@@ -14,7 +14,7 @@ $donate = \Yii::$app->params['donate'];
     <div class="col-md-3">
         <div class="widget">
             <div class="widget-title">
-                Соц-сети
+                <?= \Yii::t('app/blog', 'social_networking'); ?>
             </div>
             <div class="widget-content">
                 <div class="widget-content__social-icons">
@@ -64,10 +64,10 @@ $donate = \Yii::$app->params['donate'];
         </div>
         <div class="widget">
             <div class="widget-title">
-                Donate
+                <?= \Yii::t('app/blog', 'donate'); ?>
             </div>
             <div class="widget-content">
-                <p>Яндекс.Деньги:<br />
+                <p><?= \Yii::t('app/blog', 'yandex_money'); ?><br />
                     <a href="https://money.yandex.ru/to/<?= $donate['yandexMoney']; ?>?lang=ru" target="_blank">
                         <?= $donate['yandexMoney']; ?>
                     </a>
@@ -79,7 +79,7 @@ $donate = \Yii::$app->params['donate'];
         </div>
         <div class="widget">
             <div class="widget-title">
-                Друзья
+                <?= \Yii::t('app/blog', 'friends'); ?>
             </div>
             <div class="widget-content">
                 <ul>
