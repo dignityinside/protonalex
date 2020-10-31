@@ -10,6 +10,7 @@ $config = [
     ],
     'defaultRoute' => 'post/index',
     'language'     => 'ru-RU',
+    'sourceLanguage' => 'en-US',
     'bootstrap'    => ['log'],
     'components'   => [
         'authManager'          => [
