@@ -45,12 +45,9 @@ return [
     'donate' => [
         'yandexMoney' => '',
         'paypal'      => '',
-        'bitshares'   => '',
     ],
     'social' => [
-        'telegram' => 'roolandorg',
         'instagram' => 'roolandorg',
         'mastodon' => 'roolandorg',
-        'twitter' => 'roolandorg',
     ],
 ];
