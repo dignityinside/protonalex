@@ -23,7 +23,6 @@ use app\models\Tag;
  * @property integer $hits
  * @property string  $allow_comments
  * @property integer $ontop
- * @property string  $meta_keywords
  * @property string  $meta_description
  * @property integer $category_id
  *
@@ -59,7 +58,6 @@ class Post extends Material
             [['content', 'allow_comments', 'slug'], 'string'],
             [['status_id', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop', 'category_id'], 'integer'],
             [['title'], 'string', 'max' => 69],
-            [['meta_keywords'], 'string', 'max' => 256],
             [['meta_description'], 'string', 'max' => 156],
             [['form_tags'], 'safe'],
         ];
@@ -97,7 +95,6 @@ class Post extends Material
             'allow_comments',
             'status_id',
             'ontop',
-            'meta_keywords',
             'meta_description',
             'slug',
             'form_tags',
@@ -124,7 +121,6 @@ class Post extends Material
             'hits'             => 'Просмотров',
             'allow_comments'   => 'Разрешить комментарии',
             'ontop'            => 'На главную',
-            'meta_keywords'    => 'Ключевые слова (meta-keywords)',
             'meta_description' => 'Описание страницы (meta-description)',
             'slug'             => 'Постоянная ссылка',
             'form_tags'        => 'Тэги',

@@ -35,7 +35,6 @@ class m190115_195651_create_deals_table extends Migration
             'category_id' => $this->integer()->unsigned()->notNull()->defaultValue(0),
             'hits' => $this->bigInteger()->unsigned()->null()->defaultValue(0),
             'allow_comments' => $this->tinyInteger(1)->unsigned()->notNull()->defaultValue(0),
-            'meta_keywords' => $this->string(255)->null(),
             'meta_description' => $this->string(255)->null(),
             'url' => $this->string(255)->null(),
             'price_before' => $this->string(255)->null(),

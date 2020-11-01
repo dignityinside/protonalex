@@ -37,7 +37,6 @@ class m190102_205851_create_video_table extends Migration
             'category_id' => $this->integer()->unsigned()->notNull()->defaultValue(0),
             'hits' => $this->bigInteger()->unsigned()->null()->defaultValue(0),
             'allow_comments' => $this->tinyInteger(1)->unsigned()->notNull()->defaultValue(0),
-            'meta_keywords' => $this->string(255)->null(),
             'meta_description' => $this->string(255)->null(),
             'language' => $this->string(2)->null()->defaultValue('ru')
         ], $tableOptions

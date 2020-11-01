@@ -8,7 +8,6 @@ use app\models\Tag;
 use Yii;
 use app\models\post\Post;
 use app\models\post\PostSearch;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -93,8 +92,8 @@ class PostController extends Controller
         return $this->render(
             'admin',
             [
-            'searchModel'  => $searchModel,
-            'dataProvider' => $dataProvider,
+                'searchModel'  => $searchModel,
+                'dataProvider' => $dataProvider,
             ]
         );
     }
@@ -124,18 +123,13 @@ class PostController extends Controller
 
         $model->countHits(Material::MATERIAL_POST_NAME);
 
-        return $this->render(
-            'view',
-            [
-            'model' => $model
-            ]
-        );
+        return $this->render('view', ['model' => $model]);
     }
 
     /**
      * Creates a new Post model
      *
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * If creation is successful, the browser will be redirected to the 'admin' page.
      *
      * @return mixed
      */
@@ -151,21 +145,16 @@ class PostController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['post/view', 'slug' => $model->slug]);
-        } else {
-            return $this->render(
-                'create',
-                [
-                'model' => $model,
-                ]
-            );
+            return $this->redirect(['post/admin']);
         }
+
+        return $this->render('create', ['model' => $model]);
     }
 
     /**
      * Updates an existing Post model
      *
-     * If update is successful, the browser will be redirected to the 'view' page
+     * If update is successful, the browser will be redirected to the 'admin' page
      *
      * @param integer $id
      *
@@ -178,7 +167,7 @@ class PostController extends Controller
         $model = $this->findModel($id);
 
         if (!UserPermissions::canEditPost($model)) {
-            throw new ForbiddenHttpException('Вы не можете редактировать эту запись.');
+            throw new ForbiddenHttpException('Вы не можете редактировать эту статью.');
         }
 
         if (UserPermissions::canAdminPost()) {
@@ -188,15 +177,10 @@ class PostController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['post/view', 'slug' => $model->slug]);
-        } else {
-            return $this->render(
-                'update',
-                [
-                'model' => $model,
-                ]
-            );
+            return $this->redirect(['post/admin']);
         }
+
+        return $this->render('update', ['model' => $model]);
     }
 
     /**
@@ -296,8 +280,8 @@ class PostController extends Controller
 
         if (($model = Post::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('Запись не найдена.');
         }
+
+        throw new NotFoundHttpException('Статья не найдена.');
     }
 }

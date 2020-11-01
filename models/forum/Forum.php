@@ -21,7 +21,6 @@ use app\models\category\Category;
  * @property int $category_id
  * @property string $hits
  * @property int $allow_comments
- * @property string $meta_keywords
  * @property string $meta_description
  */
 class Forum extends Material
@@ -51,7 +50,6 @@ class Forum extends Material
             [['title'], 'string', 'max' => 255],
             [['title'], 'unique'],
             [['title'], 'string', 'max' => 69],
-            [['meta_keywords'], 'string', 'max' => 256],
             [['meta_description'], 'string', 'max' => 156],
         ];
     }
@@ -89,7 +87,6 @@ class Forum extends Material
             'category_id',
             'hits',
             'allow_comments',
-            'meta_keywords',
             'meta_description'
         ];
 
@@ -114,7 +111,6 @@ class Forum extends Material
             'category_id' => 'Раздел',
             'hits' => 'Просмотры',
             'allow_comments' => 'Разрешить отвечать на тему',
-            'meta_keywords' => 'Meta Keywords',
             'meta_description' => 'Meta Description'
         ];
     }

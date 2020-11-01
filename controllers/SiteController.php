@@ -246,16 +246,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page
-     *
-     * @return string
-     */
-    public function actionAbout(): string
-    {
-        return $this->render('about');
-    }
-
-    /**
      * Displays search page
      *
      * @return string

@@ -21,13 +21,6 @@ $this->registerMetaTag(
     ]
 );
 
-$this->registerMetaTag(
-    [
-        'name'    => 'keywords',
-        'content' => $model->meta_keywords,
-    ]
-);
-
 ?>
 <div class="post-view">
 
@@ -42,13 +35,10 @@ $this->registerMetaTag(
 
     <?= $this->render('/partials/share'); ?>
 
-    <?= $this->render(
-        '_post_footer',
-        [
-            'model' => $model
-        ]
-    ); ?>
+    <?= $this->render('_post_footer', ['model' => $model]); ?>
 
-    <?= $this->render('_comments', ['model' => $model]); ?>
+    <?php if ($model->allow_comments) : ?>
+        <?= $this->render('_comments', ['model' => $model]); ?>
+    <?php endif; ?>
 
 </div>

@@ -21,7 +21,9 @@ use app\helpers\Text;
         <?= 'Аноним'; ?>
     <?php endif; ?>
 
-    <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>
+    <?php if ($model->allow_comments) : ?>
+        <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>
+    <?php endif; ?>
 
     <?php if (isset($model->category->name)) : ?>
         <i class="fa fa-folder"></i> <?= Html::a($model->category->name, '/category/' . $model->category->slug); ?>

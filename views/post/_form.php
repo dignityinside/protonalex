@@ -90,11 +90,10 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
     <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(\app\models\category\Category::getAllCategories(\app\models\Material::MATERIAL_POST_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
 
-    <?= $form->field($model, 'allow_comments')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
+    <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
 
     <?php if (UserPermissions::canAdminPost()) : ?>
-        <?= $form->field($model, 'ontop')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
-        <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'ontop')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
         <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
     <?php endif ?>
 

@@ -83,7 +83,6 @@ MarkdownEditorAsset::register($this);
 
         <?php if (UserPermissions::canAdminDeals()) : ?>
             <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
-            <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
         <?php endif ?>
 

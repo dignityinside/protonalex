@@ -33,7 +33,7 @@ class PostSearch extends Post
     {
         return [
             [['id', 'status_id', 'datecreate', 'dateupdate', 'category_id', 'user_id', 'hits', 'ontop'], 'integer'],
-            [['title', 'content', 'tags', 'allow_comments', 'meta_keywords', 'meta_description'], 'safe'],
+            [['title', 'content', 'tags', 'allow_comments', 'meta_description'], 'safe'],
         ];
     }
 

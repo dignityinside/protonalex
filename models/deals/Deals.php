@@ -23,7 +23,6 @@ use app\models\category\Category;
  * @property int $category_id
  * @property string $hits
  * @property int $allow_comments
- * @property string $meta_keywords
  * @property string $meta_description
  * @property string $url
  * @property string $price_before
@@ -62,7 +61,6 @@ class Deals extends Material
             [['title', 'thumbnail', 'author', 'url', 'price_before', 'price_after', 'coupon'], 'string', 'max' => 255],
             [['title'], 'unique'],
             [['title'], 'string', 'max' => 69],
-            [['meta_keywords'], 'string', 'max' => 256],
             [['meta_description'], 'string', 'max' => 156],
         ];
     }
@@ -116,7 +114,6 @@ class Deals extends Material
             'category_id',
             'hits',
             'allow_comments',
-            'meta_keywords',
             'meta_description',
             'url',
             'price_before',
@@ -148,7 +145,6 @@ class Deals extends Material
             'category_id' => 'Категория',
             'hits' => 'Просмотров',
             'allow_comments' => 'Разрешить комментарии',
-            'meta_keywords' => 'Meta Keywords',
             'meta_description' => 'Meta Description',
             'url' => 'Ссылка на сделку',
             'price_before' => 'Цена до скидки',
