@@ -12,18 +12,48 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <div class="form-row">
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+        <div class="row">
+            <div class="col">
+                <div class="form-group col-md-5">
+                    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
 
-    <?= $form->field($model, 'material_id')->dropDownList(\app\models\Material::MATERIAL_MAPPING) ?>
+            <div class="col">
+                <div class="form-group col-md-3">
+                    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
 
-    <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
+            <div class="col">
+                <div class="form-group col-md-2">
+                    <?= $form->field($model, 'material_id')->dropDownList(\app\models\Material::MATERIAL_MAPPING) ?>
+                </div>
+            </div>
 
-    <?= $form->field($model, 'order')->textInput(['maxlength' => true]) ?>
+            <div class="col">
+                <div class="form-group col-md-2">
+                    <?= $form->field($model, 'order')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+        </div>
 
-    <div class="form-group">
-        <?= Html::submitButton(\Yii::t('app', 'button_save'), ['class' => 'btn btn-success']) ?>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group col-md-12">
+                <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <?= Html::submitButton(\Yii::t('app', 'button_save'), ['class' => 'btn btn-success']) ?>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>
