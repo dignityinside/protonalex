@@ -31,43 +31,52 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <div class="form-row">
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+        <div class="row">
+            <div class="col">
+                <div class="form-group col-md-8">
+                    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
 
-    <?= $form->field(
-        $model,
-        'content',
-        [
-            'template' => "{label}\n{error}\n{input}\n{hint}"
-        ]
-    )->textarea(['class' => 'markdown-editor']) ?>
+            <div class="col">
+                <div class="form-group col-md-4">
+                    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
 
-    <div id="imgur_add_img">
-        Нажмите здесь или перетащите файл, что бы загрузить картинку.
+        </div>
+
     </div>
-    <input id="imgur_img_upload_field" type="file">
-    <div id="imgur_img_list"></div>
 
-    <?= $form->field($model, 'status_id')->dropDownList(['0' => 'Черновик', '1' => 'Опубликовать']) ?>
+    <div class="row">
 
-    <?php if (UserPermissions::canAdminPost()) : ?>
-        <?= $form->field($model, 'form_tags')->widget(
-            Select2::classname(),
-            [
-            'options'       => [
-                'placeholder' => 'Найти тэг...',
-                'multiple'    => true,
-            ],
-            'data'          => $model->form_tags,
-            'pluginOptions' => [
-                'tags'               => true,
-                'tokenSeparators'    => [','],
-                'minimumInputLength' => 2,
-                'maximumInputLength' => 20,
-                'allowClear'         => true,
-                'initSelection'      => new JsExpression(
-                    '
+        <div class="col">
+            <div class="form-group col-md-3">
+                <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(\app\models\category\Category::getAllCategories(\app\models\Material::MATERIAL_POST_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group col-md-5">
+                <?php if (UserPermissions::canAdminPost()) : ?>
+                    <?= $form->field($model, 'form_tags')->widget(
+                        Select2::classname(),
+                        [
+                            'options'       => [
+                                'placeholder' => 'Найти тэг...',
+                                'multiple'    => true,
+                            ],
+                            'data'          => $model->form_tags,
+                            'pluginOptions' => [
+                                'tags'               => true,
+                                'tokenSeparators'    => [','],
+                                'minimumInputLength' => 2,
+                                'maximumInputLength' => 20,
+                                'allowClear'         => true,
+                                'initSelection'      => new JsExpression(
+                                    '
                 function (element, callback) {
                     var data = [];
                     $(element.val()).each(function () {
@@ -76,32 +85,87 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
                     callback(data);
                 }
             '
-                ),
-                'ajax'               => [
-                    'url'      => Url::to(['tag/search']),
-                    'dataType' => 'json',
-                    'data'     => new JsExpression('function(params) { return {q:params.term}; }')
-                ],
-            ],
-            ]
-        );
-        ?>
-    <?php endif ?>
+                                ),
+                                'ajax'               => [
+                                    'url'      => Url::to(['tag/search']),
+                                    'dataType' => 'json',
+                                    'data'     => new JsExpression('function(params) { return {q:params.term}; }')
+                                ],
+                            ],
+                        ]
+                    );
+                    ?>
+                <?php endif ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(\app\models\category\Category::getAllCategories(\app\models\Material::MATERIAL_POST_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
+        <div class="col">
+            <div class="form-group col-md-4">
+                <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
+    </div>
 
-    <?php if (UserPermissions::canAdminPost()) : ?>
-        <?= $form->field($model, 'ontop')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
-        <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
-    <?php endif ?>
+    <div class="row">
 
-    <div class="form-group">
-        <?= Html::submitButton(
-            $model->isNewRecord ? 'Сохранить' : 'Обновить',
-            ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
-        ) ?>
+        <div class="col">
+
+            <div class="col-md-12">
+                <?= $form->field(
+                    $model,
+                    'content',
+                    [
+                        'template' => "{label}\n{error}\n{input}\n{hint}"
+                    ]
+                )->textarea(['class' => 'markdown-editor']) ?>
+
+                <div id="imgur_add_img">
+                    Нажмите здесь или перетащите файл, что бы загрузить картинку.
+                </div>
+                <input id="imgur_img_upload_field" type="file">
+                <div id="imgur_img_list"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col">
+            <div class="form-group col-md-4">
+                <?= $form->field($model, 'status_id')->dropDownList(['0' => 'Черновик', '1' => 'Опубликовать']) ?>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group col-md-4">
+                <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group col-md-4">
+                <?= $form->field($model, 'ontop')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+
+        <div class="col">
+
+            <div class="form-group">
+                <?= Html::submitButton(
+                    $model->isNewRecord ? 'Сохранить' : 'Обновить',
+                    ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
+                ) ?>
+            </div>
+
+        </div>
+
     </div>
 
     <?php ActiveForm::end(); ?>
