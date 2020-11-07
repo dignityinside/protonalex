@@ -69,16 +69,6 @@ $config = [
                 'video/watch/<id:\d+>' => 'video/watch',
                 'video/category/<categoryName:[\w\-]+>' => 'video/category',
                 'video/<sortBy:[\w\-]+>' => 'video/index',
-                // forum
-                'forum/<_a:(my|admin|update|delete|index)>' => 'forum/<_a>',
-                'forum/topic/<id:\d+>' => 'forum/topic',
-                'forum/user/<userName:[\w\-]+>' => 'forum/user',
-                'forum/<_a:(create|update|delete)>/<id:\d+>' => 'forum/<_a>',
-                [
-                    'pattern' => 'forum/topics/<categoryName:[\w\-]+>/<sortBy:[\w\-]+>',
-                    'route' => 'forum/topics',
-                    'defaults' => ['sortBy' => ''],
-                ],
                 // tags
                 'tag/search' => 'tag/search',
                 [
@@ -97,7 +87,6 @@ $config = [
                         'app' => 'app.php',
                         'app/blog' => 'blog.php',
                         'app/video' => 'video.php',
-                        'app/forum' => 'forum.php',
                         'app/comments' => 'comments.php',
                         'app/category' => 'category.php',
                     ],

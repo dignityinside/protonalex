@@ -29,10 +29,6 @@ return [
         'pageSize' => 6
     ],
     'siteName' => 'Руланд блог',
-    'forum' => [
-        'preModeration' => false,
-        'pageSize' => 10,
-    ],
     'social' => [
         'instagram' => 'roolandorg',
         'mastodon' => 'roolandorg',
