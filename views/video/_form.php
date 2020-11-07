@@ -16,46 +16,104 @@ use app\models\category\Category;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col">
+            <div class="form-group col-md-5">
+                <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'description', ['template' => "{label}\n{error}\n{input}\n{hint}"])->textarea() ?>
+        <div class="col">
+            <div class="form-group col-md-3">
+                <?= $form->field($model, 'author')->textInput(['maxlength' => true]); ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'platform')->dropDownList($model::PLATFORM); ?>
+        <div class="col">
+            <div class="form-group col-md-2">
+                <?= $form->field($model, 'category_id')->dropDownList(
+                    ArrayHelper::map(
+                        Category::getAllCategories(\app\models\Material::MATERIAL_VIDEO_ID),
+                        'id',
+                        'name'
+                    ),
+                    [
+                        'prompt' => 'Выберите категорию'
+                    ]
+                ); ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'code')->textInput(['maxlength' => true])
-             ->hint('Например: LaWxLvDgTM4 вместо https://youtu.be/LaWxLvDgTM4') ?>
+        <div class="col">
+            <div class="form-group col-md-2">
+                <?= $form->field($model, 'language')->dropDownList($model::LANGUAGE) ?>
+            </div>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'playlist')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col">
+            <div class="form-group col-md-12">
+                <?= $form->field($model, 'description', ['template' => "{label}\n{error}\n{input}\n{hint}"])->textarea() ?>
+            </div>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'author')->textInput(['maxlength' => true])->hint('Например: rooland') ?>
+    <div class="row">
+        <div class="col">
+            <div class="form-group col-md-2">
+                <?= $form->field($model, 'code')->textInput(['maxlength' => true]); ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'channel_url')->textInput(['maxlength' => true]) ?>
+        <div class="col">
+            <div class="form-group col-md-4">
+                <?= $form->field($model, 'channel_url')->textInput(['maxlength' => true]) ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'category_id')->dropDownList(
-        ArrayHelper::map(
-            Category::getAllCategories(\app\models\Material::MATERIAL_VIDEO_ID),
-            'id',
-            'name'
-        ),
-        [
-            'prompt' => 'Выберите категорию'
-        ]
-    ); ?>
+        <div class="col">
+            <div class="form-group col-md-4">
+                <?= $form->field($model, 'playlist')->textInput(['maxlength' => true]) ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'language')->dropDownList($model::LANGUAGE) ?>
+        <div class="col">
+            <div class="form-group col-md-2">
+                <?= $form->field($model, 'platform')->dropDownList($model::PLATFORM); ?>
+            </div>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
+    <div class="row">
 
-    <?php if (UserPermissions::canAdminVideo()) : ?>
-        <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
-        <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
-    <?php endif ?>
+        <div class="col">
+            <div class="form-group col-md-3">
+                <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
+            </div>
+        </div>
 
-    <div class="form-group">
-        <?= Html::submitButton(
-            $model->isNewRecord ? 'Сохранить' : 'Обновить',
-            ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
-        ) ?>
+        <div class="col">
+            <div class="form-group col-md-3">
+                <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group col-md-6">
+                <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <?= Html::submitButton(
+                $model->isNewRecord ? 'Сохранить' : 'Обновить',
+                ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
+            ) ?>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>
