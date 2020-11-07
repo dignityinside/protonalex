@@ -14,7 +14,6 @@ return [
     'button_restore_comment_form' => 'Написать новый комментарий',
     'field_label_comment'         => 'Комментарий',
     'button_send_comment'         => 'Отправить комментарий',
-    // views/deals/_comments
     'comment_box_title'           => 'Оставьте комментарий!',
     'delete_confirm_text'         => 'Вы уверены что хотите удалить данный комментарий?',
     'update_button_text'          => 'Обновить',

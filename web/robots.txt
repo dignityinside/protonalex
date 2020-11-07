@@ -7,8 +7,6 @@ Disallow: /signup
 Disallow: /post/index
 Disallow: /video/index
 Disallow: /video/category/*
-Disallow: /deals/index
-Disallow: /deals/category/*
 Disallow: /forum/index
 Disallow: /forum/topics
 Disallow: /forum/user/*

@@ -5,7 +5,6 @@ namespace app\components;
 use app\models\post\Post;
 use app\models\User;
 use app\models\video\Video;
-use app\models\deals\Deals;
 use app\models\forum\Forum;
 
 /**
@@ -20,7 +19,6 @@ class UserPermissions
     public const ADMIN_USERS = 'adminUsers';
     public const ADMIN_CATEGORY = 'adminCategory';
     public const ADMIN_VIDEO = 'adminVideo';
-    public const ADMIN_DEALS = 'adminDeals';
     public const ADMIN_FORUM = 'adminForum';
 
     /**
@@ -172,51 +170,6 @@ class UserPermissions
         $currentUserID = \Yii::$app->user->getId();
 
         if ((int)$video->user_id === (int)$currentUserID) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks if user can admin deals
-     *
-     * @return bool
-     */
-    public static function canAdminDeals(): bool
-    {
-
-        if (\Yii::$app->user->isGuest) {
-            return false;
-        }
-
-        if (\Yii::$app->user->can(self::ADMIN_DEALS)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks if user can edit particular deal
-     *
-     * @param Deals $deals
-     *
-     * @return bool
-     */
-    public static function canEditDeals(Deals $deals): bool
-    {
-        if (\Yii::$app->user->isGuest) {
-            return false;
-        }
-
-        if (self::canAdminDeals()) {
-            return true;
-        }
-
-        $currentUserID = \Yii::$app->user->getId();
-
-        if ((int)$deals->user_id === (int)$currentUserID) {
             return true;
         }
 

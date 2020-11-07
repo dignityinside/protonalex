@@ -37,9 +37,6 @@ class Material extends ActiveRecord
     public const MATERIAL_VIDEO_ID = 3;
 
     /** @var int */
-    public const MATERIAL_DEALS_ID = 4;
-
-    /** @var int */
     public const MATERIAL_FORUM_ID = 5;
 
     /** @var string */
@@ -49,16 +46,12 @@ class Material extends ActiveRecord
     public const MATERIAL_VIDEO_NAME = 'Video';
 
     /** @var string */
-    public const MATERIAL_DEALS_NAME = 'Deals';
-
-    /** @var string */
     public const MATERIAL_FORUM_NAME = 'Forum';
 
     /** @var array */
     public const MATERIAL_MAPPING = [
         self::MATERIAL_POST_ID => self::MATERIAL_POST_NAME,
         self::MATERIAL_VIDEO_ID => self::MATERIAL_VIDEO_NAME,
-        self::MATERIAL_DEALS_ID => self::MATERIAL_DEALS_NAME,
         self::MATERIAL_FORUM_ID => self::MATERIAL_FORUM_NAME,
     ];
 

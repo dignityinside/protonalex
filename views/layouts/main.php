@@ -57,7 +57,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
         $menuItems[] = ['label' => \Yii::t('app/blog', 'menu_label_index_blog'), 'url' => ['/post/index']];
         $menuItems[] = ['label' => \Yii::t('app/video', 'menu_label_video_index'), 'url' => ['/video/index']];
-        $menuItems[] = ['label' => \Yii::t('app/deals', 'menu_label_deals_index'), 'url' => ['/deals/index']];
         $menuItems[] = ['label' => \Yii::t('app/forum', 'menu_label_forum_index'), 'url' => ['/forum/index']];
 
         if (Yii::$app->user->isGuest) {
@@ -83,11 +82,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
                         'label' => \Yii::t('app/video', 'menu_label_video_admin'),
                         'url' => ['/video/admin'],
                         'visible' => UserPermissions::canAdminVideo()
-                    ],
-                    [
-                        'label' => \Yii::t('app/deals', 'menu_label_deals_admin'),
-                        'url' => ['/deals/admin'],
-                        'visible' => UserPermissions::canAdminDeals()
                     ],
                     [
                         'label' => \Yii::t('app/forum', 'menu_label_forum_admin'),

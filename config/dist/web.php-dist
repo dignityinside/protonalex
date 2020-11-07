@@ -69,11 +69,6 @@ $config = [
                 'video/watch/<id:\d+>' => 'video/watch',
                 'video/category/<categoryName:[\w\-]+>' => 'video/category',
                 'video/<sortBy:[\w\-]+>' => 'video/index',
-                // deals
-                'deals/<_a:(admin|create|update|delete)>' => 'deals/<_a>',
-                'deals/view/<id:\d+>' => 'deals/view',
-                'deals/category/<categoryName:[\w\-]+>' => 'deals/category',
-                'deals/<sortBy:[\w\-]+>' => 'deals/index',
                 // forum
                 'forum/<_a:(my|admin|update|delete|index)>' => 'forum/<_a>',
                 'forum/topic/<id:\d+>' => 'forum/topic',
@@ -102,7 +97,6 @@ $config = [
                         'app' => 'app.php',
                         'app/blog' => 'blog.php',
                         'app/video' => 'video.php',
-                        'app/deals' => 'deals.php',
                         'app/forum' => 'forum.php',
                         'app/comments' => 'comments.php',
                         'app/category' => 'category.php',
