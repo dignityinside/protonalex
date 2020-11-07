@@ -19,10 +19,6 @@ $this->params['breadcrumbs'][] = Html::encode($this->title);
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="alert alert-info">
-        Соблюдайте авторские права при добавление видео на сайт! Все видео проходят премодерацию.
-    </div>
-
     <?= $this->render('_form', ['model' => $model,]) ?>
 
 </div>
