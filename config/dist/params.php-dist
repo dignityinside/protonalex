@@ -33,10 +33,6 @@ return [
         'preModeration' => false,
         'pageSize' => 10,
     ],
-    'donate' => [
-        'yandexMoney' => '',
-        'paypal'      => '',
-    ],
     'social' => [
         'instagram' => 'roolandorg',
         'mastodon' => 'roolandorg',

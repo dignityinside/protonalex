@@ -3,14 +3,11 @@
 // phpcs:ignoreFile
 
 /**
- * \Yii::t('app/blog', 'donate')
+ * \Yii::t('app/blog', 'social_networking')
  */
 return [
     // views/layouts/blog
-    'social_networking'     => 'Соц-сети',
-    'yandex_money'          => 'Яндекс.Деньги:',
-    'donate'                => 'Donate',
-    'friends'               => 'Друзья',
+    'social_networking'     => 'Социальные сети',
     // views/layouts/main
     'menu_label_index_blog' => 'Блог',
     'menu_label_admin_blog' => 'Записи',

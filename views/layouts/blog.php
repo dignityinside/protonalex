@@ -1,10 +1,3 @@
-<?php
-
-/** @var array $donate */
-$donate = \Yii::$app->params['donate'];
-
-?>
-
 <?php $this->beginContent('@app/views/layouts/main.php'); ?>
 
 <div class="row">
@@ -42,21 +35,6 @@ $donate = \Yii::$app->params['donate'];
                         </span>
                     </p>
                 </div>
-            </div>
-        </div>
-        <div class="widget">
-            <div class="widget-title">
-                <?= \Yii::t('app/blog', 'donate'); ?>
-            </div>
-            <div class="widget-content">
-                <p><?= \Yii::t('app/blog', 'yandex_money'); ?><br />
-                    <a href="https://money.yandex.ru/to/<?= $donate['yandexMoney']; ?>?lang=ru" target="_blank">
-                        <?= $donate['yandexMoney']; ?>
-                    </a>
-                </p>
-                <p>PayPal:<br />
-                    <a href="https://www.paypal.me/<?= $donate['paypal'] ?>" target="_blank"><?= $donate['paypal'] ?></a>
-                </p>
             </div>
         </div>
     </div>
