@@ -137,7 +137,9 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
     <footer>
         <div class="container footer text-center">
             <p>&copy; <?= date('Y') ?> <?= \Yii::$app->params['siteName'] ?> |
-                <?= Html::a(\Yii::t('app', 'footer_about_link'), '/about'); ?></p>
+                <?= Html::a(\Yii::t('app', 'footer_about_link'), '/about'); ?> |
+                <?= Html::a(\Yii::t('app', 'footer_contact_link'), '/contact'); ?>
+            </p>
         </div>
     </footer>
 </div>
