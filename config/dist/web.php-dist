@@ -37,11 +37,11 @@ $config = [
             'class'            => 'yii\swiftmailer\Mailer',
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.yandex.com',
+                'host' => 'localhost',
                 'username' => '',
                 'password' => '',
-                'port' => '587', // 587 (tls) or 465 (ssl)
-                'encryption' => 'tls', // tls or ssl
+                'port' => '25', // 587 (tls) or 465 (ssl)
+                // 'encryption' => 'tls', // tls or ssl
             ],
             'useFileTransport' => false,
         ],

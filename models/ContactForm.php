@@ -67,7 +67,7 @@ class ContactForm extends Model
 
             Yii::$app->mailer->compose()
                              ->setTo(\Yii::$app->params['adminEmail'])
-                             ->setFrom([\Yii::$app->params['noreplyEmail'] => \Yii::$app->name . ' robot'])
+                             ->setFrom([\Yii::$app->params['noreplyEmail'] => \Yii::$app->name])
                              ->setSubject($this->subject)
                              ->setTextBody($body)
                              ->send();
