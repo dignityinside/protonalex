@@ -61,48 +61,54 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => \Yii::t('app', 'menu_label_login'), 'url' => ['/login']];
         } else {
+
             $menuItems[] = [
-                'label' => \Yii::t('app', 'menu_label_panel'), 'items' => [
-                    [
-                        'label' => \Yii::t('app', 'menu_label_profile'),
-                        'url' => ['/user/view', 'id' => \Yii::$app->user->id]
-                    ],
-                    Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
-                    [
-                        'label' => \Yii::t('app/blog', 'menu_label_admin_blog'),
-                        'url' => ['/post/admin'],
-                        'visible' => UserPermissions::canAdminPost()
-                    ],
-                    [
-                        'label' => \Yii::t('app/video', 'menu_label_video_admin'),
-                        'url' => ['/video/admin'],
-                        'visible' => UserPermissions::canAdminVideo()
-                    ],
-                    [
-                        'label' => \Yii::t('app/comments', 'menu_label_admin_comments'),
-                        'url' => ['/comment-admin/manage/index'],
-                        'visible' => UserPermissions::canAdminPost()
-                    ],
-                    [
-                        'label' => \Yii::t('app/category', 'menu_label_admin_category'),
-                        'url' => ['/category/admin'],
-                        'visible' => UserPermissions::canAdminCategory()
-                    ],
-                    [
-                        'label' => \Yii::t('app', 'menu_label_user_admin'),
-                        'url' => ['/user/admin'],
-                        'visible' => UserPermissions::canAdminUsers()
-                    ],
-                    Yii::$app->user->can('admin') ? '<li class="divider"></li>' : '',
-                    [
-                        'label' => \Yii::t('app', 'logout_({username})', [
-                            'username' => Yii::$app->user->identity->username,
-                        ]),
-                        'url' => ['/site/logout'],
-                        'linkOptions' => ['data-method' => 'post']
-                    ]
-                ],
+                'label' => \Yii::t('app', 'menu_label_profile'),
+                'url' => ['/user/view', 'id' => \Yii::$app->user->id]
             ];
+
+            if (Yii::$app->user->can('admin')) {
+
+                $menuItems[] = [
+                    'label' => \Yii::t('app', 'menu_label_panel'), 'items' => [
+                        [
+                            'label' => \Yii::t('app/blog', 'menu_label_admin_blog'),
+                            'url' => ['/post/admin'],
+                            'visible' => UserPermissions::canAdminPost()
+                        ],
+                        [
+                            'label' => \Yii::t('app/video', 'menu_label_video_admin'),
+                            'url' => ['/video/admin'],
+                            'visible' => UserPermissions::canAdminVideo()
+                        ],
+                        [
+                            'label' => \Yii::t('app/comments', 'menu_label_admin_comments'),
+                            'url' => ['/comment-admin/manage/index'],
+                            'visible' => UserPermissions::canAdminPost()
+                        ],
+                        [
+                            'label' => \Yii::t('app/category', 'menu_label_admin_category'),
+                            'url' => ['/category/admin'],
+                            'visible' => UserPermissions::canAdminCategory()
+                        ],
+                        [
+                            'label' => \Yii::t('app', 'menu_label_user_admin'),
+                            'url' => ['/user/admin'],
+                            'visible' => UserPermissions::canAdminUsers()
+                        ],
+                    ],
+                ];
+
+            }
+
+            $menuItems[] = [
+                'label' => \Yii::t('app', 'logout_({username})', [
+                    'username' => Yii::$app->user->identity->username,
+                ]),
+                'url' => ['/site/logout'],
+                'linkOptions' => ['data-method' => 'post']
+            ];
+
         }
 
         echo Nav::widget(
@@ -131,7 +137,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         <div class="container footer text-center">
             <p>&copy; <?= date('Y') ?> <?= \Yii::$app->params['siteName'] ?> |
                 <?= Html::a(\Yii::t('app', 'footer_about_link'), '/about'); ?></p>
-            <p><?= \Yii::t('app', 'footer_copyright_text'); ?></p>
         </div>
     </footer>
 </div>

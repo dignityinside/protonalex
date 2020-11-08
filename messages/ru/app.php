@@ -13,7 +13,6 @@ return [
     'menu_label_user_admin'    => 'Пользователи',
     'logout_({username})'      => 'Выйти ({username})',
     'footer_about_link'        => 'Об авторе',
-    'footer_copyright_text'    => 'Копирование и распространение материалов с сайта разрешено только с указанием активной ссылки.',
     // views/partials/share
     'share_friends'            => 'Порекомендуй друзьям:',
     'button_save'              => 'Сохранить',

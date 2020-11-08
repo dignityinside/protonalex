@@ -8,5 +8,5 @@
 return [
     // views/layouts/main
     'menu_label_video_index' => 'Видео',
-    'menu_label_video_admin' => 'Все видео',
+    'menu_label_video_admin' => 'Видео',
 ];
