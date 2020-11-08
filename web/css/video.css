@@ -151,11 +151,16 @@
     border: solid 1px #fff;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 599px) {
 
-    .post-filter {
+    .video-index-filter {
         padding-left: 0;
         text-align: center;
+        flex-direction: column;
+    }
+
+    .video-index-filter li {
+        margin: 5px !important;
     }
 
 }

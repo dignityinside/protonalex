@@ -291,32 +291,46 @@ a.desc:after {
     padding: 10px 0 0 115px;
 }
 
-@media screen and (max-width: 768px) {
+/* Mobile devices */
+@media screen and (max-width: 599px) {
 
-    ul.comments li {
-        padding: 10px 0;
+    .post-view .index_title h3, .post-view .index_title h3 a {
+        border: none;
+    }
+
+    .post-filter {
+        padding-left: 0;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .post-filter li {
+        margin: 5px !important;
+    }
+
+    .container > .navbar-header, .container-fluid > .navbar-header,
+    .container > .navbar-collapse, .container-fluid > .navbar-collapse {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .active > a:hover,
+    .navbar-inverse .navbar-nav > .active > a:focus {
+        border-radius: 0;
     }
 
     .comment-user-photo {
         display: none;
     }
 
-    .post-view .index_title h3, .post-view .index_title h3 a {
-        border: none;
+    .comment.h-entry {
+        padding: 0;
+        padding-bottom: 20px;
     }
 
-}
-
-@media screen and (max-width: 320px) {
-
-    .widget,
-    .breadcrumb {
-        display: none;
-    }
-
-    .post-filter {
-        padding-left: 0;
-        text-align: center;
+    .sidebar {
+        margin-top: 0 !important;
     }
 
 }
@@ -524,4 +538,8 @@ h3.comment-box__title {
     border: none;
     border-radius: 0;
     box-shadow: none;
+}
+
+.sidebar {
+    margin-top: 139px;
 }
