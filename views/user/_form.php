@@ -13,15 +13,27 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php if (UserPermissions::canAdminUsers()) : ?>
-        <?= $form->field($model, 'status')->dropDownList(\app\models\User::getStatuses()) ?>
-    <?php endif ?>
+    <div class="form-row">
+        <div class="row">
+            <div class="col">
+                <div class="form-group col-md-2">
+                    <?php if (UserPermissions::canAdminUsers()) : ?>
+                        <?= $form->field($model, 'status')->dropDownList(\app\models\User::getStatuses()) ?>
+                    <?php endif ?>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="form-group">
-        <?= Html::submitButton(
-            $model->isNewRecord ? 'Создать' : 'Сохранить профиль',
-            ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
-        ) ?>
+    <div class="form-row">
+        <div class="col">
+            <div class="form-group">
+                <?= Html::submitButton(
+                    $model->isNewRecord ? 'Создать' : 'Сохранить профиль',
+                    ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
+                ) ?>
+            </div>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>
