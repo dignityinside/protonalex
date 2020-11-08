@@ -33,6 +33,8 @@ $this->registerMetaTag(
 
     <?= Text::hidecut(HtmlPurifier::process(Markdown::process($model->content, 'gfm'))); ?>
 
+    <?= $this->render('_ad') ?>
+
     <?= $this->render('/partials/share'); ?>
 
     <?= $this->render('_post_footer', ['model' => $model]); ?>
