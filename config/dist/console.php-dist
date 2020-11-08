@@ -16,6 +16,8 @@ $config = [
         'session' => [ // for use session in console application
             'class' => 'yii\web\Session'
         ],
+        'authManager'          => [
+            фтву
     ],
     'controllerMap' => [
         'sitemap' => [

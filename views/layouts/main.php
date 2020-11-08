@@ -38,6 +38,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8fca58">
     <meta name="msapplication-TileColor" content="#8fca58">
     <meta name="theme-color" content="#ffffff">
+    <?= $this->render('partials/head.php'); ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
