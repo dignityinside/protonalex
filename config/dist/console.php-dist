@@ -17,7 +17,8 @@ $config = [
             'class' => 'yii\web\Session'
         ],
         'authManager'          => [
-            фтву
+            'class' => 'yii\rbac\PhpManager',
+        ],
     ],
     'controllerMap' => [
         'sitemap' => [

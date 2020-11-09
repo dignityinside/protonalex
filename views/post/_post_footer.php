@@ -13,15 +13,7 @@ use app\helpers\Text;
 
     <i class="fa fa-eye"></i> <?= Html::encode($model->hits); ?>
 
-    <i class="fa fa-user"></i>
-
-    <?php if (isset($model->user->username)) : ?>
-        <?= Html::a($model->user->username, ['/user/view', 'id' => $model->user_id]); ?>
-    <?php else : ?>
-        <?= 'Аноним'; ?>
-    <?php endif; ?>
-
-    <?php if ($model->allow_comments) : ?>
+    <?php if ($model->commentsAllowed()) : ?>
         <i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?>
     <?php endif; ?>
 

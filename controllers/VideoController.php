@@ -91,9 +91,9 @@ class VideoController extends Controller
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['video/admin']);
-        } else {
-            return $this->render('create', ['model' => $model]);
         }
+
+        return $this->render('create', ['model' => $model]);
     }
 
     /**
@@ -121,9 +121,9 @@ class VideoController extends Controller
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['/video/watch', 'id' => $model->id]);
-        } else {
-            return $this->render('update', ['model' => $model,]);
         }
+
+        return $this->render('update', ['model' => $model,]);
     }
 
     /**

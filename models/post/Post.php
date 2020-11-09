@@ -25,6 +25,7 @@ use app\models\Tag;
  * @property integer $ontop
  * @property string  $meta_description
  * @property integer $category_id
+ * @property string $premium
  *
  * relations
  * @property Tag[] $tags
@@ -59,6 +60,7 @@ class Post extends Material
             [['status_id', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop', 'category_id'], 'integer'],
             [['title'], 'string', 'max' => 69],
             [['meta_description'], 'string', 'max' => 156],
+            [['premium'], 'string', 'max' => 1],
             [['form_tags'], 'safe'],
         ];
     }
@@ -98,7 +100,8 @@ class Post extends Material
             'meta_description',
             'slug',
             'form_tags',
-            'category_id'
+            'category_id',
+            'premium',
         ];
 
         return $scenarios;
@@ -124,7 +127,8 @@ class Post extends Material
             'meta_description' => 'Описание страницы (meta-description)',
             'slug'             => 'Постоянная ссылка',
             'form_tags'        => 'Тэги',
-            'category_id'      => 'Категория'
+            'category_id'      => 'Категория',
+            'premium'          => 'Premium',
         ];
     }
 
@@ -256,5 +260,48 @@ class Post extends Material
         }
 
         return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPremium(): bool
+    {
+
+        if ($this->premium) {
+
+            if (\Yii::$app->user->identity === null) {
+                return false;
+            }
+
+            if (!\Yii::$app->user->identity->premium) {
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function commentsAllowed(): bool
+    {
+
+        // not premium post
+
+        if (!$this->premium) {
+            return $this->allow_comments;
+        }
+
+        // premium post, check premium user status
+
+        if (!$this->isPremium()) {
+            return false;
+        }
+
+        return $this->allow_comments;
+
     }
 }

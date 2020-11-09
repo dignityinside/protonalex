@@ -22,6 +22,13 @@ use yii\widgets\ActiveForm;
                     <?php endif ?>
                 </div>
             </div>
+            <div class="col">
+                <div class="form-group col-md-2">
+                    <?php if (UserPermissions::canAdminUsers()) : ?>
+                        <?= $form->field($model, 'premium')->dropDownList([0 => 'Нет', 1 => 'Да']) ?>
+                    <?php endif ?>
+                </div>
+            </div>
         </div>
     </div>
 

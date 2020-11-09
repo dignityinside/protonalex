@@ -14,6 +14,15 @@ server {
 
     index index.php;
 
+    gzip on;
+    gzip_disable "msie6";
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
     location ~ /\.(ht|svn|git) { return 404; }
 
     if ($request_uri ~* \..*\/.*php) { return 404; }
@@ -22,7 +31,22 @@ server {
         deny all;
     }
 
-    location ~* \.(jp?g|js|css|png|jpg|jpeg|gif|ico)$ {
+    location = /favicon.ico {
+        log_not_found off;
+        access_log off;
+    }
+
+    location = /robots.txt {
+        allow all;
+        log_not_found off;
+        access_log off;
+    }
+
+    location ~* /(?:uploads|files)/.*\.php$ {
+        deny all;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
         expires max;
         log_not_found off;
     }
@@ -38,13 +62,11 @@ server {
 	    include fastcgi.conf;
 	    fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
     }
-
 }
 
 # redirect all requests to HTTPS
 
 server {
-
     listen 80;
 
     server_name rooland.org;
@@ -52,15 +74,16 @@ server {
     if ($host = rooland.org) {
         return 301 https://$host$request_uri;
     }
-
 }
 
 # redirect all requests to non www
 
 server {
+    if ($host = rooland.org) {
+        return 301 https://$host$request_uri;
+    }
 
-    server_name  www.rooland.org;
-
-    rewrite ^(.*) http://rooland.org$1 permanent;
-
+    server_name rooland.org;
+    listen 80;
+    return 404;
 }

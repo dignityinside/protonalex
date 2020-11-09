@@ -23,6 +23,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $updated_at
  * @property string $password write-only password
  * @property string $github
+ * @property string $premium
  *
  * @property Auth[] $auths
  */
@@ -90,6 +91,7 @@ class User extends ActiveRecord implements IdentityInterface
 
         $scenarios[self::SCENARIO_ADMIN] = [
             'status',
+            'premium',
         ];
 
         return $scenarios;
@@ -250,6 +252,7 @@ class User extends ActiveRecord implements IdentityInterface
             'email'          => 'E-Mail',
             'status'         => 'Статус',
             'created_at'     => 'Создан в',
+            'premium'        => 'Premium',
         ];
     }
 

@@ -32,9 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'email:email',
                 [
                     'format' => 'raw',
-                    'label'  => 'GitHub',
+                    'label'  => 'Premium',
                     'value'  => function ($model) {
-                        return Html::a(Html::encode($model->getGithubProfileUrl()), $model->getGithubProfileUrl());
+                        return $model->premium ? 'Да' : 'Нет';
                     }
                 ],
                 [

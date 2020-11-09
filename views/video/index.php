@@ -1,5 +1,6 @@
 <?php
 
+use app\components\UserPermissions;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
@@ -19,7 +20,14 @@ $this->title = 'Руланд видео';
 <div class="video-index">
 
     <div class="post-header text-center">
-        <h1><i class="fa fa-youtube"></i> <?= $this->title ?></h1>
+        <h1>
+            <?php if (UserPermissions::canAdminPost()) : ?>
+                <?= Html::a('<i class="fa fa-youtube" style="color: #fff"></i>', ['/video/create']) ?>
+            <?php else : ?>
+                <i class="fa fa-youtube"></i>
+            <?php endif; ?>
+            <?= $this->title ?>
+        </h1>
     </div>
 
     <ul class="video-index-filter">

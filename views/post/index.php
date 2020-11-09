@@ -1,5 +1,6 @@
 <?php
 
+use app\components\UserPermissions;
 use yii\helpers\Html;
 use \yii\widgets\ListView;
 use yii\widgets\Pjax;
@@ -21,7 +22,14 @@ $this->registerMetaTag(
 <div class="post-index">
 
     <div class="post-header text-center">
-        <h1><i class="fas fa-feather"></i> Руланд блог</h1>
+        <h1>
+            <?php if (UserPermissions::canAdminPost()) : ?>
+                <?= Html::a('<i class="fas fa-feather" style="color: #fff"></i>', ['/post/create']) ?>
+            <?php else : ?>
+                <i class="fas fa-feather"></i>
+            <?php endif; ?>
+            Руланд блог
+        </h1>
     </div>
 
     <ul class="post-filter">

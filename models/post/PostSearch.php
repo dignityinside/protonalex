@@ -32,7 +32,7 @@ class PostSearch extends Post
     public function rules()
     {
         return [
-            [['id', 'status_id', 'datecreate', 'dateupdate', 'category_id', 'user_id', 'hits', 'ontop'], 'integer'],
+            [['id', 'status_id', 'datecreate', 'dateupdate', 'category_id', 'user_id', 'hits', 'ontop', 'premium'], 'integer'],
             [['title', 'content', 'tags', 'allow_comments', 'meta_description'], 'safe'],
         ];
     }

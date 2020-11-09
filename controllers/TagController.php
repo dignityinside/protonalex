@@ -56,8 +56,8 @@ class TagController extends \yii\web\Controller
     {
         if (($model = \app\models\Tag::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new \yii\web\NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new \yii\web\NotFoundHttpException('The requested page does not exist.');
     }
 }

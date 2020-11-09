@@ -38,12 +38,14 @@
             </div>
         </div>
 
-        <div class="widget">
-            <div class="widget-title">Реклама</div>
-            <div class="widget-content">
-                <?= $this->render('partials/ad') ?>
+        <?php if (\Yii::$app->user->identity === null) : ?>
+            <div class="widget">
+                <div class="widget-title">Реклама</div>
+                <div class="widget-content">
+                    <?= $this->render('partials/ad') ?>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </div>
 

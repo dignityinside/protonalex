@@ -53,13 +53,13 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
     <div class="row">
 
         <div class="col">
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
                 <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(\app\models\category\Category::getAllCategories(\app\models\Material::MATERIAL_POST_ID), 'id', 'name'), ['prompt' => 'Выберите категорию']); ?>
             </div>
         </div>
 
         <div class="col">
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-4">
                 <?php if (UserPermissions::canAdminPost()) : ?>
                     <?= $form->field($model, 'form_tags')->widget(
                         Select2::classname(),
@@ -96,6 +96,12 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
                     );
                     ?>
                 <?php endif ?>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group col-md-2">
+                <?= $form->field($model, 'premium')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
             </div>
         </div>
 
