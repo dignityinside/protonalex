@@ -114,6 +114,19 @@ php yii sitemap
 php yii video
 ```
 
+## Tests
+
+```
+# Once run 'build'
+vendor/bin/codecept build
+
+# Apply migrations for _test db
+php yii_test migrate
+
+# Run all tests
+vendor/bin/codecept run
+```
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 

@@ -1,108 +1,57 @@
 <?php
 
 $config = [
-    'id'           => 'app',
-    'name'         => 'rooland',
-    'basePath'     => dirname(__DIR__),
-    'aliases'      => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
-    ],
+    'id' => 'app',
     'defaultRoute' => 'post/index',
-    'language'     => 'ru-RU',
-    'sourceLanguage' => 'en-US',
-    'bootstrap'    => ['log'],
-    'components'   => [
-        'authManager'          => [
-            'class' => 'yii\rbac\PhpManager',
-        ],
-        'authClientCollection' => [
-            'class'   => 'yii\authclient\Collection',
-            'clients' => require __DIR__ . '/authclients.php',
-        ],
-        'request'              => [
+    'bootstrap' => [
+        'log'
+    ],
+    'components' => [
+        'request' => [
             'cookieValidationKey' => '',
         ],
-        'cache'                => [
+        'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user'                 => [
-            'identityClass'   => 'app\models\User',
+        'user' => [
             'enableAutoLogin' => true,
         ],
-        'errorHandler'         => [
+        'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer'               => [
-            'class'            => 'yii\swiftmailer\Mailer',
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'localhost',
                 'username' => '',
                 'password' => '',
                 'port' => '25', // 587 (tls) or 465 (ssl)
-                // 'encryption' => 'tls', // tls or ssl
+                //'encryption' => 'tls', // tls or ssl
             ],
             'useFileTransport' => false,
         ],
-        'log'                  => [
+        'log' => [
             'traceLevel' => 0,
-            'targets'    => [
+            'targets' => [
                 [
-                    'class'  => 'yii\log\FileTarget',
+                    'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
             ],
         ],
-        'db'                   => require(__DIR__ . '/db.php'),
-        'urlManager'           => [
-            'enablePrettyUrl' => true,
-            'showScriptName'  => false,
-            'rules'           => [
-                '<_a:(login|logout|signup|auth|request-password-reset|reset-password|contact|search)>' => 'site/<_a>',
-                '<_c:[\w\-]+>/<id:\d+>'                                                               => '<_c>/view',
-                '<_c:[\w\-]+>/update/<id:\d+>'                                                        => '<_c>/update',
-                '<_c:[\w\-]+>/delete/<id:\d+>'                                                        => '<_c>/delete',
-                '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>'                                                  => '<_c>/<_a>',
-                // video
-                'video/<_a:(admin|create|update|delete)>' => 'video/<_a>',
-                'video/watch/<id:\d+>' => 'video/watch',
-                'video/category/<categoryName:[\w\-]+>' => 'video/category',
-                'video/<sortBy:[\w\-]+>' => 'video/index',
-                // tags
-                'tag/search' => 'tag/search',
-                [
-                    'class' => 'app\components\PostUrlRule',
-                ]
-            ],
-            'baseUrl' => 'https://rooland.org',
-        ],
-        'comment'              => require(__DIR__ . '/comments.php'),
-        'i18n' => [
-            'translations' => [
-                'app*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/messages',
-                    'fileMap' => [
-                        'app' => 'app.php',
-                        'app/blog' => 'blog.php',
-                        'app/video' => 'video.php',
-                        'app/comments' => 'comments.php',
-                        'app/category' => 'category.php',
-                    ],
-                ],
-            ],
-        ],
+        'db' => require(__DIR__ . '/db.php'),
+        'comment' => require(__DIR__ . '/comments.php'),
     ],
-    'modules'      => [
+    'modules' => [
         'comment-admin' => [
             'class' => 'demi\comments\backend\CommentModule',
         ],
-        'comment'       => [
+        'comment' => [
             'class' => 'demi\comments\frontend\CommentModule',
         ],
     ],
-    'params'       => require(__DIR__ . '/params.php'),
+    'params' => require(__DIR__ . '/params.php'),
 ];
 
 return $config;

@@ -12,12 +12,18 @@ require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
 if ($development) {
 
     $config = yii\helpers\ArrayHelper::merge(
+        require(__DIR__ . '/config/common.php'),
         require(__DIR__ . '/config/console.php'),
         require(__DIR__ . '/config/console-local.php')
     );
 
 } else {
-    $config = require(__DIR__ . '/config/console.php');
+
+    $config = yii\helpers\ArrayHelper::merge(
+        require(__DIR__ . '/config/common.php'),
+        require(__DIR__ . '/config/console.php')
+    );
+
 }
 
 $application = new yii\console\Application($config);

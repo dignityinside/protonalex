@@ -8,13 +8,14 @@ Thumbs.db
 # ignore local and production files
 
 /config/authclients.php
-/config/console.php
 /config/console-local.php
 /config/db.php
 /config/db-local.php
 /config/params.php
+/config/params-local.php
 /config/web.php
 /config/web-local.php
+
 /rbac/assignments.php
 /rbac/items.php
 /rbac/rules.php

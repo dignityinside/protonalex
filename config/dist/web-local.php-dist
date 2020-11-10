@@ -1,40 +1,41 @@
 <?php
 
-$params = require(__DIR__ . '/params.php');
+use yii\helpers\ArrayHelper;
 
-$params['siteName'] = 'Руланд local';
-
-// testing keys for reCAPTCHA purposes by Google
-$params['reCAPTCHA.siteKey'] = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
-$params['reCAPTCHA.secretKey'] = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe';
+$params = ArrayHelper::merge(
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
 
 $config = [
-    'id'           => 'app-local',
-    'basePath'     => dirname(__DIR__),
-    'bootstrap'    => ['debug', 'gii'],
-    'components'   => [
-        'mailer'               => [
+    'id' => 'app-local',
+    'bootstrap' => [
+        'debug',
+        'gii'
+    ],
+    'components' => [
+        'mailer' => [
             'useFileTransport' => true,
         ],
-        'log'                  => [
+        'log' => [
             'traceLevel' => 3,
         ],
-        'db'                   => require(__DIR__ . '/db-local.php'),
-        'urlManager'           => [
+        'db' => require(__DIR__ . '/db-local.php'),
+        'urlManager' => [
             'baseUrl' => 'http://rooland.local:8025/',
         ],
     ],
     'modules' => [
         'debug' => [
-            'class'      => 'yii\debug\Module',
+            'class' => 'yii\debug\Module',
             'allowedIPs' => ['127.0.0.1', '::1'],
         ],
         'gii' => [
-            'class'      => 'yii\gii\Module',
+            'class' => 'yii\gii\Module',
             'allowedIPs' => ['127.0.0.1', '::1'],
         ],
     ],
-    'params'       => $params,
+    'params' => $params,
 ];
 
 return $config;

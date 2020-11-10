@@ -62,14 +62,11 @@ class ContactForm extends Model
     {
 
         if ($this->validate()) {
-            $body = "$this->name ($this->email) написал:\n";
-            $body .= $this->body;
-
             Yii::$app->mailer->compose()
                              ->setTo(\Yii::$app->params['adminEmail'])
                              ->setFrom([\Yii::$app->params['noreplyEmail'] => \Yii::$app->name])
                              ->setSubject($this->subject)
-                             ->setTextBody($body)
+                             ->setTextBody($this->body)
                              ->send();
 
             return true;

@@ -4,20 +4,12 @@ $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
 
 $config = [
-    'id'                  => 'app-console',
-    'basePath'            => dirname(__DIR__),
+    'id' => 'app-console',
     'controllerNamespace' => 'app\commands',
-    'components'          => [
-        'db'          => $db,
-        'user' => [
-            'class' => 'yii\web\User',
-            'identityClass' => 'app\models\User',
-        ],
-        'session' => [ // for use session in console application
-            'class' => 'yii\web\Session'
-        ],
-        'authManager'          => [
-            'class' => 'yii\rbac\PhpManager',
+    'components' => [
+        'db' => $db,
+        'urlManager' => [
+            'scriptUrl' => 'http://rooland.org',
         ],
     ],
     'controllerMap' => [
