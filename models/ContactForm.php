@@ -23,9 +23,7 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
-            // email has to be a valid email address
+            [['name', 'email', 'subject', 'body', 'captcha'], 'required'],
             ['email', 'email'],
             ['captcha', 'required'],
             [
@@ -45,11 +43,11 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'name'    => 'Имя',
-            'email'   => 'E-Mail',
-            'subject' => 'Тема',
-            'body'    => 'Сообщение',
-            'captcha' => 'Капча'
+            'name'    => \Yii::t('app', 'contact_name'),
+            'email'   => \Yii::t('app', 'contact_email'),
+            'subject' => \Yii::t('app', 'contact_subject'),
+            'body'    => \Yii::t('app', 'contact_body'),
+            'captcha' => \Yii::t('app', 'contact_captcha')
         ];
     }
 
@@ -63,11 +61,11 @@ class ContactForm extends Model
 
         if ($this->validate()) {
             Yii::$app->mailer->compose()
-                             ->setTo(\Yii::$app->params['adminEmail'])
-                             ->setFrom([\Yii::$app->params['noreplyEmail'] => \Yii::$app->name])
-                             ->setSubject($this->subject)
-                             ->setTextBody($this->body)
-                             ->send();
+                ->setTo(\Yii::$app->params['adminEmail'])
+                ->setFrom([\Yii::$app->params['noreplyEmail'] => \Yii::$app->name])
+                ->setSubject($this->subject)
+                ->setTextBody($this->name . "\n\n" . $this->email . "\n\n". $this->body)
+                ->send();
 
             return true;
         }

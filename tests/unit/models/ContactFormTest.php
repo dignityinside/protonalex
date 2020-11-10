@@ -24,6 +24,7 @@ class ContactFormTest extends \Codeception\Test\Unit
             'email' => 'test@example.com',
             'subject' => 'Hello',
             'body' => 'Hello World!',
+            'captcha' => 'test',
         ];
 
         expect_that($this->model->contact('admin@example.com'));

@@ -38,4 +38,17 @@ return [
     'sort_comments'            => 'Обсуждаемые',
     'added'                    => 'Добавил(а)',
     'author'                   => 'Автор',
+    // models/ContactForm
+    'contact_name' => 'Имя',
+    'contact_email' => 'E-Mail',
+    'contact_subject' => 'Тема',
+    'contact_body' => 'Сообщение',
+    'contact_captcha' => 'Капча',
+    // views/site/contact
+    'contact_title' => 'Обратная связь',
+    'contact_email_send' => 'Спасибо. Ваше сообщения отправлено. Мы ответим вам в ближайщее время.',
+    'contact_button_send' => 'Отправить',
+    // tests/functional/ContactFormCest.php
+    '{field}_cannot_be_blank' => 'Необходимо заполнить «{field}»',
+    'email_is_not_valid_email' => 'Значение «E-Mail» не является правильным email адресом',
 ];

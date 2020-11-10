@@ -7,9 +7,8 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use yii\captcha\Captcha;
 
-$this->title = 'Обратная связь';
+$this->title = \Yii::t('app', 'contact_title');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
@@ -17,13 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')) : ?>
         <div class="alert alert-success">
-            Спасибо. Ваше сообщения отправлено. Мы ответим вам в ближайщее время.
+            <?= \Yii::t('app', 'contact_email_send') ?>
         </div>
-
     <?php else : ?>
         <div class="row">
             <div class="col-lg-5">
-
                 <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
                 <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
@@ -41,15 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="form-group">
                     <?= Html::submitButton(
-                        'Отправить',
+                        \Yii::t('app', 'contact_button_send'),
                         ['class' => 'btn btn-primary', 'name' => 'contact-button']
                     ) ?>
                 </div>
-
                 <?php ActiveForm::end(); ?>
-
             </div>
         </div>
-
     <?php endif; ?>
 </div>
