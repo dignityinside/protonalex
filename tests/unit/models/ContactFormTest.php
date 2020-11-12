@@ -1,12 +1,18 @@
 <?php
 
-namespace tests\models;
+namespace app\tests\unit\models;
 
 use app\models\ContactForm;
 
+/**
+ * Class ContactFormTest
+ *
+ * @package app\tests\unit\models
+ */
 class ContactFormTest extends \Codeception\Test\Unit
 {
     private $model;
+
     /**
      * @var \UnitTester
      */

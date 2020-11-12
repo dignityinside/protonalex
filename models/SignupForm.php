@@ -32,8 +32,8 @@ class SignupForm extends Model
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
             [
-                'username', 'unique', 'targetClass' => '\app\models\User',
-                'message'                           => 'Это имя пользователя уже занято.'
+                'username', 'unique', 'targetClass' => \app\models\User::class,
+                'message'                           => \Yii::t('app', 'username_already_taken')
             ],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -41,8 +41,8 @@ class SignupForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             [
-                'email', 'unique', 'targetClass' => '\app\models\User',
-                'message'                        => 'Пользователь с таким E-Mail уже зарегистирован.'
+                'email', 'unique', 'targetClass' => \app\models\User::class,
+                'message'                        => \Yii::t('app', 'email_already_taken')
             ],
 
             ['password', 'required'],
@@ -66,10 +66,10 @@ class SignupForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'Логин',
-            'password' => 'Пароль',
-            'email'    => 'E-Mail',
-            'captcha'  => 'Капча'
+            'username' => \Yii::t('app', 'username'),
+            'password' => \Yii::t('app', 'password'),
+            'email'    => \Yii::t('app', 'email'),
+            'captcha'  => \Yii::t('app', 'captcha')
         ];
     }
 
@@ -80,19 +80,17 @@ class SignupForm extends Model
      */
     public function signup()
     {
-
-        if ($this->validate()) {
-            $user = new User();
-
-            $user->username = $this->username;
-            $user->email = $this->email;
-            $user->setPassword($this->password);
-            $user->generateAuthKey();
-            $user->save();
-
-            return $user;
+        if (!$this->validate()) {
+            return null;
         }
 
-        return null;
+        $user = new User();
+        $user->username = $this->username;
+        $user->email = $this->email;
+        $user->setPassword($this->password);
+        $user->generateAuthKey();
+        $user->save();
+
+        return $user;
     }
 }

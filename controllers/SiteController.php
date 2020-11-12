@@ -12,7 +12,6 @@ use app\components\AuthHandler;
 use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
 use app\models\SignupForm;
-use yii\authclient\ClientInterface;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 
@@ -100,7 +99,6 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -111,12 +109,7 @@ class SiteController extends Controller
             return $this->goBack();
         }
 
-        return $this->render(
-            'login',
-            [
-            'model' => $model,
-            ]
-        );
+        return $this->render('login', ['model' => $model]);
     }
 
     /**
@@ -139,7 +132,6 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
-
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post())) {
@@ -150,12 +142,7 @@ class SiteController extends Controller
             }
         }
 
-        return $this->render(
-            'signup',
-            [
-            'model' => $model,
-            ]
-        );
+        return $this->render('signup', ['model' => $model]);
     }
 
     /**

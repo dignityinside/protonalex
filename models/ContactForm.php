@@ -47,7 +47,7 @@ class ContactForm extends Model
             'email'   => \Yii::t('app', 'contact_email'),
             'subject' => \Yii::t('app', 'contact_subject'),
             'body'    => \Yii::t('app', 'contact_body'),
-            'captcha' => \Yii::t('app', 'contact_captcha')
+            'captcha' => \Yii::t('app', 'captcha')
         ];
     }
 

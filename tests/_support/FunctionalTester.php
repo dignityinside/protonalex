@@ -20,6 +20,24 @@ class FunctionalTester extends \Codeception\Actor
     use _generated\FunctionalTesterActions;
 
     /**
-     * Define custom actions here
+     * @param FunctionalTester $I
+     * @param string $field
      */
+    public function seeValidationError(\FunctionalTester $I, string $field)
+    {
+        $I->see(\Yii::t('app', '{field}_cannot_be_blank', [
+            'field' => $field,
+        ]));
+    }
+
+    /**
+     * @param FunctionalTester $I
+     * @param string $field
+     */
+    public function dontSeeValidationError(\FunctionalTester $I, string $field)
+    {
+        $I->dontSee(\Yii::t('app', '{field}_cannot_be_blank', [
+            'field' => $field,
+        ]));
+    }
 }

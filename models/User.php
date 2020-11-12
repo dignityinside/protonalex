@@ -36,18 +36,7 @@ class User extends ActiveRecord implements IdentityInterface
     public const SCENARIO_UPDATE = 'update';
     public const SCENARIO_ADMIN = 'admin';
 
-    public const VISIBILITY_HIDE = 0;
-    public const VISIBILITY_REGISTER_USER_ONLY = 1;
-    public const VISIBILITY_ALL_USERS = 2;
-
     public $avatar_url = '';
-
-    /** @var array */
-    public $visibilityMapping = [
-        self::VISIBILITY_HIDE => 'Никому',
-        self::VISIBILITY_REGISTER_USER_ONLY => 'Только не зарегистированным пользователям',
-        self::VISIBILITY_ALL_USERS => 'Всем пользователям'
-    ];
 
     /**
      * @inheritdoc
@@ -248,11 +237,11 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             'id'             => 'ID',
-            'username'       => 'Имя пользователя',
-            'email'          => 'E-Mail',
-            'status'         => 'Статус',
-            'created_at'     => 'Создан в',
-            'premium'        => 'Premium',
+            'username'       => \Yii::t('app', 'username'),
+            'email'          => \Yii::t('app', 'email'),
+            'status'         => \Yii::t('app', 'status'),
+            'created_at'     => \Yii::t('app', 'created_at'),
+            'premium'        => \Yii::t('app', 'premium'),
         ];
     }
 
@@ -276,24 +265,6 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getAuths()
     {
-        return $this->hasMany(Auth::className(), ['user_id' => 'id']);
-    }
-
-    /**
-     * @return string GitHub profile URL or null if user isn't connected with GitHub
-     */
-    public function getGithubProfileUrl()
-    {
-        return $this->github ? 'http://github.com/' . $this->github : null;
-    }
-
-    /**
-     * Returns ads visibility mapping
-     *
-     * @return array
-     */
-    public function getAdsVisibility()
-    {
-        return $this->visibilityMapping;
+        return $this->hasMany(Auth::class, ['user_id' => 'id']);
     }
 }

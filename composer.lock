@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c176d6dced479b5e5a0b75457dd490f",
+    "content-hash": "7a605bc9c5de9e34ed2105a35bd9d610",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -2332,23 +2332,22 @@
         },
         {
             "name": "codeception/verify",
-            "version": "1.5.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Verify.git",
-                "reference": "ebf833c857825207a8abec541c07bdd724ea4676"
+                "reference": "fa0bb946b6d61279f461bcc5a677ac0ed5eab9b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Verify/zipball/ebf833c857825207a8abec541c07bdd724ea4676",
-                "reference": "ebf833c857825207a8abec541c07bdd724ea4676",
+                "url": "https://api.github.com/repos/Codeception/Verify/zipball/fa0bb946b6d61279f461bcc5a677ac0ed5eab9b3",
+                "reference": "fa0bb946b6d61279f461bcc5a677ac0ed5eab9b3",
                 "shasum": ""
             },
             "require": {
-                "codeception/phpunit-wrapper": "^7.8.0 | ^8.1.2 | ^9.0.2",
-                "ext-dom": "*",
-                "php": ">= 7.1",
-                "phpunit/phpunit": ">= 7.0"
+                "codeception/phpunit-wrapper": ">6.0.15 <6.1.0 | ^6.6.1 | ^7.7.1 | ^8.0.4",
+                "php": ">= 7.0",
+                "phpunit/phpunit": "> 6.0"
             },
             "type": "library",
             "autoload": {
@@ -2367,14 +2366,10 @@
                 {
                     "name": "Michael Bodnarchuk",
                     "email": "davert@codeception.com"
-                },
-                {
-                    "name": "Gustavo Nieves",
-                    "homepage": "https://medium.com/@ganieves"
                 }
             ],
             "description": "BDD assertion library for PHPUnit",
-            "time": "2020-08-29T00:28:24+00:00"
+            "time": "2019-07-30T18:21:46+00:00"
         },
         {
             "name": "doctrine/instantiator",

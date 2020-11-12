@@ -3,7 +3,7 @@
 // phpcs:ignoreFile
 
 /**
- * \Yii::t('app', 'breadcrumbs_label_update')
+ * \Yii::t('app', 'username')
  */
 return [
     // views/layouts/main
@@ -43,7 +43,6 @@ return [
     'contact_email' => 'E-Mail',
     'contact_subject' => 'Тема',
     'contact_body' => 'Сообщение',
-    'contact_captcha' => 'Капча',
     // views/site/contact
     'contact_title' => 'Обратная связь',
     'contact_email_send' => 'Спасибо. Ваше сообщения отправлено. Мы ответим вам в ближайщее время.',
@@ -51,4 +50,17 @@ return [
     // tests/functional/ContactFormCest.php
     '{field}_cannot_be_blank' => 'Необходимо заполнить «{field}»',
     'email_is_not_valid_email' => 'Значение «E-Mail» не является правильным email адресом',
+    //
+    'signup_title' => 'Регистрация',
+    'status' => 'Статус',
+    'created_at' => 'Создан в',
+    'premium' => 'Premium',
+    'or' => 'или',
+    'button_register' => 'Зарегистироваться',
+    'button_login' => 'Войти',
+    'password' => 'Пароль',
+    'invalid_login_password' => 'Не верный логин или пароль.',
+    'username_already_taken' => 'Это имя пользователя уже занято.',
+    'email_already_taken' => 'Пользователь с таким E-Mail уже зарегистирован.',
+    'captcha' => 'Капча',
 ];
