@@ -10,6 +10,7 @@ return [
         'updated_at' => '1391885313',
         'email' => 'test@example.com',
         'status' => \app\models\User::STATUS_ACTIVE,
+        'premium' => '0'
     ],
     [
         'username' => 'test1',
@@ -20,6 +21,7 @@ return [
         'updated_at' => '1391885313',
         'email' => 'test1@example.com',
         'status' => \app\models\User::STATUS_ACTIVE,
+        'premium' => '0'
     ],
     [
         'username' => 'test2',
@@ -29,6 +31,7 @@ return [
         'status' => \app\models\User::STATUS_ACTIVE,
         'created_at' => '1548675330',
         'updated_at' => '1548675330',
+        'premium' => '1'
     ],
     [
         'username' => 'test3',
@@ -38,5 +41,6 @@ return [
         'status' => \app\models\User::STATUS_DELETED,
         'created_at' => '1548675330',
         'updated_at' => '1548675330',
+        'premium' => '0'
     ],
 ];
