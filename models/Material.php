@@ -59,8 +59,8 @@ class Material extends ActiveRecord
     public function getStatuses(): array
     {
         return [
-            Material::STATUS_PUBLIC => 'Опубликован',
-            Material::STATUS_DRAFT  => 'Черновик',
+            Material::STATUS_PUBLIC => \Yii::t('app', 'status_public'),
+            Material::STATUS_DRAFT  => \Yii::t('app', 'status_draft'),
         ];
     }
 

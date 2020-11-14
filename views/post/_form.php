@@ -29,7 +29,7 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
 <div class="post-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'form-post']); ?>
 
     <div class="form-row">
 
@@ -62,10 +62,10 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
             <div class="form-group col-md-4">
                 <?php if (UserPermissions::canAdminPost()) : ?>
                     <?= $form->field($model, 'form_tags')->widget(
-                        Select2::classname(),
+                        Select2::class,
                         [
                             'options'       => [
-                                'placeholder' => 'Найти тэг...',
+                                'placeholder' => \Yii::t('app/blog', 'find_tags'),
                                 'multiple'    => true,
                             ],
                             'data'          => $model->form_tags,
@@ -101,7 +101,10 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
         <div class="col">
             <div class="form-group col-md-2">
-                <?= $form->field($model, 'premium')->dropDownList(['0' => 'Нет', '1' => 'Да']) ?>
+                <?= $form->field($model, 'premium')->dropDownList([
+                    '0' => \Yii::t('app', 'no'),
+                    '1' => \Yii::t('app', 'yes')
+                ]) ?>
             </div>
         </div>
 
@@ -127,7 +130,7 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
                 )->textarea(['class' => 'markdown-editor']) ?>
 
                 <div id="imgur_add_img">
-                    Нажмите здесь или перетащите файл, что бы загрузить картинку.
+                    <?= \Yii::t('app', 'click_here_to_drag_drop') ?>
                 </div>
                 <input id="imgur_img_upload_field" type="file">
                 <div id="imgur_img_list"></div>
@@ -141,19 +144,28 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
         <div class="col">
             <div class="form-group col-md-4">
-                <?= $form->field($model, 'status_id')->dropDownList(['0' => 'Черновик', '1' => 'Опубликовать']) ?>
+                <?= $form->field($model, 'status_id')->dropDownList([
+                    '0' => \Yii::t('app', 'status_draft'),
+                    '1' => \Yii::t('app', 'status_public')
+                ]) ?>
             </div>
         </div>
 
         <div class="col">
             <div class="form-group col-md-4">
-                <?= $form->field($model, 'allow_comments')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
+                <?= $form->field($model, 'allow_comments')->dropDownList([
+                    '1' => \Yii::t('app', 'yes'),
+                    '0' => \Yii::t('app', 'no')
+                ]) ?>
             </div>
         </div>
 
         <div class="col">
             <div class="form-group col-md-4">
-                <?= $form->field($model, 'ontop')->dropDownList(['1' => 'Да', '0' => 'Нет']) ?>
+                <?= $form->field($model, 'ontop')->dropDownList([
+                    '1' => \Yii::t('app', 'yes'),
+                    '0' => \Yii::t('app', 'no')
+                ]) ?>
             </div>
         </div>
 
@@ -162,11 +174,10 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
     <div class="form-row">
 
         <div class="col">
-
             <div class="form-group">
                 <?= Html::submitButton(
-                    $model->isNewRecord ? 'Сохранить' : 'Обновить',
-                    ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
+                    \Yii::t('app', 'button_save'),
+                    ['id' => 'submit', 'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
                 ) ?>
             </div>
 
@@ -175,5 +186,4 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
     </div>
 
     <?php ActiveForm::end(); ?>
-
 </div>

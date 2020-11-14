@@ -112,23 +112,22 @@ class Post extends Material
      */
     public function attributeLabels()
     {
-
         return [
-            'id'               => 'ID',
-            'title'            => 'Заголовок',
-            'content'          => 'Текст',
-            'status_id'        => 'Статус',
-            'datecreate'       => 'Дата публикации',
-            'dateupdate'       => 'Дата обновления',
-            'user_id'          => 'ID Автора',
-            'hits'             => 'Просмотров',
-            'allow_comments'   => 'Разрешить комментарии',
-            'ontop'            => 'На главную',
-            'meta_description' => 'Описание страницы (meta-description)',
-            'slug'             => 'Постоянная ссылка',
-            'form_tags'        => 'Тэги',
-            'category_id'      => 'Категория',
-            'premium'          => 'Premium',
+            'id'               => \Yii::t('app/blog', 'id'),
+            'title'            => \Yii::t('app/blog', 'title'),
+            'content'          => \Yii::t('app/blog', 'content'),
+            'status_id'        => \Yii::t('app/blog', 'status_id'),
+            'datecreate'       => \Yii::t('app/blog', 'datecreate'),
+            'dateupdate'       => \Yii::t('app/blog', 'dateupdate'),
+            'user_id'          => \Yii::t('app/blog', 'user_id'),
+            'hits'             => \Yii::t('app/blog', 'hits'),
+            'allow_comments'   => \Yii::t('app/blog', 'allow_comments'),
+            'ontop'            => \Yii::t('app/blog', 'ontop'),
+            'meta_description' => \Yii::t('app/blog', 'meta_description'),
+            'slug'             => \Yii::t('app/blog', 'slug'),
+            'form_tags'        => \Yii::t('app/blog', 'form_tags'),
+            'category_id'      => \Yii::t('app/blog', 'category_id'),
+            'premium'          => \Yii::t('app/blog', 'premium'),
         ];
     }
 
@@ -168,7 +167,7 @@ class Post extends Material
      */
     public function getComments()
     {
-        return $this->hasMany(\demi\comments\common\models\Comment::className(), ['material_id' => 'id'])
+        return $this->hasMany(\demi\comments\common\models\Comment::class, ['material_id' => 'id'])
                     ->andOnCondition(['material_type' => 1])
                     ->orderBy(['created_at' => SORT_ASC]);
     }
@@ -188,7 +187,7 @@ class Post extends Material
      */
     public function getTags()
     {
-        return $this->hasMany(Tag::className(), ['id' => 'tag_id'])
+        return $this->hasMany(Tag::class, ['id' => 'tag_id'])
                     ->select(['id', 'name'])
                     ->viaTable(PostTag::tableName(), ['post_id' => 'id']);
     }

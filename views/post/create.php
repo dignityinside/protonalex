@@ -6,26 +6,16 @@ use app\components\UserPermissions;
 /* @var $this yii\web\View */
 /* @var $model app\models\post\Post */
 
-$this->title = 'Добавить новую запись';
+$this->title = \Yii::t('app/blog', 'title_add_new_post');
 
 if (UserPermissions::canAdminPost()) {
-    $this->params['breadcrumbs'][] = ['label' => 'Записи', 'url' => ['admin']];
-} else {
-    $this->params['breadcrumbs'][] = ['label' => 'Записи', 'url' => ['my']];
+    $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/blog', 'posts'), 'url' => ['admin']];
 }
 
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <div class="post-create">
-
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render(
-        '_form',
-        [
-        'model' => $model,
-        ]
-    ) ?>
-
+    <?= $this->render('_form', ['model' => $model]) ?>
 </div>
