@@ -13,7 +13,7 @@
         "php": ">=7.2.0",
         "ext-simplexml": "*",
         "ext-mbstring": "*",
-        "yiisoft/yii2": "~2.0.20",
+        "yiisoft/yii2": "~2.0.39",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "yiisoft/yii2-authclient": "~2.1.5",
@@ -25,15 +25,14 @@
         "npm-asset/clipboard": "~2.0.1",
         "dignityinside/translithelper": "^0.0.1",
         "kartik-v/yii2-widget-select2": "^2.1",
-        "demi/sitemap-generator": "~1.0",
+        "demi/sitemap-generator": "~1.1.2",
         "chiliec/yii2-vote": "^4.2",
-        "yiisoft/yii2-jui": "^2.0",
-        "russ666/yii2-countdown": "*"
+        "yiisoft/yii2-jui": "^2.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
-        "yiisoft/yii2-debug": "~2.1.0",
-        "yiisoft/yii2-gii": "~2.1.0",
+        "yiisoft/yii2-debug": "~2.1.15",
+        "yiisoft/yii2-gii": "~2.1.4",
         "squizlabs/php_codesniffer": "3.*",
         "codeception/codeception": "^4.1",
         "codeception/module-asserts": "^1.3",
