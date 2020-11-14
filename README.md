@@ -108,12 +108,6 @@ php yii rbac/assign moderator dignity
 php yii sitemap
 ```
 
-## Fetch new videos
-
-```
-php yii video
-```
-
 ## Tests
 
 ```

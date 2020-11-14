@@ -33,19 +33,12 @@ class Material extends ActiveRecord
     /** @var int */
     public const MATERIAL_POST_ID = 1;
 
-    /** @var int */
-    public const MATERIAL_VIDEO_ID = 3;
-
     /** @var string */
     public const MATERIAL_POST_NAME = 'Post';
-
-    /** @var string */
-    public const MATERIAL_VIDEO_NAME = 'Video';
 
     /** @var array */
     public const MATERIAL_MAPPING = [
         self::MATERIAL_POST_ID => self::MATERIAL_POST_NAME,
-        self::MATERIAL_VIDEO_ID => self::MATERIAL_VIDEO_NAME,
     ];
 
     /** @var int Count of all comments */

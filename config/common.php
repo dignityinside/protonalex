@@ -29,7 +29,6 @@ return [
                     'fileMap' => [
                         'app' => 'app.php',
                         'app/blog' => 'blog.php',
-                        'app/video' => 'video.php',
                         'app/comments' => 'comments.php',
                         'app/category' => 'category.php',
                     ],
@@ -45,11 +44,6 @@ return [
                 '<_c:[\w\-]+>/update/<id:\d+>' => '<_c>/update',
                 '<_c:[\w\-]+>/delete/<id:\d+>' => '<_c>/delete',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
-                // video
-                'video/<_a:(admin|create|update|delete)>' => 'video/<_a>',
-                'video/watch/<id:\d+>' => 'video/watch',
-                'video/category/<categoryName:[\w\-]+>' => 'video/category',
-                'video/<sortBy:[\w\-]+>' => 'video/index',
                 // tags
                 'tag/search' => 'tag/search',
                 [

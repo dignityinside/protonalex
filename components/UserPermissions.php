@@ -4,7 +4,6 @@ namespace app\components;
 
 use app\models\post\Post;
 use app\models\User;
-use app\models\video\Video;
 
 /**
  * User permissions contains various methods to check what user can do
@@ -17,7 +16,6 @@ class UserPermissions
     public const ADMIN_POST = 'adminPost';
     public const ADMIN_USERS = 'adminUsers';
     public const ADMIN_CATEGORY = 'adminCategory';
-    public const ADMIN_VIDEO = 'adminVideo';
 
     /**
      * Checks if user can admin posts
@@ -123,51 +121,6 @@ class UserPermissions
         }
 
         if (\Yii::$app->user->can(self::ADMIN_CATEGORY)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks if user can admin video
-     *
-     * @return bool
-     */
-    public static function canAdminVideo(): bool
-    {
-
-        if (\Yii::$app->user->isGuest) {
-            return false;
-        }
-
-        if (\Yii::$app->user->can(self::ADMIN_VIDEO)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks if user can edit particular video
-     *
-     * @param Video $video
-     *
-     * @return bool
-     */
-    public static function canEditVideo(Video $video): bool
-    {
-        if (\Yii::$app->user->isGuest) {
-            return false;
-        }
-
-        if (self::canAdminVideo()) {
-            return true;
-        }
-
-        $currentUserID = \Yii::$app->user->getId();
-
-        if ((int)$video->user_id === (int)$currentUserID) {
             return true;
         }
 

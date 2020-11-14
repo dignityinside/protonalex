@@ -20,14 +20,6 @@ return [
     'sharpayAppId'                  => '',
     'googleSiteVerification'        => '',
     'yandexVerification'            => '',
-    'video' => [
-        'youtubeFeeds' => [
-            'https://www.youtube.com/feeds/videos.xml?user=dignityinside' => 'Александр Шиллинг',
-        ],
-        'userId' => 1,
-        'preModeration' => true,
-        'pageSize' => 6
-    ],
     'siteName' => 'Руланд блог',
     'social' => [
         'instagram' => 'roolandorg',
