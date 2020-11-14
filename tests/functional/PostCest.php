@@ -80,7 +80,7 @@ class PostCest
         $I->fillField(['name' => 'Post[title]'], 'Hello World');
         $I->selectOption(['name' => 'Post[category_id]'], '1');
         $I->fillField(['name' => 'Post[content]'], 'My first blog post added.');
-        $I->click('#submit');
+        $I->click('.btn');
 
         $I->seeRecord('app\models\post\Post', [
             'title' => 'Hello World',

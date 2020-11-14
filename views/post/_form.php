@@ -177,7 +177,7 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
             <div class="form-group">
                 <?= Html::submitButton(
                     \Yii::t('app', 'button_save'),
-                    ['id' => 'submit', 'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
+                    ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
                 ) ?>
             </div>
 
