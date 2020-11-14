@@ -5,7 +5,7 @@ namespace app\commands;
 use app\components\UserPermissions;
 use app\models\User;
 use Yii;
-use yii\base\InvalidParamException;
+use yii\base\InvalidArgumentException;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
@@ -21,13 +21,14 @@ class RbacController extends Controller
 
     /**
      * @return int
+     *
      * @throws \Exception
      * @throws \yii\base\Exception
      */
     public function actionInit()
     {
 
-        if (!$this->confirm('Are you sure? It will re-create permissions tree.')) {
+        if (!$this->confirm(\Yii::t('app', 'rbac_recreate_permissions'))) {
             return ExitCode::OK;
         }
 
@@ -35,15 +36,15 @@ class RbacController extends Controller
         $auth->removeAll();
 
         $adminPost = $auth->createPermission(UserPermissions::ADMIN_POST);
-        $adminPost->description = 'Administrate posts';
+        $adminPost->description = \Yii::t('app', 'rbac_administrate_posts');
         $auth->add($adminPost);
 
         $adminUsers = $auth->createPermission(UserPermissions::ADMIN_USERS);
-        $adminUsers->description = 'Administrate users';
+        $adminUsers->description = \Yii::t('app', 'rbac_administrate_users');
         $auth->add($adminUsers);
 
         $adminCategory = $auth->createPermission(UserPermissions::ADMIN_CATEGORY);
-        $adminCategory->description = 'Administrate categories';
+        $adminCategory->description = \Yii::t('app', 'rbac_administrate_categories');
         $auth->add($adminCategory);
 
         $admin = $auth->createRole('admin');
@@ -53,6 +54,9 @@ class RbacController extends Controller
         $auth->addChild($admin, $adminUsers);
         $auth->addChild($admin, $adminPost);
         $auth->addChild($admin, $adminCategory);
+
+        return ExitCode::OK;
+
     }
 
     /**
@@ -67,7 +71,9 @@ class RbacController extends Controller
         $user = User::find()->where(['username' => $username])->one();
 
         if (!$user) {
-            throw new InvalidParamException("There is no user \"$username\".");
+            throw new InvalidArgumentException(\Yii::t('app', 'no_user_{username}', [
+                'username' => $username,
+            ]));
         }
 
         $auth = Yii::$app->authManager;
@@ -75,7 +81,9 @@ class RbacController extends Controller
         $roleObject = $auth->getRole($role);
 
         if (!$roleObject) {
-            throw new InvalidParamException("There is no role \"$role\".");
+            throw new InvalidArgumentException(\Yii::t('app', 'no_role_{role}', [
+                'role' => $role,
+            ]));
         }
 
         $auth->assign($roleObject, $user->id);

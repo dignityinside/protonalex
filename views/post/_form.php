@@ -130,7 +130,7 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
                 )->textarea(['class' => 'markdown-editor']) ?>
 
                 <div id="imgur_add_img">
-                    <?= \Yii::t('app', 'click_here_to_drag_drop') ?>
+                    <?= \Yii::t('app', 'imgur_add_img_text') ?>
                 </div>
                 <input id="imgur_img_upload_field" type="file">
                 <div id="imgur_img_list"></div>

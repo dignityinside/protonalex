@@ -15,7 +15,7 @@ return [
     'field_label_comment'         => 'Комментарий',
     'button_send_comment'         => 'Отправить комментарий',
     'comment_box_title'           => 'Оставьте комментарий!',
-    'delete_confirm_text'         => 'Вы уверены что хотите удалить данный комментарий?',
+    'delete_confirm_text'         => 'Ты уверен что хочешь удалить данный комментарий?',
     'update_button_text'          => 'Обновить',
     'cancel_update_button_text'   => 'Отменить',
     'text_allow_comments_yes'     => 'Да',

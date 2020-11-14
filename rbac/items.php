@@ -2,15 +2,15 @@
 return [
     'adminPost' => [
         'type' => 2,
-        'description' => 'Administrate posts',
+        'description' => 'Администрирование записей',
     ],
     'adminUsers' => [
         'type' => 2,
-        'description' => 'Administrate users',
+        'description' => 'Администрирование пользователей',
     ],
     'adminCategory' => [
         'type' => 2,
-        'description' => 'Administrate categories',
+        'description' => 'Администрирование категорий',
     ],
     'admin' => [
         'type' => 1,

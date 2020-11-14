@@ -9,5 +9,8 @@ Disallow: /user/*
 Disallow: /?p=*
 Disallow: /category/*
 Disallow: /tag/*
+Disallow: /video/*
+Disallow: /forum/*
+Disallow: /deals/*
 Host: rooland.org
 Sitemap: https://rooland.org/sitemap.xml
