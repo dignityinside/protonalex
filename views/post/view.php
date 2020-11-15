@@ -44,15 +44,7 @@ $this->registerMetaTag(['name'    => 'description', 'content' => $model->meta_de
         <?= Text::hidecut('[cut]',
             Text::cut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm')))
         ); ?>
-        <div class="alert alert-danger">
-            Скрытое содержимое могут видеть только премиум пользователи.
-            <p>
-                <?php if (\Yii::$app->user->identity === null) : ?>
-                    <?= Html::a('Уже премиум? Войди на сайт!', '/login') ?> |
-                <?php endif; ?>
-                <?= Html::a('Получить премиум', '/premium') ?>
-            </p>
-        </div>
+        <?= $this->render('../partials/premium'); ?>
     <?php endif; ?>
 
     <?php if ($model->ontop) : ?>

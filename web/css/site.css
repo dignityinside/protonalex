@@ -539,6 +539,52 @@ h3.comment-box__title {
     box-shadow: none;
 }
 
-.sidebar {
-    margin-top: 139px;
+.premium {
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #fafbff;
+    border: 1px dashed #ebccd1;
+}
+
+.premium__header {
+    color: #3fa41a;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.premium__price {
+    display: flex;
+    justify-content: space-around;
+}
+
+.premium_price__month,
+.premium_price__year {
+    padding: 10px;
+    background: #edeef0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-width: 380px;
+}
+
+.premium_price__month {
+    margin-right: 10px;
+}
+
+.premium_price__year {
+    margin-left: 10px;
+}
+
+.premium_price__length {
+    color: #666;
+}
+
+.premium_price__value {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.premium_price__button_box {
+    padding-top: 15px;
 }
