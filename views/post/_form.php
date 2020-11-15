@@ -144,10 +144,7 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
         <div class="col">
             <div class="form-group col-md-4">
-                <?= $form->field($model, 'status_id')->dropDownList([
-                    '0' => \Yii::t('app', 'status_draft'),
-                    '1' => \Yii::t('app', 'status_public')
-                ]) ?>
+                <?= $form->field($model, 'status_id')->dropDownList($model->getStatuses()) ?>
             </div>
         </div>
 
