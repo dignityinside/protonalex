@@ -25,4 +25,8 @@ return [
         'instagram' => 'roolandorg',
         'mastodon' => 'roolandorg',
     ],
+    'premium' => [
+        'price' => 500,
+        'freeMonth' => 3
+    ]
 ];

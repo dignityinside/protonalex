@@ -328,8 +328,17 @@ a.desc:after {
         padding-bottom: 20px;
     }
 
-    .sidebar {
-        margin-top: 0 !important;
+    .premium__price {
+        flex-direction: column;
+    }
+
+    .premium_price__month {
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+    }
+
+    .premium_price__year {
+        margin-left: 0 !important;
     }
 
 }

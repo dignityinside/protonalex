@@ -4,9 +4,7 @@
 
 ?>
 <div class="premium">
-    <p class="premium__header">Продолжение доступно только для премиум-пользователя</p>
-    <p>Зарегистрируйся и приобрети безлимитный доступ прямо сейчас!</p>
-    <p>Открой доступ ко всем материалам и отключи рекламу.</p>
+    <p class="premium__header">Продолжение доступно только для премиум пользователя!</p>
     <div class="premium__price">
         <div class="premium_price__month">
             <span class="premium_price__length">1 Месяц</span>
