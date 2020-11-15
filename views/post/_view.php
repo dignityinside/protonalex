@@ -17,10 +17,9 @@ use yii\helpers\Markdown;
 
     <?= $this->render('_post_header', ['model' => $model]) ?>
 
-    <?= Text::cut(HtmlPurifier::process(Markdown::process($model->content, 'gfm'))); ?>
-
-    <?php if ($model->content) : ?>
-        <p><?= Html::a('Подробнее →', ['post/view', 'slug' => $model->slug]); ?></p>
-    <?php endif; ?>
+    <?= Text::cut('[cut]',
+        Text::cut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm'))),
+        Html::a('Подробнее →', ['post/view', 'slug' => $model->slug])
+    ); ?>
 
 </div>

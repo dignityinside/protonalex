@@ -27,7 +27,11 @@ $this->registerMetaTag(['name'    => 'description', 'content' => $model->meta_de
     <?php endif; ?>
 
     <?php if ($model->isPremium()) : ?>
-        <?= Text::hidecut(HtmlPurifier::process(Markdown::process($model->content, 'gfm'))); ?>
+
+        <?= Text::hidecut('[cut]',
+            Text::hideCut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm')))
+        ); ?>
+
         <?php if (\Yii::$app->user->identity === null && $model->ontop) : ?>
             <?= $this->render('_ad') ?>
         <?php endif; ?>
@@ -35,8 +39,11 @@ $this->registerMetaTag(['name'    => 'description', 'content' => $model->meta_de
         <?php if ($model->ontop) : ?>
             <?= $this->render('/partials/share'); ?>
         <?php endif; ?>
+
     <?php else : ?>
-        <?= Text::cut(HtmlPurifier::process(Markdown::process($model->content, 'gfm'))); ?>
+        <?= Text::hidecut('[cut]',
+            Text::cut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm')))
+        ); ?>
         <div class="alert alert-danger">
             Скрытое содержимое могут видеть только премиум пользователи.
             <p>
