@@ -3,15 +3,9 @@
 use app\tests\fixtures\CategoryFixture;
 use app\tests\fixtures\PostFixture;
 use app\tests\fixtures\UserFixture;
-use app\tests\fixtures\CommentFixture;
 
 class PostCest
 {
-
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
 
     public function _before(FunctionalTester $I): void
     {
