@@ -13,11 +13,6 @@ return [
      */
     'reCAPTCHA.siteKey'             => '',
     'reCAPTCHA.secretKey'           => '',
-    /*
-     * Идентификатор Sharpay.
-     * https://app.sharpay.io/webmaster/
-     */
-    'sharpayAppId'                  => '',
     'googleSiteVerification'        => '',
     'yandexVerification'            => '',
     'siteName' => 'Руланд блог',

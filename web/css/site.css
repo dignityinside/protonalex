@@ -51,8 +51,7 @@ pre {
 }
 
 .share {
-    border: 1px dashed #444953;
-    font-size: 120%;
+    border-top: solid 1px #DDD;
     margin: 20px auto 10px;
     padding: 10px;
     text-align: center;
