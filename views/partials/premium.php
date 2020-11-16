@@ -4,7 +4,9 @@
 
 ?>
 <div class="premium">
-    <p class="premium__header">Продолжение доступно только для премиум пользователя!</p>
+    <p class="premium__header">
+        <?= \Yii::t('app', 'continue_only_premium') ?>
+    </p>
     <div class="premium__price">
         <div class="premium_price__month">
             <span class="premium_price__length">1 Месяц</span>
@@ -38,7 +40,7 @@
         </div>
     </div>
     <p class="premium_price__button_box">
-        <?= Html::a('Получить премиум', '/premium', ['class' => 'btn btn-danger btn-lg btn-block', 'style' => 'color: #fff;']) ?>
+        <?= Html::a(\Yii::t('app', 'button_get_premium'), '/premium', ['class' => 'btn btn-danger btn-lg btn-block', 'style' => 'color: #fff;']) ?>
     </p>
     <p>
         <?php if (\Yii::$app->user->identity === null) : ?>

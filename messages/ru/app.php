@@ -3,7 +3,7 @@
 // phpcs:ignoreFile
 
 /**
- * \Yii::t('app', 'rbac_administrate_posts')
+ * \Yii::t('app', 'button_already_premium')
  */
 return [
     // views/layouts/main
@@ -73,4 +73,7 @@ return [
     'rbac_administrate_categories' => 'Администрирование категорий',
     'no_user_{username}'           => 'Пользователь с именем {username} не найден.',
     'no_role_{role}'               => 'Роль {role} не найдена.',
+    'continue_only_premium'        => 'Продолжение доступно только для премиум пользователя!',
+    'button_get_premium'           => 'Получить премиум',
+    'button_already_premium'       => 'Я уже премиум',
 ];

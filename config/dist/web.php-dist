@@ -41,7 +41,6 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        'comment' => require(__DIR__ . '/comments.php'),
     ],
     'modules' => [
         'comment-admin' => [

@@ -31,4 +31,7 @@ return [
     'premium'               => 'Premium',
     'posts'                 => 'Записи',
     'find_tags'             => 'Найти тэг...',
+    'button_add_new_post'   => 'Добавить новую запись',
+    'comments'              => 'Комментариев',
+    'records_not_found'     => 'Записи не найдены.',
 ];

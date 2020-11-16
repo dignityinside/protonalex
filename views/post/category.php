@@ -28,7 +28,7 @@ $this->registerMetaTag(
     <?= ListView::widget(
         [
             'dataProvider' => $dataProvider,
-            'emptyText'    => 'Записи не найдены.',
+            'emptyText'    => \Yii::t('app/blog', 'records_not_found'),
             'itemView'     => '_view',
             'layout' => "{items}{pager}",
         ]

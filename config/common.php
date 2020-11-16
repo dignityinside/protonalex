@@ -52,5 +52,6 @@ return [
             ],
             'baseUrl' => 'https://rooland.org',
         ],
+        'comment' => require(__DIR__ . '/comments.php'),
     ],
 ];

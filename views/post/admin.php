@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\post\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Записи';
+$this->title = \Yii::t('app/blog', 'posts');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-admin">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Добавить новую запись', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(\Yii::t('app/blog', 'button_add_new_post'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php Pjax::begin(); ?>    <?= GridView::widget(
         [
@@ -28,30 +28,30 @@ $this->params['breadcrumbs'][] = $this->title;
                 'title',
                 [
                     'attribute' => 'status_id',
-                    'label'     => 'Статус',
+                    'label'     => \Yii::t('app/blog', 'status_id'),
                     'value'     => function ($model) {
                         return $model->getStatusLabel();
                     }
                 ],
                 [
                     'attribute' => 'hits',
-                    'label' => 'Просмотров',
+                    'label' => \Yii::t('app/blog', 'hits'),
                     'value' => function ($model) {
                         return $model->hits;
                     }
                 ],
                 [
                     'attribute' => 'comments',
-                    'label' => 'Комментарий',
+                    'label' => \Yii::t('app/blog', 'comments'),
                     'value' => function ($model) {
                         return $model->commentsCount;
                     }
                 ],
                 [
                     'attribute' => 'ontop',
-                    'label'     => 'На главной',
+                    'label'     => \Yii::t('app/blog', 'ontop'),
                     'value'     => function ($model) {
-                        return $model->ontop ? 'Да' : 'Нет';
+                        return $model->ontop ? \Yii::t('app', 'yes') : \Yii::t('app', 'no');
                     }
                 ],
 
