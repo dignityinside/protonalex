@@ -32,10 +32,6 @@ $this->registerMetaTag(['name'    => 'description', 'content' => $model->meta_de
             Text::hideCut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm')))
         ); ?>
 
-        <?php if (\Yii::$app->user->identity === null && $model->ontop) : ?>
-            <?= $this->render('_ad') ?>
-        <?php endif; ?>
-
         <?php if ($model->ontop) : ?>
             <?= $this->render('/partials/share'); ?>
         <?php endif; ?>
