@@ -76,4 +76,8 @@ return [
     'continue_only_premium'        => 'Продолжение доступно только для премиум пользователя!',
     'button_get_premium'           => 'Получить премиум',
     'button_already_premium'       => 'Я уже премиум',
+    'sidebar_category'             => 'Разделы',
+    'sidebar_friends'              => 'Друзья',
+    'sidebar_interesting'          => 'Интересное',
+    'sidebar_useful'               => 'Полезное',
 ];

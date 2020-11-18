@@ -3,6 +3,7 @@
 namespace app\models\category;
 
 use app\models\Material;
+use app\models\post\Post;
 use Dignity\TranslitHelper;
 
 /**
@@ -83,5 +84,29 @@ class Category extends Material
     public static function getAllCategories(int $materialId): array
     {
         return Category::find()->andWhere(['material_id' => $materialId])->all();
+    }
+
+    /**
+     * Return related posts for category
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPosts()
+    {
+        return $this->hasMany(Post::class, ['category_id' => 'id'])
+            ->where([
+                'ontop' => Post::SHOW_ON_TOP,
+                'status_id' => Post::STATUS_PUBLIC
+            ]);
+    }
+
+    /**
+     * Returns all categories for one material id
+     *
+     * @return array
+     */
+    public static function getCategoriesList(int $materialId): array
+    {
+        return Category::find()->andWhere(['material_id' => $materialId])->with("posts")->asArray()->all();
     }
 }

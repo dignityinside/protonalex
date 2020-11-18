@@ -244,6 +244,10 @@ a.desc:after {
 
 /* Pagination */
 
+.pagination {
+    width: 100%;
+}
+
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
     background: #8fca58;
     border-color: #ddd;
@@ -417,18 +421,12 @@ h3.comment-box__title {
     border-bottom-left-radius: 7px;
 }
 
-.widget a,
-.widget-content__social-icons a {
+.widget a {
     color: #8fca58;
 }
 
-.widget a:hover,
-.widget-content__social-icons a:hover {
+.widget a:hover {
     color: #3fa41a;
-}
-
-.widget-content__social-icons > p > span {
-    padding-left: 10px;
 }
 
 .site-about,
@@ -595,4 +593,38 @@ h3.comment-box__title {
 
 .premium_price__button_box {
     padding-top: 15px;
+}
+
+.category-list__item {
+    border-radius: 10px;
+}
+
+.category-list a {
+    text-decoration: underline;
+}
+
+.category-list a:hover {
+    text-decoration: none;
+}
+
+.category-list__item .fas {
+    padding-right: 7px;
+}
+
+.category-list__item span {
+    color: #999;
+}
+
+.linksMenu {
+    list-style: none;
+    padding-left: 0;
+}
+
+.linksMenu li {
+    background: no-repeat 0 50%;
+}
+
+.linksMenu a {
+    padding-left: 30px;
+    text-decoration: underline;
 }
