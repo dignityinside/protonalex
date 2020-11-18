@@ -107,6 +107,6 @@ class Category extends Material
      */
     public static function getCategoriesList(int $materialId): array
     {
-        return Category::find()->andWhere(['material_id' => $materialId])->with("posts")->asArray()->all();
+        return Category::find()->andWhere(['material_id' => $materialId])->orderBy('order')->with("posts")->asArray()->all();
     }
 }
