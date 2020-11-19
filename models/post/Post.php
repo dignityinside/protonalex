@@ -68,48 +68,6 @@ class Post extends Material
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
-
-        $scenarios = parent::scenarios();
-
-        $scenarios[Material::SCENARIO_CREATE] = [
-            'title',
-            'content',
-            'allow_comments',
-            'status_id',
-            'slug',
-            'category_id'
-        ];
-
-        $scenarios[Material::SCENARIO_UPDATE] = [
-            'title',
-            'content',
-            'allow_comments',
-            'status_id',
-            'slug',
-            'category_id'
-        ];
-
-        $scenarios[Material::SCENARIO_ADMIN] = [
-            'title',
-            'content',
-            'allow_comments',
-            'status_id',
-            'ontop',
-            'meta_description',
-            'slug',
-            'form_tags',
-            'category_id',
-            'premium',
-        ];
-
-        return $scenarios;
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [

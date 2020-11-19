@@ -15,15 +15,6 @@ use yii\helpers\ArrayHelper;
 class Material extends ActiveRecord
 {
 
-    /** @var string */
-    public const SCENARIO_CREATE = 'create';
-
-    /** @var string */
-    public const SCENARIO_UPDATE = 'update';
-
-    /** @var string */
-    public const SCENARIO_ADMIN = 'admin';
-
     /** @var int */
     public const STATUS_DRAFT = 0;
 

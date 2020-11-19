@@ -84,7 +84,6 @@ class PostController extends Controller
      */
     public function actionAdmin()
     {
-
         $searchModel = new PostSearch();
 
         $dataProvider = $searchModel->adminSearch(Yii::$app->request->queryParams);
@@ -135,14 +134,7 @@ class PostController extends Controller
      */
     public function actionCreate()
     {
-
         $model = new Post();
-
-        if (UserPermissions::canAdminPost()) {
-            $model->scenario = Material::SCENARIO_ADMIN;
-        } else {
-            $model->scenario = Material::SCENARIO_CREATE;
-        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['post/update', 'id' => $model->id]);
@@ -165,16 +157,6 @@ class PostController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if (!UserPermissions::canEditPost($model)) {
-            throw new ForbiddenHttpException('Вы не можете редактировать эту статью.');
-        }
-
-        if (UserPermissions::canAdminPost()) {
-            $model->scenario = Material::SCENARIO_ADMIN;
-        } else {
-            $model->scenario = Material::SCENARIO_UPDATE;
-        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['post/update', 'id' => $model->id]);
@@ -210,7 +192,6 @@ class PostController extends Controller
      */
     public function actionTag($tagName)
     {
-
         $tag = Tag::findOne(['name' => $tagName]);
 
         if (!$tag) {
@@ -241,7 +222,6 @@ class PostController extends Controller
      */
     public function actionCategory($categoryName)
     {
-
         $category = Category::findOne([
             'slug' => $categoryName,
             'material_id' => Material::MATERIAL_POST_ID
@@ -277,7 +257,6 @@ class PostController extends Controller
      */
     protected function findModel($id)
     {
-
         if (($model = Post::findOne($id)) !== null) {
             return $model;
         }
