@@ -3,6 +3,7 @@
 namespace app\models\post;
 
 use Yii;
+use yii\base\Model;
 use yii\db\ActiveQuery;
 use app\models\Material;
 use Dignity\TranslitHelper;
@@ -277,5 +278,28 @@ class Post extends Material
 
         return $this->allow_comments;
 
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+
+        $scenarios[Model::SCENARIO_DEFAULT] = [
+            'title',
+            'content',
+            'allow_comments',
+            'status_id',
+            'ontop',
+            'meta_description',
+            'slug',
+            'form_tags',
+            'category_id',
+            'premium',
+        ];
+
+        return $scenarios;
     }
 }

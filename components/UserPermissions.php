@@ -25,37 +25,7 @@ class UserPermissions
     public static function canAdminPost(): bool
     {
 
-        if (\Yii::$app->user->isGuest) {
-            return false;
-        }
-
         if (\Yii::$app->user->can(self::ADMIN_POST)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks if user can edit particular posts
-     *
-     * @param Post $post
-     *
-     * @return bool
-     */
-    public static function canEditPost(Post $post): bool
-    {
-        if (\Yii::$app->user->isGuest) {
-            return false;
-        }
-
-        if (self::canAdminPost()) {
-            return true;
-        }
-
-        $currentUserID = \Yii::$app->user->getId();
-
-        if ((int)$post->user_id === (int)$currentUserID) {
             return true;
         }
 
@@ -69,10 +39,6 @@ class UserPermissions
      */
     public static function canAdminUsers(): bool
     {
-
-        if (\Yii::$app->user->isGuest) {
-            return false;
-        }
 
         if (\Yii::$app->user->can(self::ADMIN_USERS)) {
             return true;

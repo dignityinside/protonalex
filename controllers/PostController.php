@@ -137,6 +137,7 @@ class PostController extends Controller
         $model = new Post();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', 'Запись добавлена!');
             return $this->redirect(['post/update', 'id' => $model->id]);
         }
 
@@ -159,6 +160,8 @@ class PostController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', 'Запись сохранена!');
+
             return $this->redirect(['post/update', 'id' => $model->id]);
         }
 

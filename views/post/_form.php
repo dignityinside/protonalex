@@ -60,7 +60,6 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
 
         <div class="col">
             <div class="form-group col-md-4">
-                <?php if (UserPermissions::canAdminPost()) : ?>
                     <?= $form->field($model, 'form_tags')->widget(
                         Select2::class,
                         [
@@ -95,7 +94,6 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
                         ]
                     );
                     ?>
-                <?php endif ?>
             </div>
         </div>
 
