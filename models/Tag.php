@@ -7,6 +7,8 @@ use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\helpers\Html;
+use app\models\post\Post;
+use Dignity\TranslitHelper;
 
 /**
  * This is the model class for table "tags".
@@ -18,6 +20,7 @@ use yii\helpers\Html;
  * @property string $user_id
  * @property string $created_at
  * @property string $updated_at
+ * @property string $slug
  *
  * relations
  * @property Post[] $post
@@ -61,9 +64,9 @@ class Tag extends ActiveRecord
             // integer
             [['user_id'], 'integer'],
             // string max
-            [['name'], 'string', 'max' => 255],
+            [['name', 'slug'], 'string', 'max' => 255],
             // unique
-            [['name'], 'unique'],
+            [['name', 'slug'], 'unique'],
             // default
             [['user_id'], 'default', 'value' => Yii::$app->has('user') ? Yii::$app->user->id : null],
         ];
@@ -75,11 +78,12 @@ class Tag extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'user_id' => 'User ID',
+            'id'         => 'ID',
+            'name'       => 'Name',
+            'user_id'    => 'User ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'slug'       => 'Slug',
         ];
     }
 
@@ -88,7 +92,7 @@ class Tag extends ActiveRecord
      */
     public function getPosts()
     {
-        return $this->hasMany(Post::className(), ['id' => 'post_id'])->viaTable(Post::tableName(), ['tag_id' => 'id']);
+        return $this->hasMany(Post::class, ['id' => 'post_id'])->viaTable(Post::tableName(), ['tag_id' => 'id']);
     }
 
     /**
@@ -161,6 +165,7 @@ class Tag extends ActiveRecord
         $tag = new static();
         $tag->name = $name;
         $tag->user_id = Yii::$app->user->id;
+        $tag->slug = TranslitHelper::translit($tag->name);
 
         return $tag->save() ? $tag->id : null;
     }

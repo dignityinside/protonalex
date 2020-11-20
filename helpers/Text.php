@@ -55,7 +55,7 @@ class Text
         $buffer = [];
 
         foreach ($model->tags as $tag) {
-            $buffer[] = Html::a($tag->fName, ['/post/tag', 'tagName' => $tag->name]);
+            $buffer[] = Html::a($tag->fName, ['/post/tag', 'tagName' => $tag->slug]);
         }
 
         return implode(', ', $buffer);

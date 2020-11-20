@@ -147,7 +147,7 @@ class Post extends Material
     public function getTags()
     {
         return $this->hasMany(Tag::class, ['id' => 'tag_id'])
-                    ->select(['id', 'name'])
+                    ->select(['id', 'name', 'slug'])
                     ->viaTable(PostTag::tableName(), ['post_id' => 'id']);
     }
 

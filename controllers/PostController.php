@@ -195,7 +195,7 @@ class PostController extends Controller
      */
     public function actionTag($tagName)
     {
-        $tag = Tag::findOne(['name' => $tagName]);
+        $tag = Tag::findOne(['slug' => $tagName]);
 
         if (!$tag) {
             throw new NotFoundHttpException("Такой тэг не найден.");
