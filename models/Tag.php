@@ -165,7 +165,7 @@ class Tag extends ActiveRecord
         $tag = new static();
         $tag->name = $name;
         $tag->user_id = Yii::$app->user->id;
-        $tag->slug = TranslitHelper::translit($tag->name);
+        $tag->slug = TranslitHelper::translit($name);
 
         return $tag->save() ? $tag->id : null;
     }
