@@ -24,6 +24,7 @@ class m180226_212102_create_tags_table extends Migration
             'id'         => $this->primaryKey(),
             'name'       => $this->string(255)->unsigned()->notNull(),
             'user_id'    => $this->integer()->unsigned()->notNull(),
+            'slug'       => $this->string(255)->notNull(),
             'created_at' => $this->dateTime()->notNull(),
             'updated_at' => $this->timestamp()->notNull(),
         ], $tableOptions

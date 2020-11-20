@@ -16,5 +16,5 @@ Disallow: /forum/*
 Disallow: /deals/*
 Disallow: /planet/*
 Crawl-Delay: 1
-Host: rooland.org
-Sitemap: https://rooland.org/sitemap.xml
+Host: protonduck.com
+Sitemap: https://protonduck.com/sitemap.xml

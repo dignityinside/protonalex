@@ -9,7 +9,7 @@ $config = [
     'components' => [
         'db' => $db,
         'urlManager' => [
-            'scriptUrl' => 'http://rooland.org',
+            'scriptUrl' => 'http://protonduck.com',
         ],
     ],
     'controllerMap' => [

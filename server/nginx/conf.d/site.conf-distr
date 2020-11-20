@@ -4,11 +4,11 @@ server {
 
     listen 443 ssl;
 
-    root /var/www/rooland/web;
+    root /var/www/protonduck/web;
 
     index index.php;
 
-    server_name rooland.org;
+    server_name protonduck.com;
 
     charset utf-8;
 
@@ -69,9 +69,9 @@ server {
 server {
     listen 80;
 
-    server_name rooland.org;
+    server_name protonduck.com;
 
-    if ($host = rooland.org) {
+    if ($host = protonduck.com) {
         return 301 https://$host$request_uri;
     }
 }
@@ -79,11 +79,11 @@ server {
 # redirect all requests to non www
 
 server {
-    if ($host = rooland.org) {
+    if ($host = protonduck.com) {
         return 301 https://$host$request_uri;
     }
 
-    server_name rooland.org;
+    server_name protonduck.com;
     listen 80;
     return 404;
 }

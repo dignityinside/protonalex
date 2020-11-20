@@ -16,12 +16,6 @@ $social = \Yii::$app->params['social'];
             echo Links::widget([
                 'items' => [
                     [
-                        'label' => 'Instagram',
-                        'url' => 'https://instagram.com/' . $social['instagram'],
-                        'rel' => 'nofollow noopener',
-                        'target' => '_blank'
-                    ],
-                    [
                         'label' => 'Mastodon',
                         'url' => 'https://mastodon.social/@' . $social['mastodon'],
                         'rel' => 'nofollow noopener',

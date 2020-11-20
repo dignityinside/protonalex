@@ -15,10 +15,9 @@ return [
     'reCAPTCHA.secretKey'           => '',
     'googleSiteVerification'        => '',
     'yandexVerification'            => '',
-    'siteName' => 'Руланд блог',
+    'siteName' => 'ProtonDuck блог',
     'social' => [
-        'instagram' => 'roolandorg',
-        'mastodon' => 'roolandorg',
+        'mastodon' => 'protonduck',
     ],
     'premium' => [
         'price' => 500,

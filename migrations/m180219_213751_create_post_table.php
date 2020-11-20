@@ -31,7 +31,8 @@ class m180219_213751_create_post_table extends Migration
             'hits'             => $this->bigInteger()->unsigned()->null()->defaultValue(0),
             'allow_comments'   => $this->tinyInteger(1)->unsigned()->notNull()->defaultValue(0),
             'ontop'            => $this->tinyInteger(1)->unsigned()->notNull()->defaultValue(0),
-            'meta_description' => $this->string(255)->null()
+            'meta_description' => $this->string(255)->null(),
+            'premium'          => $this->tinyInteger(1)->unsigned()->notNull()->defaultValue(0),
         ], $tableOptions
         );
 

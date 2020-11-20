@@ -13,7 +13,7 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=db;dbname=rooland_test',
+            'dsn' => 'mysql:host=db;dbname=protonduck_test',
             'username' => 'user',
             'password' => 'pass',
         ],

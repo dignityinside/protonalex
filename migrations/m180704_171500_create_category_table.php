@@ -23,10 +23,12 @@ class m180704_171500_create_category_table extends Migration
 
         $this->createTable(
             '{{%category}}', [
-            'id'               => $this->primaryKey(),
-            'name'             => $this->string(255)->notNull(),
-            'slug'             => $this->string(255)->notNull(),
-            'material_id'      => $this->integer()->unsigned()->null()
+            'id'          => $this->primaryKey(),
+            'name'        => $this->string(255)->notNull(),
+            'slug'        => $this->string(255)->notNull(),
+            'material_id' => $this->integer()->unsigned()->null(),
+            'description' => $this->string(255)->null(),
+            'order'       => $this->integer()->unsigned()->null(),
         ], $tableOptions
         );
 

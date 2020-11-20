@@ -1,6 +1,6 @@
-# rooland
+# protonduck
 
-Source code of the rooland blog.
+Source code of the protonduck blog.
 
 ## Technology
 
@@ -15,8 +15,8 @@ Source code of the rooland blog.
 ## Clone project via GIT
 
 ```
-git clone https://github.com/dignityinside/rooland
-cd rooland
+git clone https://github.com/dignityinside/protonduck
+cd protonduck
 ```
 
 #### Install Docker (Ubuntu-Linux)
@@ -51,12 +51,12 @@ su - <username>
 #### Add new hosts to your `hosts` File:
 
 ```
-127.0.0.1 rooland.local
+127.0.0.1 protonduck.local
 ```
 
 #### Development links
 ```
-http://rooland.local:8025
+http://protonduck.local:8025
 ```
 
 ## Install all dependencies via Composer
@@ -99,7 +99,6 @@ Setup reCAPTCHA settings in config/params.php and register a new user.
 
 ```
 php yii rbac/assign admin dignity
-php yii rbac/assign moderator dignity
 ```
 
 ## Generate sitemap.xml

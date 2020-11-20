@@ -1,12 +1,12 @@
 {
-    "name": "dignityinside/rooland",
-    "description": "Source code of rooland blog.",
+    "name": "dignityinside/protonduck",
+    "description": "Source code of protonduck blog.",
     "keywords": ["yii2"],
-    "homepage": "https://rooland.org/",
+    "homepage": "https://protonduck.com",
     "type": "project",
     "license": "MIT",
     "support": {
-        "source": "https://github.com/dignityinside/rooland"
+        "source": "https://github.com/dignityinside/protonduck"
     },
     "minimum-stability": "stable",
     "require": {

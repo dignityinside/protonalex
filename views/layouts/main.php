@@ -49,7 +49,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
         NavBar::begin(
             [
-                'brandLabel' => Html::img('/img/rooland-logo.png'),
+                'brandLabel' => Html::img('/img/logo.png'),
                 'options'    => [
                     'class' => 'navbar-inverse',
                 ],
