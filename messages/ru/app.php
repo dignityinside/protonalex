@@ -80,4 +80,6 @@ return [
     'sidebar_friends'              => 'Друзья',
     'sidebar_interesting'          => 'Интересное',
     'sidebar_useful'               => 'Полезное',
+    'sidebar_subscribe'            => 'Подписка',
+    'subscribe_text'               => 'Получай анонсы новых статей на свой E-Mail!',
 ];

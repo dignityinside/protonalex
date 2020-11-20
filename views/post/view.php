@@ -33,6 +33,14 @@ $this->registerMetaTag(['name'    => 'description', 'content' => $model->meta_de
         ); ?>
 
         <?php if ($model->ontop) : ?>
+            <hr>
+            <p style="text-align: center">
+                <?= \Yii::t('app', 'subscribe_text') ?>
+            </p>
+            <div class="ml-form-embed"
+                 data-account="<?= \Yii::$app->params['subscribe']['dataAccount']; ?>"
+                 data-form="<?= \Yii::$app->params['subscribe']['dataFormPostBottom']; ?>">
+            </div>
             <?= $this->render('/partials/share'); ?>
         <?php endif; ?>
 
