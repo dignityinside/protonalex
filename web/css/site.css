@@ -612,3 +612,8 @@ h3.comment-box__title {
     padding-left: 30px;
     text-decoration: underline;
 }
+
+pre {
+    border: solid 1px #9498cb;
+    background: #f5f5f5;
+}

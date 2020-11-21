@@ -15,7 +15,7 @@ return [
     'reCAPTCHA.secretKey'           => '',
     'googleSiteVerification'        => '',
     'yandexVerification'            => '',
-    'siteName' => 'ProtonDuck блог',
+    'siteName' => 'protonduck',
     'social' => [
         'mastodon' => 'protonduck',
     ],
