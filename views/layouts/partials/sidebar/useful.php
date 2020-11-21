@@ -26,20 +26,8 @@ use app\widgets\Links;
                         'target' => '_blank'
                     ],
                     [
-                        'label' => 'ProtonMail',
-                        'url' => 'https://protonmail.com',
-                        'rel' => 'nofollow noopener',
-                        'target' => '_blank'
-                    ],
-                    [
                         'label' => 'Ubuntu-Linux',
                         'url' => 'https://ubuntu.com',
-                        'rel' => 'nofollow noopener',
-                        'target' => '_blank'
-                    ],
-                    [
-                        'label' => 'it rooland wiki',
-                        'url' => 'https://it.rooland.org',
                         'rel' => 'nofollow noopener',
                         'target' => '_blank'
                     ],

@@ -14,18 +14,6 @@ use app\widgets\Links;
             echo Links::widget([
                 'items' => [
                     [
-                        'label' => 'Lifehacker',
-                        'url' => 'https://lifehacker.ru',
-                        'rel' => 'nofollow noopener',
-                        'target' => '_blank'
-                    ],
-                    [
-                        'label' => 'Pepper',
-                        'url' => 'https://www.pepper.ru',
-                        'rel' => 'nofollow noopener',
-                        'target' => '_blank'
-                    ],
-                    [
                         'label' => 'Хакер',
                         'url' => 'https://xakep.ru/',
                         'rel' => 'nofollow noopener',

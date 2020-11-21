@@ -62,7 +62,6 @@ class UserController extends Controller
      */
     public function actionAdmin()
     {
-
         $dataProvider = new ActiveDataProvider(
             [
                 'query' => User::find(),
@@ -88,6 +87,7 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout = "/page";
 
         /** @var User $user */
         $user = User::findOne($id);
@@ -135,6 +135,7 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->layout = "/page";
 
         $model = $this->findModel($id);
 

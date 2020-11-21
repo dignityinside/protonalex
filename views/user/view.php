@@ -8,6 +8,7 @@ use yii\helpers\Html;
 /* @var $authClients \yii\authclient\ClientInterface[] */
 
 $this->title = $model->username;
+$this->params['breadcrumbs'][] = 'Пользователи';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>

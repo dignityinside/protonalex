@@ -66,6 +66,7 @@ class SiteController extends Controller
      */
     public function actions(): array
     {
+        $this->layout = "/page";
 
         return [
             'error'   => [
@@ -119,7 +120,6 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -152,7 +152,6 @@ class SiteController extends Controller
      */
     public function actionRequestPasswordReset()
     {
-
         $model = new PasswordResetRequestForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -187,7 +186,6 @@ class SiteController extends Controller
      */
     public function actionResetPassword(string $token)
     {
-
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {

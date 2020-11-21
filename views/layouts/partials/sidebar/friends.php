@@ -19,18 +19,6 @@ use app\widgets\Links;
                         'target' => '_blank'
                     ],
                     [
-                        'label' => 'Александр Макаров',
-                        'url' => 'https://rmcreative.ru',
-                        'rel' => 'nofollow noopener',
-                        'target' => '_blank'
-                    ],
-                    [
-                        'label' => 'Дмитрий Елисеев',
-                        'url' => 'https://elisdn.ru/',
-                        'rel' => 'nofollow noopener',
-                        'target' => '_blank'
-                    ],
-                    [
                         'label' => 'Михаил Шакин',
                         'url' => 'http://shakin.ru',
                         'rel' => 'nofollow noopener',

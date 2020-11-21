@@ -24,7 +24,7 @@ $this->registerMetaTag(
     <div class="post-header text-center">
         <h1>
             <?php if (UserPermissions::canAdminPost()) : ?>
-                <?= Html::a('<i class="fas fa-feather" style="color: #fff"></i>', ['/post/create']) ?>
+                <?= Html::a('<i class="fas fa-feather" style="color: #4eb26b"></i>', ['/post/create']) ?>
             <?php else : ?>
                 <i class="fas fa-feather"></i>
             <?php endif; ?>

@@ -65,7 +65,7 @@ class PostController extends Controller
     public function actionIndex($id = null)
     {
 
-        $this->layout = "/column2";
+        $this->layout = "/page";
 
         $searchModel = new PostSearch([
             'sortBy' => (int) $id,
@@ -108,13 +108,12 @@ class PostController extends Controller
      */
     public function actionView($slug)
     {
-
-        $this->layout = "/blog";
-
         $model = Post::find()->where([
             'status_id' => Material::STATUS_PUBLIC,
             'slug' => $slug,
         ])->withCommentsCount()->one();
+
+        $this->layout = $model->ontop ? '/blog' : '/page';
 
         if (!$model) {
             throw new NotFoundHttpException('Запись не найдена.');
@@ -195,6 +194,8 @@ class PostController extends Controller
      */
     public function actionTag($tagName)
     {
+        $this->layout = "/page";
+
         $tag = Tag::findOne(['slug' => $tagName]);
 
         if (!$tag) {
@@ -225,6 +226,8 @@ class PostController extends Controller
      */
     public function actionCategory($categoryName)
     {
+        $this->layout = "/page";
+
         $category = Category::findOne([
             'slug' => $categoryName,
             'material_id' => Material::MATERIAL_POST_ID

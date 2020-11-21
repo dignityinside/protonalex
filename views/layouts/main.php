@@ -31,13 +31,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8fca58">
-    <meta name="msapplication-TileColor" content="#8fca58">
-    <meta name="theme-color" content="#ffffff">
     <?= $this->render('partials/head.php'); ?>
 </head>
 <body>
@@ -49,7 +42,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
         NavBar::begin(
             [
-                'brandLabel' => Html::img('/img/logo.png'),
+                'brandLabel' => \Yii::$app->params['siteName'],
                 'options'    => [
                     'class' => 'navbar-inverse',
                 ],
@@ -57,9 +50,11 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         );
 
         $menuItems[] = ['label' => \Yii::t('app/blog', 'menu_label_index_blog'), 'url' => ['/post/index']];
+        $menuItems[] = ['label' => \Yii::t('app', 'menu_label_premium'), 'url' => ['/premium']];
 
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => \Yii::t('app', 'menu_label_login'), 'url' => ['/login']];
+            $menuItems[] = ['label' => \Yii::t('app', 'menu_label_signup'), 'url' => ['/signup']];
         } else {
 
             $menuItems[] = [
@@ -119,7 +114,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
         ?>
 
-    <div class="container">
+    <div class="container-fluid">
         <?= Breadcrumbs::widget(
             [
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
