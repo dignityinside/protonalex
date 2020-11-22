@@ -15,6 +15,7 @@ Disallow: /video/*
 Disallow: /forum/*
 Disallow: /deals/*
 Disallow: /planet/*
+Allow: /post/index
 Crawl-Delay: 1
 Host: protonduck.com
 Sitemap: https://protonduck.com/sitemap.xml
