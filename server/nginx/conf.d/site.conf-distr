@@ -1,10 +1,6 @@
 server {
 
-    access_log off;
-
-    listen 443 ssl;
-
-    root /var/www/protonduck/web;
+    root /var/www/protoduck/web;
 
     index index.php;
 
@@ -14,6 +10,7 @@ server {
 
     index index.php;
 
+    # enable compression
     gzip on;
     gzip_disable "msie6";
     gzip_vary on;
@@ -23,32 +20,15 @@ server {
     gzip_http_version 1.1;
     gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
-    location ~ /\.(ht|svn|git) { return 404; }
-
-    if ($request_uri ~* \..*\/.*php) { return 404; }
-
-    location ~ /\.ht {
-        deny all;
-    }
-
-    location = /favicon.ico {
-        log_not_found off;
-        access_log off;
-    }
-
-    location = /robots.txt {
-        allow all;
-        log_not_found off;
-        access_log off;
-    }
-
-    location ~* /(?:uploads|files)/.*\.php$ {
-        deny all;
-    }
-
+    # cache media files
     location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
         expires max;
         log_not_found off;
+    }
+
+    # avoid processing of calls to non-existing static files by Yii
+    location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {
+        try_files $uri =404;
     }
 
     location / {
@@ -56,34 +36,44 @@ server {
     }
 
     location ~ \.php$ {
-    	try_files $uri =404;
+        try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-	    fastcgi_index index.php;
-	    include fastcgi.conf;
-	    fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
     }
+
+    location ~ /\.ht {
+         deny all;
+    }
+
+    listen 443 ssl;
 }
 
-# redirect all requests to HTTPS
-
-server {
-    listen 80;
-
-    server_name protonduck.com;
-
-    if ($host = protonduck.com) {
-        return 301 https://$host$request_uri;
-    }
-}
-
-# redirect all requests to non www
+# redirect http://, http://www to https://
 
 server {
     if ($host = protonduck.com) {
         return 301 https://$host$request_uri;
     }
 
-    server_name protonduck.com;
+    if ($host = www.protonduck.com) {
+        return 301 https://protonduck.com$request_uri;
+    }
+
+    server_name protonduck.com www.protonduck.com;
     listen 80;
+    return 404;
+}
+
+# redirect https://www to https://
+
+server {
+    if ($host = www.protonduck.com) {
+        return 301 https://protonduck.com$request_uri;
+    }
+
+    server_name www.protonduck.com;
+    listen 443 ssl;
     return 404;
 }
