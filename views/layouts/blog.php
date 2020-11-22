@@ -4,7 +4,7 @@
     <div class="col-md-3">
         <?= $this->render('./partials/sidebar/categories.php'); ?>
         <?= $this->render('./partials/sidebar/subscribe.php'); ?>
-        <?= $this->render('./partials/sidebar/social.php'); ?>
+        <?php // echo $this->render('./partials/sidebar/social.php'); ?>
     </div>
     <div class="col-md-6">
         <?= $content; ?>

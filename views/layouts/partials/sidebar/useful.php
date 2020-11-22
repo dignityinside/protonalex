@@ -31,6 +31,18 @@ use app\widgets\Links;
                         'rel' => 'nofollow noopener',
                         'target' => '_blank'
                     ],
+                    [
+                        'label' => 'Linux Mint',
+                        'url' => 'https://linuxmint.com',
+                        'rel' => 'nofollow noopener',
+                        'target' => '_blank'
+                    ],
+                    [
+                        'label' => 'elementaryOS',
+                        'url' => 'https://elementary.io/',
+                        'rel' => 'nofollow noopener',
+                        'target' => '_blank'
+                    ],
                 ],
             ]);
 
