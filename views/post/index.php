@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\post\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = \Yii::$app->params['siteName'];
+$this->title = \Yii::$app->params['site']['name'];
 
 $this->registerMetaTag(
     [
@@ -28,7 +28,7 @@ $this->registerMetaTag(
             <?php else : ?>
                 <i class="fas fa-feather"></i>
             <?php endif; ?>
-            <?= \Yii::$app->params['siteName'] ?>
+            <?= \Yii::$app->params['site']['name'] ?>
         </h1>
     </div>
 

@@ -42,7 +42,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
         NavBar::begin(
             [
-                'brandLabel' => \Yii::$app->params['siteName'],
+                'brandLabel' => \Yii::$app->params['site']['name'],
                 'options'    => [
                     'class' => 'navbar-inverse',
                 ],
@@ -125,7 +125,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 
     <footer>
         <div class="container footer text-center">
-            <p>&copy; <?= date('Y') ?> <?= \Yii::$app->params['siteName'] ?> |
+            <p>&copy; <?= date('Y') ?> <?= \Yii::$app->params['site']['name'] ?> |
                 <?= Html::a(\Yii::t('app', 'footer_about_link'), '/about'); ?> |
                 <?= Html::a(\Yii::t('app', 'footer_premium_link'), '/premium'); ?> |
                 <?= Html::a(\Yii::t('app', 'footer_contact_link'), '/contact'); ?>

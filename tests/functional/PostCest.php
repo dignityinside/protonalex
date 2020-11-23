@@ -33,7 +33,7 @@ class PostCest
         $I->wantTo('Open post index page');
 
         $I->amOnPage('/post/index');
-        $I->see(\Yii::t('app/blog', \Yii::$app->params['siteName']));
+        $I->see(\Yii::t('app/blog', \Yii::$app->params['site']['name']));
     }
 
     /**

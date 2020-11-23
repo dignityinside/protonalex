@@ -15,7 +15,11 @@ return [
     'reCAPTCHA.secretKey'           => '',
     'googleSiteVerification'        => '',
     'yandexVerification'            => '',
-    'siteName' => 'protonduck',
+    'site' => [
+        'author' => 'Александр Шиллинг',
+        'name'   => 'protonduck',
+        'url'    => 'https://protonduck.com',
+    ],
     'social' => [
         'mastodon' => 'protonduck',
     ],

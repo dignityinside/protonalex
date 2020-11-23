@@ -14,6 +14,12 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\components\UserPermissions;
 use yii\web\ForbiddenHttpException;
+use app\components\feed\Feed;
+use app\components\feed\Item;
+use yii\helpers\HtmlPurifier;
+use yii\helpers\Markdown;
+use yii\helpers\Url;
+use app\helpers\Text;
 
 /**
  * PostController implements the CRUD actions for Post model.
@@ -33,11 +39,11 @@ class PostController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only'  => ['index', 'view', 'category', 'tag', 'create', 'admin', 'update', 'delete'],
+                'only'  => ['index', 'view', 'category', 'tag', 'create', 'admin', 'update', 'delete', 'rss'],
                 'rules' => [
                     [
                         'allow'   => true,
-                        'actions' => ['index', 'view', 'category', 'tag'],
+                        'actions' => ['index', 'view', 'category', 'tag', 'rss'],
                         'roles'   => ['?', '@'],
                     ],
                     [
@@ -248,6 +254,40 @@ class PostController extends Controller
             'dataProvider' => $dataProvider,
             'categoryName' => $category->name
         ]);
+    }
+
+    /**
+     * List of posts for rss
+     *
+     * @return void
+     */
+    public function actionRss(): void
+    {
+
+        /** @var Post[] $posts */
+        $posts = Post::find()->where(['status_id' => Post::STATUS_PUBLIC, 'ontop' => Post::SHOW_ON_TOP])->orderBy('datecreate DESC')->limit(10)->all();
+
+        $feed = new Feed();
+        $feed->title = \Yii::$app->params['site']['name'];
+        $feed->link = Url::to(\Yii::$app->params['site']['url']);
+        $feed->selfLink = Url::to(['post/rss'], true);
+        $feed->description = 'RSS лента сайта ' .\Yii::$app->params['site']['name'];
+        $feed->language = Yii::$app->language;
+        $feed->setWebMaster(\Yii::$app->params['adminEmail'], \Yii::$app->params['site']['author']);
+        $feed->setManagingEditor(\Yii::$app->params['adminEmail'], \Yii::$app->params['site']['author']);
+
+        foreach ($posts as $post) {
+            $item = new Item();
+            $item->title = $post->title;
+            $item->link = Url::to(['post/view', 'slug' => $post->slug], true);
+            $item->guid = Url::to(['post/view', 'slug' => $post->slug], true);
+            $item->description = Text::cut('[cut]', Text::cut('[premium]', HtmlPurifier::process(Markdown::process($post->content, 'gfm'))));
+            $item->pubDate = $post->datecreate;
+            $item->setAuthor(\Yii::$app->params['adminEmail'], $post->user->username);
+            $feed->addItem($item);
+        }
+
+        $feed->render();
     }
 
     /**
