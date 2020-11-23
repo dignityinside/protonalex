@@ -14,13 +14,13 @@ use app\widgets\Links;
                 'items' => [
                     [
                         'label' => 'Руланд блог',
-                        'url' => 'http://rooland.org',
+                        'url' => 'https://rooland.org',
                         'rel' => 'nofollow noopener',
                         'target' => '_blank'
                     ],
                     [
                         'label' => 'Иван Орлов',
-                        'url' => 'http://orlov.io/ru',
+                        'url' => 'https://orlov.io/ru',
                         'rel' => 'nofollow noopener',
                         'target' => '_blank'
                     ],
