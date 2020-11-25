@@ -25,7 +25,7 @@ class SitemapPost extends Post implements Basic
         return [
             // post/index
             [
-                'loc'        => Url::to(['/post/index']),
+                'loc'        => Url::to(\Yii::$app->params['site']['url']),
                 'lastmod'    => time(),
                 'changefreq' => static::CHANGEFREQ_DAILY,
                 'priority'   => static::PRIORITY_10

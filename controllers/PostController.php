@@ -215,9 +215,9 @@ class PostController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('tag', [
-            'searchModel' => $searchModel,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
-            'tagName' => $tag->name
+            'tag'          => $tag
         ]);
     }
 
@@ -250,9 +250,9 @@ class PostController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('category', [
-            'searchModel' => $searchModel,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
-            'categoryName' => $category->name
+            'category'     => $category
         ]);
     }
 

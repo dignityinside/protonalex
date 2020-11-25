@@ -11,6 +11,8 @@ $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/category', 'breadcrumb
     'url' => ['admin']];
 
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
 ?>
 <div class="category-create">
 

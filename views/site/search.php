@@ -8,6 +8,7 @@ $this->title = 'Поиск по сайту';
 
 $this->params['breadcrumbs'][] = $this->title;
 
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
 ?>
 
 <div class="site-search">

@@ -12,6 +12,7 @@ use yii\helpers\Html;
 $this->title = 'Ошибка';
 $this->params['breadcrumbs'][] = $this->title;
 
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
 ?>
 <div class="site-error">
 

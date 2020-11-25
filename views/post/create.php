@@ -11,6 +11,7 @@ $this->title = \Yii::t('app/blog', 'title_add_new_post');
 $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/blog', 'posts'), 'url' => ['admin']];
 $this->params['breadcrumbs'][] = $this->title;
 
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
 ?>
 <div class="post-create">
     <h1><?= Html::encode($this->title) ?></h1>

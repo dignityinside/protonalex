@@ -6,6 +6,8 @@ use yii\helpers\Html;
 /* @var $model app\models\User */
 
 $this->title = 'Изменить профиль';
+
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
 ?>
 <div class="user-update">
 

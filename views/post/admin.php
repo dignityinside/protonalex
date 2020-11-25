@@ -10,6 +10,8 @@ use yii\widgets\Pjax;
 
 $this->title = \Yii::t('app/blog', 'posts');
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
 ?>
 <div class="post-admin">
 

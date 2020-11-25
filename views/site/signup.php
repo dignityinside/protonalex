@@ -9,6 +9,8 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = \Yii::t('app', 'signup_title');
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
 ?>
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>

@@ -1,22 +1,23 @@
 <?php
 
+use yii\helpers\Url;
 use \yii\widgets\ListView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\post\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var string $tagName */
+/* @var $tag \app\models\Tag */
 
-$this->title = sprintf('Записи с меткой: %s', $tagName);
+$tagName = $tag->name;
 
-$this->registerMetaTag(
-    [
-        'name'    => 'description',
-        'content' => $this->title,
-    ]
-);
+$this->title = sprintf('Записи с тэгом: %s', $tagName);
 
+$this->registerMetaTag(['name' => 'title', 'content' => $this->title]);
+$this->registerMetaTag(['name' => 'description', 'content' => $this->title]);
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
+
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['tag/' . $tag->slug], true)]);
 ?>
 <div class="post-index">
 

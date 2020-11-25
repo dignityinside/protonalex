@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = [
 
 $this->params['breadcrumbs'][] = \Yii::t('app', 'breadcrumbs_label_update');
 
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
 ?>
 <div class="category-update">
 

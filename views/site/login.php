@@ -9,6 +9,8 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Авторизация';
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>

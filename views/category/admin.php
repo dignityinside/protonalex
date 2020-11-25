@@ -12,6 +12,8 @@ $this->title = \Yii::t('app/category', 'page_admin_category_title');
 
 $this->params['breadcrumbs'][] = $this->title;
 
+$this->registerMetaTag(['name' => 'robots', 'content' => 'noindex']);
+
 ?>
 <div class="category-admin">
 

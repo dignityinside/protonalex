@@ -2,6 +2,7 @@
 
 use app\components\UserPermissions;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use \yii\widgets\ListView;
 use yii\widgets\Pjax;
 
@@ -11,13 +12,11 @@ use yii\widgets\Pjax;
 
 $this->title = \Yii::$app->params['site']['name'];
 
-$this->registerMetaTag(
-    [
-        'name'    => 'description',
-        'content' => '',
-    ]
-);
+$this->registerMetaTag(['name' => 'title', 'content' => \Yii::$app->params['site']['name']]);
+$this->registerMetaTag(['name' => 'description', 'content' => \Yii::$app->params['site']['description']]);
+$this->registerMetaTag(['name' => 'robots', 'content' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1']);
 
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(\Yii::$app->params['site']['url'])]);
 ?>
 <div class="post-index">
 
