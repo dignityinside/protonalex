@@ -9,6 +9,7 @@ use app\models\Material;
 use Dignity\TranslitHelper;
 use app\models\category\Category;
 use app\models\Tag;
+use app\models\User;
 
 /**
  * This is the model class for table "post".
@@ -251,6 +252,17 @@ class Post extends Material
 
             if (!\Yii::$app->user->identity->premium) {
                 return false;
+            }
+
+            if (isset(\Yii::$app->user->identity)) {
+
+                /** @var User $user */
+                $user = User::findOne(\Yii::$app->user->identity->getId());
+
+                if ($user->isExpired($user->premium_until)) {
+                    return false;
+                }
+
             }
 
         }

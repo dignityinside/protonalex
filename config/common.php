@@ -53,5 +53,9 @@ return [
             'baseUrl' => 'https://protonduck.com',
         ],
         'comment' => require(__DIR__ . '/comments.php'),
+        'formatter' => [
+            'dateFormat' => 'dd.MM.yyyy',
+            'locale' => 'ru-RU'
+        ],
     ],
 ];

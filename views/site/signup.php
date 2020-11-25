@@ -14,22 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="row">
-        <div class="col-sm-3 col-sm-offset-1">
-            <?= yii\authclient\widgets\AuthChoice::widget(
-                [
-                    'baseAuthUrl' => ['site/auth'],
-                    'popupMode'   => false,
-                ]
-            ) ?>
-        </div>
-        <div class="col-sm-2">
-            <h2><?= \Yii::t('app', 'or'); ?></h2>
-        </div>
         <div class="col-sm-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
             <?= $form->field($model, 'username') ?>
             <?= $form->field($model, 'email') ?>
             <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($model, 'payment_type')->dropDownList(\app\models\User::getPaymentTypes()) ?>
+            <?= $form->field($model, 'payment_tariff')->dropDownList(\app\models\User::getTariff()) ?>
             <div class="captcha">
                 <?= $form->field($model, 'captcha', ['enableAjaxValidation' => false])->label(false)
                      ->widget('demi\recaptcha\ReCaptcha', ['siteKey' => Yii::$app->params['reCAPTCHA.siteKey']]) ?>

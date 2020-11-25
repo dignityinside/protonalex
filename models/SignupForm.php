@@ -20,6 +20,12 @@ class SignupForm extends Model
     /** @var string */
     public $password;
 
+    /** @var string */
+    public $payment_type;
+
+    /** @var string */
+    public $payment_tariff;
+
     public $captcha;
 
     /**
@@ -56,7 +62,10 @@ class SignupForm extends Model
                     /** @var $model self */
                     return !$model->hasErrors() && Yii::$app->user->isGuest;
                 }
-            ]
+            ],
+
+            ['payment_type', 'in', 'range' => \app\models\User::ALLOWED_PAYMENT_TYPES],
+            ['payment_tariff', 'in', 'range' => \app\models\User::ALLOWED_PAYMENT_TARIFF],
         ];
     }
 
@@ -66,10 +75,12 @@ class SignupForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => \Yii::t('app', 'username'),
-            'password' => \Yii::t('app', 'password'),
-            'email'    => \Yii::t('app', 'email'),
-            'captcha'  => \Yii::t('app', 'captcha')
+            'username'       => \Yii::t('app', 'username'),
+            'password'       => \Yii::t('app', 'password'),
+            'email'          => \Yii::t('app', 'email'),
+            'captcha'        => \Yii::t('app', 'captcha'),
+            'payment_type'   => \Yii::t('app', 'payment_type'),
+            'payment_tariff' => \Yii::t('app', 'payment_tariff'),
         ];
     }
 
@@ -87,6 +98,8 @@ class SignupForm extends Model
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
+        $user->payment_type = $this->payment_type;
+        $user->payment_tariff = $this->payment_tariff;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->save();

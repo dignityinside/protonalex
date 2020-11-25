@@ -1,6 +1,9 @@
 <?php
 
 use app\components\UserPermissions;
+use app\models\User;
+use app\widgets\Avatar;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -15,23 +18,52 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row user-view">
     <div class="col-xs-12">
         <div class="row">
-            <div class="col-sm-8 clearfix">
+            <div class="col-sm-12 clearfix">
                 <div class="user-view-avatar">
-                    <?= \app\widgets\Avatar::widget(
-                        [
-                            'user' => $model,
-                            'size' => 165,
-                        ]
-                    ) ?>
+                    <?= Avatar::widget(['user' => $model, 'size' => 165]) ?>
                 </div>
 
-                <h1><?= Html::encode($this->title) ?></h1>
+                <?php if (isset(\Yii::$app->user->identity) && $model->id === \Yii::$app->user->identity->getId()) : ?>
 
-                <h3><?= Html::encode($model->premium ? 'Premium' : ''); ?></h3>
+                    <?php if ($model->isExpired($model->premium_until)) : ?>
+
+                        <?php if ($model->status === User::STATUS_WAIT) : ?>
+                            <h1>Почти готово, <?= Html::encode($model->username) ?>!</h1>
+                            <p>Спасибо за то, что ты заказал(а) премиум доступ на <strong><?= ArrayHelper::getValue(User::getTariff(), $model->payment_tariff); ?></strong>.</p>
+                            <p>Ты хочешь оплатить с помощью <strong><?= ArrayHelper::getValue(User::getPaymentTypes(), $model->payment_type); ?></strong> верно?</p>
+                        <?php else : ?>
+                            <h1>Ой, <?= Html::encode($model->username) ?>!</h1>
+                            <p>Твоя премиум подписка закончилась <?= Yii::$app->formatter->asDate($model->premium_until) ?? '---' ?>, хочешь продлить её сейчас?</p>
+                            <p>В прошлый раз ты заказывал(а) премиум доступ на <strong><?= ArrayHelper::getValue(User::getTariff(), $model->payment_tariff); ?></strong>
+                                и оплачивал(а) с помощью <strong><?= ArrayHelper::getValue(User::getPaymentTypes(), $model->payment_type); ?></strong>.</p>
+                        <?php endif; ?>
+
+                        <p>Если всё верно, то переведи
+                            <strong><?= $model::getPremiumPriceByTariff($model->payment_tariff); ?></strong>
+                                на <?= ArrayHelper::getValue(User::getPaymentTypes(), $model->payment_type); ?>:
+                            <strong><?= $model::getPaymentWallet($model->payment_type); ?></strong>
+                            и укажи <strong>свой E-Mail</strong> в назначении платежа.</p>
+
+                        <p>После оплаты, премиум доступ будет активирован в течение суток.</p>
+
+                    <?php else : ?>
+                        <?php if ($model->status === User::STATUS_PAID) : ?>
+
+                            <h1>Спасибо <?= Html::encode($model->username) ?>!</h1>
+
+                            <p>Теперь у тебя есть премиум доступ до <?= Yii::$app->formatter->asDate($model->premium_until) ?? '---' ?>
+                                (<?= ArrayHelper::getValue(User::getTariff(), $model->payment_tariff); ?>).</p>
+
+                        <?php endif; ?>
+                    <?php endif; ?>
+
+                    <p>Если у тебя остались вопросы или нужна помощь, напиши мне на <?= \Yii::$app->params['adminEmail'] ?></p>
+
+                <?php endif; ?>
 
                 <?php if (UserPermissions::canEditUser($model)) : ?>
                     <p>
-                        <?= Html::a('Изменить профиль', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                        <?php // echo Html::a('Изменить профиль', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                     </p>
                 <?php endif ?>
                 <?php if (UserPermissions::canAdminUsers()) : ?>
@@ -50,20 +82,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     </p>
                 <?php endif ?>
             </div>
-            <?php if (count($authClients) > 0) : ?>
-                <div class="col-sm-4">
-                    <div class="well well-sm">
-                        <h2>Присоединить дополнительные профили:</h2>
-                        <?= yii\authclient\widgets\AuthChoice::widget(
-                            [
-                                'baseAuthUrl' => ['site/auth'],
-                                'popupMode'   => false,
-                                'clients'     => $authClients,
-                            ]
-                        ) ?>
-                    </div>
-                </div>
-            <?php endif ?>
         </div>
     </div>
 </div>

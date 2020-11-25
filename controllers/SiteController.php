@@ -14,6 +14,7 @@ use app\models\ResetPasswordForm;
 use app\models\SignupForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
+use app\models\User;
 
 /**
  * Class SiteController
@@ -107,6 +108,17 @@ class SiteController extends Controller
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+            $user = $model->getUser();
+
+            if ($user !== null) {
+
+                if ($user->status === User::STATUS_WAIT) {
+                    return $this->redirect(['user/view', 'id' => $user->getId()]);
+                }
+
+            }
+
             return $this->goBack();
         }
 
@@ -132,12 +144,16 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
+        if (!\Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user, Yii::$app->params['user.rememberMeDuration'])) {
-                    return $this->goHome();
+                    return $this->redirect(['user/view', 'id' => $user->getId()]);
                 }
             }
         }

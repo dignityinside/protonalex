@@ -64,7 +64,7 @@ class SignupCest
         $I->seeRecord('app\models\User', [
             'username' => 'tester',
             'email' => 'tester@example.com',
-            'status' => \app\models\User::STATUS_ACTIVE
+            'status' => \app\models\User::STATUS_WAIT
         ]);
     }
 }

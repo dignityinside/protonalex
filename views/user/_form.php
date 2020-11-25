@@ -29,6 +29,16 @@ use yii\widgets\ActiveForm;
                     <?php endif ?>
                 </div>
             </div>
+            <div class="col">
+                <div class="form-group col-md-2">
+                    <?= $form->field($model, 'payment_type')->dropDownList(\app\models\User::getPaymentTypes()) ?>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group col-md-2">
+                    <?= $form->field($model, 'payment_tariff')->dropDownList(\app\models\User::getTariff()) ?>
+                </div>
+            </div>
         </div>
     </div>
 

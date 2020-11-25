@@ -14,17 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="row">
-        <div class="col-sm-3 col-sm-offset-1">
-            <?= yii\authclient\widgets\AuthChoice::widget(
-                [
-                    'baseAuthUrl' => ['site/auth'],
-                    'popupMode'   => false,
-                ]
-            ) ?>
-        </div>
-        <div class="col-sm-2">
-            <h2>или</h2>
-        </div>
         <div class="col-sm-5">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
             <?= $form->field($model, 'username') ?>
@@ -38,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="form-group">
                 <?= Html::submitButton('Войти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 <?= Html::a(
-                    'Регистрация',
+                    \Yii::t('app', 'signup_title'),
                     ['site/signup'],
                     ['class' => 'btn btn-light']
                 ) ?>

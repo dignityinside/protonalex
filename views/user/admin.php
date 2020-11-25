@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'format' => 'raw',
                     'label' => 'Пользователь',
                     'attribute' => 'username',
-                    'value' => function ($model) {
+                    'value' => static function ($model) {
                         return Html::a(
                             Avatar::widget(['user' => $model]) . ' ' . Html::encode($model->username),
                             ['user/view', 'id' => $model->id]
@@ -31,25 +31,33 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'email:email',
                 [
-                    'format' => 'raw',
-                    'label'  => 'Premium',
-                    'value'  => function ($model) {
-                        return $model->premium ? 'Да' : 'Нет';
+                    'attribute' => 'created_at',
+                    'label'     => 'Создан',
+                    'value'     => static function ($model) {
+                        return Yii::$app->formatter->asDate($model->created_at);
                     }
                 ],
                 [
                     'attribute' => 'status',
                     'label'     => 'Статус',
-                    'value'     => function ($model) {
+                    'value'     => static function ($model) {
                         return $model->getStatusLabel();
                     }
                 ],
                 [
-                    'attribute' => 'created_at',
-                    'label'     => 'Создан',
-                    'value'     => function ($model) {
-                        return Yii::$app->formatter->asDate($model->created_at);
+                    'format' => 'raw',
+                    'label'  => 'Premium',
+                    'value'  => static function ($model) {
+                        return $model->premium ? 'Да' : 'Нет';
                     }
+                ],
+                [
+                    'attribute' => 'premium_until',
+                    'label'     => 'Оплачен до',
+                    'format'    => 'raw',
+                    'value'     => static function ($model) {
+                        return Yii::$app->formatter->asDate($model->premium_until);
+                    },
                 ],
                 ['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}'],
             ],

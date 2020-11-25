@@ -25,7 +25,13 @@ return [
     ],
     'premium' => [
         'price' => 500,
-        'freeMonth' => 3
+        'freeMonth' => 3,
+        'paymentType' => [
+            'paypal' => '',
+            'yandexmoney' => '',
+            'webmoney' => '',
+            'bank' => '',
+        ],
     ],
     /**
     * MailerLite Subscription
