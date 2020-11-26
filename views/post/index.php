@@ -23,7 +23,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(\Yii::$app->para
     <div class="post-header text-center">
         <h1>
             <?php if (UserPermissions::canAdminPost()) : ?>
-                <?= Html::a('<i class="fas fa-feather" style="color: #4eb26b"></i>', ['/post/create']) ?>
+                <?= Html::a('<i class="fas fa-feather" style="color: #ee6f54"></i>', ['/post/create']) ?>
             <?php else : ?>
                 <i class="fas fa-feather"></i>
             <?php endif; ?>

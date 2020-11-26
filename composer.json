@@ -1,12 +1,12 @@
 {
-    "name": "dignityinside/protonduck",
-    "description": "Source code of protonduck blog.",
+    "name": "dignityinside/protonalex",
+    "description": "Source code of protonalex blog.",
     "keywords": ["yii2"],
-    "homepage": "https://protonduck.com",
+    "homepage": "https://protonalex.com",
     "type": "project",
     "license": "MIT",
     "support": {
-        "source": "https://github.com/dignityinside/protonduck"
+        "source": "https://github.com/dignityinside/protonalex"
     },
     "minimum-stability": "stable",
     "require": {

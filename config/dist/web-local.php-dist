@@ -22,7 +22,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db-local.php'),
         'urlManager' => [
-            'baseUrl' => 'http://protonduck.local:8025/',
+            'baseUrl' => 'http://protonalex.local:8025/',
         ],
     ],
     'modules' => [

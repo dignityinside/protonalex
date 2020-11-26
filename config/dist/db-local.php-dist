@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'dsn' => 'mysql:host=db;dbname=protonduck',
+    'dsn' => 'mysql:host=db;dbname=protonalex',
     'username' => 'user',
     'password' => 'pass',
 ];

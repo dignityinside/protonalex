@@ -9,7 +9,7 @@ $config = [
     'components' => [
         'db' => $db,
         'urlManager' => [
-            'scriptUrl' => 'http://protonduck.com',
+            'scriptUrl' => 'http://protonalex.com',
         ],
     ],
     'controllerMap' => [

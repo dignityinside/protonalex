@@ -17,12 +17,12 @@ return [
     'yandexVerification'            => '',
     'site' => [
         'author' => 'Александр Шиллинг',
-        'name'   => 'protonduck',
-        'url'    => 'https://protonduck.com',
+        'name'   => 'protonalex',
+        'url'    => 'https://protonalex.com',
         'description' => 'Коллекция качественных материалов для тех, кто любит Linux.',
     ],
     'social' => [
-        'mastodon' => 'protonduck',
+        'mastodon' => 'protonalex',
     ],
     'premium' => [
         'price' => 500,

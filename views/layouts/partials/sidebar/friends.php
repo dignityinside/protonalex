@@ -13,8 +13,20 @@ use app\widgets\Links;
             echo Links::widget([
                 'items' => [
                     [
-                        'label' => 'Руланд блог',
-                        'url' => 'https://rooland.org',
+                        'label' => 'protonduck',
+                        'url' => 'https://protonduck.com',
+                        'rel' => 'nofollow noopener',
+                        'target' => '_blank'
+                    ],
+                    [
+                        'label' => 'Александр Макаров',
+                        'url' => 'https://rmcreative.ru',
+                        'rel' => 'nofollow noopener',
+                        'target' => '_blank'
+                    ],
+                    [
+                        'label' => 'Михаил Шакин',
+                        'url' => 'http://shakin.ru',
                         'rel' => 'nofollow noopener',
                         'target' => '_blank'
                     ],

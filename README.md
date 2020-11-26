@@ -1,6 +1,6 @@
-# protonduck
+# protonalex
 
-Source code of the protonduck blog.
+Source code of the protonalex blog.
 
 ## Technology
 
@@ -15,8 +15,8 @@ Source code of the protonduck blog.
 ## Clone project via GIT
 
 ```
-git clone https://github.com/dignityinside/protonduck
-cd protonduck
+git clone https://github.com/dignityinside/protonalex
+cd protonalex
 ```
 
 #### Install Docker (Ubuntu-Linux)
@@ -51,12 +51,12 @@ su - <username>
 #### Add new hosts to your `hosts` File:
 
 ```
-127.0.0.1 protonduck.local
+127.0.0.1 protonalex.local
 ```
 
 #### Development links
 ```
-http://protonduck.local:8025
+http://protonalex.local:8025
 ```
 
 ## Install all dependencies via Composer

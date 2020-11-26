@@ -14,33 +14,39 @@ use app\widgets\Links;
             echo Links::widget([
                 'items' => [
                     [
-                        'label' => 'g2a',
-                        'url' => 'https://www.g2a.com/r/gr-5dd7b53b1faa0',
+                        'label' => 'Yii Framework',
+                        'url' => 'https://yiiframework.com',
                         'rel' => 'nofollow',
                         'target' => '_blank'
                     ],
                     [
-                        'label' => 'Steambuy',
-                        'url' => 'https://steambuy.com/partner/182122',
+                        'label' => 'Laravel',
+                        'url' => 'https://laravel.com',
+                        'rel' => 'nofollow',
+                        'target' => '_blank'
+                    ],
+                    [
+                        'label' => 'PHP',
+                        'url' => 'https://php.net',
+                        'rel' => 'nofollow',
+                        'target' => '_blank'
+                    ],
+                    [
+                        'label' => 'PHPStorm',
+                        'url' => 'https://www.jetbrains.com/ru-ru/phpstorm/',
+                        'rel' => 'nofollow',
+                        'target' => '_blank'
+                    ],
+                    [
+                        'label' => 'Github',
+                        'url' => 'https://github.com',
                         'rel' => 'nofollow',
                         'target' => '_blank'
                     ],
                     [
                         'label' => 'Ubuntu-Linux',
                         'url' => 'https://ubuntu.com',
-                        'rel' => 'nofollow noopener',
-                        'target' => '_blank'
-                    ],
-                    [
-                        'label' => 'Linux Mint',
-                        'url' => 'https://linuxmint.com',
-                        'rel' => 'nofollow noopener',
-                        'target' => '_blank'
-                    ],
-                    [
-                        'label' => 'elementaryOS',
-                        'url' => 'https://elementary.io/',
-                        'rel' => 'nofollow noopener',
+                        'rel' => 'nofollow',
                         'target' => '_blank'
                     ],
                 ],

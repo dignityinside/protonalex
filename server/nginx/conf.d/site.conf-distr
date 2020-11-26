@@ -4,7 +4,7 @@ server {
 
     index index.php;
 
-    server_name protonduck.com;
+    server_name protonalex.com;
 
     charset utf-8;
 
@@ -53,15 +53,15 @@ server {
 # redirect http://, http://www to https://
 
 server {
-    if ($host = protonduck.com) {
+    if ($host = protonalex.com) {
         return 301 https://$host$request_uri;
     }
 
-    if ($host = www.protonduck.com) {
-        return 301 https://protonduck.com$request_uri;
+    if ($host = www.protonalex.com) {
+        return 301 https://protonalex.com$request_uri;
     }
 
-    server_name protonduck.com www.protonduck.com;
+    server_name protonalex.com www.protonalex.com;
     listen 80;
     return 404;
 }
@@ -69,11 +69,11 @@ server {
 # redirect https://www to https://
 
 server {
-    if ($host = www.protonduck.com) {
-        return 301 https://protonduck.com$request_uri;
+    if ($host = www.protonalex.com) {
+        return 301 https://protonalex.com$request_uri;
     }
 
-    server_name www.protonduck.com;
+    server_name www.protonalex.com;
     listen 443 ssl;
     return 404;
 }

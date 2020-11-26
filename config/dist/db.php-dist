@@ -2,7 +2,7 @@
 
 return [
     'class'    => 'yii\db\Connection',
-    'dsn'      => 'mysql:host=localhost;dbname=protonduck',
+    'dsn'      => 'mysql:host=localhost;dbname=protonalex',
     'username' => 'root',
     'password' => '',
     'charset'  => 'utf8',

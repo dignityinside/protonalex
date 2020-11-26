@@ -1,2 +1,2 @@
-CREATE DATABASE IF NOT EXISTS `protonduck_test`;
-GRANT ALL ON `protonduck_test`.* TO 'user'@'%';
+CREATE DATABASE IF NOT EXISTS `protonalex_test`;
+GRANT ALL ON `protonalex_test`.* TO 'user'@'%';

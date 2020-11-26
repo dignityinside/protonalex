@@ -19,6 +19,12 @@ use app\widgets\Links;
                         'rel' => 'nofollow noopener',
                         'target' => '_blank'
                     ],
+                    [
+                        'label' => 'Хабр',
+                        'url' => 'https://habr.com/ru/',
+                        'rel' => 'nofollow noopener',
+                        'target' => '_blank'
+                    ],
                 ],
             ]);
 

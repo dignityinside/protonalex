@@ -2,7 +2,7 @@
 
 return [
     'basePath' => dirname(__DIR__),
-    'name' => 'protonduck',
+    'name' => 'protonalex',
     'language' => 'ru-RU',
     'sourceLanguage' => 'en-US',
     'aliases' => [
@@ -50,7 +50,7 @@ return [
                     'class' => 'app\components\PostUrlRule',
                 ]
             ],
-            'baseUrl' => 'https://protonduck.com',
+            'baseUrl' => 'https://protonalex.com',
         ],
         'comment' => require(__DIR__ . '/comments.php'),
         'formatter' => [

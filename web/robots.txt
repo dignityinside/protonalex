@@ -13,5 +13,5 @@ Disallow: /*sort=
 Disallow: /?p=*
 Disallow: /?page=*
 Crawl-Delay: 1
-Host: protonduck.com
-Sitemap: https://protonduck.com/sitemap.xml
+Host: protonalex.com
+Sitemap: https://protonalex.com/sitemap.xml
