@@ -30,6 +30,10 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['post/view', 's
             <?= Html::a('Изменить', ['post/update', 'id' => $model->id]); ?></p>
     <?php endif; ?>
 
+    <?php if (!empty($model->preview_img)) : ?>
+        <p><img src="/<?= $model->preview_img; ?>" alt="<?= $model->title ?>"></p>
+    <?php endif; ?>
+
     <?php if ($model->isPremium()) : ?>
 
         <?= Text::hidecut('[cut]',

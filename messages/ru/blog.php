@@ -34,4 +34,5 @@ return [
     'button_add_new_post'   => 'Добавить новую запись',
     'comments'              => 'Комментариев',
     'records_not_found'     => 'Записи не найдены.',
+    'preview_img_file'      => 'Превью',
 ];

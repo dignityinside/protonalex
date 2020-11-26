@@ -20,6 +20,7 @@ use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 use yii\helpers\Url;
 use app\helpers\Text;
+use yii\web\UploadedFile;
 
 /**
  * PostController implements the CRUD actions for Post model.
@@ -141,9 +142,14 @@ class PostController extends Controller
     {
         $model = new Post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->getSession()->setFlash('success', 'Запись добавлена!');
-            return $this->redirect(['post/update', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->preview_img_file = UploadedFile::getInstance($model, 'preview_img_file');
+
+            if ($model->save()) {
+                Yii::$app->getSession()->setFlash('success', 'Запись добавлена!');
+                return $this->redirect(['post/update', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', ['model' => $model]);
@@ -164,10 +170,15 @@ class PostController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->getSession()->setFlash('success', 'Запись сохранена!');
+        if ($model->load(Yii::$app->request->post())) {
 
-            return $this->redirect(['post/update', 'id' => $model->id]);
+            $model->preview_img_file = UploadedFile::getInstance($model, 'preview_img_file');
+
+            if ($model->save()) {
+                Yii::$app->getSession()->setFlash('success', 'Запись сохранена!');
+
+                return $this->redirect(['post/update', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', ['model' => $model]);

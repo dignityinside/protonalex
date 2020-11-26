@@ -115,6 +115,14 @@ if (!is_array($model->form_tags) && !$model->isNewRecord) {
     </div>
 
     <div class="row">
+        <div class="col">
+            <div class="col-md-12">
+                <?= $form->field($model, 'preview_img_file')->fileInput(); ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
 
         <div class="col">
 

@@ -13,6 +13,9 @@ use yii\helpers\Markdown;
 
     <div class="index_title">
         <h3><?= Html::a($model->title, ['post/view', 'slug' => $model->slug]); ?></h3>
+        <?php if (!empty($model->preview_img)) : ?>
+            <p><?= Html::a('<img src="/' . $model->preview_img . '" alt="' . $model->title . '" />', ['post/view', 'slug' => $model->slug]) ?></p>
+        <?php endif; ?>
     </div>
 
     <?= Text::cut('[cut]',

@@ -10,6 +10,7 @@ use Dignity\TranslitHelper;
 use app\models\category\Category;
 use app\models\Tag;
 use app\models\User;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "post".
@@ -27,7 +28,8 @@ use app\models\User;
  * @property integer $ontop
  * @property string  $meta_description
  * @property integer $category_id
- * @property string $premium
+ * @property string  $premium
+ * @property string  $preview_img
  *
  * relations
  * @property Tag[] $tags
@@ -42,6 +44,9 @@ class Post extends Material
 
     /** @var array */
     public $form_tags;
+
+    /** @var UploadedFile */
+    public $preview_img_file;
 
     /**
      * @inheritdoc
@@ -58,12 +63,13 @@ class Post extends Material
     {
         return [
             [['title', 'content', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop', 'category_id'], 'required'],
-            [['content', 'allow_comments', 'slug'], 'string'],
+            [['content', 'allow_comments', 'slug', 'preview_img'], 'string'],
             [['status_id', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop', 'category_id'], 'integer'],
             [['title'], 'string', 'max' => 69],
             [['meta_description'], 'string', 'max' => 156],
             [['premium'], 'string', 'max' => 1],
             [['form_tags'], 'safe'],
+            [['preview_img_file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -88,6 +94,7 @@ class Post extends Material
             'form_tags'        => \Yii::t('app/blog', 'form_tags'),
             'category_id'      => \Yii::t('app/blog', 'category_id'),
             'premium'          => \Yii::t('app/blog', 'premium'),
+            'preview_img_file' => \Yii::t('app/blog', 'preview_img_file'),
         ];
     }
 
@@ -117,6 +124,12 @@ class Post extends Material
             if (empty($this->slug)) {
                 $this->slug = TranslitHelper::translit($this->title);
             }
+        }
+
+        if ($this->preview_img_file !== null) {
+            $path = 'img/' . $this->slug . '.' . $this->preview_img_file->getExtension();
+            $this->preview_img_file->saveAs($path);
+            $this->preview_img = $path;
         }
 
         return true;
