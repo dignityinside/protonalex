@@ -19,7 +19,7 @@ return [
         'author' => 'Александр Шиллинг',
         'name'   => 'protonalex',
         'url'    => 'https://protonalex.com',
-        'description' => 'Коллекция качественных материалов для тех, кто любит Linux.',
+        'description' => 'Коллекция качественных материалов для тех, кто любит создавать веб-сайты и веб-приложения.',
     ],
     'social' => [
         'mastodon' => 'protonalex',
