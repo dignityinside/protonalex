@@ -15,6 +15,7 @@ return [
     'reCAPTCHA.secretKey'           => '',
     'googleSiteVerification'        => '',
     'yandexVerification'            => '',
+    'yandexMetrikaId'               => '',
     'site' => [
         'author' => 'Александр Шиллинг',
         'name'   => 'protonalex',

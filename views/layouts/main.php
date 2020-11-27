@@ -133,9 +133,15 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
     </footer>
 </div>
 
-<?php $this->endBody() ?>
+<?php
 
-<?= $this->render('partials/counter.php'); ?>
+    $this->endBody();
+
+    if (YII_ENV == YII_ENV_PROD) {
+        echo $this->render('partials/counter.php');
+    }
+
+?>
 
 </body>
 </html>
