@@ -130,6 +130,8 @@ class Post extends Material
             $path = 'img/' . $this->slug . '.' . $this->preview_img_file->getExtension();
             $this->preview_img_file->saveAs($path);
             $this->preview_img = $path;
+        } else {
+            $this->preview_img = '';
         }
 
         return true;
