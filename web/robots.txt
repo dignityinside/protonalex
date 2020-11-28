@@ -12,6 +12,5 @@ Disallow: /site/*
 Disallow: /*sort=
 Disallow: /?p=*
 Disallow: /?page=*
-Crawl-Delay: 1
 Host: protonalex.com
 Sitemap: https://protonalex.com/sitemap.xml
