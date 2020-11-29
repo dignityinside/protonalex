@@ -625,6 +625,10 @@ h3.comment-box__title {
     max-width: 100%;
 }
 
+.slot_post_sidebar {
+    text-align: center;
+}
+
 .slot_post_bottom {
     max-width: 100%;
     padding: 20px;
