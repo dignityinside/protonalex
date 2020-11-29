@@ -47,6 +47,10 @@ class RbacController extends Controller
         $adminCategory->description = \Yii::t('app', 'rbac_administrate_categories');
         $auth->add($adminCategory);
 
+        $adminAd = $auth->createPermission(UserPermissions::ADMIN_AD);
+        $adminAd->description = \Yii::t('app/ad', 'rbac_administrate_ad');
+        $auth->add($adminAd);
+
         $admin = $auth->createRole('admin');
         $admin->description = 'Administrator';
 
@@ -54,6 +58,7 @@ class RbacController extends Controller
         $auth->addChild($admin, $adminUsers);
         $auth->addChild($admin, $adminPost);
         $auth->addChild($admin, $adminCategory);
+        $auth->addChild($admin, $adminAd);
 
         return ExitCode::OK;
 

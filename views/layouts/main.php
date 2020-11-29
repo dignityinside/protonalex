@@ -85,6 +85,11 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
                             'url' => ['/user/admin'],
                             'visible' => UserPermissions::canAdminUsers()
                         ],
+                        [
+                            'label' => \Yii::t('app', 'menu_label_ad_admin'),
+                            'url' => ['/ad/admin'],
+                            'visible' => UserPermissions::canAdminAd()
+                        ],
                     ],
                 ];
 

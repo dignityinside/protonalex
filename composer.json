@@ -66,7 +66,17 @@
                 {
                     "runtime": "0777",
                     "web/assets": "0777",
-                    "yii": "0755"
+                    "yii": "0755",
+                    "web/img": "0777",
+                    "web/img/slot": "0777"
+                }
+            ],
+            "copyFiles": [
+                {
+                    "config/dist/authclients.php-dist": "config/authclients.php",
+                    "config/dist/db.php-dist": "config/db.php",
+                    "config/dist/params.php-dist": "config/params.php",
+                    "config/dist/web.php-dist": "config/web.php"
                 }
             ],
             "generateCookieValidationKey": [

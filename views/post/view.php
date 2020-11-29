@@ -2,6 +2,7 @@
 
 use app\components\UserPermissions;
 use app\helpers\Text;
+use app\models\ad\Ad;
 use yii\helpers\Html;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
@@ -50,6 +51,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['post/view', 's
                  data-form="<?= \Yii::$app->params['subscribe']['dataFormPostBottom']; ?>">
             </div>
             <?= $this->render('/partials/share'); ?>
+            <?= app\widgets\Ad::widget(['slot' => Ad::SLOT_POST_BOTTOM]); ?>
         <?php endif; ?>
 
     <?php else : ?>

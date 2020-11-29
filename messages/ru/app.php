@@ -12,6 +12,7 @@ return [
     'menu_label_profile'           => 'Профиль',
     'menu_label_user_admin'        => 'Пользователи',
     'menu_label_premium'           => 'Premium',
+    'menu_label_ad_admin'          => 'Реклама',
     'logout_({username})'          => 'Выйти ({username})',
     'footer_about_link'            => 'О проекте',
     'footer_premium_link'          => 'Premium',

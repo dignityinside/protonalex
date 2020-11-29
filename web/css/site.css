@@ -433,7 +433,8 @@ h3.comment-box__title {
 .user-update,
 .user-view,
 .site-search,
-.site-error {
+.site-error,
+.ad-admin{
     background: #FFF;
     padding: 0 25px 20px 25px;
     border: solid 1px #ececec;
@@ -613,4 +614,20 @@ h3.comment-box__title {
 .linksMenu a {
     padding-left: 30px;
     text-decoration: underline;
+}
+
+.is-breakable {
+    word-break: break-word;
+}
+
+.widget img,
+.slot_post_sidebar {
+    max-width: 100%;
+}
+
+.slot_post_bottom {
+    max-width: 100%;
+    padding: 20px;
+    text-align: center;
+    border-top: solid 1px #DDD;
 }

@@ -27,10 +27,11 @@ return [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@app/messages',
                     'fileMap' => [
-                        'app' => 'app.php',
-                        'app/blog' => 'blog.php',
+                        'app'          => 'app.php',
+                        'app/blog'     => 'blog.php',
                         'app/comments' => 'comments.php',
                         'app/category' => 'category.php',
+                        'app/ad'       => 'ad.php',
                     ],
                 ],
             ],
@@ -44,6 +45,7 @@ return [
                 '<_c:[\w\-]+>/update/<id:\d+>' => '<_c>/update',
                 '<_c:[\w\-]+>/delete/<id:\d+>' => '<_c>/delete',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
+                'go/<slug:[\w\-]+>' => 'ad/view',
                 // tags
                 'tag/search' => 'tag/search',
                 [

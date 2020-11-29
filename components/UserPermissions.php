@@ -16,6 +16,7 @@ class UserPermissions
     public const ADMIN_POST = 'adminPost';
     public const ADMIN_USERS = 'adminUsers';
     public const ADMIN_CATEGORY = 'adminCategory';
+    public const ADMIN_AD = 'adminAd';
 
     /**
      * Checks if user can admin posts
@@ -87,6 +88,25 @@ class UserPermissions
         }
 
         if (\Yii::$app->user->can(self::ADMIN_CATEGORY)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Checks if user can admin ad
+     *
+     * @return bool
+     */
+    public static function canAdminAd(): bool
+    {
+
+        if (\Yii::$app->user->isGuest) {
+            return false;
+        }
+
+        if (\Yii::$app->user->can(self::ADMIN_AD)) {
             return true;
         }
 

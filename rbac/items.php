@@ -12,6 +12,10 @@ return [
         'type' => 2,
         'description' => 'Администрирование категорий',
     ],
+    'adminAd' => [
+        'type' => 2,
+        'description' => 'rbac_administrate_ad',
+    ],
     'admin' => [
         'type' => 1,
         'description' => 'Administrator',
@@ -19,6 +23,7 @@ return [
             'adminUsers',
             'adminPost',
             'adminCategory',
+            'adminAd',
         ],
     ],
 ];
