@@ -631,3 +631,25 @@ h3.comment-box__title {
     text-align: center;
     border-top: solid 1px #DDD;
 }
+
+.social_buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.social_buttons__item {
+    color: #fff;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.social_buttons__item:hover {
+    opacity: 0.8;
+}

@@ -23,7 +23,30 @@ return [
         'description' => 'Коллекция качественных материалов для тех, кто любит создавать веб-сайты и веб-приложения.',
     ],
     'social' => [
-        'mastodon' => 'protonalex',
+        'telegram' => [
+            'title' => 'Telegram',
+            'url' => 'https://t.me/protonalex',
+            'bgColor' => '#36a7e5',
+            'faClass' => 'fa fa-telegram',
+        ],
+        'vk' => [
+            'title' => 'VK',
+            'url' => 'https://vk.com/protonalex',
+            'bgColor' => '#4a76a8',
+            'faClass' => 'fa fa-vk',
+        ],
+        'facebook' => [
+            'title' => 'Facebook',
+            'url' => 'https://www.facebook.com/groups/protonalex',
+            'bgColor' => '#2e97f5',
+            'faClass' => 'fa fa-facebook',
+        ],
+        'instagram' => [
+            'title' => 'Instagram',
+            'url' => 'https://instagram.com/protonalexcom',
+            'bgColor' => '#e31e4e',
+            'faClass' => 'fab fa-instagram',
+        ],
     ],
     'premium' => [
         'price' => 500,
