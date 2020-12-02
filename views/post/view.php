@@ -20,7 +20,19 @@ $this->registerMetaTag(['name' => 'title', 'content' => $model->title]);
 $this->registerMetaTag(['name' => 'description', 'content' => $model->meta_description]);
 $this->registerMetaTag(['name' => 'robots', 'content' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1']);
 
-$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['post/view', 'slug' => $model->slug], true)]);
+$currentPage = Url::to(['post/view', 'slug' => $model->slug], true);
+
+$this->registerLinkTag(['rel' => 'canonical', 'href' => $currentPage]);
+
+// https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started
+$this->registerMetaTag(['name' => 'twitter:card', 'content' => 'summary_large_image']);
+$this->registerMetaTag(['name' => 'twitter:site', 'content' => \Yii::$app->params['site']['twitter']]);
+$this->registerMetaTag(['name' => 'twitter:domain', 'content' => \Yii::$app->params['site']['description']]);
+$this->registerMetaTag(['name' => 'twitter:creator', 'content' => \Yii::$app->params['site']['author']]);
+$this->registerMetaTag(['name' => 'twitter:url', 'content' => $currentPage]);
+$this->registerMetaTag(['name' => 'twitter:title', 'content' => $model->title]);
+$this->registerMetaTag(['name' => 'twitter:description', 'content' => $model->meta_description]);
+$this->registerMetaTag(['name' => 'twitter:image:src', 'content' => \Yii::$app->params['site']['url'] . $model->preview_img]);
 ?>
 <div class="post-view">
 

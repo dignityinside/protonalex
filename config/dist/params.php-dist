@@ -21,6 +21,7 @@ return [
         'name'   => 'protonalex',
         'url'    => 'https://protonalex.com',
         'description' => 'Коллекция качественных материалов для тех, кто любит создавать веб-сайты и веб-приложения.',
+        'twitter'     => 'protonalexcom',
     ],
     'social' => [
         'telegram' => [
