@@ -18,7 +18,7 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language ?>" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">

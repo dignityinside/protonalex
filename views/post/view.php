@@ -24,15 +24,32 @@ $currentPage = Url::to(['post/view', 'slug' => $model->slug], true);
 
 $this->registerLinkTag(['rel' => 'canonical', 'href' => $currentPage]);
 
-// https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started
+/**
+ * https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started
+ * https://cards-dev.twitter.com/validator
+ */
 $this->registerMetaTag(['name' => 'twitter:card', 'content' => 'summary_large_image']);
 $this->registerMetaTag(['name' => 'twitter:site', 'content' => \Yii::$app->params['site']['twitter']]);
 $this->registerMetaTag(['name' => 'twitter:domain', 'content' => \Yii::$app->params['site']['description']]);
-$this->registerMetaTag(['name' => 'twitter:creator', 'content' => \Yii::$app->params['site']['author']]);
+$this->registerMetaTag(['name' => 'twitter:creator', 'content' => \Yii::$app->params['site']['twitter']]);
 $this->registerMetaTag(['name' => 'twitter:url', 'content' => $currentPage]);
 $this->registerMetaTag(['name' => 'twitter:title', 'content' => $model->title]);
 $this->registerMetaTag(['name' => 'twitter:description', 'content' => $model->meta_description]);
 $this->registerMetaTag(['name' => 'twitter:image:src', 'content' => \Yii::$app->params['site']['url'] . $model->preview_img]);
+
+/**
+ * https://ogp.me
+ */
+$this->registerMetaTag(['name' => 'og:type', 'content' => 'article']);
+$this->registerMetaTag(['name' => 'og:title', 'content' => $model->title]);
+$this->registerMetaTag(['name' => 'og:description', 'content' => $model->meta_description]);
+$this->registerMetaTag(['name' => 'og:url', 'content' => $currentPage]);
+$this->registerMetaTag(['name' => 'og:site_name', 'content' => \Yii::$app->params['site']['name']]);
+$this->registerMetaTag(['name' => 'og:locale', 'content' => Yii::$app->language]);
+$this->registerMetaTag(['name' => 'og:image', 'content' => \Yii::$app->params['site']['url'] . $model->preview_img]);
+$this->registerMetaTag(['name' => 'og:image:width', 'content' => '806']);
+$this->registerMetaTag(['name' => 'og:image:height', 'content' => '327']);
+$this->registerMetaTag(['name' => 'og:image:alt', 'content' => $model->title]);
 ?>
 <div class="post-view">
 
