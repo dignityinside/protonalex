@@ -4,6 +4,7 @@ namespace app\helpers;
 
 use app\models\post\Post;
 use yii\helpers\Html;
+use yii\helpers\StringHelper;
 
 /**
  * Text helper
@@ -40,6 +41,25 @@ class Text
     public static function hideCut(string $tag, string $text): string
     {
         return str_replace($tag, '', $text);
+    }
+
+    /**
+     * @param string $content
+     * @param bool $isPremium
+     *
+     * @return string
+     */
+    public static function readingTime(string $content, bool $isPremium = false): string
+    {
+        $content = self::hidecut('[cut]', $content);
+
+        if ($isPremium) {
+            $content = self::hideCut('[premium]', $content);
+        }
+
+        $content = strip_tags($content);
+
+        return ceil(StringHelper::countWords($content) * 0.0045);
     }
 
     /**

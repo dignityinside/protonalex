@@ -35,4 +35,5 @@ return [
     'comments'              => 'Комментариев',
     'records_not_found'     => 'Записи не найдены.',
     'preview_img_file'      => 'Превью',
+    'reading_time'          => 'Время прочтения',
 ];

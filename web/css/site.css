@@ -32,7 +32,7 @@ pre {
 .content_footer {
     border-top: solid 1px #DDD;
     padding-top: 5px;
-    font-size: 11px;
+    font-size: 12px;
     color: #7B848D;
 }
 
@@ -41,13 +41,13 @@ pre {
 }
 
 .content_header {
-    margin-bottom: 20px;
-    font-size: 11px;
+    margin-bottom: 10px;
+    font-size: 12px;
     color: #7B848D;
 }
 
 .content_header .fa {
-    margin: 0 5px 0 10px;
+    margin-right: 5px;
 }
 
 .share {

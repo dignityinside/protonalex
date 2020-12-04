@@ -2,6 +2,7 @@
 
 namespace app\models\post;
 
+use app\helpers\Text;
 use Yii;
 use yii\base\Model;
 use yii\db\ActiveQuery;
@@ -30,6 +31,7 @@ use yii\web\UploadedFile;
  * @property integer $category_id
  * @property string  $premium
  * @property string  $preview_img
+ * @property string  $reading_time
  *
  * relations
  * @property Tag[] $tags
@@ -63,7 +65,7 @@ class Post extends Material
     {
         return [
             [['title', 'content', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop', 'category_id'], 'required'],
-            [['content', 'allow_comments', 'slug', 'preview_img'], 'string'],
+            [['content', 'allow_comments', 'slug', 'preview_img', 'reading_time'], 'string'],
             [['status_id', 'datecreate', 'dateupdate', 'user_id', 'hits', 'ontop', 'category_id'], 'integer'],
             [['title'], 'string', 'max' => 69],
             [['meta_description'], 'string', 'max' => 156],
@@ -95,6 +97,7 @@ class Post extends Material
             'category_id'      => \Yii::t('app/blog', 'category_id'),
             'premium'          => \Yii::t('app/blog', 'premium'),
             'preview_img_file' => \Yii::t('app/blog', 'preview_img_file'),
+            'reading_time'     => \Yii::t('app/blog', 'reading_time'),
         ];
     }
 
@@ -133,6 +136,8 @@ class Post extends Material
         } elseif (empty($this->preview_img)) {
             $this->preview_img = '';
         }
+
+        $this->reading_time = Text::readingTime($this->content, $this->isPremium());
 
         return true;
     }
