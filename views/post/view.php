@@ -72,13 +72,7 @@ $this->registerMetaTag(['name' => 'og:image:alt', 'content' => $model->title]);
 
         <?php if ($model->ontop) : ?>
             <hr>
-            <p style="text-align: center">
-                <?= \Yii::t('app', 'subscribe_text') ?>
-            </p>
-            <div class="ml-form-embed"
-                 data-account="<?= \Yii::$app->params['subscribe']['dataAccount']; ?>"
-                 data-form="<?= \Yii::$app->params['subscribe']['dataFormPostBottom']; ?>">
-            </div>
+            <?= $this->render('/partials/subscribe'); ?>
             <?= $this->render('/partials/share'); ?>
             <?= app\widgets\Ad::widget(['slot' => Ad::SLOT_POST_BOTTOM]); ?>
         <?php endif; ?>

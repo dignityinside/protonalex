@@ -653,3 +653,9 @@ h3.comment-box__title {
 .social_buttons__item:hover {
     opacity: 0.8;
 }
+
+.subscribe {
+    text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
+}

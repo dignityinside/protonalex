@@ -60,14 +60,11 @@ return [
         ],
     ],
     /**
-    * MailerLite Subscription
-    * https://mailerlite.com
+    * Feedburner
+    * https://feedburner.google.com
+    * Publicize -> Email Subscriptions -> Activate
     */
     'subscribe' => [
-        'account'            => '',
-        'id'                 => '',
-        'dataAccount'        => '',
-        'dataFormSidebar'    => '',
-        'dataFormPostBottom' => '',
+        'id' => 'protonalex',
     ],
 ];
