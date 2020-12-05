@@ -6,7 +6,6 @@ Disallow: /signup
 Disallow: /search
 Disallow: /post/*
 Disallow: /user/*
-Disallow: /category/*
 Disallow: /tag/*
 Disallow: /site/*
 Disallow: /*sort=
