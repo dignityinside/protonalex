@@ -50,7 +50,6 @@ $yandexVerification = \Yii::$app->params['yandexVerification'];
         );
 
         $menuItems[] = ['label' => \Yii::t('app/blog', 'menu_label_index_blog'), 'url' => ['/post/index']];
-        $menuItems[] = ['label' => \Yii::t('app', 'menu_label_premium'), 'url' => ['/premium']];
 
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => \Yii::t('app', 'menu_label_login'), 'url' => ['/login']];
