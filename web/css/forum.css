@@ -8,17 +8,17 @@
     padding: 5px 16px 5px 16px;
     border-radius: 2rem;
     margin: 15px 10px 0 10px;
-    border: solid 1px #4eb26b;
+    border: solid 1px #ee6f54;
 }
 
 .forum_topics_filter a {
-    color: #4eb26b;
+    color: #ee6f54;
     text-decoration: underline;
 }
 
 .forum_topics_filter a:hover {
     text-decoration: none;
-    color: #4eb26b;
+    color: #ee6f54;
 }
 
 .forum_topics_filter li .fa,
@@ -66,12 +66,12 @@
 
 .forum_index_list__item__icon a,
 .forum-index-list__item__name a {
-    color: #4eb26b;
+    color: #ee6f54;
 }
 
 .forum_index_list__item__icon a:hover,
 .forum-index-list__item__name a:hover {
-    color: #4eb26b;
+    color: #ee6f54;
 }
 
 /* topics */
