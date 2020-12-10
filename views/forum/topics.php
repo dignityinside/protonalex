@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use app\assets\ForumAsset;
+use yii\helpers\Url;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
@@ -20,12 +21,12 @@ $this->title = isset($categoryModel)
     ? \Yii::t('app/forum', 'page_forum_topic_title') . ' - ' . $categoryName
     : \Yii::t('app/forum', 'forum_new_topics_text');
 
-$this->registerMetaTag(
-    [
-        'name'    => 'description',
-        'content' => $this->title,
-    ]
-);
+if (isset($categoryModel)) {
+    $this->registerMetaTag(['name' => 'description', 'content' => $categoryModel->description]);
+    $this->registerMetaTag(['name' => 'robots', 'content' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1']);
+
+    $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['/forum/topics/' . $categoryModel->slug], true)]);
+}
 
 $this->params['breadcrumbs'][] = ['label' => \Yii::t('app/forum', 'breadcrumbs_forum_index'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = isset($categoryModel) ? $categoryName : \Yii::t('app/forum', 'forum_new_topics_text');

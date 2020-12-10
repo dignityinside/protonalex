@@ -5,6 +5,7 @@ use app\components\UserPermissions;
 use yii\helpers\Html;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\forum\Forum */
@@ -22,6 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->registerMetaTag(['name' => 'title', 'content' => $model->title]);
 $this->registerMetaTag(['name' => 'description', 'content' => Html::encode($model->meta_description)]);
 $this->registerMetaTag(['name' => 'robots', 'content' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1']);
+
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['topic', 'id' => $model->id], true)]);
 
 ?>
 

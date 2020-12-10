@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use app\assets\ForumAsset;
+use yii\helpers\Url;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
 
@@ -11,6 +12,11 @@ use yii\widgets\Pjax;
 $this->title = \Yii::t('app/forum', 'page_forum_index_title');
 
 ForumAsset::register($this);
+
+$this->registerMetaTag(['name' => 'description', 'content' => 'Форум сайта ' . \Yii::$app->params['site']['name']]);
+$this->registerMetaTag(['name' => 'robots', 'content' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1']);
+
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['/forum'], true)]);
 
 ?>
 
