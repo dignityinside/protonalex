@@ -19,12 +19,9 @@ $this->params['breadcrumbs'][] = ['label' => $model->category->name,
                                   'url' => ['/forum/topics', 'categoryName' => $model->category->slug]];
 $this->params['breadcrumbs'][] = $this->title;
 
-$this->registerMetaTag(
-    [
-        'name'    => 'description',
-        'content' => Html::encode($model->meta_description),
-    ]
-);
+$this->registerMetaTag(['name' => 'title', 'content' => $model->title]);
+$this->registerMetaTag(['name' => 'description', 'content' => Html::encode($model->meta_description)]);
+$this->registerMetaTag(['name' => 'robots', 'content' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1']);
 
 ?>
 
