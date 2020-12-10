@@ -434,7 +434,10 @@ h3.comment-box__title {
 .user-view,
 .site-search,
 .site-error,
-.ad-admin{
+.ad-admin,
+.forum-admin,
+.forum-create,
+.forum-update {
     background: #FFF;
     padding: 0 25px 20px 25px;
     border: solid 1px #ececec;

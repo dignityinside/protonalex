@@ -67,4 +67,8 @@ return [
     'subscribe' => [
         'id' => 'protonalex',
     ],
+    'forum' => [
+        'preModeration' => false,
+        'pageSize' => 10,
+    ],
 ];

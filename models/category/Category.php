@@ -2,6 +2,7 @@
 
 namespace app\models\category;
 
+use app\models\forum\Forum;
 use app\models\Material;
 use app\models\post\Post;
 use Dignity\TranslitHelper;
@@ -98,6 +99,16 @@ class Category extends Material
                 'ontop' => Post::SHOW_ON_TOP,
                 'status_id' => Post::STATUS_PUBLIC
             ]);
+    }
+
+    /**
+     * Return related forums for category
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getForums()
+    {
+        return $this->hasMany(Forum::class, ['category_id' => 'id'])->where(['status_id' => Post::STATUS_PUBLIC]);
     }
 
     /**

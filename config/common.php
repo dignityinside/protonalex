@@ -32,6 +32,7 @@ return [
                         'app/comments' => 'comments.php',
                         'app/category' => 'category.php',
                         'app/ad'       => 'ad.php',
+                        'app/forum'    => 'forum.php',
                     ],
                 ],
             ],
@@ -46,6 +47,16 @@ return [
                 '<_c:[\w\-]+>/delete/<id:\d+>' => '<_c>/delete',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
                 'go/<slug:[\w\-]+>' => 'ad/view',
+                // forum
+                'forum/<_a:(my|admin|update|delete|index)>' => 'forum/<_a>',
+                'forum/topic/<id:\d+>' => 'forum/topic',
+                'forum/user/<userName:[\w\-]+>' => 'forum/user',
+                'forum/<_a:(create|update|delete)>/<id:\d+>' => 'forum/<_a>',
+                [
+                    'pattern' => 'forum/topics/<categoryName:[\w\-]+>/<sortBy:[\w\-]+>',
+                    'route' => 'forum/topics',
+                    'defaults' => ['sortBy' => ''],
+                ],
                 // tags
                 'tag/search' => 'tag/search',
                 [

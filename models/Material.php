@@ -24,13 +24,29 @@ class Material extends ActiveRecord
     /** @var int */
     public const MATERIAL_POST_ID = 1;
 
+    /** @var int */
+    public const MATERIAL_FORUM_ID = 2;
+
     /** @var string */
     public const MATERIAL_POST_NAME = 'Post';
+
+    /** @var string */
+    public const MATERIAL_FORUM_NAME = 'Forum';
 
     /** @var array */
     public const MATERIAL_MAPPING = [
         self::MATERIAL_POST_ID => self::MATERIAL_POST_NAME,
+        self::MATERIAL_FORUM_ID => self::MATERIAL_FORUM_NAME,
     ];
+
+    /** @var string */
+    public const SCENARIO_CREATE = 'create';
+
+    /** @var string */
+    public const SCENARIO_UPDATE = 'update';
+
+    /** @var string */
+    public const SCENARIO_ADMIN = 'admin';
 
     /** @var int Count of all comments */
     public $commentsCount;

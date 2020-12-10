@@ -8,6 +8,8 @@ Disallow: /post/*
 Disallow: /user/*
 Disallow: /tag/*
 Disallow: /site/*
+Disallow: /forum/index
+Disallow: /forum/user/*
 Disallow: /*sort=
 Disallow: /?p=*
 Disallow: /?page=*
