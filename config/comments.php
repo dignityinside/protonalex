@@ -52,7 +52,7 @@ return [
     // Anonymous function to get comment text
     // By default: nl2br(Html::encode($comment->text))
     'getCommentText'     => function (Comment $comment) {
-        return HtmlPurifier::process(Markdown::process($comment->text, 'gfm'));
+        return HtmlPurifier::process(Markdown::process($comment->text, 'gfm'), ['HTML.Nofollow' => true]);
     },
     // Anonymous function to get comment create time
     // By default: Yii::$app->formatter->asDatetime($comment->created_at)

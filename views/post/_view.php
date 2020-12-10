@@ -24,7 +24,7 @@ use yii\helpers\Markdown;
     </div>
 
     <?= Text::cut('[cut]',
-        Text::cut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm'))),
+        Text::cut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm'), ['HTML.Nofollow' => true])),
         Html::a('Подробнее →', ['post/view', 'slug' => $model->slug])
     ); ?>
 

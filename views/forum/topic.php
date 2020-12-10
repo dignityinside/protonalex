@@ -44,7 +44,7 @@ $this->registerMetaTag(
         <?php endif; ?>
 
         <div class="forum_topic__item__content">
-            <?= HtmlPurifier::process(Markdown::process($model->content, 'gfm')); ?>
+            <?= HtmlPurifier::process(Markdown::process($model->content, 'gfm'), ['HTML.Nofollow' => true]); ?>
         </div>
 
     </div>

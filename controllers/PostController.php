@@ -292,7 +292,7 @@ class PostController extends Controller
             $item->title = $post->title;
             $item->link = Url::to(['post/view', 'slug' => $post->slug], true);
             $item->guid = Url::to(['post/view', 'slug' => $post->slug], true);
-            $item->description = Text::cut('[cut]', Text::cut('[premium]', HtmlPurifier::process(Markdown::process($post->content, 'gfm'))));
+            $item->description = Text::cut('[cut]', Text::cut('[premium]', HtmlPurifier::process(Markdown::process($post->content, 'gfm'), ['HTML.Nofollow' => true])));
             $item->pubDate = $post->datecreate;
             $item->setAuthor(\Yii::$app->params['adminEmail'], $post->user->username);
             $feed->addItem($item);

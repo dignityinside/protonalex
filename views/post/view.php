@@ -67,7 +67,7 @@ $this->registerMetaTag(['name' => 'og:image:alt', 'content' => $model->title]);
     <?php if ($model->isPremium()) : ?>
 
         <?= Text::hidecut('[cut]',
-            Text::hideCut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm')))
+            Text::hideCut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm'), ['HTML.Nofollow' => true]))
         ); ?>
 
         <?php if ($model->ontop) : ?>
@@ -79,7 +79,7 @@ $this->registerMetaTag(['name' => 'og:image:alt', 'content' => $model->title]);
 
     <?php else : ?>
         <?= Text::hidecut('[cut]',
-            Text::cut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm')))
+            Text::cut('[premium]', HtmlPurifier::process(Markdown::process($model->content, 'gfm'), ['HTML.Nofollow' => true]))
         ); ?>
         <?= $this->render('../partials/premium'); ?>
     <?php endif; ?>
