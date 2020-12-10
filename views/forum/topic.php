@@ -1,4 +1,4 @@
-Yii::$app->formatter->asRelativeTime<?php
+<?php
 
 use app\assets\ForumAsset;
 use app\components\UserPermissions;
