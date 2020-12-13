@@ -1,5 +1,7 @@
 <?php
 
+use app\models\forum\Forum;
+use app\models\post\Post;
 use yii\helpers\Html;
 use demi\comments\common\models\Comment;
 use yii\helpers\HtmlPurifier;
@@ -8,6 +10,7 @@ use yii\helpers\Markdown;
 return [
     "userModelClass"     => 'app\models\User',
     'class'              => 'demi\comments\common\components\Comment',
+    'commentModelConfig' => 'app\models\Comment',
     // Material types list
     'types'              => [
         1 => 'Post',
@@ -66,10 +69,14 @@ return [
         $url = '#comment-' . $comment->id;
 
         // If you have "admin" subdomain, you can specify absolute url path for use "goToComment" from admin page
-        if ($comment->material_type == 1) {
-            // http://site.com/publication/3221#comment-4
-            $postSlug = \app\models\post\Post::find()->select('slug')->where(['id' => $comment->material_id])->scalar();
+        if ($comment->material_type === 1) {
+            $postSlug = Post::find()->select('slug')->where(['id' => $comment->material_id])->scalar();
             return ['/post/view', 'slug' => $postSlug, '#' => "comment-$comment->id"];
+        }
+
+        if ($comment->material_type === 2) {
+            $topicId = Forum::find()->select('id')->where(['id' => $comment->material_id])->scalar();
+            return ['/forum/topic', 'id' => $topicId, '#' => "comment-$comment->id"];
         }
 
         return $url;

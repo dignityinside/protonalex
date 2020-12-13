@@ -3,7 +3,6 @@
 namespace app\widgets;
 
 use app\models\category\Category;
-use app\models\forum\Forum;
 use app\models\Material;
 use yii\base\Widget;
 use yii\helpers\Html;

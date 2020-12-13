@@ -26,6 +26,14 @@ $this->beginContent('@app/views/layouts/main.php'); ?>
         </div>
         <div class="widget">
             <div class="widget-title">
+                Новые ответы
+            </div>
+            <div class="widget-content">
+                <?= app\widgets\ForumCommentsWidget::widget(['count' => 5]); ?>
+            </div>
+        </div>
+        <div class="widget">
+            <div class="widget-title">
                 Разделы
             </div>
             <div class="widget-content">

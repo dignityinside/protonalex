@@ -197,7 +197,8 @@ h3.text-primary {
     color: #E13300;
 }
 
-.forum_topics_widget_item {
+.forum_topics_widget_item,
+.forum_comments_widget_item {
     display: flex;
     flex-direction: column;
     padding-bottom: 2px;
@@ -205,12 +206,15 @@ h3.text-primary {
     margin-bottom: 15px;
 }
 
-.forum_topics_widget_item__title {
+.forum_topics_widget_item__title,
+.forum_comments_widget_item__title {
     text-decoration: underline;
 }
 
-.forum_topics_widget_item__info {
-    font-size: 12px;
+.forum_topics_widget_item__info,
+.forum_comments_widget_item__info {
+    font-size: 11px;
+    color: #818189;
 }
 
 .forum_topics_widget_item__info .fa {
