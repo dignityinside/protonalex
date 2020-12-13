@@ -37,7 +37,7 @@ ForumAsset::register($this);
                 'attribute' => 'created_at',
                 'label' => \Yii::t('app', 'columns_label_created'),
                 'value' => function ($model) {
-                    return $model->created_at;
+                    return $model->getFormattedCreatedAt();
                 }
             ],
             [

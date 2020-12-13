@@ -6,6 +6,7 @@ use app\models\Material;
 use app\components\UserPermissions;
 use app\models\category\Category;
 use demi\comments\common\models\Comment;
+use Yii;
 
 /**
  * This is the model class for table "forum".
@@ -143,6 +144,16 @@ class Forum extends Material
     {
         return $this->hasOne(Category::class, ['id' => 'category_id'])
             ->andOnCondition(['material_id' => Material::MATERIAL_FORUM_ID]);
+    }
+
+    /**
+     * @return string
+     */
+    public function getFormattedCreatedAt(): string
+    {
+        $formatter = Yii::$app->formatter;
+
+        return $formatter->asRelativeTime($this->created_at) . ' (' . $formatter->asDatetime($this->created_at, 'short') . ')';
     }
 
     /**

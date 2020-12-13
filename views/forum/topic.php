@@ -50,7 +50,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['topic', 'id' =
     </div>
 
     <div class="forum_topic__footer">
-        <i class="fa fa-clock-o"></i> <?= Yii::$app->formatter->asRelativeTime($model->created_at); ?>
+        <i class="fa fa-clock-o"></i> <?= $model->getFormattedCreatedAt(); ?>
         <i class="fa fa-user"></i>
         <?php if (!empty($model->user_id)) : ?>
             <?= Html::a($model->user->username, ['/forum/user/' . $model->user->username]); ?>

@@ -17,7 +17,7 @@ use yii\helpers\Html;
         </div>
         <div class="forum_topics_list__item__name__user">
             <span>
-                <i class="fa fa-clock-o"></i> <?= Yii::$app->formatter->asRelativeTime($model->created_at); ?>
+                <i class="fa fa-clock-o"></i> <?= $model->getFormattedCreatedAt(); ?>
             </span>
             <span>
                 <i class="fa fa-user"></i>

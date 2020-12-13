@@ -5,6 +5,7 @@ return [
     'name' => 'protonalex',
     'language' => 'ru-RU',
     'sourceLanguage' => 'en-US',
+    'timeZone' => 'Europe/Moscow',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
