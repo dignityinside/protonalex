@@ -71,5 +71,9 @@ return [
             'dateFormat' => 'dd.MM.yyyy',
             'locale' => 'ru-RU'
         ],
+        'assetManager' => [
+            'linkAssets' => true,
+            'appendTimestamp' => true,
+        ],
     ],
 ];
