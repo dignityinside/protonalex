@@ -206,9 +206,14 @@ h3.text-primary {
     margin-bottom: 15px;
 }
 
-.forum_topics_widget_item__title,
-.forum_comments_widget_item__title {
-    text-decoration: underline;
+.widget .forum_topics_widget_item__title a,
+.widget .forum_comments_widget_item__title a {
+    color: #000;
+}
+
+.widget .forum_topics_widget_item__title a:hover,
+.widget .forum_comments_widget_item__title a:hover {
+    color: #909ac8;
 }
 
 .forum_topics_widget_item__info,
