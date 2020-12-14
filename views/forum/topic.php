@@ -2,6 +2,7 @@
 
 use app\assets\ForumAsset;
 use app\components\UserPermissions;
+use app\models\ad\Ad;
 use yii\helpers\Html;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
@@ -46,6 +47,8 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::to(['topic', 'id' =
         <div class="forum_topic__item__content">
             <?= HtmlPurifier::process(Markdown::process($model->content, 'gfm'), ['HTML.Nofollow' => true]); ?>
         </div>
+
+        <?= $this->render('/partials/share'); ?>
 
     </div>
 
