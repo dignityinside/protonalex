@@ -15,7 +15,7 @@ return [
     // views/forum/admin
     'page_forum_admin_title'         => 'Форум (админ)',
     // views/forum/create
-    'breadcrumbs_forum_index'        => 'Форум',
+    'breadcrumbs_forum_index'        => 'Список форумов',
     'breadcrumbs_forum_my'           => 'Мои темы',
     'page_forum_create_title'        => 'Новая тема',
     // views/forum/index

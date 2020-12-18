@@ -9,7 +9,13 @@ use yii\helpers\Html;
 
 <div class="forum_topics_list__item">
     <div class="forum_topics_list__item__icon">
-        <i class="fas fa-file"></i>
+        <?php if ($model->pinned) : ?>
+            <i class="fa fa-bolt" aria-hidden="true"></i>
+        <?php elseif ($model->allow_comments) : ?>
+            <i class="fas fa-file" aria-hidden="true"></i>
+        <?php else : ?>
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        <?php endif; ?>
     </div>
     <div class="forum_topics_list__item__name">
         <div class="forum_topics_list__item__name__title">

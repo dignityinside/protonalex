@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\category\Category */
 
-$this->params['breadcrumbs']['index'] = 'Форум';
+$this->params['breadcrumbs']['index'] = \Yii::t('app/forum', 'breadcrumbs_forum_index');
 
 ?>
 <div class="forum_index_list__item">
