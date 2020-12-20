@@ -16,20 +16,26 @@ use yii\widgets\ActiveForm;
 
         <div class="row">
             <div class="col">
-                <div class="form-group col-md-5">
-                    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-                </div>
-            </div>
-
-            <div class="col">
                 <div class="form-group col-md-3">
-                    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-group col-md-2">
                     <?= $form->field($model, 'material_id')->dropDownList(\app\models\Material::MATERIAL_MAPPING) ?>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group col-md-3">
+                    <?= $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group col-md-2">
+                    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
                 </div>
             </div>
 

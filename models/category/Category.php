@@ -18,6 +18,7 @@ use Dignity\TranslitHelper;
  * @property int $material_id
  * @property string $description
  * @property int $order
+ * @property string $icon
  */
 class Category extends Material
 {
@@ -38,7 +39,7 @@ class Category extends Material
         return [
             [['name', 'material_id'], 'required'],
             [['material_id', 'order'], 'integer'],
-            [['name', 'slug', 'description'], 'string', 'max' => 255],
+            [['name', 'slug', 'description', 'icon'], 'string', 'max' => 255],
         ];
     }
 
@@ -48,12 +49,13 @@ class Category extends Material
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Название',
-            'slug' => 'Ярлык',
+            'id'          => 'ID',
+            'name'        => 'Название',
+            'slug'        => 'Ярлык',
             'material_id' => 'ID сущности',
             'description' => 'Описание',
-            'order' => 'Последовательность',
+            'order'       => 'Последовательность',
+            'icon'        => 'Иконка',
         ];
     }
 
