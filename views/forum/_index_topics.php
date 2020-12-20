@@ -8,7 +8,7 @@ use yii\helpers\Html;
 ?>
 
 <div class="forum_topics_list__item">
-    <div class="forum_topics_list__item__icon">
+    <div class="forum_topics_list_item__icon">
         <?php if ($model->pinned) : ?>
             <i class="fa fa-bolt" aria-hidden="true"></i>
         <?php elseif ($model->allow_comments) : ?>
@@ -17,11 +17,11 @@ use yii\helpers\Html;
             <i class="fa fa-lock" aria-hidden="true"></i>
         <?php endif; ?>
     </div>
-    <div class="forum_topics_list__item__name">
-        <div class="forum_topics_list__item__name__title">
+    <div class="forum_topics_list_item__name">
+        <div class="forum_topics_list_item_name__title">
             <?= Html::a($model->title, ['forum/topic', 'id' => $model->id]); ?>
         </div>
-        <div class="forum_topics_list__item__name__user">
+        <div class="forum_topics_list_item_name__user">
             <span>
                 <i class="fa fa-clock-o"></i> <?= $model->getFormattedCreatedAt(); ?>
             </span>
@@ -40,10 +40,10 @@ use yii\helpers\Html;
             </span>
         </div>
     </div>
-    <div class="forum_topics_list__item__comments">
+    <div class="forum_topics_list_item__comments">
         <span><i class="fa fa-comments"></i> <?= Html::encode($model->commentsCount); ?></span>
     </div>
-    <div class="forum_topics_list__item__hits">
+    <div class="forum_topics_list_item__hits">
         <span><i class="fa fa-eye"></i> <?= Html::encode($model->hits); ?></span>
     </div>
 </div>

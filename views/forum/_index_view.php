@@ -11,11 +11,14 @@ $icon = $model->icon ?? 'fas fa-folder';
 
 ?>
 <div class="forum_index_list__item">
-    <div class="forum_index_list__item__icon">
+    <div class="forum_index_list_item__icon">
         <?= Html::a('<i class="' . $icon . '" aria-hidden="true"></i>', ['/forum/topics', 'categoryName' => $model->slug]); ?>
     </div>
-    <div class="forum-index-list__item__name">
+    <div class="forum_index_list_item__name">
         <h3><?= Html::a($model->name, ['/forum/topics', 'categoryName' => $model->slug]); ?></h3>
         <p><?= Html::encode($model->description); ?></p>
+    </div>
+    <div class="forum_index_list_item__topics">
+        <?= $model->getForums()->count(); ?>
     </div>
 </div>
