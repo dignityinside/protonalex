@@ -179,11 +179,15 @@ class Forum extends Material
                 $this->allow_comments = Material::STATUS_PUBLIC;
             }
 
-            $this->hits = 0;
+            $this->hits = 1;
 
             if (empty($this->category_id)) {
                 $this->category_id = 0;
             }
+        }
+
+        if (empty($this->meta_description)) {
+            $this->meta_description = $this->title;
         }
 
         if (!UserPermissions::canAdminForum()) {
@@ -194,10 +198,13 @@ class Forum extends Material
         return true;
     }
 
-
-    public function beforeDelete()
+    /**
+     * Before delete
+     *
+     * @return bool
+     */
+    public function beforeDelete(): bool
     {
-
         // remove all comments for topic
 
         Comment::deleteAll(['material_type' => Material::MATERIAL_FORUM_ID, 'material_id' => $this->id]);

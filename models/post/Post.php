@@ -116,7 +116,7 @@ class Post extends Material
             $this->user_id = Yii::$app->user->id;
             $this->datecreate = time();
             $this->dateupdate = time();
-            $this->hits = 0;
+            $this->hits = 1;
 
             if (empty($this->slug)) {
                 $this->slug = TranslitHelper::translit($this->title);
@@ -127,6 +127,10 @@ class Post extends Material
             if (empty($this->slug)) {
                 $this->slug = TranslitHelper::translit($this->title);
             }
+        }
+
+        if (empty($this->meta_description)) {
+            $this->meta_description = $this->title;
         }
 
         if ($this->preview_img_file !== null) {
