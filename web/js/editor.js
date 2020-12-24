@@ -15,6 +15,8 @@ function initEditor(el) {
         matchBrackets: true,
         autoCloseBrackets: true,
         autoCloseTags: true,
+        inputStyle: 'contenteditable',
+        spellcheck: true,
         buttons: [
             {
                 hotkey: 'Ctrl-B',
